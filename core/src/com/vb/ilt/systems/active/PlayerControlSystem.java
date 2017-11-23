@@ -42,7 +42,7 @@ public class PlayerControlSystem extends IteratingSystem{
 
         if(Math.abs(movement.velocity.x) < MIN_STOP_VELOCITY) movement.velocity.x = 0;
         else movement.velocity.x += reduceVelocity(deltaTime, movement.velocity.x);
-        
+
         if(Math.abs(movement.velocity.y) < MIN_STOP_VELOCITY) movement.velocity.y = 0;
         else movement.velocity.y += reduceVelocity(deltaTime, movement.velocity.y);
     }
