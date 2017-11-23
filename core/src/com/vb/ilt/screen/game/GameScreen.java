@@ -13,9 +13,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.systems.active.BoundsSystem;
+import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
-import com.vb.ilt.systems.debug.DebugCameraSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.GridRenderSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
@@ -44,16 +44,19 @@ public class GameScreen extends ScreenAdapter{
 
     @Override
     public void show() {
-        camera = new OrthographicCamera();
+        camera = new OrthographicCamera(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT);
+        camera.setToOrtho(false);
         viewport = new FitViewport(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT, camera);
         hudViewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT);
         renderer = new ShapeRenderer();
         engine = new PooledEngine();
 
         engine.addSystem(new GridRenderSystem(viewport, renderer));
-        engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
+        //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
         engine.addSystem(new EntityFactorySystem(assetManager));
+        engine.addSystem(new CameraFollowingPlayerSystem(camera, viewport));
+
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new MovementSystem());
         engine.addSystem(new PlayerControlSystem());
@@ -63,7 +66,6 @@ public class GameScreen extends ScreenAdapter{
     @Override
     public void render(float delta) {
         GdxUtils.clearScreen();
-
         engine.update(delta);
     }
 
