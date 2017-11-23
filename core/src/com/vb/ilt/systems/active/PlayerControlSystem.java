@@ -5,7 +5,6 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Vector2;
 import com.vb.ilt.components.MovementComponent;
 import com.vb.ilt.components.PlayerComponent;
 import com.vb.ilt.config.GameConfig;
@@ -13,8 +12,8 @@ import com.vb.ilt.util.Mappers;
 
 public class PlayerControlSystem extends IteratingSystem{
 
-    private Vector2 currentVelocity;
-    private static final float MIN_STOP_VELOCITY = 0.005f;
+    //Inappropriate behavior if the value is lower
+    private static final float MIN_STOP_VELOCITY = 0.05f;
 
     public static final Family FAMILY = Family.all(
             PlayerComponent.class,
@@ -28,7 +27,6 @@ public class PlayerControlSystem extends IteratingSystem{
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         MovementComponent movement = Mappers.MOVEMENT.get(entity);
-        currentVelocity = movement.velocity;
 
         if(Gdx.input.isKeyPressed(Input.Keys.UP)){
             movement.velocity.y = GameConfig.PLAYER_VELOCITY;
@@ -40,12 +38,12 @@ public class PlayerControlSystem extends IteratingSystem{
             movement.velocity.x = -GameConfig.PLAYER_VELOCITY;
         }
 
-        if(Math.abs(currentVelocity.x) < MIN_STOP_VELOCITY &&
-                Math.abs(currentVelocity.y) < MIN_STOP_VELOCITY){
+        if(Math.abs(movement.velocity.x) < MIN_STOP_VELOCITY &&
+                Math.abs(movement.velocity.y) < MIN_STOP_VELOCITY){
             movement.velocity.setZero();
         }else{
-            movement.velocity.x += reduceVelocity(deltaTime, currentVelocity.x);
-            movement.velocity.y += reduceVelocity(deltaTime, currentVelocity.y);
+            movement.velocity.x += reduceVelocity(deltaTime, movement.velocity.x);
+            movement.velocity.y += reduceVelocity(deltaTime, movement.velocity.y);
         }
     }
 
@@ -54,8 +52,7 @@ public class PlayerControlSystem extends IteratingSystem{
             return -(deltaTime * GameConfig.STOPPING_SPEED);
         }else if(val < 0){
             return deltaTime * GameConfig.STOPPING_SPEED;
-        }else {
-            return 0;
         }
+        return 0;
     }
 }

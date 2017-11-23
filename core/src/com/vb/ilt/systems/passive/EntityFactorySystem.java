@@ -32,13 +32,13 @@ public class EntityFactorySystem extends EntitySystem{
     }
 
     public void createPlayer(){
-        PositionComponent position = engine.createComponent(PositionComponent.class);
-        position.x = GameConfig.WORLD_CENTER_X;
-        position.y = GameConfig.WORLD_CENTER_Y;
-
         DimensionComponent dimension = engine.createComponent(DimensionComponent.class);
-        dimension.width = 1f;
-        dimension.height = 2f;
+        dimension.width = GameConfig.PLAYER_WIDTH;
+        dimension.height = GameConfig.PLAYER_HEIGHT;
+
+        PositionComponent position = engine.createComponent(PositionComponent.class);
+        position.x = GameConfig.WORLD_CENTER_X - (dimension.width / 2f);
+        position.y = GameConfig.WORLD_CENTER_Y - (dimension.height / 2f);
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
         bounds.rectangle.setPosition(position.x, position.y);
