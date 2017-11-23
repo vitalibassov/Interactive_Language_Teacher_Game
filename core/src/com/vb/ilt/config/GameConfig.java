@@ -17,7 +17,7 @@ public final class GameConfig {
     public static final float HUD_HEIGHT = 1080f;
 
     public static final float PLAYER_VELOCITY = 0.15f;
-    public static final float STOPPING_SPEED = 0.8f;
+    public static final float STOPPING_SPEED = 0.75f;
 
     private GameConfig(){}
 }

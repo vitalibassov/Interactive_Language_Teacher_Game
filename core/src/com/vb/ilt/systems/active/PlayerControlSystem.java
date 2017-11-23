@@ -44,17 +44,18 @@ public class PlayerControlSystem extends IteratingSystem{
                 Math.abs(currentVelocity.y) < MIN_STOP_VELOCITY){
             movement.velocity.setZero();
         }else{
-            if(currentVelocity.x > 0){
-                movement.velocity.x -= deltaTime * GameConfig.STOPPING_SPEED;
-            }else if(currentVelocity.x < 0){
-                movement.velocity.x += deltaTime * GameConfig.STOPPING_SPEED;
-            }
+            movement.velocity.x += reduceVelocity(deltaTime, currentVelocity.x);
+            movement.velocity.y += reduceVelocity(deltaTime, currentVelocity.y);
+        }
+    }
 
-            if(currentVelocity.y > 0){
-                movement.velocity.y -= deltaTime * GameConfig.STOPPING_SPEED;
-            }else if(currentVelocity.y < 0){
-                movement.velocity.y += deltaTime * GameConfig.STOPPING_SPEED;
-            }
+    private float reduceVelocity(float deltaTime, float val){
+        if(val > 0){
+            return -(deltaTime * GameConfig.STOPPING_SPEED);
+        }else if(val < 0){
+            return deltaTime * GameConfig.STOPPING_SPEED;
+        }else {
+            return 0;
         }
     }
 }
