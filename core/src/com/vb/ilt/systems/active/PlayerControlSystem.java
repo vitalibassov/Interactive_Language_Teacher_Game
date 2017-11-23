@@ -28,6 +28,8 @@ public class PlayerControlSystem extends IteratingSystem{
     protected void processEntity(Entity entity, float deltaTime) {
         MovementComponent movement = Mappers.MOVEMENT.get(entity);
 
+
+
         if(Gdx.input.isKeyPressed(Input.Keys.UP)){
             movement.velocity.y = GameConfig.PLAYER_VELOCITY;
         }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
@@ -38,13 +40,11 @@ public class PlayerControlSystem extends IteratingSystem{
             movement.velocity.x = -GameConfig.PLAYER_VELOCITY;
         }
 
-        if(Math.abs(movement.velocity.x) < MIN_STOP_VELOCITY &&
-                Math.abs(movement.velocity.y) < MIN_STOP_VELOCITY){
-            movement.velocity.setZero();
-        }else{
-            movement.velocity.x += reduceVelocity(deltaTime, movement.velocity.x);
-            movement.velocity.y += reduceVelocity(deltaTime, movement.velocity.y);
-        }
+        if(Math.abs(movement.velocity.x) < MIN_STOP_VELOCITY) movement.velocity.x = 0;
+        else movement.velocity.x += reduceVelocity(deltaTime, movement.velocity.x);
+        
+        if(Math.abs(movement.velocity.y) < MIN_STOP_VELOCITY) movement.velocity.y = 0;
+        else movement.velocity.y += reduceVelocity(deltaTime, movement.velocity.y);
     }
 
     private float reduceVelocity(float deltaTime, float val){
