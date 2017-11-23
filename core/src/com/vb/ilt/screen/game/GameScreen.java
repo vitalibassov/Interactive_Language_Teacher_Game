@@ -12,9 +12,14 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.systems.active.BoundsSystem;
+import com.vb.ilt.systems.active.MovementSystem;
+import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.systems.debug.DebugCameraSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.GridRenderSystem;
+import com.vb.ilt.systems.passive.EntityFactorySystem;
+import com.vb.ilt.systems.passive.StartUpSystem;
 import com.vb.ilt.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter{
@@ -48,6 +53,11 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new GridRenderSystem(viewport, renderer));
         engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
+        engine.addSystem(new EntityFactorySystem(assetManager));
+        engine.addSystem(new BoundsSystem());
+        engine.addSystem(new MovementSystem());
+        engine.addSystem(new PlayerControlSystem());
+        engine.addSystem(new StartUpSystem());
     }
 
     @Override
