@@ -5,6 +5,9 @@ import com.vb.ilt.components.BoundsComponent;
 import com.vb.ilt.components.DimensionComponent;
 import com.vb.ilt.components.MovementComponent;
 import com.vb.ilt.components.PositionComponent;
+import com.vb.ilt.components.TextureComponent;
+import com.vb.ilt.components.world.TiledMapComponent;
+import com.vb.ilt.components.world.TiledMapRendererComponent;
 
 public final class Mappers {
 
@@ -16,6 +19,12 @@ public final class Mappers {
             ComponentMapper.getFor(MovementComponent.class);
     public static final ComponentMapper<PositionComponent> POSITION =
             ComponentMapper.getFor(PositionComponent.class);
+    public static final ComponentMapper<TextureComponent> TEXTURE =
+            ComponentMapper.getFor(TextureComponent.class);
+    public static final ComponentMapper<TiledMapComponent> MAP =
+            ComponentMapper.getFor(TiledMapComponent.class);
+    public static final ComponentMapper<TiledMapRendererComponent> MAP_RENDERER =
+            ComponentMapper.getFor(TiledMapRendererComponent.class);
 
     private Mappers(){}
 }

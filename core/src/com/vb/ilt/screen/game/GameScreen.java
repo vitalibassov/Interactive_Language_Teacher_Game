@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -16,6 +17,7 @@ import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
+import com.vb.ilt.systems.active.RenderWorldSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.GridRenderSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
@@ -30,6 +32,7 @@ public class GameScreen extends ScreenAdapter{
     //private final Skin skin;
 
     private OrthographicCamera camera;
+    private OrthogonalTiledMapRenderer mapRenderer;
     private Viewport viewport;
     private Viewport hudViewport;
     private ShapeRenderer renderer;
@@ -51,16 +54,21 @@ public class GameScreen extends ScreenAdapter{
         renderer = new ShapeRenderer();
         engine = new PooledEngine();
 
-        engine.addSystem(new GridRenderSystem(viewport, renderer));
-        //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
-        engine.addSystem(new DebugRenderSystem(viewport, renderer));
-        engine.addSystem(new EntityFactorySystem(assetManager));
+
+
+        engine.addSystem(new EntityFactorySystem(assetManager, batch));
         engine.addSystem(new CameraFollowingPlayerSystem(camera, viewport));
 
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new MovementSystem());
         engine.addSystem(new PlayerControlSystem());
+
+        engine.addSystem(new RenderWorldSystem(viewport, batch));
+        engine.addSystem(new GridRenderSystem(viewport, renderer));
+        //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
+        engine.addSystem(new DebugRenderSystem(viewport, renderer));
         engine.addSystem(new StartUpSystem());
+
     }
 
     @Override
