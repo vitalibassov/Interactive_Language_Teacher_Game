@@ -22,6 +22,7 @@ import com.vb.ilt.components.PositionComponent;
 import com.vb.ilt.components.TextureComponent;
 import com.vb.ilt.components.world.TiledMapComponent;
 import com.vb.ilt.components.world.TiledMapRendererComponent;
+import com.vb.ilt.components.world.WorldObjectComponent;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.shape.ShapeUtils;
 
@@ -115,9 +116,12 @@ public class EntityFactorySystem extends EntitySystem{
             position.x = bounds.polygon.getX();
             position.y = bounds.polygon.getY();
 
+            WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
+
             Entity entity = engine.createEntity();
             entity.add(bounds);
             entity.add(position);
+            entity.add(worldObject);
             engine.addEntity(entity);
         }
 
