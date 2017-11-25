@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="39">
+ <tileset firstgid="1" source="main_map.tsx"/>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJwzZ2RgMB/Fo3gUD3mcDsQZUJxJBfPagbgDij2oYCayeSDcOcjMWw7EmlQ0D2bmCiheSeP4HwgMAOA6X74=
+  </data>
+ </layer>
+ <layer name="Foreground" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgYANidjTMwUA+UANidTSsQYF5bkDsjoY9KDAvDYjT0XAGBea1AXE7Gu6gwLzhCuSBWIGK5tkDsQMVzYsH4gQqmlcPxA1UNG8+EC9gGBzhKI9DTIGBvHDE5gaYGDnhiM0NMDFYOJICsLmBkvjF5gZy3DXQAADd3xcf
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object id="26" x="320" y="64" width="32" height="128"/>
+  <object id="28" x="320" y="64" width="160" height="32"/>
+  <object id="29" x="448" y="64" width="32" height="128"/>
+  <object id="30" x="480" y="352" width="64" height="32"/>
+  <object id="31" x="544" y="480" width="64" height="32"/>
+  <object id="32" x="480" y="544" width="64" height="32"/>
+  <object id="33" x="320" y="544" width="64" height="32"/>
+  <object id="34" x="96" y="384" width="128" height="160"/>
+  <object id="35" x="224" y="416" width="32" height="128"/>
+  <object id="36" x="128" y="544" width="128" height="32"/>
+  <object id="37" x="32" y="64" width="192" height="96"/>
+ </objectgroup>
+</map>
