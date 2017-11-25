@@ -5,6 +5,8 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.components.BoundsComponent;
 import com.vb.ilt.components.PlayerComponent;
@@ -26,18 +28,29 @@ public class WorldObjectsCollisionSystem extends EntitySystem{
     ).get();
 
     @Override
-    public void update(float deltaTime) {
+    public boolean checkProcessing() {
+        return false;
+    }
+
+    public boolean checkCollision(Vector2 velocity) {
         ImmutableArray<Entity> players = getEngine().getEntitiesFor(PLAYER_FAMILY);
         ImmutableArray<Entity> worldObjects = getEngine().getEntitiesFor(WORLD_OBJECT_FAMILY);
 
         for(Entity player : players){
             BoundsComponent playerBounds = Mappers.BOUNDS.get(player);
+            Rectangle tempRect = new Rectangle();
+            tempRect.setSize(playerBounds.rectangle.width, playerBounds.rectangle.height);
+            tempRect.setPosition(
+                    playerBounds.rectangle.x + velocity.x,
+                    playerBounds.rectangle.y + velocity.y);
             for(Entity worldObject : worldObjects){
                 BoundsComponent worldObjectBounds = Mappers.BOUNDS.get(worldObject);
-                if(Intersector.overlapConvexPolygons(playerBounds.polygon, worldObjectBounds.polygon)){
-                    log.debug("COLLISION WITH WORLD OBJECT IS HAPPENED");
+
+                if(Intersector.overlaps(tempRect, worldObjectBounds.rectangle)){
+                    return true;
                 }
             }
         }
+        return false;
     }
 }

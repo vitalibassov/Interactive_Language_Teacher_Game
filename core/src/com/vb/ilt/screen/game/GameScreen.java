@@ -58,14 +58,17 @@ public class GameScreen extends ScreenAdapter{
 
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
-        engine.addSystem(new CameraFollowingPlayerSystem(camera, viewport));
 
-        engine.addSystem(new BoundsSystem());
-        engine.addSystem(new MovementSystem());
+
         engine.addSystem(new PlayerControlSystem());
         engine.addSystem(new WorldObjectsCollisionSystem());
+        engine.addSystem(new MovementSystem());
+        engine.addSystem(new BoundsSystem());
 
+
+        engine.addSystem(new CameraFollowingPlayerSystem(camera, viewport));
         engine.addSystem(new RenderWorldSystem(viewport, batch));
+
         engine.addSystem(new GridRenderSystem(viewport, renderer));
         //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));

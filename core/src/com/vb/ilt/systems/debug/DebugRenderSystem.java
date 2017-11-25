@@ -44,6 +44,7 @@ public class DebugRenderSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         BoundsComponent bounds = Mappers.BOUNDS.get(entity);
 
-        renderer.polygon(bounds.polygon.getTransformedVertices());
+        renderer.rect(bounds.rectangle.x, bounds.rectangle.y,
+                bounds.rectangle.width, bounds.rectangle.height);
     }
 }

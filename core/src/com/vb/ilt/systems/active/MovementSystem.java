@@ -5,9 +5,12 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.vb.ilt.components.MovementComponent;
 import com.vb.ilt.components.PositionComponent;
+import com.vb.ilt.systems.active.collision.WorldObjectsCollisionSystem;
 import com.vb.ilt.util.Mappers;
 
 public class MovementSystem extends IteratingSystem{
+
+
 
     private static final Family FAMILY = Family.all(
             PositionComponent.class,
@@ -23,7 +26,13 @@ public class MovementSystem extends IteratingSystem{
         PositionComponent position = Mappers.POSITION.get(entity);
         MovementComponent movement = Mappers.MOVEMENT.get(entity);
 
-        position.x += movement.velocity.x;
-        position.y += movement.velocity.y;
+        float beforeUpdateX = position.x;
+        float beforeUpdateY = position.y;
+
+        WorldObjectsCollisionSystem collisionSystem = getEngine().getSystem(WorldObjectsCollisionSystem.class);
+        if(!collisionSystem.checkCollision(movement.velocity)){
+            position.x += movement.velocity.x;
+            position.y += movement.velocity.y;
+        }
     }
 }

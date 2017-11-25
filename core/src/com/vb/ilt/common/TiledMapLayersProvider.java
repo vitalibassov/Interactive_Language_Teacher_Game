@@ -2,7 +2,6 @@ package com.vb.ilt.common;
 
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -24,10 +23,10 @@ public class TiledMapLayersProvider {
         return map;
     }
 
-    public Array<PolygonMapObject> getPolygons(){
+    public Array<RectangleMapObject> getPolygons(){
         MapLayer objectsLayer = map.getLayers().get("Collision");
         MapObjects objects = objectsLayer.getObjects();
         log.debug("" + objects.getByType(RectangleMapObject.class).size);
-        return objects.getByType(PolygonMapObject.class);
+        return objects.getByType(RectangleMapObject.class);
     }
 }

@@ -6,7 +6,6 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.vb.ilt.components.BoundsComponent;
 import com.vb.ilt.components.DimensionComponent;
 import com.vb.ilt.components.PositionComponent;
-import com.vb.ilt.shape.ShapeUtils;
 import com.vb.ilt.util.Mappers;
 
 public class BoundsSystem extends IteratingSystem{
@@ -27,7 +26,7 @@ public class BoundsSystem extends IteratingSystem{
         DimensionComponent dimension = Mappers.DIMENSION.get(entity);
         PositionComponent position = Mappers.POSITION.get(entity);
 
-        bounds.polygon.setVertices(ShapeUtils.createRectangle(dimension.width, dimension.height));
-        bounds.polygon.setPosition(position.x, position.y);
+        bounds.rectangle.setSize(dimension.width, dimension.height);
+        bounds.rectangle.setPosition(position.x, position.y);
     }
 }
