@@ -62,6 +62,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(new PlayerControlSystem());
         engine.addSystem(new WorldObjectsCollisionSystem());
+
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsSystem());
 

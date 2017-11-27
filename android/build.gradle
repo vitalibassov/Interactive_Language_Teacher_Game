@@ -1,6 +1,6 @@
 android {
-    buildToolsVersion "27.0.0"
-    compileSdkVersion 27
+    buildToolsVersion "26.0.0"
+    compileSdkVersion 26
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -20,7 +20,7 @@ android {
     defaultConfig {
         applicationId "com.vb.ilt"
         minSdkVersion 9
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
