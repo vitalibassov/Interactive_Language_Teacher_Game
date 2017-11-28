@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.common.TiledMapLayersProvider;
@@ -50,19 +51,19 @@ public class EntityFactorySystem extends EntitySystem{
         this.engine = (PooledEngine) engine;
     }
 
-    public void createPlayer(){
+    public void createPlayer(Vector2 spawnPoint){
         DimensionComponent dimension = engine.createComponent(DimensionComponent.class);
         dimension.width = GameConfig.PLAYER_WIDTH;
         dimension.height = GameConfig.PLAYER_HEIGHT;
 
         PositionComponent position = engine.createComponent(PositionComponent.class);
-        position.x = GameConfig.WORLD_CENTER_X - (dimension.width / 2f);
-        position.y = GameConfig.WORLD_CENTER_Y - (dimension.height / 2f);
+        position.x = spawnPoint.x;
+        position.y = spawnPoint.y;
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
         bounds.rectangle = new Rectangle();
         bounds.rectangle.setPosition(position.x, position.y);
-        bounds.rectangle.setSize(dimension.width, dimension.height);
+        bounds.rectangle.setSize(dimension.width, dimension.height - 1.5f);
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
 

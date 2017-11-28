@@ -53,13 +53,13 @@ public class RenderWorldSystem extends EntitySystem{
         //mapRenderer.setView(viewport.getCamera());
         batch.setProjectionMatrix(viewport.getCamera().combined);
         mapRenderer.setView((OrthographicCamera) viewport.getCamera());
-        mapRenderer.render(new int[]{0});
+        mapRenderer.render(new int[]{0, 1});
         batch.begin();
 
         draw();
 
         batch.end();
-        mapRenderer.render(new int[]{1});
+        mapRenderer.render(new int[]{2});
     }
 
     private void draw(){
