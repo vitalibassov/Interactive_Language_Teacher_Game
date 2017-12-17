@@ -28,24 +28,27 @@ public class PlayerControlSystem extends IteratingSystem{
     protected void processEntity(Entity entity, float deltaTime) {
         MovementComponent movement = Mappers.MOVEMENT.get(entity);
 
-
+        movement.velocity.setZero();
 
         if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            movement.velocity.y = GameConfig.PLAYER_VELOCITY;
+            movement.velocity.x = GameConfig.PLAYER_VELOCITY * 1f;
+            movement.velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f;
         }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            movement.velocity.y = -GameConfig.PLAYER_VELOCITY;
+            movement.velocity.x = -GameConfig.PLAYER_VELOCITY * 1f;
+            movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.5f;
         }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             movement.velocity.x = GameConfig.PLAYER_VELOCITY * 1f;
-           // movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.54f;
+            movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.5f;
         }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            movement.velocity.x = -GameConfig.PLAYER_VELOCITY;
+            movement.velocity.x = -GameConfig.PLAYER_VELOCITY * 1f;
+            movement.velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f;
         }
 
-        if(Math.abs(movement.velocity.x) < MIN_STOP_VELOCITY) movement.velocity.x = 0;
-        else movement.velocity.x += reduceVelocity(deltaTime, movement.velocity.x);
-
-        if(Math.abs(movement.velocity.y) < MIN_STOP_VELOCITY) movement.velocity.y = 0;
-        else movement.velocity.y += reduceVelocity(deltaTime, movement.velocity.y);
+//        if(Math.abs(movement.velocity.x) < MIN_STOP_VELOCITY) movement.velocity.x = 0;
+//        else movement.velocity.x += reduceVelocity(deltaTime, movement.velocity.x);
+//
+//        if(Math.abs(movement.velocity.y) < MIN_STOP_VELOCITY) movement.velocity.y = 0;
+//        else movement.velocity.y += reduceVelocity(deltaTime, movement.velocity.y);
     }
 
     private float reduceVelocity(float deltaTime, float val){
