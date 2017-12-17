@@ -73,7 +73,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new GridRenderSystem(viewport, renderer));
         //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
-        engine.addSystem(new StartUpSystem());
+        engine.addSystem(new StartUpSystem(camera));
 
     }
 

@@ -7,7 +7,10 @@ public final class GameConfig {
 
     public static final float WORLD_SCALE = 80f;
 
-    public static final float PIXELS_PER_CELL = 32f;
+    public static final float PIXELS_PER_CELL = 64f;
+
+    public static final float TILE_WIDTH = PIXELS_PER_CELL * 2f;
+    public static final float TILE_HEIGHT = PIXELS_PER_CELL;
 
     public static final float WORLD_WIDTH = WIDTH / WORLD_SCALE;
     public static final float WORLD_HEIGHT = HEIGHT / WORLD_SCALE;

@@ -35,7 +35,8 @@ public class PlayerControlSystem extends IteratingSystem{
         }else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             movement.velocity.y = -GameConfig.PLAYER_VELOCITY;
         }else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            movement.velocity.x = GameConfig.PLAYER_VELOCITY;
+            movement.velocity.x = GameConfig.PLAYER_VELOCITY * 1f;
+           // movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.54f;
         }else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
             movement.velocity.x = -GameConfig.PLAYER_VELOCITY;
         }

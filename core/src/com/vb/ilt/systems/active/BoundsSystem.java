@@ -26,6 +26,6 @@ public class BoundsSystem extends IteratingSystem{
         PositionComponent position = Mappers.POSITION.get(entity);
 
         //bounds.rectangle.setSize(dimension.width, dimension.height);
-        bounds.rectangle.setPosition(position.x, position.y);
+        bounds.polygon.setPosition(position.x, position.y);
     }
 }

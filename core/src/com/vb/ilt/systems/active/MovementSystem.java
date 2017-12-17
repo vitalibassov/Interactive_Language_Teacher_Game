@@ -3,6 +3,7 @@ package com.vb.ilt.systems.active;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.components.MovementComponent;
 import com.vb.ilt.components.PositionComponent;
 import com.vb.ilt.systems.active.collision.WorldObjectsCollisionSystem;
@@ -10,6 +11,7 @@ import com.vb.ilt.util.Mappers;
 
 public class MovementSystem extends IteratingSystem{
 
+    private static final Logger log = new Logger(MovementSystem.class.getName(), Logger.DEBUG);
 
 
     private static final Family FAMILY = Family.all(
@@ -33,6 +35,7 @@ public class MovementSystem extends IteratingSystem{
         if(!collisionSystem.checkCollision(movement.velocity)){
             position.x += movement.velocity.x;
             position.y += movement.velocity.y;
+            log.debug("PLAYER X=" + position.x + " PLAYER Y=" + position.y);
         }
     }
 }

@@ -8,13 +8,13 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
-import com.vb.ilt.common.TiledMapLayersProvider;
 import com.vb.ilt.components.BoundsComponent;
 import com.vb.ilt.components.DimensionComponent;
 import com.vb.ilt.components.MovementComponent;
@@ -25,6 +25,7 @@ import com.vb.ilt.components.world.TiledMapComponent;
 import com.vb.ilt.components.world.TiledMapRendererComponent;
 import com.vb.ilt.components.world.WorldObjectComponent;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.shape.ShapeUtils;
 
 
 public class EntityFactorySystem extends EntitySystem{
@@ -61,9 +62,8 @@ public class EntityFactorySystem extends EntitySystem{
         position.y = spawnPoint.y;
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-        bounds.rectangle = new Rectangle();
-        bounds.rectangle.setPosition(position.x, position.y);
-        bounds.rectangle.setSize(dimension.width, dimension.height - 1.5f);
+        bounds.polygon = new Polygon(ShapeUtils.createRectangle(dimension.width, dimension.height));
+        bounds.polygon.setPosition(position.x, position.y);
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
 
@@ -82,12 +82,12 @@ public class EntityFactorySystem extends EntitySystem{
         engine.addEntity(entity);
     }
 
-    public void createMap(TiledMapLayersProvider provider){
+    public void createMap(TiledMap tMap){
         TiledMapComponent tiledMap = engine.createComponent(TiledMapComponent.class);
-        tiledMap.map = provider.getMap();
+        tiledMap.map = tMap;
 
         TiledMapRendererComponent mapRenderer = engine.createComponent(TiledMapRendererComponent.class);
-        mapRenderer.mapRenderer = new OrthogonalTiledMapRenderer(tiledMap.map,1f / GameConfig.PIXELS_PER_CELL, batch);
+        mapRenderer.mapRenderer = new IsometricTiledMapRenderer(tiledMap.map,1f / GameConfig.PIXELS_PER_CELL, batch);
 
         Entity entity = engine.createEntity();
         entity.add(tiledMap);
@@ -95,26 +95,27 @@ public class EntityFactorySystem extends EntitySystem{
         engine.addEntity(entity);
     }
 
-    public void createCollisionObjects(TiledMapLayersProvider provider){
-        Array<RectangleMapObject> mapObjects = provider.getPolygons();
+    public void createCollisionObjects(Array<PolygonMapObject> mapObjects){
         log.debug("mapObjects size= " + mapObjects.size);
-        for(RectangleMapObject object : mapObjects){
-            Rectangle originRectangle = object.getRectangle();
-
+        for(PolygonMapObject object : mapObjects){
+            Polygon originPolygon = object.getPolygon();
+            float [] vertices = originPolygon.getVertices();
+            float [] newVertices = new float[vertices.length];
+            for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
+                newVertices[i] = (vertices[j] + vertices[i]) / GameConfig.TILE_HEIGHT;
+                newVertices[j] = (vertices[j] - vertices[i]) / GameConfig.TILE_WIDTH;
+            }
 
             BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-            bounds.rectangle = new Rectangle();
-            bounds.rectangle.setPosition(
-                    originRectangle.x / GameConfig.PIXELS_PER_CELL,
-                    originRectangle.y / GameConfig.PIXELS_PER_CELL);
+            bounds.polygon = new Polygon(newVertices);
 
-            bounds.rectangle.setSize(
-                    originRectangle.width / GameConfig.PIXELS_PER_CELL,
-                    originRectangle.height / GameConfig.PIXELS_PER_CELL);
+            bounds.polygon.setPosition(
+                    (originPolygon.getY() + originPolygon.getX()) / GameConfig.TILE_HEIGHT,
+                    (originPolygon.getY() - originPolygon.getX()) / GameConfig.TILE_WIDTH + 0.5f);
 
             PositionComponent position = engine.createComponent(PositionComponent.class);
-            position.x = bounds.rectangle.x;
-            position.y = bounds.rectangle.y;
+            position.x = bounds.polygon.getX();
+            position.y = bounds.polygon.getY();
 
             WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
 
