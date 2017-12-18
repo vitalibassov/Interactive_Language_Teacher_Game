@@ -31,5 +31,6 @@ public class StartUpSystem extends EntitySystem{
         factory.createMap(provider.getMap());
         factory.createPlayer(provider.getSpawnPoint());
         factory.createCollisionObjects(provider.getPolygons());
+        factory.createControls();
     }
 }

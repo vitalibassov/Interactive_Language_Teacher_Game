@@ -17,9 +17,9 @@ import com.vb.ilt.components.world.TiledMapComponent;
 import com.vb.ilt.components.world.TiledMapRendererComponent;
 import com.vb.ilt.util.Mappers;
 
-public class RenderWorldSystem extends EntitySystem{
+public class WorldRenderSystem extends EntitySystem{
 
-    private static final Logger log = new Logger(RenderWorldSystem.class.getName(), Logger.DEBUG);
+    private static final Logger log = new Logger(WorldRenderSystem.class.getName(), Logger.DEBUG);
 
     private final SpriteBatch batch;
     private final Viewport viewport;
@@ -37,7 +37,7 @@ public class RenderWorldSystem extends EntitySystem{
     ).get();
 
 
-    public RenderWorldSystem(Viewport viewport, SpriteBatch batch) {
+    public WorldRenderSystem(Viewport viewport, SpriteBatch batch) {
         this.viewport = viewport;
         this.batch = batch;
     }
@@ -69,7 +69,7 @@ public class RenderWorldSystem extends EntitySystem{
             DimensionComponent dimension = Mappers.DIMENSION.get(entity);
             TextureComponent texture = Mappers.TEXTURE.get(entity);
 
-            batch.draw(texture.texture,
+            batch.draw(texture.region,
                     position.x, position.y,
                     dimension.width, dimension.height
             );

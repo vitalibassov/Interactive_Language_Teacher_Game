@@ -6,6 +6,7 @@ import com.vb.ilt.components.DimensionComponent;
 import com.vb.ilt.components.MovementComponent;
 import com.vb.ilt.components.PositionComponent;
 import com.vb.ilt.components.TextureComponent;
+import com.vb.ilt.components.hud.ControlsComponent;
 import com.vb.ilt.components.world.TiledMapComponent;
 import com.vb.ilt.components.world.TiledMapRendererComponent;
 
@@ -25,6 +26,8 @@ public final class Mappers {
             ComponentMapper.getFor(TiledMapComponent.class);
     public static final ComponentMapper<TiledMapRendererComponent> MAP_RENDERER =
             ComponentMapper.getFor(TiledMapRendererComponent.class);
+    public static final ComponentMapper<ControlsComponent> CONTROLS =
+            ComponentMapper.getFor(ControlsComponent.class);
 
     private Mappers(){}
 }

@@ -5,7 +5,6 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
@@ -15,12 +14,16 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
+import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.components.BoundsComponent;
 import com.vb.ilt.components.DimensionComponent;
 import com.vb.ilt.components.MovementComponent;
 import com.vb.ilt.components.PlayerComponent;
 import com.vb.ilt.components.PositionComponent;
 import com.vb.ilt.components.TextureComponent;
+import com.vb.ilt.components.hud.ControlsComponent;
+import com.vb.ilt.components.hud.HudComponent;
 import com.vb.ilt.components.world.TiledMapComponent;
 import com.vb.ilt.components.world.TiledMapRendererComponent;
 import com.vb.ilt.components.world.WorldObjectComponent;
@@ -53,6 +56,8 @@ public class EntityFactorySystem extends EntitySystem{
     }
 
     public void createPlayer(Vector2 spawnPoint){
+        TextureAtlas playerAtlas = assetManager.get(AssetDescriptors.PLAYER);
+
         DimensionComponent dimension = engine.createComponent(DimensionComponent.class);
         dimension.width = GameConfig.PLAYER_WIDTH;
         dimension.height = GameConfig.PLAYER_HEIGHT;
@@ -68,7 +73,8 @@ public class EntityFactorySystem extends EntitySystem{
         MovementComponent movement = engine.createComponent(MovementComponent.class);
 
         TextureComponent texture = engine.createComponent(TextureComponent.class);
-        texture.texture = new Texture("player/player.png");
+        texture.region = playerAtlas.findRegion(RegionNames.PLAYER);
+        log.debug(texture.region.toString());
 
         PlayerComponent player = engine.createComponent(PlayerComponent.class);
 
@@ -126,5 +132,44 @@ public class EntityFactorySystem extends EntitySystem{
             engine.addEntity(entity);
         }
 
+    }
+
+    public void createControls(){
+        TextureAtlas hudAtlas = assetManager.get(AssetDescriptors.HUD);
+
+        HudComponent hud = engine.createComponent(HudComponent.class);
+
+        PositionComponent position = engine.createComponent(PositionComponent.class);
+        position.x = GameConfig.CONTROLS_X;
+        position.y = GameConfig.CONTROLS_Y;
+
+        ControlsComponent controls = engine.createComponent(ControlsComponent.class);
+        final float HALF_SIZE = GameConfig.CONTROLS_SIZE / 2f;
+        controls.bottomLeft = new Polygon(ShapeUtils.createRectangle(
+                position.x, position.y,
+                HALF_SIZE, HALF_SIZE
+        ));
+        controls.bottomRight = new Polygon(ShapeUtils.createRectangle(
+                position.x + HALF_SIZE, position.y,
+                HALF_SIZE, HALF_SIZE
+        ));
+        controls.topLeft = new Polygon(ShapeUtils.createRectangle(
+                position.x, position.y + HALF_SIZE,
+                HALF_SIZE, HALF_SIZE
+        ));
+        controls.topRight = new Polygon(ShapeUtils.createRectangle(
+                position.x + HALF_SIZE, position.y + HALF_SIZE,
+                HALF_SIZE, HALF_SIZE
+        ));
+
+        TextureComponent texture = engine.createComponent(TextureComponent.class);
+        texture.region = hudAtlas.findRegion(RegionNames.CONTROLS);
+
+        Entity entity = engine.createEntity();
+        entity.add(hud);
+        entity.add(controls);
+        entity.add(position);
+        entity.add(texture);
+        engine.addEntity(entity);
     }
 }
