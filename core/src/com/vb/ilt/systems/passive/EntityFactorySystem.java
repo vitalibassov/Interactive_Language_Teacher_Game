@@ -99,11 +99,11 @@ public class EntityFactorySystem extends EntitySystem{
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
         MapProperties props = tiledMap.map.getProperties();
 
-        float [] vertices = ShapeUtils.createRectangle(props.get("width", Integer.class) * 64, props.get("height", Integer.class) * 64);
+        float [] vertices = ShapeUtils.createRectangle(props.get("width", Integer.class), props.get("height", Integer.class));
         float [] newVertices = new float[vertices.length];
         for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
-            newVertices[i] = (vertices[j] + vertices[i]) / GameConfig.TILE_HEIGHT;
-            newVertices[j] = (vertices[j] - vertices[i]) / GameConfig.TILE_WIDTH + 0.5f;
+            newVertices[i] = (vertices[j] + vertices[i]);
+            newVertices[j] = (vertices[j] - vertices[i]) / 2f + 0.5f;
         }
 
         bounds.polygon= new Polygon(newVertices);
