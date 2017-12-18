@@ -7,6 +7,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
@@ -67,7 +68,7 @@ public class EntityFactorySystem extends EntitySystem{
         position.y = spawnPoint.y;
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-        bounds.polygon = new Polygon(ShapeUtils.createRectangle(dimension.width, dimension.height));
+        bounds.polygon = new Polygon(ShapeUtils.createRectangle(dimension.width, dimension.height / 2f));
         bounds.polygon.setPosition(position.x, position.y);
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
@@ -95,8 +96,21 @@ public class EntityFactorySystem extends EntitySystem{
         TiledMapRendererComponent mapRenderer = engine.createComponent(TiledMapRendererComponent.class);
         mapRenderer.mapRenderer = new IsometricTiledMapRenderer(tiledMap.map,1f / GameConfig.PIXELS_PER_CELL, batch);
 
+        BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
+        MapProperties props = tiledMap.map.getProperties();
+
+        float [] vertices = ShapeUtils.createRectangle(props.get("width", Integer.class) * 64, props.get("height", Integer.class) * 64);
+        float [] newVertices = new float[vertices.length];
+        for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
+            newVertices[i] = (vertices[j] + vertices[i]) / GameConfig.TILE_HEIGHT;
+            newVertices[j] = (vertices[j] - vertices[i]) / GameConfig.TILE_WIDTH + 0.5f;
+        }
+
+        bounds.polygon= new Polygon(newVertices);
+
         Entity entity = engine.createEntity();
         entity.add(tiledMap);
+        entity.add(bounds);
         entity.add(mapRenderer);
         engine.addEntity(entity);
     }

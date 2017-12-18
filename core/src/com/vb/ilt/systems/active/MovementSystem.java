@@ -32,10 +32,11 @@ public class MovementSystem extends IteratingSystem{
         float beforeUpdateY = position.y;
 
         WorldObjectsCollisionSystem collisionSystem = getEngine().getSystem(WorldObjectsCollisionSystem.class);
-        if(!collisionSystem.checkCollision(movement.velocity)){
+        WorldWrapUpSystem wrapUpSystem = getEngine().getSystem(WorldWrapUpSystem.class);
+        if(!collisionSystem.checkCollision(movement.velocity) && !wrapUpSystem.outOfWorld(movement.velocity)){
             position.x += movement.velocity.x;
             position.y += movement.velocity.y;
-            log.debug("PLAYER X=" + position.x + " PLAYER Y=" + position.y);
+            //log.debug("PLAYER X=" + position.x + " PLAYER Y=" + position.y);
         }
     }
 }

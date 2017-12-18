@@ -25,6 +25,8 @@ public final class GameConfig {
     public static final float PLAYER_HEIGHT = 2f;
     public static final float PLAYER_VELOCITY = 0.15f;
     public static final float STOPPING_SPEED = 0.75f;
+    public static final float PLAYER_HALF_WIDTH = PLAYER_WIDTH / 2f;
+    public static final float PLAYER_HALF_HEIGHT = PLAYER_HEIGHT /2f;
 
     public static final float CONTROLS_SIZE = 300f;
     public static final float CONTROLS_X = 40f;
