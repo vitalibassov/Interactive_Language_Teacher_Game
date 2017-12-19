@@ -1,4 +1,4 @@
-package com.vb.ilt.systems.active.collision;
+package com.vb.ilt.systems.passive.collision;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;

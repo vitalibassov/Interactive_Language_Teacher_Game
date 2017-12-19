@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Logger;
-import com.vb.ilt.screen.game.GameScreen;
+import com.vb.ilt.screen.loading.LoadingScreen;
 
 public class InteractiveLangTeacherGame extends Game {
 	private SpriteBatch batch;
@@ -21,7 +21,7 @@ public class InteractiveLangTeacherGame extends Game {
 
 		batch = new SpriteBatch();
 
-		setScreen(new GameScreen(this, null));
+		setScreen(new LoadingScreen(this));
 	}
 
 	@Override

@@ -6,7 +6,8 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.components.MovementComponent;
 import com.vb.ilt.components.PositionComponent;
-import com.vb.ilt.systems.active.collision.WorldObjectsCollisionSystem;
+import com.vb.ilt.systems.passive.collision.WorldObjectsCollisionSystem;
+import com.vb.ilt.systems.passive.collision.WorldWrapUpSystem;
 import com.vb.ilt.util.Mappers;
 
 public class MovementSystem extends IteratingSystem{

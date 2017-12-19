@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
@@ -19,12 +18,12 @@ import com.vb.ilt.systems.active.HudRenderSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;
-import com.vb.ilt.systems.active.WorldWrapUpSystem;
-import com.vb.ilt.systems.active.collision.WorldObjectsCollisionSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.GridRenderSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
 import com.vb.ilt.systems.passive.StartUpSystem;
+import com.vb.ilt.systems.passive.collision.WorldObjectsCollisionSystem;
+import com.vb.ilt.systems.passive.collision.WorldWrapUpSystem;
 import com.vb.ilt.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter{
@@ -41,7 +40,7 @@ public class GameScreen extends ScreenAdapter{
     private PooledEngine engine;
     private BitmapFont font;
 
-    public GameScreen(InteractiveLangTeacherGame game, Skin skin) {
+    public GameScreen(InteractiveLangTeacherGame game/*, Skin skin*/) {
         this.game = game;
         assetManager = game.getAssetManager();
         batch = game.getBatch();
