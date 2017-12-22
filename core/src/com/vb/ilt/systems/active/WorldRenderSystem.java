@@ -6,7 +6,6 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -23,7 +22,6 @@ public class WorldRenderSystem extends EntitySystem{
 
     private final SpriteBatch batch;
     private final Viewport viewport;
-    private TiledMap map;
 
     private static final Family MAP_FAMILY = Family.all(
             TiledMapComponent.class,
@@ -36,7 +34,6 @@ public class WorldRenderSystem extends EntitySystem{
             DimensionComponent.class
     ).get();
 
-
     public WorldRenderSystem(Viewport viewport, SpriteBatch batch) {
         this.viewport = viewport;
         this.batch = batch;
@@ -45,20 +42,14 @@ public class WorldRenderSystem extends EntitySystem{
     @Override
     public void update(float deltaTime) {
         ImmutableArray<Entity> tiledMaps = getEngine().getEntitiesFor(MAP_FAMILY);
-        //log.debug("tiledMaps size= " + tiledMaps.size());
-        //TiledMap map = Mappers.MAP.get(tiledMaps.first()).map;
         IsometricTiledMapRenderer mapRenderer = Mappers.MAP_RENDERER.get(tiledMaps.first()).mapRenderer;
 
         viewport.apply();
-        //mapRenderer.setView(viewport.getCamera());
         batch.setProjectionMatrix(viewport.getCamera().combined);
         mapRenderer.setView((OrthographicCamera) viewport.getCamera());
-        //mapRenderer.render(new int[]{0, 1});
-        mapRenderer.render();
+        mapRenderer.render(new int[]{0, 1});
         batch.begin();
-
         draw();
-
         batch.end();
         mapRenderer.render(new int[]{2});
     }

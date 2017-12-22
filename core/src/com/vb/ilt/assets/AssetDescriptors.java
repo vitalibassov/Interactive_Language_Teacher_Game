@@ -11,5 +11,4 @@ public final class AssetDescriptors {
             new AssetDescriptor<TextureAtlas>(AssetPaths.HUD, TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> PLAYER =
             new AssetDescriptor<TextureAtlas>(AssetPaths.PLAYER, TextureAtlas.class);
-
 }

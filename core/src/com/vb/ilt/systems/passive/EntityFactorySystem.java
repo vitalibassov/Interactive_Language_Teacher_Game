@@ -19,7 +19,6 @@ import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
-import com.vb.ilt.entity.NPCType;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
@@ -38,8 +37,10 @@ import java.util.Map;
 
 public class EntityFactorySystem extends EntitySystem{
 
-    public static final float BOUNDS_OFFSET_X = 0.15f;
-    public static final float BOUNDS_OFFSET_Y = 0.015f;
+    private static final float BOUNDS_OFFSET_X = 0.15f;
+    private static final float BOUNDS_OFFSET_Y = 0.015f;
+
+    private static final float VISION_RANGE = 12f;
 
     private static final Logger log = new Logger(EntityFactorySystem.class.getName(), Logger.DEBUG);
 
@@ -97,7 +98,7 @@ public class EntityFactorySystem extends EntitySystem{
         addEntity(position, dimension, bounds, movement, player, texture);
     }
 
-    public void createNPCs(Map<Vector2, NPCType> spawnPoints){
+    public void createNPCs(Map<Vector2, String> spawnPoints){
 
     }
 
@@ -111,7 +112,9 @@ public class EntityFactorySystem extends EntitySystem{
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
         MapProperties props = tiledMap.map.getProperties();
 
-        float [] vertices = ShapeUtils.createRectangle(props.get("width", Integer.class), props.get("height", Integer.class));
+        float [] vertices = ShapeUtils.createRectangle(VISION_RANGE, VISION_RANGE,
+                props.get("width", Integer.class) - VISION_RANGE * 2f,
+                props.get("height", Integer.class) - VISION_RANGE * 2f);
         float [] newVertices = new float[vertices.length];
 
         for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
@@ -120,6 +123,7 @@ public class EntityFactorySystem extends EntitySystem{
         }
 
         bounds.polygon= new Polygon(newVertices);
+        //bounds.polygon.setPosition(10, -10);
 
         addEntity(tiledMap, bounds, mapRenderer);
     }

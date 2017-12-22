@@ -27,7 +27,7 @@ public class StartUpSystem extends EntitySystem{
 
     private void startUp(){
         //TiledMapLayersProvider provider = new TiledMapLayersProvider("maps/main_map.tmx");
-        TiledMapLayersProvider provider = new TiledMapLayersProvider("maps/test isometric map/Testing_cart.tmx", camera);
+        TiledMapLayersProvider provider = new TiledMapLayersProvider("maps/test isometric map/Testing_cart.tmx");
         factory.createMap(provider.getMap());
         factory.createPlayer(provider.getPlayerSpawnPoint());
         factory.createCollisionObjects(provider.getPolygons());

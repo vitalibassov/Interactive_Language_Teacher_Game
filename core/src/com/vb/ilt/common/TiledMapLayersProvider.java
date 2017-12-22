@@ -1,6 +1,5 @@
 package com.vb.ilt.common;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -13,7 +12,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.config.GameConfig;
-import com.vb.ilt.entity.NPCType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,11 +22,9 @@ public class TiledMapLayersProvider {
     private static final Logger log = new Logger(TiledMapLayersProvider.class.getName(), Logger.DEBUG);
 
     private final TiledMap map;
-    private final OrthographicCamera camera;
 
-    public TiledMapLayersProvider(String initialMap, OrthographicCamera camera) {
+    public TiledMapLayersProvider(String initialMap) {
         map = new TmxMapLoader().load(initialMap);
-        this.camera = camera;
     }
 
     public TiledMap getMap(){
@@ -50,14 +46,13 @@ public class TiledMapLayersProvider {
         return worldToIso(rect);
     }
 
-    public Map<Vector2, NPCType> getNpcSpawnPoints(){
+    public Map<Vector2, String> getNpcSpawnPoints(){
         MapLayer objectsLayer = map.getLayers().get("NPCSpawnPoints");
         MapObjects objects = objectsLayer.getObjects();
-        Map<Vector2, NPCType> spawnPoints = new HashMap<Vector2, NPCType>();
+        Map<Vector2, String> spawnPoints = new HashMap<Vector2, String>();
         for(MapObject object: objects){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            NPCType type = NPCType.valueOf(object.getName().toUpperCase());
-            spawnPoints.put(worldToIso(rect), type);
+            spawnPoints.put(worldToIso(rect), object.getName());
         }
         return spawnPoints;
     }
