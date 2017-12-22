@@ -8,9 +8,9 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Logger;
-import com.vb.ilt.components.BoundsComponent;
-import com.vb.ilt.components.PlayerComponent;
-import com.vb.ilt.components.world.WorldObjectComponent;
+import com.vb.ilt.entity.components.BoundsComponent;
+import com.vb.ilt.entity.components.PlayerComponent;
+import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.util.Mappers;
 
 public class WorldObjectsCollisionSystem extends EntitySystem {

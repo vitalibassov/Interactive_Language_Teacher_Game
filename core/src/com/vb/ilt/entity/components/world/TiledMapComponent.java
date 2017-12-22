@@ -1,4 +1,4 @@
-package com.vb.ilt.components.world;
+package com.vb.ilt.entity.components.world;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.maps.tiled.TiledMap;

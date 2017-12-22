@@ -1,4 +1,4 @@
-package com.vb.ilt.components.hud;
+package com.vb.ilt.entity.components.hud;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.math.Polygon;

@@ -1,5 +1,6 @@
 package com.vb.ilt.systems.passive;
 
+import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
@@ -17,19 +18,22 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
-import com.vb.ilt.components.BoundsComponent;
-import com.vb.ilt.components.DimensionComponent;
-import com.vb.ilt.components.MovementComponent;
-import com.vb.ilt.components.PlayerComponent;
-import com.vb.ilt.components.PositionComponent;
-import com.vb.ilt.components.TextureComponent;
-import com.vb.ilt.components.hud.ControlsComponent;
-import com.vb.ilt.components.hud.HudComponent;
-import com.vb.ilt.components.world.TiledMapComponent;
-import com.vb.ilt.components.world.TiledMapRendererComponent;
-import com.vb.ilt.components.world.WorldObjectComponent;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.entity.NPCType;
+import com.vb.ilt.entity.components.BoundsComponent;
+import com.vb.ilt.entity.components.DimensionComponent;
+import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.PlayerComponent;
+import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.TextureComponent;
+import com.vb.ilt.entity.components.hud.ControlsComponent;
+import com.vb.ilt.entity.components.hud.HudComponent;
+import com.vb.ilt.entity.components.world.TiledMapComponent;
+import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
+import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.shape.ShapeUtils;
+
+import java.util.Map;
 
 
 public class EntityFactorySystem extends EntitySystem{
@@ -79,14 +83,11 @@ public class EntityFactorySystem extends EntitySystem{
 
         PlayerComponent player = engine.createComponent(PlayerComponent.class);
 
-        Entity entity = engine.createEntity();
-        entity.add(position);
-        entity.add(dimension);
-        entity.add(bounds);
-        entity.add(movement);
-        entity.add(player);
-        entity.add(texture);
-        engine.addEntity(entity);
+        addEntity(position, dimension, bounds, movement, player, texture);
+    }
+
+    public void createNPCs(Map<Vector2, NPCType> spawnPoints){
+
     }
 
     public void createMap(TiledMap tMap){
@@ -94,7 +95,7 @@ public class EntityFactorySystem extends EntitySystem{
         tiledMap.map = tMap;
 
         TiledMapRendererComponent mapRenderer = engine.createComponent(TiledMapRendererComponent.class);
-        mapRenderer.mapRenderer = new IsometricTiledMapRenderer(tiledMap.map,1f / GameConfig.PIXELS_PER_CELL, batch);
+        mapRenderer.mapRenderer = new IsometricTiledMapRenderer(tiledMap.map,1f / GameConfig.MAP_SCALE, batch);
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
         MapProperties props = tiledMap.map.getProperties();
@@ -108,11 +109,7 @@ public class EntityFactorySystem extends EntitySystem{
 
         bounds.polygon= new Polygon(newVertices);
 
-        Entity entity = engine.createEntity();
-        entity.add(tiledMap);
-        entity.add(bounds);
-        entity.add(mapRenderer);
-        engine.addEntity(entity);
+        addEntity(tiledMap, bounds, mapRenderer);
     }
 
     public void createCollisionObjects(Array<PolygonMapObject> mapObjects){
@@ -139,13 +136,8 @@ public class EntityFactorySystem extends EntitySystem{
 
             WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
 
-            Entity entity = engine.createEntity();
-            entity.add(bounds);
-            entity.add(position);
-            entity.add(worldObject);
-            engine.addEntity(entity);
+            addEntity(bounds, position, worldObject);
         }
-
     }
 
     public void createControls(){
@@ -179,11 +171,14 @@ public class EntityFactorySystem extends EntitySystem{
         TextureComponent texture = engine.createComponent(TextureComponent.class);
         texture.region = hudAtlas.findRegion(RegionNames.CONTROLS);
 
+        addEntity(hud, controls, position, texture);
+    }
+
+    private void addEntity(Component ... components){
         Entity entity = engine.createEntity();
-        entity.add(hud);
-        entity.add(controls);
-        entity.add(position);
-        entity.add(texture);
+        for(Component c : components){
+            entity.add(c);
+        }
         engine.addEntity(entity);
     }
 }

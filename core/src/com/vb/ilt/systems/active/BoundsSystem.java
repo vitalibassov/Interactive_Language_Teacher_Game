@@ -3,8 +3,8 @@ package com.vb.ilt.systems.active;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.vb.ilt.components.BoundsComponent;
-import com.vb.ilt.components.PositionComponent;
+import com.vb.ilt.entity.components.BoundsComponent;
+import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.util.Mappers;
 
 public class BoundsSystem extends IteratingSystem{

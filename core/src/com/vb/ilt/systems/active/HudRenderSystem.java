@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vb.ilt.components.PositionComponent;
-import com.vb.ilt.components.TextureComponent;
-import com.vb.ilt.components.hud.HudComponent;
+import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.TextureComponent;
+import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.util.Mappers;
 

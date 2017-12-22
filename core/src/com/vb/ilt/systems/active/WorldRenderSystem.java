@@ -10,11 +10,11 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vb.ilt.components.DimensionComponent;
-import com.vb.ilt.components.PositionComponent;
-import com.vb.ilt.components.TextureComponent;
-import com.vb.ilt.components.world.TiledMapComponent;
-import com.vb.ilt.components.world.TiledMapRendererComponent;
+import com.vb.ilt.entity.components.DimensionComponent;
+import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.TextureComponent;
+import com.vb.ilt.entity.components.world.TiledMapComponent;
+import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
 import com.vb.ilt.util.Mappers;
 
 public class WorldRenderSystem extends EntitySystem{

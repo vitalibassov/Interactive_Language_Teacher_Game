@@ -6,7 +6,7 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vb.ilt.components.BoundsComponent;
+import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.util.Mappers;
 
 

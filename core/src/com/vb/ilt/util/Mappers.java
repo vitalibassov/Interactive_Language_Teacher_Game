@@ -1,14 +1,14 @@
 package com.vb.ilt.util;
 
 import com.badlogic.ashley.core.ComponentMapper;
-import com.vb.ilt.components.BoundsComponent;
-import com.vb.ilt.components.DimensionComponent;
-import com.vb.ilt.components.MovementComponent;
-import com.vb.ilt.components.PositionComponent;
-import com.vb.ilt.components.TextureComponent;
-import com.vb.ilt.components.hud.ControlsComponent;
-import com.vb.ilt.components.world.TiledMapComponent;
-import com.vb.ilt.components.world.TiledMapRendererComponent;
+import com.vb.ilt.entity.components.BoundsComponent;
+import com.vb.ilt.entity.components.DimensionComponent;
+import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.TextureComponent;
+import com.vb.ilt.entity.components.hud.ControlsComponent;
+import com.vb.ilt.entity.components.world.TiledMapComponent;
+import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
 
 public final class Mappers {
 

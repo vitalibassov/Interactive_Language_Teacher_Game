@@ -8,9 +8,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vb.ilt.components.MovementComponent;
-import com.vb.ilt.components.PlayerComponent;
-import com.vb.ilt.components.hud.ControlsComponent;
+import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.PlayerComponent;
+import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.util.Mappers;
 

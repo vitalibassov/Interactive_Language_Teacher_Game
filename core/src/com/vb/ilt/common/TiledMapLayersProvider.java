@@ -10,10 +10,13 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.entity.NPCType;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class TiledMapLayersProvider {
@@ -39,27 +42,29 @@ public class TiledMapLayersProvider {
         return objects.getByType(PolygonMapObject.class);
     }
 
-    public Vector2 getSpawnPoint(){
+    public Vector2 getPlayerSpawnPoint(){
         MapLayer objectsLayer = map.getLayers().get("SpawnPoints");
         MapObjects objects = objectsLayer.getObjects();
         MapObject object= objects.get("SpawnPlayer");
         Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-        float x;
-        float y;
-        x = ((rect.y + rect.x) / GameConfig.TILE_HEIGHT);
-        y = ((rect.y - rect.x) / GameConfig.TILE_WIDTH + 0.5f);
-        //return worldToIso(new Vector3(rect.getX() / 64, rect.getY() / 64, 0.0f), 128, 64);
-        return new Vector2(x, y);
+        return worldToIso(rect);
     }
 
-    private Vector2 worldToIso(Vector3 point, int tileWidth, int tileHeight) {
-        camera.unproject(point);
-        point.x /= tileWidth;
-        point.y = (point.y - tileHeight / 2) / tileHeight + point.x;
-        point.x -= point.y - point.x;
+    public Map<Vector2, NPCType> getNpcSpawnPoints(){
+        MapLayer objectsLayer = map.getLayers().get("NPCSpawnPoints");
+        MapObjects objects = objectsLayer.getObjects();
+        Map<Vector2, NPCType> spawnPoints = new HashMap<Vector2, NPCType>();
+        for(MapObject object: objects){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            NPCType type = NPCType.valueOf(object.getName().toUpperCase());
+            spawnPoints.put(worldToIso(rect), type);
+        }
+        return spawnPoints;
+    }
 
-        log.debug("SPAWN X= " + point.x + " SPAWN Y= " + point.y);
-        return new Vector2(point.x, point.y);
+    private Vector2 worldToIso(Rectangle spawnRect) {
+        float x = ((spawnRect.y + spawnRect.x) / GameConfig.TILE_HEIGHT);
+        float y = ((spawnRect.y - spawnRect.x) / GameConfig.TILE_WIDTH + 0.5f);
+        return new Vector2(x, y);
     }
 }
