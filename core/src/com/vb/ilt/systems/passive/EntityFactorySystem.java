@@ -38,6 +38,9 @@ import java.util.Map;
 
 public class EntityFactorySystem extends EntitySystem{
 
+    public static final float BOUNDS_OFFSET_X = 0.15f;
+    public static final float BOUNDS_OFFSET_Y = 0.015f;
+
     private static final Logger log = new Logger(EntityFactorySystem.class.getName(), Logger.DEBUG);
 
     private PooledEngine engine;
@@ -72,8 +75,16 @@ public class EntityFactorySystem extends EntitySystem{
         position.y = spawnPoint.y;
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-        bounds.polygon = new Polygon(ShapeUtils.createRectangle(dimension.width, dimension.height / 2f));
-        bounds.polygon.setPosition(position.x, position.y);
+        bounds.polygon = new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y,dimension.width / 1.5f, dimension.height / 3f));
+
+        float [] vertices = bounds.polygon.getVertices();
+        float [] newVertices = new float[vertices.length];
+        for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
+            newVertices[i] = (vertices[j] + vertices[i]);
+            newVertices[j] = (vertices[j] - vertices[i]) / 2f;
+        }
+
+        bounds.polygon = new Polygon(newVertices);
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
 
