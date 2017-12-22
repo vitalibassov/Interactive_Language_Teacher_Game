@@ -102,9 +102,10 @@ public class EntityFactorySystem extends EntitySystem{
 
         float [] vertices = ShapeUtils.createRectangle(props.get("width", Integer.class), props.get("height", Integer.class));
         float [] newVertices = new float[vertices.length];
+
         for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
-            newVertices[i] = (vertices[j] + vertices[i]);
-            newVertices[j] = (vertices[j] - vertices[i]) / 2f + 0.5f;
+            newVertices[i] = (vertices[j] + vertices[i]) / GameConfig.MAP_SCALE_MULTIPLIER;
+            newVertices[j] = (vertices[j] - vertices[i]) / GameConfig.MAP_SCALE_MULTIPLIER / 2f + GameConfig.DEFAULT_Y_OFFSET;
         }
 
         bounds.polygon= new Polygon(newVertices);
@@ -119,16 +120,16 @@ public class EntityFactorySystem extends EntitySystem{
             float [] vertices = originPolygon.getVertices();
             float [] newVertices = new float[vertices.length];
             for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
-                newVertices[i] = (vertices[j] + vertices[i]) / GameConfig.TILE_HEIGHT;
-                newVertices[j] = (vertices[j] - vertices[i]) / GameConfig.TILE_WIDTH;
+                newVertices[i] = (vertices[j] + vertices[i]) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER);
+                newVertices[j] = (vertices[j] - vertices[i]) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER);
             }
 
             BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
             bounds.polygon = new Polygon(newVertices);
 
             bounds.polygon.setPosition(
-                    (originPolygon.getY() + originPolygon.getX()) / GameConfig.TILE_HEIGHT,
-                    (originPolygon.getY() - originPolygon.getX()) / GameConfig.TILE_WIDTH + 0.5f);
+                    (originPolygon.getY() + originPolygon.getX()) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER),
+                    (originPolygon.getY() - originPolygon.getX()) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER )+ GameConfig.DEFAULT_Y_OFFSET);
 
             PositionComponent position = engine.createComponent(PositionComponent.class);
             position.x = bounds.polygon.getX();

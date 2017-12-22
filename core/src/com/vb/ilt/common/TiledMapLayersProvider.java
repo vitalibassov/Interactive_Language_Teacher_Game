@@ -63,8 +63,8 @@ public class TiledMapLayersProvider {
     }
 
     private Vector2 worldToIso(Rectangle spawnRect) {
-        float x = ((spawnRect.y + spawnRect.x) / GameConfig.TILE_HEIGHT);
-        float y = ((spawnRect.y - spawnRect.x) / GameConfig.TILE_WIDTH + 0.5f);
+        float x = ((spawnRect.y + spawnRect.x) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER));
+        float y = ((spawnRect.y - spawnRect.x) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER) + GameConfig.DEFAULT_Y_OFFSET);
         return new Vector2(x, y);
     }
 }
