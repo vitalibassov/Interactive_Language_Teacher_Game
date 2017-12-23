@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Logger;
@@ -45,10 +44,19 @@ public class WorldObjectsCollisionSystem extends EntitySystem {
                     playerBounds.polygon.getY() + velocity.y);
             for (Entity worldObject : worldObjects) {
                 BoundsComponent worldObjectBounds = Mappers.BOUNDS.get(worldObject);
-                if (Intersector.overlapConvexPolygons(tempBounds, worldObjectBounds.polygon)) {
+                if (contains(tempBounds.getTransformedVertices(), worldObjectBounds.polygon)) {
                     log.debug("COLLISION WITH WORLD OBJECT IS HAPPENED");
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    private boolean contains(float[] vertices, Polygon polygon){
+        for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
+            if(polygon.contains(vertices[i], vertices[j])){
+                return true;
             }
         }
         return false;
