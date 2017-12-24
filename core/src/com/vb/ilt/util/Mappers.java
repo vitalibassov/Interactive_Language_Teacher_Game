@@ -1,6 +1,7 @@
 package com.vb.ilt.util;
 
 import com.badlogic.ashley.core.ComponentMapper;
+import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
@@ -28,6 +29,8 @@ public final class Mappers {
             ComponentMapper.getFor(TiledMapRendererComponent.class);
     public static final ComponentMapper<ControlsComponent> CONTROLS =
             ComponentMapper.getFor(ControlsComponent.class);
+    public static final ComponentMapper<AnimationComponent> ANIMATION =
+            ComponentMapper.getFor(AnimationComponent.class);
 
     private Mappers(){}
 }

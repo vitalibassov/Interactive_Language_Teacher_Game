@@ -1,13 +1,622 @@
 
 player.png
-size: 256,512
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-player
+playerDown
+  rotate: false
+  xy: 2, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 1
+playerDown
+  rotate: false
+  xy: 2, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 2
+playerDown
+  rotate: false
+  xy: 132, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 3
+playerDown
+  rotate: false
+  xy: 2, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 4
+playerDown
+  rotate: false
+  xy: 132, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 5
+playerDown
+  rotate: false
+  xy: 262, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 6
+playerDown
+  rotate: false
+  xy: 2, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 7
+playerDown
+  rotate: false
+  xy: 132, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 8
+playerDown
+  rotate: false
+  xy: 262, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 9
+playerDown
+  rotate: false
+  xy: 392, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 10
+playerDown
+  rotate: false
+  xy: 2, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 11
+playerDown
+  rotate: false
+  xy: 132, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 12
+playerDown
+  rotate: false
+  xy: 262, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 13
+playerDown
+  rotate: false
+  xy: 392, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 14
+playerDown
+  rotate: false
+  xy: 522, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 15
+playerDown
+  rotate: false
+  xy: 2, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 16
+playerFront
+  rotate: false
+  xy: 132, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 1
+playerFront
+  rotate: false
+  xy: 262, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 2
+playerFront
+  rotate: false
+  xy: 392, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 3
+playerFront
+  rotate: false
+  xy: 522, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 4
+playerFront
+  rotate: false
+  xy: 652, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 5
+playerFront
   rotate: false
   xy: 2, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
-  index: -1
+  index: 6
+playerFront
+  rotate: false
+  xy: 132, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 7
+playerFront
+  rotate: false
+  xy: 262, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 8
+playerFront
+  rotate: false
+  xy: 392, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 9
+playerFront
+  rotate: false
+  xy: 522, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 10
+playerFront
+  rotate: false
+  xy: 652, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 11
+playerFront
+  rotate: false
+  xy: 782, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 12
+playerFront
+  rotate: false
+  xy: 132, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 13
+playerFront
+  rotate: false
+  xy: 262, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 14
+playerFront
+  rotate: false
+  xy: 392, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 15
+playerFront
+  rotate: false
+  xy: 522, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 16
+playerFront
+  rotate: false
+  xy: 652, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 17
+playerFront
+  rotate: false
+  xy: 782, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 18
+playerFront
+  rotate: false
+  xy: 912, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 19
+playerFront
+  rotate: false
+  xy: 262, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 20
+playerFront
+  rotate: false
+  xy: 392, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 21
+playerFront
+  rotate: false
+  xy: 522, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 22
+playerFront
+  rotate: false
+  xy: 652, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 23
+playerFront
+  rotate: false
+  xy: 652, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 24
+playerLeft
+  rotate: false
+  xy: 782, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 1
+playerLeft
+  rotate: false
+  xy: 912, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 2
+playerLeft
+  rotate: false
+  xy: 1042, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 3
+playerLeft
+  rotate: false
+  xy: 392, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 4
+playerLeft
+  rotate: false
+  xy: 522, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 5
+playerLeft
+  rotate: false
+  xy: 652, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 6
+playerLeft
+  rotate: false
+  xy: 782, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 7
+playerLeft
+  rotate: false
+  xy: 912, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 8
+playerLeft
+  rotate: false
+  xy: 1042, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 9
+playerLeft
+  rotate: false
+  xy: 1172, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 10
+playerLeft
+  rotate: false
+  xy: 522, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 11
+playerLeft
+  rotate: false
+  xy: 652, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 12
+playerLeft
+  rotate: false
+  xy: 782, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 13
+playerLeft
+  rotate: false
+  xy: 912, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 14
+playerLeft
+  rotate: false
+  xy: 1042, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 15
+playerLeft
+  rotate: false
+  xy: 1172, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 16
+playerRight
+  rotate: false
+  xy: 1302, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 1
+playerRight
+  rotate: false
+  xy: 652, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 2
+playerRight
+  rotate: false
+  xy: 782, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 3
+playerRight
+  rotate: false
+  xy: 912, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 4
+playerRight
+  rotate: false
+  xy: 1042, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 5
+playerRight
+  rotate: false
+  xy: 1172, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 6
+playerRight
+  rotate: false
+  xy: 1302, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 7
+playerRight
+  rotate: false
+  xy: 1432, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 8
+playerRight
+  rotate: false
+  xy: 782, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 9
+playerRight
+  rotate: false
+  xy: 912, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 10
+playerRight
+  rotate: false
+  xy: 1042, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 11
+playerRight
+  rotate: false
+  xy: 1172, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 12
+playerRight
+  rotate: false
+  xy: 1302, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 13
+playerRight
+  rotate: false
+  xy: 1432, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 14
+playerRight
+  rotate: false
+  xy: 1562, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 15
+playerRight
+  rotate: false
+  xy: 912, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 16
+playerUp
+  rotate: false
+  xy: 1042, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 1
+playerUp
+  rotate: false
+  xy: 1172, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 2
+playerUp
+  rotate: false
+  xy: 1302, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 3
+playerUp
+  rotate: false
+  xy: 1432, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 4
+playerUp
+  rotate: false
+  xy: 1562, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 5
+playerUp
+  rotate: false
+  xy: 1692, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 6
+playerUp
+  rotate: false
+  xy: 1042, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 7
+playerUp
+  rotate: false
+  xy: 1172, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 8
+playerUp
+  rotate: false
+  xy: 1302, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 9
+playerUp
+  rotate: false
+  xy: 1432, 776
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 10
+playerUp
+  rotate: false
+  xy: 1562, 1034
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 11
+playerUp
+  rotate: false
+  xy: 1692, 1292
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 12
+playerUp
+  rotate: false
+  xy: 1822, 1550
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 13
+playerUp
+  rotate: false
+  xy: 1172, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 14
+playerUp
+  rotate: false
+  xy: 1302, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 15
+playerUp
+  rotate: false
+  xy: 1432, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 16

@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
 import com.vb.ilt.systems.active.HudRenderSystem;
@@ -70,6 +71,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new WorldWrapUpSystem());
 
         engine.addSystem(new CameraFollowingPlayerSystem(camera, viewport));
+        engine.addSystem(new AnimationSystem());
         engine.addSystem(new WorldRenderSystem(viewport, batch));
 
         engine.addSystem(new GridRenderSystem(viewport, renderer));

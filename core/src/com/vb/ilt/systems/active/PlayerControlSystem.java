@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
@@ -18,12 +19,19 @@ public class PlayerControlSystem extends EntitySystem{
 
     private final Viewport hudViewport;
 
+    private static final int FRONT = 0;
+    private static final int UP = 1;
+    private static final int DOWN = 2;
+    private static final int RIGHT = 3;
+    private static final int LEFT = 4;
+
     //Inappropriate behavior if the value is lower
     private static final float MIN_STOP_VELOCITY = 0.05f;
 
     public static final Family PLAYER = Family.all(
             PlayerComponent.class,
-            MovementComponent.class
+            MovementComponent.class,
+            AnimationComponent.class
     ).get();
 
     public static final Family CONTROLS = Family.all(
@@ -42,6 +50,7 @@ public class PlayerControlSystem extends EntitySystem{
         for(Entity player : players) {
             for (Entity control : controls) {
                 MovementComponent movement = Mappers.MOVEMENT.get(player);
+                AnimationComponent animation = Mappers.ANIMATION.get(player);
                 ControlsComponent controlsComp = Mappers.CONTROLS.get(control);
 
                 Vector2 worldTouch;
@@ -62,15 +71,21 @@ public class PlayerControlSystem extends EntitySystem{
                 if (up) {
                     movement.velocity.x = GameConfig.PLAYER_VELOCITY * 1f;
                     movement.velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f;
+                    animation.setAnimationIndex(UP);
                 } else if (down) {
                     movement.velocity.x = -GameConfig.PLAYER_VELOCITY * 1f;
                     movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.5f;
+                    animation.setAnimationIndex(DOWN);
                 } else if (right) {
                     movement.velocity.x = GameConfig.PLAYER_VELOCITY * 1f;
                     movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.5f;
+                    animation.setAnimationIndex(RIGHT);
                 } else if (left) {
                     movement.velocity.x = -GameConfig.PLAYER_VELOCITY * 1f;
                     movement.velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f;
+                    animation.setAnimationIndex(LEFT);
+                }else{
+                    animation.setAnimationIndex(FRONT);
                 }
 
 

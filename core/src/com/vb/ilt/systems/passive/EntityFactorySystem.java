@@ -5,9 +5,12 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -19,6 +22,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
@@ -41,6 +45,9 @@ public class EntityFactorySystem extends EntitySystem{
     private static final float BOUNDS_OFFSET_Y = 0.015f;
 
     private static final float VISION_RANGE = 12f;
+
+    private static final float ANIMATION_TIME_FRONT = 0.075f;
+    private static final float ANIMATION_TIME_WALKING = 0.02f;
 
     private static final Logger log = new Logger(EntityFactorySystem.class.getName(), Logger.DEBUG);
 
@@ -88,14 +95,55 @@ public class EntityFactorySystem extends EntitySystem{
         bounds.polygon = new Polygon(newVertices);
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
+        AnimationComponent animation = engine.createComponent(AnimationComponent.class);
+
+        Animation<TextureRegion> playerFront = new Animation<TextureRegion>(
+                ANIMATION_TIME_FRONT,
+                playerAtlas.findRegions(RegionNames.PLAYER_FRONT),
+                Animation.PlayMode.LOOP_PINGPONG
+        );
+
+        Animation<TextureRegion> playerUp = new Animation<TextureRegion>(
+                ANIMATION_TIME_WALKING,
+                playerAtlas.findRegions(RegionNames.PLAYER_UP),
+                Animation.PlayMode.LOOP_PINGPONG
+        );
+
+        Animation<TextureRegion> playerDown = new Animation<TextureRegion>(
+                ANIMATION_TIME_WALKING,
+                playerAtlas.findRegions(RegionNames.PLAYER_DOWN),
+                Animation.PlayMode.LOOP_PINGPONG
+        );
+
+        Animation<TextureRegion> playerRight = new Animation<TextureRegion>(
+                ANIMATION_TIME_WALKING,
+                playerAtlas.findRegions(RegionNames.PLAYER_RIGHT),
+                Animation.PlayMode.LOOP_PINGPONG
+        );
+
+        Animation<TextureRegion> playerLeft = new Animation<TextureRegion>(
+                ANIMATION_TIME_WALKING,
+                playerAtlas.findRegions(RegionNames.PLAYER_LEFT),
+                Animation.PlayMode.LOOP_PINGPONG
+        );
+
+        Array<Animation<TextureRegion>> anims = new Array<Animation<TextureRegion>>();
+        anims.add(playerFront);
+        anims.add(playerUp);
+        anims.add(playerDown);
+        anims.add(playerRight);
+        anims.add(playerLeft);
+
+        animation.animations = new ImmutableArray<Animation<TextureRegion>>(anims);
+        animation.setAnimationIndex(0);
 
         TextureComponent texture = engine.createComponent(TextureComponent.class);
-        texture.region = playerAtlas.findRegion(RegionNames.PLAYER);
+        texture.region = anims.get(0).getKeyFrame(0);
         log.debug(texture.region.toString());
 
         PlayerComponent player = engine.createComponent(PlayerComponent.class);
 
-        addEntity(position, dimension, bounds, movement, player, texture);
+        addEntity(position, dimension, bounds, movement, player, texture, animation);
     }
 
     public void createNPCs(Map<Vector2, String> spawnPoints){

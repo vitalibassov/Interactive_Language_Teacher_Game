@@ -14,6 +14,9 @@ public class TexturePackerApp{
         TexturePacker.Settings settings = new TexturePacker.Settings();
         settings.debug = DRAW_DEBUG_OUTLINE;
         settings.maxHeight = 2048;
+        settings.maxWidth = 2048;
+        settings.flattenPaths = true;
+        settings.combineSubdirectories = true;
 
         TexturePacker.process(settings,
                 RAW_ASSETS_PATH + "/hud",
