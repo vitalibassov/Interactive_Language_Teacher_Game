@@ -2,7 +2,7 @@ package com.vb.ilt.entity;
 
 
 public enum Direction {
-    STANDING,
+    STANDING(),
     UP,
     DOWN,
     LEFT,

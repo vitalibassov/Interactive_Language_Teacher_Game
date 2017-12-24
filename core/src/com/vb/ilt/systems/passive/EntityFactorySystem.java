@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.entity.NPCType;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
@@ -31,6 +32,7 @@ import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
+import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
 import com.vb.ilt.entity.components.world.WorldObjectComponent;
@@ -146,7 +148,53 @@ public class EntityFactorySystem extends EntitySystem{
     }
 
     public void createNPCs(Map<Vector2, String> spawnPoints){
+        TextureAtlas npcAtlas = assetManager.get(AssetDescriptors.NPC);
 
+        for(Map.Entry<Vector2, String> point : spawnPoints.entrySet()) {
+            String typeStr = point.getValue();
+
+            NPCComponent npc = engine.createComponent(NPCComponent.class);
+            npc.type = NPCType.valueOf(typeStr.toUpperCase());
+
+            DimensionComponent dimension = engine.createComponent(DimensionComponent.class);
+            dimension.width = GameConfig.PLAYER_WIDTH;
+            dimension.height = GameConfig.PLAYER_HEIGHT;
+
+            PositionComponent position = engine.createComponent(PositionComponent.class);
+            position.x = point.getKey().x;
+            position.y = point.getKey().y;
+
+            BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
+            bounds.polygon = new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y, dimension.width / 1.5f, dimension.height / 3f));
+
+            float[] vertices = bounds.polygon.getVertices();
+            float[] newVertices = new float[vertices.length];
+            for (int i = 0, j = 1; j < vertices.length; i += 2, j += 2) {
+                newVertices[i] = (vertices[j] + vertices[i]);
+                newVertices[j] = (vertices[j] - vertices[i]) / 2f;
+            }
+
+            bounds.polygon = new Polygon(newVertices);
+
+            AnimationComponent animation = engine.createComponent(AnimationComponent.class);
+            Animation<TextureRegion> npcFront = new Animation<TextureRegion>(
+                    ANIMATION_TIME_FRONT,
+                    npcAtlas.findRegions(typeStr),
+                    Animation.PlayMode.LOOP_PINGPONG
+            );
+
+            Array<Animation<TextureRegion>> anims = new Array<Animation<TextureRegion>>();
+            anims.add(npcFront);
+
+            animation.animations = new ImmutableArray<Animation<TextureRegion>>(anims);
+            animation.setAnimationIndex(0);
+
+            TextureComponent texture = engine.createComponent(TextureComponent.class);
+            texture.region = anims.get(0).getKeyFrame(0);
+            log.debug(texture.region.toString());
+
+            addEntity(position, dimension, bounds, texture, animation, npc);
+        }
     }
 
     public void createMap(TiledMap tMap){

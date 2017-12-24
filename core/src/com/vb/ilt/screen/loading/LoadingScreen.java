@@ -49,6 +49,7 @@ public class LoadingScreen extends ScreenAdapter {
 
         assetManager.load(AssetDescriptors.HUD);
         assetManager.load(AssetDescriptors.PLAYER);
+        assetManager.load(AssetDescriptors.NPC);
     }
 
     @Override

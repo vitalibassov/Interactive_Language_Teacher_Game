@@ -19,6 +19,12 @@ public class TexturePackerApp{
         settings.combineSubdirectories = true;
 
         TexturePacker.process(settings,
+                RAW_ASSETS_PATH + "/characters/npc",
+                ASSETS_PATH + "/characters/npc",
+                "npc"
+        );
+
+        TexturePacker.process(settings,
                 RAW_ASSETS_PATH + "/hud",
                 ASSETS_PATH + "/ui/hud",
                 "hud"
