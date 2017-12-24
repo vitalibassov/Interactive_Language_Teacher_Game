@@ -9,11 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vb.ilt.entity.components.DimensionComponent;
-import com.vb.ilt.entity.components.PositionComponent;
-import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
+import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.util.Mappers;
 
 public class WorldRenderSystem extends EntitySystem{
@@ -26,12 +24,6 @@ public class WorldRenderSystem extends EntitySystem{
     private static final Family MAP_FAMILY = Family.all(
             TiledMapComponent.class,
             TiledMapRendererComponent.class
-    ).get();
-
-    private static final Family GAME_OBJECTS_FAMILY = Family.all(
-            PositionComponent.class,
-            TextureComponent.class,
-            DimensionComponent.class
     ).get();
 
     public WorldRenderSystem(Viewport viewport, SpriteBatch batch) {
@@ -48,22 +40,7 @@ public class WorldRenderSystem extends EntitySystem{
         batch.setProjectionMatrix(viewport.getCamera().combined);
         mapRenderer.setView((OrthographicCamera) viewport.getCamera());
         mapRenderer.render(new int[]{0, 1});
-        batch.begin();
-        draw();
-        batch.end();
+        getEngine().getSystem(CharacterRenderSystem.class).update(deltaTime);
         mapRenderer.render(new int[]{2});
-    }
-
-    private void draw(){
-        for (Entity entity : getEngine().getEntitiesFor(GAME_OBJECTS_FAMILY)){
-            PositionComponent position = Mappers.POSITION.get(entity);
-            DimensionComponent dimension = Mappers.DIMENSION.get(entity);
-            TextureComponent texture = Mappers.TEXTURE.get(entity);
-
-            batch.draw(texture.region,
-                    position.x, position.y,
-                    dimension.width, dimension.height
-            );
-        }
     }
 }

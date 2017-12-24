@@ -30,6 +30,7 @@ import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.TextureComponent;
+import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
@@ -50,6 +51,9 @@ public class EntityFactorySystem extends EntitySystem{
 
     private static final float ANIMATION_TIME_FRONT = 0.075f;
     private static final float ANIMATION_TIME_WALKING = 0.02f;
+
+    private static final int DEFAULT_PLAYER_Z_ORDER = 1;
+    private static final int DEFAULT_NPC_Z_ORDER = 2;
 
     private static final Logger log = new Logger(EntityFactorySystem.class.getName(), Logger.DEBUG);
 
@@ -144,7 +148,10 @@ public class EntityFactorySystem extends EntitySystem{
 
         PlayerComponent player = engine.createComponent(PlayerComponent.class);
 
-        addEntity(position, dimension, bounds, movement, player, texture, animation);
+        ZOrderComponent zOrder = engine.createComponent(ZOrderComponent.class);
+        zOrder.z = DEFAULT_PLAYER_Z_ORDER;
+
+        addEntity(position, dimension, bounds, movement, player, texture, animation, zOrder);
     }
 
     public void createNPCs(Map<Vector2, String> spawnPoints){
@@ -193,7 +200,10 @@ public class EntityFactorySystem extends EntitySystem{
             texture.region = anims.get(0).getKeyFrame(0);
             log.debug(texture.region.toString());
 
-            addEntity(position, dimension, bounds, texture, animation, npc);
+            ZOrderComponent zOrder = engine.createComponent(ZOrderComponent.class);
+            zOrder.z = DEFAULT_NPC_Z_ORDER;
+
+            addEntity(position, dimension, bounds, texture, animation, npc, zOrder);
         }
     }
 
