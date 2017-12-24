@@ -44,7 +44,7 @@ public class EntityFactorySystem extends EntitySystem{
     private static final float BOUNDS_OFFSET_X = 0.15f;
     private static final float BOUNDS_OFFSET_Y = 0.015f;
 
-    private static final float VISION_RANGE = 12f;
+    private static final float VISION_RANGE = 6f;
 
     private static final float ANIMATION_TIME_FRONT = 0.075f;
     private static final float ANIMATION_TIME_WALKING = 0.02f;
@@ -96,7 +96,6 @@ public class EntityFactorySystem extends EntitySystem{
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
         AnimationComponent animation = engine.createComponent(AnimationComponent.class);
-
         Animation<TextureRegion> playerFront = new Animation<TextureRegion>(
                 ANIMATION_TIME_FRONT,
                 playerAtlas.findRegions(RegionNames.PLAYER_FRONT),
