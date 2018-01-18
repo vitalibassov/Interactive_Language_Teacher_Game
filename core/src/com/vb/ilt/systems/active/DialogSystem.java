@@ -25,10 +25,21 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
     private final Viewport hudViewport;
     private final SpriteBatch batch;
 
+    private HudRenderSystem hudRenderSystem;
+    private PlayerControlSystem playerControlSystem;
+    private MovementSystem movementSystem;
+
     public DialogSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
         this.assetManager = assetManager;
         this.hudViewport = hudViewport;
         this.batch = batch;
+    }
+
+    @Override
+    public void addedToEngine(Engine engine) {
+        hudRenderSystem = engine.getSystem(HudRenderSystem.class);
+        playerControlSystem = engine.getSystem(PlayerControlSystem.class);
+        movementSystem = engine.getSystem(MovementSystem.class);
     }
 
     @Override
@@ -46,6 +57,9 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
     public void setProcessing(boolean processing) {
         if (stage != null && npcType != null && processing) {
             super.setProcessing(true);
+            this.hudRenderSystem.setProcessing(false);
+            this.movementSystem.setProcessing(false);
+            this.playerControlSystem.setProcessing(false);
         } else {
             super.setProcessing(false);
         }
@@ -62,15 +76,10 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
 
     @Override
     public void exit() {
-        Engine engine = getEngine();
-        HudRenderSystem hudRenderSystem = engine.getSystem(HudRenderSystem.class);
-        PlayerControlSystem playerControlSystem = engine.getSystem(PlayerControlSystem.class);
-        MovementSystem movementSystem = engine.getSystem(MovementSystem.class);
-
         this.setProcessing(false);
-        hudRenderSystem.setProcessing(true);
-        movementSystem.setProcessing(true);
-        playerControlSystem.setProcessing(true);
-        stage.dispose();
+        this.hudRenderSystem.setProcessing(true);
+        this.movementSystem.setProcessing(true);
+        this. playerControlSystem.setProcessing(true);
+        this.stage.dispose();
     }
 }

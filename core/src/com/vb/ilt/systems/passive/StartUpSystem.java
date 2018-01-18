@@ -2,7 +2,9 @@ package com.vb.ilt.systems.passive;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.EntitySystem;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.vb.ilt.common.ConversationUnpacker;
 import com.vb.ilt.common.TiledMapLayersProvider;
 
 public class StartUpSystem extends EntitySystem{
@@ -33,5 +35,7 @@ public class StartUpSystem extends EntitySystem{
         factory.createPlayer(provider.getPlayerSpawnPoint());
         factory.createCollisionObjects(provider.getPolygons());
         factory.createControls();
+
+        new ConversationUnpacker(Gdx.files.internal("conversations/level1.json")).getConversations();
     }
 }

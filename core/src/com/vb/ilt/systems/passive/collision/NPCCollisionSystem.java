@@ -13,9 +13,6 @@ import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.stage.DialogTable;
 import com.vb.ilt.systems.active.DialogSystem;
-import com.vb.ilt.systems.active.HudRenderSystem;
-import com.vb.ilt.systems.active.MovementSystem;
-import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.util.Mappers;
 
 public class NPCCollisionSystem extends CollisionBase{
@@ -50,14 +47,8 @@ public class NPCCollisionSystem extends CollisionBase{
                 Engine engine = getEngine();
                 NPCComponent npcComponent = Mappers.NPC.get(npc);
                 DialogSystem dialogSystem = engine.getSystem(DialogSystem.class);
-                HudRenderSystem hudRenderSystem = engine.getSystem(HudRenderSystem.class);
-                PlayerControlSystem playerControlSystem = engine.getSystem(PlayerControlSystem.class);
-                MovementSystem movementSystem = engine.getSystem(MovementSystem.class);
                 dialogSystem.setStageAndNpcType(dialogTable, npcComponent.type);
                 dialogSystem.setProcessing(true);
-                hudRenderSystem.setProcessing(false);
-                movementSystem.setProcessing(false);
-                playerControlSystem.setProcessing(false);
                 AnimationComponent animation = Mappers.ANIMATION.get(player);
                 animation.setAnimationIndex(0);
                 log.debug("POP UP DIALOG FOR: " + npcComponent.type);
