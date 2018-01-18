@@ -38,9 +38,10 @@ public class DialogTable extends Table{
         label.setWrap(true);
 
         ScrollPane scrollPane = new ScrollPane(label);
+        scrollPane.setFadeScrollBars(false);
 
         add(buttonTable).grow().center().row();
-        add(scrollPane).bottom().width(1000).height(GameConfig.HUD_HEIGHT / 2f);
+        add(scrollPane).bottom().right().width(GameConfig.HUD_WIDTH - 400).height(GameConfig.HUD_HEIGHT / 2f).padBottom(50);
         center();
         this.setFillParent(true);
         pack();
