@@ -25,6 +25,7 @@ import com.vb.ilt.systems.debug.GridRenderSystem;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
 import com.vb.ilt.systems.passive.StartUpSystem;
+import com.vb.ilt.systems.passive.collision.NPCCollisionSystem;
 import com.vb.ilt.systems.passive.collision.WorldObjectsCollisionSystem;
 import com.vb.ilt.systems.passive.collision.WorldWrapUpSystem;
 import com.vb.ilt.util.GdxUtils;
@@ -67,10 +68,11 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new WorldObjectsCollisionSystem());
+        engine.addSystem(new WorldWrapUpSystem());
+        engine.addSystem(new NPCCollisionSystem());
 
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsSystem());
-        engine.addSystem(new WorldWrapUpSystem());
         engine.addSystem(new ZOrderSystem());
 
         engine.addSystem(new CameraFollowingPlayerSystem(camera, viewport));
