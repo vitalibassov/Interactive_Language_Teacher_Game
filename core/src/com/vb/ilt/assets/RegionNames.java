@@ -18,6 +18,4 @@ public final class RegionNames {
     public static final String NPC_BLACKSMITH = NPCType.BLACKSMITH.name().toLowerCase();
     public static final String NPC_MERCHANT = NPCType.MERCHANT.name().toLowerCase();
 
-
-
 }

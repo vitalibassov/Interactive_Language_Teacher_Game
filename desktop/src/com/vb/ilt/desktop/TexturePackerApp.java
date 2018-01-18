@@ -13,8 +13,8 @@ public class TexturePackerApp{
 
         TexturePacker.Settings settings = new TexturePacker.Settings();
         settings.debug = DRAW_DEBUG_OUTLINE;
-        settings.maxHeight = 2048;
-        settings.maxWidth = 2048;
+        settings.maxHeight = 4096;
+        settings.maxWidth = 4096;
         settings.flattenPaths = true;
         settings.combineSubdirectories = true;
 
@@ -34,6 +34,12 @@ public class TexturePackerApp{
                 RAW_ASSETS_PATH + "/characters/player",
                 ASSETS_PATH + "/characters/player",
                 "player"
+        );
+
+        TexturePacker.process(settings,
+                RAW_ASSETS_PATH + "/dialog",
+                ASSETS_PATH + "/dialog",
+                "dialogs"
         );
     }
 }

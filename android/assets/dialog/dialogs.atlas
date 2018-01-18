@@ -1,0 +1,27 @@
+
+dialogs.png
+size: 4096,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+blacksmith
+  rotate: false
+  xy: 2, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+merchant
+  rotate: false
+  xy: 1284, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+shepherd
+  rotate: false
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1

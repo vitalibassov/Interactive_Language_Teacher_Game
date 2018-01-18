@@ -1,411 +1,411 @@
 
 npc.png
-size: 2048,2048
+size: 4096,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-blacksmith
-  rotate: false
-  xy: 2, 1550
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 1
-blacksmith
-  rotate: false
-  xy: 2, 1292
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 2
-blacksmith
-  rotate: false
-  xy: 132, 1550
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 3
-blacksmith
-  rotate: false
-  xy: 2, 1034
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 4
-blacksmith
-  rotate: false
-  xy: 132, 1292
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 5
-blacksmith
-  rotate: false
-  xy: 262, 1550
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 6
-blacksmith
-  rotate: false
-  xy: 2, 776
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 7
-blacksmith
-  rotate: false
-  xy: 132, 1034
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 8
-blacksmith
-  rotate: false
-  xy: 262, 1292
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 9
-blacksmith
-  rotate: false
-  xy: 392, 1550
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 10
 blacksmith
   rotate: false
   xy: 2, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
-  index: 11
-blacksmith
-  rotate: false
-  xy: 132, 776
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 12
-blacksmith
-  rotate: false
-  xy: 262, 1034
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 13
-blacksmith
-  rotate: false
-  xy: 392, 1292
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 14
-blacksmith
-  rotate: false
-  xy: 522, 1550
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 15
+  index: 1
 blacksmith
   rotate: false
   xy: 2, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
-  index: 16
+  index: 2
 blacksmith
-  rotate: false
-  xy: 2, 260
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 17
-merchant
   rotate: false
   xy: 132, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
-  index: 1
-merchant
-  rotate: false
-  xy: 262, 776
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 2
-merchant
-  rotate: false
-  xy: 392, 1034
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
   index: 3
-merchant
-  rotate: false
-  xy: 522, 1292
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 4
-merchant
-  rotate: false
-  xy: 652, 1550
-  size: 128, 256
-  orig: 128, 256
-  offset: 0, 0
-  index: 5
-merchant
+blacksmith
   rotate: false
   xy: 2, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
+  index: 4
+blacksmith
+  rotate: false
+  xy: 132, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 5
+blacksmith
+  rotate: false
+  xy: 262, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 6
+blacksmith
+  rotate: false
+  xy: 132, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 7
+blacksmith
+  rotate: false
+  xy: 262, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 8
+blacksmith
+  rotate: false
+  xy: 392, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 9
+blacksmith
+  rotate: false
+  xy: 262, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 10
+blacksmith
+  rotate: false
+  xy: 392, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 11
+blacksmith
+  rotate: false
+  xy: 522, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 12
+blacksmith
+  rotate: false
+  xy: 392, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 13
+blacksmith
+  rotate: false
+  xy: 522, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 14
+blacksmith
+  rotate: false
+  xy: 652, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 15
+blacksmith
+  rotate: false
+  xy: 522, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 16
+blacksmith
+  rotate: false
+  xy: 522, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 17
+merchant
+  rotate: false
+  xy: 652, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 1
+merchant
+  rotate: false
+  xy: 782, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 2
+merchant
+  rotate: false
+  xy: 652, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 3
+merchant
+  rotate: false
+  xy: 782, 260
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 4
+merchant
+  rotate: false
+  xy: 912, 518
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: 5
+merchant
+  rotate: false
+  xy: 782, 2
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
   index: 6
 merchant
   rotate: false
-  xy: 132, 260
+  xy: 912, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 7
 merchant
   rotate: false
-  xy: 262, 518
+  xy: 1042, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 8
 merchant
   rotate: false
-  xy: 392, 776
+  xy: 912, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 9
 merchant
   rotate: false
-  xy: 522, 1034
+  xy: 1042, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 10
 merchant
   rotate: false
-  xy: 652, 1292
+  xy: 1172, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 11
 merchant
   rotate: false
-  xy: 782, 1550
+  xy: 1042, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 12
 merchant
   rotate: false
-  xy: 132, 2
+  xy: 1172, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 13
 merchant
   rotate: false
-  xy: 262, 260
+  xy: 1302, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 14
 merchant
   rotate: false
-  xy: 392, 518
+  xy: 1172, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 15
 merchant
   rotate: false
-  xy: 522, 776
+  xy: 1302, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 16
 merchant
   rotate: false
-  xy: 522, 776
+  xy: 1302, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 17
 shepherd
   rotate: false
-  xy: 652, 1034
+  xy: 1432, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 1
 shepherd
   rotate: false
-  xy: 782, 1292
+  xy: 1302, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 2
 shepherd
   rotate: false
-  xy: 912, 1550
+  xy: 1432, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 3
 shepherd
   rotate: false
-  xy: 262, 2
+  xy: 1562, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 4
 shepherd
   rotate: false
-  xy: 392, 260
+  xy: 1432, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 5
 shepherd
   rotate: false
-  xy: 522, 518
+  xy: 1562, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 6
 shepherd
   rotate: false
-  xy: 652, 776
+  xy: 1692, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 7
 shepherd
   rotate: false
-  xy: 782, 1034
+  xy: 1562, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 8
 shepherd
   rotate: false
-  xy: 912, 1292
+  xy: 1692, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 9
 shepherd
   rotate: false
-  xy: 1042, 1550
+  xy: 1822, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 10
 shepherd
   rotate: false
-  xy: 392, 2
+  xy: 1692, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 11
 shepherd
   rotate: false
-  xy: 522, 260
+  xy: 1822, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 12
 shepherd
   rotate: false
-  xy: 652, 518
+  xy: 1952, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 13
 shepherd
   rotate: false
-  xy: 782, 776
+  xy: 1822, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 14
 shepherd
   rotate: false
-  xy: 912, 1034
+  xy: 1952, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 15
 shepherd
   rotate: false
-  xy: 1042, 1292
+  xy: 2082, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 16
 shepherd
   rotate: false
-  xy: 1172, 1550
+  xy: 1952, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 17
 shepherd
   rotate: false
-  xy: 522, 2
+  xy: 2082, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 18
 shepherd
   rotate: false
-  xy: 652, 260
+  xy: 2212, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 19
 shepherd
   rotate: false
-  xy: 782, 518
+  xy: 2082, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 20
 shepherd
   rotate: false
-  xy: 912, 776
+  xy: 2212, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 21
 shepherd
   rotate: false
-  xy: 1042, 1034
+  xy: 2342, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 22
 shepherd
   rotate: false
-  xy: 1172, 1292
+  xy: 2212, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 23
 shepherd
   rotate: false
-  xy: 1172, 1292
+  xy: 2212, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0

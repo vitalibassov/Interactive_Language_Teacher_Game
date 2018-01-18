@@ -57,4 +57,8 @@ public abstract class CollisionBase extends EntitySystem{
         }
         return false;
     }
+
+    protected static Family getPLAYER() {
+        return PLAYER;
+    }
 }

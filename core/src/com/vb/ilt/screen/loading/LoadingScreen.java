@@ -47,9 +47,12 @@ public class LoadingScreen extends ScreenAdapter {
         viewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT, camera);
         renderer = new ShapeRenderer();
 
+        assetManager.load(AssetDescriptors.FONT);
         assetManager.load(AssetDescriptors.HUD);
+        assetManager.load(AssetDescriptors.SKIN);
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.load(AssetDescriptors.NPC);
+        assetManager.load(AssetDescriptors.DIALOGS);
     }
 
     @Override

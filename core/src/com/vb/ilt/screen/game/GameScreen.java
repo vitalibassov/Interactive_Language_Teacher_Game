@@ -1,5 +1,6 @@
 package com.vb.ilt.screen.game;
 
+import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
@@ -7,14 +8,17 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.entity.components.stage.DialogTable;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
+import com.vb.ilt.systems.active.DialogSystem;
 import com.vb.ilt.systems.active.HudRenderSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -63,13 +67,15 @@ public class GameScreen extends ScreenAdapter{
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.finishLoading();
 
+        Skin skin = assetManager.get(AssetDescriptors.SKIN);
+
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
 
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new WorldObjectsCollisionSystem());
         engine.addSystem(new WorldWrapUpSystem());
-        engine.addSystem(new NPCCollisionSystem());
+        engine.addSystem(new NPCCollisionSystem(new DialogTable(skin)));
 
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsSystem());
@@ -82,10 +88,15 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(new GridRenderSystem(viewport, renderer));
         //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
-        engine.addSystem(new DebugRenderSystem(viewport, renderer));
-        engine.addSystem(new StartUpSystem(camera));
+
 
         engine.addSystem(new HudRenderSystem(hudViewport, batch));
+        engine.addSystem(new DebugRenderSystem(viewport, renderer));
+        EntitySystem dialogSystem = new DialogSystem(assetManager, hudViewport, batch);
+        dialogSystem.setProcessing(false);
+        engine.addSystem(dialogSystem);
+
+        engine.addSystem(new StartUpSystem(camera));
 
     }
 
