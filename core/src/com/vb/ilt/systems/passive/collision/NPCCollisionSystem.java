@@ -18,7 +18,7 @@ import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.util.Mappers;
 
-public class NPCCollisionSystem extends CollisionBase {
+public class NPCCollisionSystem extends CollisionBase{
     private static final Logger log = new Logger(WorldWrapUpSystem.class.getName(), Logger.DEBUG);
 
     private final DialogTable dialogTable;

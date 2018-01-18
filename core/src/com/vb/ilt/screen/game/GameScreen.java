@@ -18,6 +18,7 @@ import com.vb.ilt.entity.components.stage.DialogTable;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
+import com.vb.ilt.systems.active.DialogCallback;
 import com.vb.ilt.systems.active.DialogSystem;
 import com.vb.ilt.systems.active.HudRenderSystem;
 import com.vb.ilt.systems.active.MovementSystem;
@@ -69,13 +70,16 @@ public class GameScreen extends ScreenAdapter{
 
         Skin skin = assetManager.get(AssetDescriptors.SKIN);
 
+        EntitySystem dialogSystem = new DialogSystem(assetManager, hudViewport, batch);
+        dialogSystem.setProcessing(false);
+
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
 
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new WorldObjectsCollisionSystem());
         engine.addSystem(new WorldWrapUpSystem());
-        engine.addSystem(new NPCCollisionSystem(new DialogTable(skin)));
+        engine.addSystem(new NPCCollisionSystem(new DialogTable(skin, (DialogCallback) dialogSystem)));
 
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsSystem());
@@ -92,8 +96,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(new HudRenderSystem(hudViewport, batch));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
-        EntitySystem dialogSystem = new DialogSystem(assetManager, hudViewport, batch);
-        dialogSystem.setProcessing(false);
+
         engine.addSystem(dialogSystem);
 
         engine.addSystem(new StartUpSystem(camera));

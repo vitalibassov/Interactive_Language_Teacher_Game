@@ -1,19 +1,25 @@
 package com.vb.ilt.entity.components.stage;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.systems.active.DialogCallback;
 
 
 public class DialogTable extends Table{
 
-    public DialogTable(Skin skin) {
+    private final DialogCallback dialogCallback;
+
+    public DialogTable(Skin skin, DialogCallback dialogCallback) {
         super(skin);
+        this.dialogCallback = dialogCallback;
         init();
     }
 
@@ -21,8 +27,14 @@ public class DialogTable extends Table{
         defaults().pad(20);
 
         Table buttonTable = new Table();
-        ImageButton playButton = new ImageButton(getSkin(), ButtonStyleNames.QUIT);
-        buttonTable.add(playButton).right().top().expandY().expandX();
+        ImageButton exitButton = new ImageButton(getSkin(), ButtonStyleNames.QUIT);
+        exitButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                dialogCallback.exit();
+            }
+        });
+        buttonTable.add(exitButton).right().top().expandY().expandX();
         Label label = new Label("LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
                 "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
                 "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
