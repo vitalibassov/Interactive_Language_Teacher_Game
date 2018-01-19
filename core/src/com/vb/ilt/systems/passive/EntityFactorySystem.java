@@ -19,6 +19,7 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
+import com.badlogic.gdx.utils.Queue;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
@@ -31,8 +32,10 @@ import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.ZOrderComponent;
+import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
+import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
@@ -295,6 +298,12 @@ public class EntityFactorySystem extends EntitySystem{
         addEntity(hud, controls, position, texture);
     }
 
+    public void createDialogs(Queue<Conversation> conversations) {
+        ConversationComponent conversation = engine.createComponent(ConversationComponent.class);
+        conversation.conversations = conversations;
+        addEntity(conversation);
+    }
+
     private void addEntity(Component ... components){
         Entity entity = engine.createEntity();
         for(Component c : components){
@@ -302,4 +311,6 @@ public class EntityFactorySystem extends EntitySystem{
         }
         engine.addEntity(entity);
     }
+
+
 }

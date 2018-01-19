@@ -9,6 +9,7 @@ import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
+import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
@@ -37,6 +38,8 @@ public final class Mappers {
             ComponentMapper.getFor(ZOrderComponent.class);
     public static final ComponentMapper<NPCComponent> NPC =
             ComponentMapper.getFor(NPCComponent.class);
+    public static final ComponentMapper<ConversationComponent> CONVERSATION =
+            ComponentMapper.getFor(ConversationComponent.class);
 
     private Mappers(){}
 }

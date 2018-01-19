@@ -1,7 +1,9 @@
 package com.vb.ilt.systems.active;
 
 import com.badlogic.ashley.core.Engine;
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
+import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,6 +15,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.NPCType;
+import com.vb.ilt.entity.components.dialog_model.Conversation;
+import com.vb.ilt.entity.components.npc.ConversationComponent;
+import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.entity.components.stage.DialogTable;
+import com.vb.ilt.util.Mappers;
 
 
 public class DialogSystem extends EntitySystem implements DialogCallback{
@@ -22,12 +29,17 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
     private Stage stage;
     private NPCType npcType;
     private TextureRegion region;
+    private Conversation conversation;
     private final Viewport hudViewport;
     private final SpriteBatch batch;
 
     private HudRenderSystem hudRenderSystem;
     private PlayerControlSystem playerControlSystem;
     private MovementSystem movementSystem;
+
+    private static final Family CONVERSATION = Family.all(
+            ConversationComponent.class
+    ).get();
 
     public DialogSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
         this.assetManager = assetManager;
@@ -62,16 +74,36 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
             this.playerControlSystem.setProcessing(false);
         } else {
             super.setProcessing(false);
+            if (this.stage != null){
+                this.stage.dispose();
+            }
+            this.region = null;
+            this.npcType = NPCType.NONE;
+            this.conversation = null;
         }
     }
 
-    public void setStageAndNpcType (Table table, NPCType npcType){
+    public void setNpcAndRun (Entity entity){
+        Table table = new DialogTable(assetManager, this);
         TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
+        NPCComponent npcComponent = Mappers.NPC.get(entity);
+        ConversationComponent conversationComponent = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first());
+
+        Conversation current = conversationComponent.conversations.first();
+
+        this.npcType = current.getType() == npcComponent.type ? npcComponent.type : NPCType.NONE;
+        if (this.npcType.isNone()){
+            setProcessing(false);
+            return;
+        }
+        this.region = atlas.findRegion(npcType.name().toLowerCase());
+        this.conversation = current;
+
         this.stage = new Stage(hudViewport, batch);
         this.stage.addActor(table);
-        this.npcType = npcType;
+
         Gdx.input.setInputProcessor(stage);
-        this.region = atlas.findRegion(npcType.name().toLowerCase());
+        setProcessing(true);
     }
 
     @Override
@@ -79,7 +111,6 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
         this.setProcessing(false);
         this.hudRenderSystem.setProcessing(true);
         this.movementSystem.setProcessing(true);
-        this. playerControlSystem.setProcessing(true);
-        this.stage.dispose();
+        this.playerControlSystem.setProcessing(true);
     }
 }

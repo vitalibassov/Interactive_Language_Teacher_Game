@@ -1,13 +1,14 @@
 package com.vb.ilt.entity.components.stage;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
+import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.systems.active.DialogCallback;
@@ -16,9 +17,10 @@ import com.vb.ilt.systems.active.DialogCallback;
 public class DialogTable extends Table{
 
     private final DialogCallback dialogCallback;
+    private Label label;
 
-    public DialogTable(Skin skin, DialogCallback dialogCallback) {
-        super(skin);
+    public DialogTable(AssetManager assetManager, DialogCallback dialogCallback) {
+        super(assetManager.get(AssetDescriptors.SKIN));
         this.dialogCallback = dialogCallback;
         init();
     }
@@ -35,17 +37,7 @@ public class DialogTable extends Table{
             }
         });
         buttonTable.add(exitButton).right().top().expandY().expandX();
-        Label label = new Label("LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj" +
-                "LOREM IMPSUM KJSHFKJAFHDSKJFHSDKJFHKJSDFKJSDFJKHSDJFJKSDHJKFHKDSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS askdjaskjdhaskj", getSkin());
+        label = new Label("", getSkin());
         label.setAlignment(Align.left);
         label.setWrap(true);
 
@@ -57,5 +49,9 @@ public class DialogTable extends Table{
         center();
         this.setFillParent(true);
         pack();
+    }
+
+    public void updateDialog(String text){
+        label.setText(text);
     }
 }

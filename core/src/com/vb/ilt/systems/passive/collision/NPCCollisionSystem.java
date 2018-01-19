@@ -11,23 +11,19 @@ import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
-import com.vb.ilt.entity.components.stage.DialogTable;
 import com.vb.ilt.systems.active.DialogSystem;
 import com.vb.ilt.util.Mappers;
 
 public class NPCCollisionSystem extends CollisionBase{
     private static final Logger log = new Logger(WorldWrapUpSystem.class.getName(), Logger.DEBUG);
 
-    private final DialogTable dialogTable;
-
     private static final Family NPC = Family.all(
             NPCComponent.class,
             BoundsComponent.class
     ).get();
 
-    public NPCCollisionSystem(DialogTable dialogTable) {
+    public NPCCollisionSystem() {
         super(NPC);
-        this.dialogTable = dialogTable;
     }
 
     @Override
@@ -45,13 +41,10 @@ public class NPCCollisionSystem extends CollisionBase{
             BoundsComponent objectBounds = Mappers.BOUNDS.get(npc);
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)) {
                 Engine engine = getEngine();
-                NPCComponent npcComponent = Mappers.NPC.get(npc);
                 DialogSystem dialogSystem = engine.getSystem(DialogSystem.class);
-                dialogSystem.setStageAndNpcType(dialogTable, npcComponent.type);
-                dialogSystem.setProcessing(true);
+                dialogSystem.setNpcAndRun(npc);
                 AnimationComponent animation = Mappers.ANIMATION.get(player);
                 animation.setAnimationIndex(0);
-                log.debug("POP UP DIALOG FOR: " + npcComponent.type);
                 return true;
             }
         }
