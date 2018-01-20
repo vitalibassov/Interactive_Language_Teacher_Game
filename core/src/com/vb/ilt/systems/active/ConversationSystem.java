@@ -35,7 +35,6 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private Stage stage;
     private NPCType npcType;
     private TextureRegion region;
-    private Conversation conversation;
     private final Viewport hudViewport;
     private final SpriteBatch batch;
 
@@ -85,7 +84,6 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             }
             this.region = null;
             this.npcType = NPCType.NONE;
-            this.conversation = null;
         }
     }
 
@@ -114,9 +112,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private void buildStage(Queue<Conversation> conversations) {
         TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
         this.region = atlas.findRegion(npcType.name().toLowerCase());
-        this.conversation = conversations.first();
-        this.conversation.setToStart();
-        Dialog firstDialog = conversation.getNext(null);
+        this.conversations.first().setToStart();
+        Dialog firstDialog = conversations.first().getNext(null);
 
         npcConv.updateDialog(firstDialog.getNpctext());
         npcConv.setAnswers(firstDialog.getPlayerAnswers());
@@ -138,7 +135,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     @Override
     public void nextDialog(String answer) {
         log.debug("ANSWER: " + answer);
-        Dialog dialog = conversation.getNext(answer);
+        Dialog dialog = this.conversations.first().getNext(answer);
         if (dialog == null){
             this.conversations.removeFirst();
             exit();
