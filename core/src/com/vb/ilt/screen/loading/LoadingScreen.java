@@ -13,10 +13,6 @@ import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.screen.game.GameScreen;
 import com.vb.ilt.util.GdxUtils;
 
-/**
- * Created by vitaa on 2017-12-19.
- */
-
 public class LoadingScreen extends ScreenAdapter {
 
     private static final Logger log = new Logger(LoadingScreen.class.getName(), Logger.DEBUG);
@@ -53,6 +49,7 @@ public class LoadingScreen extends ScreenAdapter {
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.load(AssetDescriptors.NPC);
         assetManager.load(AssetDescriptors.DIALOGS);
+        assetManager.load(AssetDescriptors.STEP_SOUND);
     }
 
     @Override

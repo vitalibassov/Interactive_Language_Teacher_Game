@@ -87,11 +87,11 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
         this.npcConv = new ConversationTable(assetManager, atlas.findRegion(this.npcType.name().toLowerCase()), this);
 
-        this.conversations.first().setToStart();
+        conversations.first().setToStart();
         Dialog firstDialog = conversations.first().getNext(null);
 
-        npcConv.updateDialog(firstDialog.getNpctext());
-        npcConv.setAnswers(firstDialog.getPlayerAnswers());
+        this.npcConv.updateDialog(firstDialog.getNpctext());
+        this.npcConv.setAnswers(firstDialog.getPlayerAnswers());
 
         this.stage = new Stage(hudViewport, batch);
         this.stage.addActor(npcConv);

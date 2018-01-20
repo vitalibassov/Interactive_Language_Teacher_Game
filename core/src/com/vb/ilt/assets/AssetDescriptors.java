@@ -1,6 +1,7 @@
 package com.vb.ilt.assets;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -21,4 +22,6 @@ public final class AssetDescriptors {
             new AssetDescriptor<TextureAtlas>(AssetPaths.NPC, TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> DIALOGS =
             new AssetDescriptor<TextureAtlas>(AssetPaths.DIALOGS, TextureAtlas.class);
+    public static final AssetDescriptor<Sound> STEP_SOUND =
+            new AssetDescriptor<Sound>(AssetPaths.STEP_SOUND, Sound.class);
 }

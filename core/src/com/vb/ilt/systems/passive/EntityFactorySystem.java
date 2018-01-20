@@ -23,13 +23,16 @@ import com.badlogic.gdx.utils.Queue;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.NPCType;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
+import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
@@ -149,12 +152,18 @@ public class EntityFactorySystem extends EntitySystem{
         texture.region = anims.get(0).getKeyFrame(0);
         log.debug(texture.region.toString());
 
+        SoundComponent sound = engine.createComponent(SoundComponent.class);
+        sound.step = assetManager.get(AssetDescriptors.STEP_SOUND);
+
+        DirectionComponent direction = engine.createComponent(DirectionComponent.class);
+        direction.direction = Direction.IDLE;
+
         PlayerComponent player = engine.createComponent(PlayerComponent.class);
 
         ZOrderComponent zOrder = engine.createComponent(ZOrderComponent.class);
         zOrder.z = DEFAULT_PLAYER_Z_ORDER;
 
-        addEntity(position, dimension, bounds, movement, player, texture, animation, zOrder);
+        addEntity(position, dimension, bounds, movement, player, texture, animation, zOrder, sound, direction);
     }
 
     public void createNPCs(Map<Vector2, String> spawnPoints){

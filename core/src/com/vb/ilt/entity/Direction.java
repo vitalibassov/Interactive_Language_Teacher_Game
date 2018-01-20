@@ -2,13 +2,13 @@ package com.vb.ilt.entity;
 
 
 public enum Direction {
-    STANDING,
+    IDLE,
     UP,
     DOWN,
     LEFT,
     RIGHT;
 
-    public boolean isStanding(){return this == STANDING;}
+    public boolean isIdle(){return this == IDLE;}
     public boolean isUp(){return this == UP;}
     public boolean isDown(){return this == DOWN;}
     public boolean isLeft(){return this == LEFT;}

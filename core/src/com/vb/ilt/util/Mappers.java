@@ -4,8 +4,10 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
+import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
@@ -40,6 +42,10 @@ public final class Mappers {
             ComponentMapper.getFor(NPCComponent.class);
     public static final ComponentMapper<ConversationComponent> CONVERSATION =
             ComponentMapper.getFor(ConversationComponent.class);
+    public static final ComponentMapper<SoundComponent> SOUND =
+            ComponentMapper.getFor(SoundComponent.class);
+    public static final ComponentMapper<DirectionComponent> DIRECTION =
+            ComponentMapper.getFor(DirectionComponent.class);
 
     private Mappers(){}
 }
