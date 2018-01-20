@@ -35,7 +35,8 @@ public class ConversationTable extends Table{
 
     private void init(){
         defaults().pad(20);
-        npcText = new Label("", getSkin());
+        this.npcText = new Label("", getSkin());
+        this.npcText.setWrap(true);
         Table buttonTable = new Table();
         ImageButton exitButton = new ImageButton(getSkin(), ButtonStyleNames.QUIT);
         exitButton.addListener(new ChangeListener() {
@@ -68,7 +69,7 @@ public class ConversationTable extends Table{
         this.dialogTable.add(this.npcText).grow().row();
         for (String answer : answers){
             final TextButton answBtn = new TextButton(answer, getSkin());
-            answBtn.getLabelCell().padLeft(35f);
+            answBtn.getLabelCell().pad(35f);
             answBtn.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
@@ -77,7 +78,7 @@ public class ConversationTable extends Table{
             });
             answBtn.getLabel().setWrap(true);
             answBtn.getLabel().setAlignment(Align.left);
-            this.dialogTable.add(answBtn).pad(20).height(50).maxHeight(200).grow().row();
+            this.dialogTable.add(answBtn).pad(20).grow().row();
         }
         this.dialogTable.pack();
     }
