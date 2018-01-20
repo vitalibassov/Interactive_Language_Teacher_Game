@@ -1,10 +1,13 @@
 package com.vb.ilt.entity.components.dialog_model;
 
+import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.entity.NPCType;
 
 import java.util.Map;
 
 public class Conversation{
+
+    private static final Logger log = new Logger(Conversation.class.getName(), Logger.DEBUG);
 
     //This class contains One conversation with one NPC
     private NPCType type;
@@ -26,7 +29,6 @@ public class Conversation{
         }
 
         Dialog currentDialog = dialogs.get(dialogIndex);
-
         this.dialogIndex = currentDialog.getDestinationID(answer);
 
         return dialogs.get(this.dialogIndex);
@@ -34,5 +36,9 @@ public class Conversation{
 
     public NPCType getType() {
         return type;
+    }
+
+    public void setToStart (){
+        dialogIndex = 0;
     }
 }

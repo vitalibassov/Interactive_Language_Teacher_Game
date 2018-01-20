@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Logger;
+import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.config.GameConfig;
@@ -30,6 +31,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private final AssetManager assetManager;
 
     private ConversationTable npcConv;
+    private Queue<Conversation> conversations;
     private Stage stage;
     private NPCType npcType;
     private TextureRegion region;
@@ -89,20 +91,31 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     public void setNpcAndRun (Entity entity){
         npcConv = new ConversationTable(assetManager, this);
-        TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
+
         NPCComponent npcComponent = Mappers.NPC.get(entity);
-        ConversationComponent conversationComponent = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first());
+        this.conversations = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first()).conversations;
 
-        Conversation current = conversationComponent.conversations.first();
+        if (this.conversations.size != 0) {
+            Conversation current = this.conversations.first();
+            this.npcType = current.getType() == npcComponent.type ? npcComponent.type : NPCType.NONE;
+        }else{
+            this.npcType = NPCType.NONE;
+        }
 
-        this.npcType = current.getType() == npcComponent.type ? npcComponent.type : NPCType.NONE;
         if (this.npcType.isNone()){
             setProcessing(false);
             return;
         }
 
+        buildStage(this.conversations);
+        setProcessing(true);
+    }
+
+    private void buildStage(Queue<Conversation> conversations) {
+        TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
         this.region = atlas.findRegion(npcType.name().toLowerCase());
-        this.conversation = conversationComponent.conversations.removeFirst();
+        this.conversation = conversations.first();
+        this.conversation.setToStart();
         Dialog firstDialog = conversation.getNext(null);
 
         npcConv.updateDialog(firstDialog.getNpctext());
@@ -112,7 +125,6 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.stage.addActor(npcConv);
 
         Gdx.input.setInputProcessor(stage);
-        setProcessing(true);
     }
 
     @Override
@@ -128,6 +140,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         log.debug("ANSWER: " + answer);
         Dialog dialog = conversation.getNext(answer);
         if (dialog == null){
+            this.conversations.removeFirst();
             exit();
             return;
         }
