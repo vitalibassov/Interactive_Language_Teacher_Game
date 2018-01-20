@@ -127,6 +127,10 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     public void nextDialog(String answer) {
         log.debug("ANSWER: " + answer);
         Dialog dialog = conversation.getNext(answer);
+        if (dialog == null){
+            exit();
+            return;
+        }
         npcConv.updateDialog(dialog.getNpctext());
         npcConv.setAnswers(dialog.getPlayerAnswers());
     }
