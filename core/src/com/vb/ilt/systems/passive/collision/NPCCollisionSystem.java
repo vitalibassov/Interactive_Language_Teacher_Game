@@ -11,7 +11,7 @@ import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
-import com.vb.ilt.systems.active.DialogSystem;
+import com.vb.ilt.systems.active.ConversationSystem;
 import com.vb.ilt.util.Mappers;
 
 public class NPCCollisionSystem extends CollisionBase{
@@ -41,7 +41,7 @@ public class NPCCollisionSystem extends CollisionBase{
             BoundsComponent objectBounds = Mappers.BOUNDS.get(npc);
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)) {
                 Engine engine = getEngine();
-                DialogSystem dialogSystem = engine.getSystem(DialogSystem.class);
+                ConversationSystem dialogSystem = engine.getSystem(ConversationSystem.class);
                 dialogSystem.setNpcAndRun(npc);
                 AnimationComponent animation = Mappers.ANIMATION.get(player);
                 animation.setAnimationIndex(0);

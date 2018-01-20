@@ -17,7 +17,7 @@ import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
-import com.vb.ilt.systems.active.DialogSystem;
+import com.vb.ilt.systems.active.ConversationSystem;
 import com.vb.ilt.systems.active.HudRenderSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -68,7 +68,7 @@ public class GameScreen extends ScreenAdapter{
 
         Skin skin = assetManager.get(AssetDescriptors.SKIN);
 
-        EntitySystem dialogSystem = new DialogSystem(assetManager, hudViewport, batch);
+        EntitySystem dialogSystem = new ConversationSystem(assetManager, hudViewport, batch);
         dialogSystem.setProcessing(false);
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));

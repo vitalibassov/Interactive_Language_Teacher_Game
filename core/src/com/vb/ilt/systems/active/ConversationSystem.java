@@ -10,19 +10,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.NPCType;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
+import com.vb.ilt.entity.components.dialog_model.Dialog;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
-import com.vb.ilt.entity.components.stage.DialogTable;
+import com.vb.ilt.entity.components.stage.ConversationTable;
 import com.vb.ilt.util.Mappers;
 
 
-public class DialogSystem extends EntitySystem implements DialogCallback{
+public class ConversationSystem extends EntitySystem implements ConversationCallback {
+
+    private static final Logger log = new Logger(ConversationSystem.class.getName(), Logger.DEBUG);
 
     private final AssetManager assetManager;
 
@@ -41,7 +44,7 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
             ConversationComponent.class
     ).get();
 
-    public DialogSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
+    public ConversationSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
         this.assetManager = assetManager;
         this.hudViewport = hudViewport;
         this.batch = batch;
@@ -84,7 +87,7 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
     }
 
     public void setNpcAndRun (Entity entity){
-        Table table = new DialogTable(assetManager, this);
+        ConversationTable table = new ConversationTable(assetManager, this);
         TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
         NPCComponent npcComponent = Mappers.NPC.get(entity);
         ConversationComponent conversationComponent = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first());
@@ -96,8 +99,15 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
             setProcessing(false);
             return;
         }
+
         this.region = atlas.findRegion(npcType.name().toLowerCase());
-        this.conversation = current;
+        this.conversation = conversationComponent.conversations.removeFirst();
+        Dialog firstDialog = conversation.getNext(null);
+
+        System.out.println(firstDialog.getNpctext());
+        System.out.println(firstDialog.getPlayerAnswers());
+        table.updateDialog(firstDialog.getNpctext());
+        table.setAnswers(firstDialog.getPlayerAnswers());
 
         this.stage = new Stage(hudViewport, batch);
         this.stage.addActor(table);
@@ -112,5 +122,10 @@ public class DialogSystem extends EntitySystem implements DialogCallback{
         this.hudRenderSystem.setProcessing(true);
         this.movementSystem.setProcessing(true);
         this.playerControlSystem.setProcessing(true);
+    }
+
+    @Override
+    public void nextDialog(String answer) {
+        log.debug("ANSWER: " + answer);
     }
 }
