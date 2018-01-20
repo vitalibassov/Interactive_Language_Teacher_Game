@@ -28,10 +28,12 @@ public class SoundSystem extends EntitySystem{
         Entity player = getEngine().getEntitiesFor(PLAYER).first();
         SoundComponent sound = Mappers.SOUND.get(player);
         DirectionComponent direction = Mappers.DIRECTION.get(player);
-        if (currentStepDuration >= stepTime && !direction.direction.isIdle()){
-            currentStepDuration = 0;
-            sound.step.play();
+        if (!direction.direction.isIdle()) {
+            if (currentStepDuration >= stepTime) {
+                currentStepDuration = 0;
+                sound.step.play();
+            }
+            currentStepDuration += deltaTime;
         }
-        currentStepDuration += deltaTime;
     }
 }
