@@ -29,6 +29,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     private final AssetManager assetManager;
 
+    private ConversationTable npcConv;
     private Stage stage;
     private NPCType npcType;
     private TextureRegion region;
@@ -87,7 +88,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     }
 
     public void setNpcAndRun (Entity entity){
-        ConversationTable table = new ConversationTable(assetManager, this);
+        npcConv = new ConversationTable(assetManager, this);
         TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
         NPCComponent npcComponent = Mappers.NPC.get(entity);
         ConversationComponent conversationComponent = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first());
@@ -104,13 +105,11 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.conversation = conversationComponent.conversations.removeFirst();
         Dialog firstDialog = conversation.getNext(null);
 
-        System.out.println(firstDialog.getNpctext());
-        System.out.println(firstDialog.getPlayerAnswers());
-        table.updateDialog(firstDialog.getNpctext());
-        table.setAnswers(firstDialog.getPlayerAnswers());
+        npcConv.updateDialog(firstDialog.getNpctext());
+        npcConv.setAnswers(firstDialog.getPlayerAnswers());
 
         this.stage = new Stage(hudViewport, batch);
-        this.stage.addActor(table);
+        this.stage.addActor(npcConv);
 
         Gdx.input.setInputProcessor(stage);
         setProcessing(true);
@@ -127,5 +126,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     @Override
     public void nextDialog(String answer) {
         log.debug("ANSWER: " + answer);
+        Dialog dialog = conversation.getNext(answer);
+        npcConv.updateDialog(dialog.getNpctext());
+        npcConv.setAnswers(dialog.getPlayerAnswers());
     }
 }

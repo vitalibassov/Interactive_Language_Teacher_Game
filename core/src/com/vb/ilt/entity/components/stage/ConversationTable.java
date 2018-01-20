@@ -68,7 +68,7 @@ public class ConversationTable extends Table{
             answBtn.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    conversationCallback.nextDialog(answBtn.getLabel().toString());
+                    conversationCallback.nextDialog(answBtn.getLabel().getText().toString());
                 }
             });
             answBtn.getLabel().setWrap(true);
