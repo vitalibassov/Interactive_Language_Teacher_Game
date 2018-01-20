@@ -31,36 +31,16 @@
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
-    "play": {
-      "down": "button-down",
-      "up": "button-up",
-      "over": "button-over",
-      "imageUp": "play"
-    },
     "quit":{
-      "down": "button-down",
-      "up": "button-up",
-      "over": "button-over",
+      "down": "small-button-down",
+      "up": "small-button-up",
       "imageUp": "quit"
-    },
-    "home": {
-      "down": "button-down",
-      "up": "button-up",
-      "over": "button-over",
-      "imageUp": "home"
-    },
-    "restart": {
-      "down": "button-down",
-      "up": "button-up",
-      "over": "button-over",
-      "imageUp": "restart"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
     "default": {
       "font": "default-font",
       "up": "button-up",
-      "over": "button-over",
       "down": "button-down"
     }
   }

@@ -46,9 +46,7 @@ public class ConversationTable extends Table{
         });
         buttonTable.add(exitButton).right().top().expandY().expandX();
 
-        dialogTable = new Table();
-
-        dialogTable.pack();
+        this.dialogTable = new Table();
 
         ScrollPane scrollPane = new ScrollPane(dialogTable);
         scrollPane.setFadeScrollBars(false);
@@ -70,6 +68,7 @@ public class ConversationTable extends Table{
         this.dialogTable.add(this.npcText).grow().row();
         for (String answer : answers){
             final TextButton answBtn = new TextButton(answer, getSkin());
+            answBtn.getLabelCell().padLeft(35f);
             answBtn.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
@@ -78,7 +77,7 @@ public class ConversationTable extends Table{
             });
             answBtn.getLabel().setWrap(true);
             answBtn.getLabel().setAlignment(Align.left);
-            this.dialogTable.add(answBtn).pad(20).left().grow().row();
+            this.dialogTable.add(answBtn).pad(20).height(50).maxHeight(200).grow().row();
         }
         this.dialogTable.pack();
     }

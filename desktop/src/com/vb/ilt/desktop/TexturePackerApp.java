@@ -41,5 +41,10 @@ public class TexturePackerApp{
                 ASSETS_PATH + "/dialog",
                 "dialogs"
         );
+        TexturePacker.process(settings,
+                RAW_ASSETS_PATH + "/skin",
+                ASSETS_PATH + "/ui",
+                "skin"
+        );
     }
 }
