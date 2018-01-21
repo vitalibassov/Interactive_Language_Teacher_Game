@@ -142,8 +142,8 @@ public class EntityFactorySystem extends EntitySystem{
         anims.add(playerFront);
         anims.add(playerUp);
         anims.add(playerDown);
-        anims.add(playerRight);
         anims.add(playerLeft);
+        anims.add(playerRight);
 
         animation.animations = new ImmutableArray<Animation<TextureRegion>>(anims);
         animation.setAnimationIndex(0);

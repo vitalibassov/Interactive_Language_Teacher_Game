@@ -18,7 +18,7 @@ import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
-import com.vb.ilt.entity.components.stage.ConversationTable;
+import com.vb.ilt.screen.stage.ConversationTable;
 import com.vb.ilt.util.Mappers;
 
 

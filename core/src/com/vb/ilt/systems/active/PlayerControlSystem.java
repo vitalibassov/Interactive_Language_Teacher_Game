@@ -21,12 +21,6 @@ public class PlayerControlSystem extends EntitySystem {
 
     private final Viewport hudViewport;
 
-    private static final int FRONT = 0;
-    private static final int UP = 1;
-    private static final int DOWN = 2;
-    private static final int RIGHT = 3;
-    private static final int LEFT = 4;
-
     //Inappropriate behavior if the value is lower
     private static final float MIN_STOP_VELOCITY = 0.05f;
 
@@ -51,19 +45,12 @@ public class PlayerControlSystem extends EntitySystem {
         Entity player = getEngine().getEntitiesFor(PLAYER).first();
         Entity control = getEngine().getEntitiesFor(CONTROLS).first();
 
-
         MovementComponent movement = Mappers.MOVEMENT.get(player);
         AnimationComponent animation = Mappers.ANIMATION.get(player);
         ControlsComponent controlsComp = Mappers.CONTROLS.get(control);
         DirectionComponent direction = Mappers.DIRECTION.get(player);
 
-        Vector2 worldTouch;
-        if (Gdx.input.isTouched()) {
-            Vector2 screenTouch = new Vector2(Gdx.input.getX(), Gdx.input.getY());
-            worldTouch = hudViewport.unproject(screenTouch);
-        } else {
-            worldTouch = new Vector2(0, 0);
-        }
+        Vector2 worldTouch = getWorldTouch();
 
         movement.velocity.setZero();
 
@@ -73,31 +60,31 @@ public class PlayerControlSystem extends EntitySystem {
         boolean left = Gdx.input.isKeyPressed(Input.Keys.LEFT) || controlsComp.topLeft.contains(worldTouch);
 
         if (up) {
-            movement.velocity.x = GameConfig.PLAYER_VELOCITY * 1f;
-            movement.velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f;
-            animation.setAnimationIndex(UP);
-            direction.direction = Direction.UP;
+            applyDirection(movement.velocity, animation, direction, Direction.UP, 1, 1);
         } else if (down) {
-            movement.velocity.x = -GameConfig.PLAYER_VELOCITY * 1f;
-            movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.5f;
-            animation.setAnimationIndex(DOWN);
-            direction.direction = Direction.DOWN;
+            applyDirection(movement.velocity, animation, direction, Direction.DOWN, -1, -1);
         } else if (right) {
-            movement.velocity.x = GameConfig.PLAYER_VELOCITY * 1f;
-            movement.velocity.y = -GameConfig.PLAYER_VELOCITY * 0.5f;
-            animation.setAnimationIndex(RIGHT);
-            direction.direction = Direction.RIGHT;
+            applyDirection(movement.velocity, animation, direction, Direction.RIGHT, 1, -1);
         } else if (left) {
-            movement.velocity.x = -GameConfig.PLAYER_VELOCITY * 1f;
-            movement.velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f;
-            animation.setAnimationIndex(LEFT);
-            direction.direction = Direction.LEFT;
+            applyDirection(movement.velocity, animation, direction, Direction.LEFT, -1, 1);
         } else {
-            animation.setAnimationIndex(FRONT);
-            direction.direction = Direction.IDLE;
+            applyDirection(movement.velocity, animation, direction, Direction.IDLE, 0, 0);
         }
     }
 
+    private void applyDirection (Vector2 velocity, AnimationComponent animationComp, DirectionComponent directionComp, Direction direction, float x, float y){
+        velocity.x = GameConfig.PLAYER_VELOCITY * 1f * x;
+        velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f * y;
+        animationComp.setAnimationIndex(direction.getValue());
+        directionComp.direction = direction;
+    }
+
+    private Vector2 getWorldTouch(){
+        if (Gdx.input.isTouched()) {
+            return hudViewport.unproject(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+        }
+        return new Vector2();
+    }
 
     private float reduceVelocity(float deltaTime, float val) {
         if (val > 0) {
