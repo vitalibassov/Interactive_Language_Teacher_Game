@@ -11,7 +11,6 @@ public class BoundsSystem extends IteratingSystem{
 
     private static final Family FAMILY = Family.all(
             BoundsComponent.class,
-            //DimensionComponent.class,
             PositionComponent.class
     ).get();
 
@@ -22,10 +21,7 @@ public class BoundsSystem extends IteratingSystem{
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         BoundsComponent bounds = Mappers.BOUNDS.get(entity);
-        //DimensionComponent dimension = Mappers.DIMENSION.get(entity);
         PositionComponent position = Mappers.POSITION.get(entity);
-
-        //bounds.rectangle.setSize(dimension.width, dimension.height);
         bounds.polygon.setPosition(position.x, position.y);
     }
 }

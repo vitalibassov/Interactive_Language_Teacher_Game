@@ -47,7 +47,6 @@ public class HudRenderSystem extends IteratingSystem{
     }
 
     private void draw(float x, float y, TextureRegion region) {
-
         batch.draw(region, x, y, GameConfig.CONTROLS_SIZE, GameConfig.CONTROLS_SIZE);
     }
 }

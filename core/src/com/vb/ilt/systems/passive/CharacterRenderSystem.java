@@ -11,10 +11,6 @@ import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.util.Mappers;
 import com.vb.ilt.util.ZOrderComparator;
 
-/**
- * Created by vitaa on 2017-12-24.
- */
-
 public class CharacterRenderSystem extends SortedIteratingSystem {
 
     private final SpriteBatch batch;

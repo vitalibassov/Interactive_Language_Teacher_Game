@@ -36,7 +36,6 @@ public class MovementSystem extends IteratingSystem{
         if(!(collisionSystem.checkCollision(movement.velocity) || wrapUpSystem.checkCollision(movement.velocity) || npcCollisionSystem.checkCollision(movement.velocity))){
             position.x += movement.velocity.x;
             position.y += movement.velocity.y;
-            //log.debug("PLAYER X=" + position.x + " PLAYER Y=" + position.y);
         }
     }
 }
