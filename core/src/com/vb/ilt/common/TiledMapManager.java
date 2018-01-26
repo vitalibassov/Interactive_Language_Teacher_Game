@@ -9,6 +9,7 @@ import java.util.Map;
 public class TiledMapManager {
 
     private Map<String, TiledMapObjectsProvider> tiledMapObjects;
+    private String currentMap;
 
     public TiledMapManager(String levelName){
         tiledMapObjects = new HashMap<String, TiledMapObjectsProvider>();
@@ -21,10 +22,17 @@ public class TiledMapManager {
     }
 
     public void setMap(String mapName){
-
+        this.currentMap = mapName;
     }
 
     public TiledMapObjectsProvider getMapProvider(String name){
-        return tiledMapObjects.get(name);
+        TiledMapObjectsProvider tiledMapObjectsProvider = tiledMapObjects.get(name);
+        setMap(name);
+        return tiledMapObjectsProvider;
+
+    }
+
+    public String getCurrentMap() {
+        return currentMap;
     }
 }

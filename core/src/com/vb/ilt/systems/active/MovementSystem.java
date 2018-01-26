@@ -46,6 +46,6 @@ public class MovementSystem extends IteratingSystem{
             position.y += movement.velocity.y;
         }
 
-        //log.debug();
+        //log.debug("X= " + position.x + " Y= " + position.y);
     }
 }

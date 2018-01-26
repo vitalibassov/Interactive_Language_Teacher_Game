@@ -12,10 +12,13 @@ import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
 import com.vb.ilt.entity.components.world.PortalSensorSpawnComponent;
+import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.systems.passive.CleanUpSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
 import com.vb.ilt.util.Mappers;
+
+import java.util.Map;
 
 public class SensorCollisionSystem extends CollisionBase{
 
@@ -36,6 +39,11 @@ public class SensorCollisionSystem extends CollisionBase{
             PositionComponent.class
     ).get();
 
+    private static final Family MAP_FAMILY = Family.all(
+            TiledMapComponent.class
+    ).get();
+
+
     public SensorCollisionSystem(TiledMapManager mapManager) {
         super(SENSORS_FAMILY);
         this.mapManager = mapManager;
@@ -55,8 +63,10 @@ public class SensorCollisionSystem extends CollisionBase{
         for(Entity sensor : sensors){
             BoundsComponent objectBounds = Mappers.BOUNDS.get(sensor);
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)){
+
                 PortalSensorComponent portalSensor = Mappers.PORTAL_SENSOR.get(sensor);
                 String portalSensorName = portalSensor.name;
+                String currentMapName = mapManager.getCurrentMap();
                 CleanUpSystem cleanUp = getEngine().getSystem(CleanUpSystem.class);
                 EntityFactorySystem factory = getEngine().getSystem(EntityFactorySystem.class);
 
@@ -68,17 +78,22 @@ public class SensorCollisionSystem extends CollisionBase{
 
                 log.debug("PROVIDER: " + provider);
 
+                Map<Vector2, String> sensorSpawnPoints = provider.getSpawnsNearSensors();
+
                 factory.createMap(provider.getMap());
                 factory.createPortalSensors(provider.getSensors());
+                factory.createPortalSensorSpawns(sensorSpawnPoints);
                 factory.createNPCs(provider.getNpcSpawnPoints());
                 factory.createCollisionObjects(provider.getCollisionObjects());
 
-                for (Entity sensorSpawn : getEngine().getEntitiesFor(SENSOR_SPAWN)){
-                    PortalSensorSpawnComponent portalSensorSpawn = Mappers.PORTAL_SENSOR_SPAWN.get(sensorSpawn);
-                    if (portalSensorSpawn.name.equals(portalSensorName)){
-                        PositionComponent position = Mappers.POSITION.get(sensorSpawn);
-                        playerPos.x = position.x;
-                        playerPos.y = position.y;
+
+                for (Map.Entry<Vector2, String> point : sensorSpawnPoints.entrySet()){
+                    log.debug("CURRENT MAP NAME: " + currentMapName);
+                    log.debug(point.getValue());
+                    if (point.getValue().equals(currentMapName)){
+                        log.debug("PRESUMPTIVE POSITION: X= " + point.getKey().x + "Y= " + point.getKey().y);
+                        playerPos.x = point.getKey().x;
+                        playerPos.y = point.getKey().y;
                         break;
                     }
                 }
