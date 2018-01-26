@@ -67,6 +67,7 @@ public class SensorCollisionSystem extends CollisionBase{
                 PortalSensorComponent portalSensor = Mappers.PORTAL_SENSOR.get(sensor);
                 String portalSensorName = portalSensor.name;
                 String currentMapName = mapManager.getCurrentMap();
+                log.debug(currentMapName);
                 CleanUpSystem cleanUp = getEngine().getSystem(CleanUpSystem.class);
                 EntityFactorySystem factory = getEngine().getSystem(EntityFactorySystem.class);
 
@@ -86,10 +87,8 @@ public class SensorCollisionSystem extends CollisionBase{
                 factory.createNPCs(provider.getNpcSpawnPoints());
                 factory.createCollisionObjects(provider.getCollisionObjects());
 
-
                 for (Map.Entry<Vector2, String> point : sensorSpawnPoints.entrySet()){
                     log.debug("CURRENT MAP NAME: " + currentMapName);
-                    log.debug(point.getValue());
                     if (point.getValue().equals(currentMapName)){
                         log.debug("PRESUMPTIVE POSITION: X= " + point.getKey().x + "Y= " + point.getKey().y);
                         playerPos.x = point.getKey().x;

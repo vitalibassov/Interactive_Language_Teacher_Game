@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="64" nextobjectid="11">
+ <tileset firstgid="1" source="../textures/grass.tsx"/>
+ <tileset firstgid="8" source="../textures/testing_tree.tsx"/>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjZmBgYB7Fo3gUj2I8mGMQuGEUDz4MAMDqBLY=
+  </data>
+ </layer>
+ <layer name="Top Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2BwAw40ehSMglEwOAAAP8AAEQ==
+  </data>
+ </layer>
+ <layer name="Foreground" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDHfAAcWjYBRQEwAAK6AAEQ==
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object id="8" x="451.333" y="820.667">
+   <polygon points="0,0 -3.33333,-116.667 124.667,-116.667 124.667,11.3333"/>
+  </object>
+  <object id="9" x="896" y="704">
+   <polygon points="0,0 -192,0 -192,128 0,128"/>
+  </object>
+  <object id="10" x="896" y="512">
+   <polygon points="0,0 -256,0 -256,-128 0,-128"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="SensorSpawns">
+  <object id="1" name="main" x="819.5" y="570.5" width="14.5" height="9.5"/>
+ </objectgroup>
+ <objectgroup name="Sensors">
+  <object id="2" name="main" x="917.167" y="481.682">
+   <polygon points="0,0 -31,-1 -31,231 -5,235"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="NPCSpawnPoints">
+  <object id="4" name="shepherd" x="542.167" y="557.833" width="6.5" height="3.5"/>
+ </objectgroup>
+</map>
