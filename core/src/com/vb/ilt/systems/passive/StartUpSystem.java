@@ -4,20 +4,22 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.Queue;
 import com.vb.ilt.common.ConversationUnpacker;
-import com.vb.ilt.common.TiledMapLayersProvider;
-import com.vb.ilt.entity.components.dialog_model.Conversation;
-import com.vb.ilt.entity.components.dialog_model.Dialog;
+import com.vb.ilt.common.TiledMapManager;
+import com.vb.ilt.common.TiledMapObjectsProvider;
 
 
 public class StartUpSystem extends EntitySystem{
 
     private EntityFactorySystem factory;
     private final OrthographicCamera camera;
+    private final TiledMapManager mapManager;
+    private final String conversationName;
 
-    public StartUpSystem(OrthographicCamera camera) {
+    public StartUpSystem(OrthographicCamera camera, TiledMapManager mapManager, String conversationName) {
         this.camera = camera;
+        this.mapManager = mapManager;
+        this.conversationName = conversationName;
     }
 
     @Override
@@ -32,14 +34,18 @@ public class StartUpSystem extends EntitySystem{
     }
 
     private void startUp(){
-        //TiledMapLayersProvider provider = new TiledMapLayersProvider("maps/main_map.tmx");
-        TiledMapLayersProvider provider = new TiledMapLayersProvider("maps/test isometric map/Testing_cart.tmx");
-        ConversationUnpacker unpacker = new ConversationUnpacker(Gdx.files.internal("conversations/level1.json"));
+        //TiledMapObjectsProvider provider = new TiledMapObjectsProvider("maps/main_map.tmx");
+        //TiledMapObjectsProvider provider = new TiledMapObjectsProvider("maps/level_1/main.tmx");
+        ConversationUnpacker unpacker = new ConversationUnpacker(Gdx.files.internal(this.conversationName));
+        TiledMapObjectsProvider provider = this.mapManager.getMapProvider("main");
+        factory.createPortalSensors(provider.getSensors());
+        factory.createPortalSensorSpawns(provider.getSpawnsNearSensors());
         factory.createMap(provider.getMap());
         factory.createNPCs(provider.getNpcSpawnPoints());
         factory.createDialogs(unpacker.getConversations());
         factory.createPlayer(provider.getPlayerSpawnPoint());
-        factory.createCollisionObjects(provider.getPolygons());
+        factory.createCollisionObjects(provider.getCollisionObjects());
+
         factory.createControls();
 
 //        Queue<Conversation> conversations = new ConversationUnpacker(Gdx.files.internal("conversations/level1.json")).getConversations();

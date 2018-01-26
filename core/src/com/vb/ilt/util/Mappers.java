@@ -13,6 +13,8 @@ import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.entity.components.world.PortalSensorComponent;
+import com.vb.ilt.entity.components.world.PortalSensorSpawnComponent;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
 
@@ -46,6 +48,10 @@ public final class Mappers {
             ComponentMapper.getFor(SoundComponent.class);
     public static final ComponentMapper<DirectionComponent> DIRECTION =
             ComponentMapper.getFor(DirectionComponent.class);
+    public static final ComponentMapper<PortalSensorComponent> PORTAL_SENSOR =
+            ComponentMapper.getFor(PortalSensorComponent.class);
+    public static final ComponentMapper<PortalSensorSpawnComponent> PORTAL_SENSOR_SPAWN =
+            ComponentMapper.getFor(PortalSensorSpawnComponent.class);
 
     private Mappers(){}
 }

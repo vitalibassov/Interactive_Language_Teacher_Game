@@ -40,8 +40,11 @@ import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.entity.components.world.PortalSensorComponent;
+import com.vb.ilt.entity.components.world.PortalSensorSpawnComponent;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
+import com.vb.ilt.entity.components.world.WorldCollisionObjectComponent;
 import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.shape.ShapeUtils;
 
@@ -242,7 +245,56 @@ public class EntityFactorySystem extends EntitySystem{
         bounds.polygon= new Polygon(newVertices);
         //bounds.polygon.setPosition(10, -10);
 
-        addEntity(tiledMap, bounds, mapRenderer);
+        WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
+
+        addEntity(tiledMap, bounds, mapRenderer, worldObject);
+    }
+
+    public void createPortalSensors(Map<PolygonMapObject, String> sensors){
+        for (Map.Entry<PolygonMapObject, String> sensor : sensors.entrySet()){
+            Polygon originPolygon = sensor.getKey().getPolygon();
+            float [] vertices = originPolygon.getVertices();
+            float [] newVertices = new float[vertices.length];
+            for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
+                newVertices[i] = (vertices[j] + vertices[i]) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER);
+                newVertices[j] = (vertices[j] - vertices[i]) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER);
+            }
+
+            BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
+            bounds.polygon = new Polygon(newVertices);
+
+            bounds.polygon.setPosition(
+                    (originPolygon.getY() + originPolygon.getX()) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER),
+                    (originPolygon.getY() - originPolygon.getX()) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER )+ GameConfig.DEFAULT_Y_OFFSET);
+
+            PositionComponent position = engine.createComponent(PositionComponent.class);
+            position.x = bounds.polygon.getX();
+            position.y = bounds.polygon.getY();
+
+            WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
+
+            PortalSensorComponent portalSensor = engine.createComponent(PortalSensorComponent.class);
+            portalSensor.name = sensor.getValue();
+
+            addEntity(bounds, portalSensor, position, worldObject);
+        }
+    }
+
+    public void createPortalSensorSpawns(Map<Vector2, String> spawns){
+        for(Map.Entry<Vector2, String> point : spawns.entrySet()) {
+            String typeStr = point.getValue();
+
+            PositionComponent position = engine.createComponent(PositionComponent.class);
+            position.x = point.getKey().x;
+            position.y = point.getKey().y;
+
+            WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
+            PortalSensorSpawnComponent portalSensorSpawn = engine.createComponent(PortalSensorSpawnComponent.class);
+            portalSensorSpawn.name = point.getValue();
+
+            addEntity(position, worldObject, portalSensorSpawn);
+
+        }
     }
 
     public void createCollisionObjects(Array<PolygonMapObject> mapObjects){
@@ -268,8 +320,9 @@ public class EntityFactorySystem extends EntitySystem{
             position.y = bounds.polygon.getY();
 
             WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
+            WorldCollisionObjectComponent worldCollisionObject = engine.createComponent(WorldCollisionObjectComponent.class);
 
-            addEntity(bounds, position, worldObject);
+            addEntity(bounds, position, worldObject, worldCollisionObject);
         }
     }
 

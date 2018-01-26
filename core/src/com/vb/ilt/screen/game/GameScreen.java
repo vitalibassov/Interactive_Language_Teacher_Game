@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
@@ -27,9 +28,11 @@ import com.vb.ilt.systems.active.ZOrderSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.GridRenderSystem;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
+import com.vb.ilt.systems.passive.CleanUpSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
 import com.vb.ilt.systems.passive.StartUpSystem;
 import com.vb.ilt.systems.passive.collision.NPCCollisionSystem;
+import com.vb.ilt.systems.passive.collision.SensorCollisionSystem;
 import com.vb.ilt.systems.passive.collision.WorldObjectsCollisionSystem;
 import com.vb.ilt.systems.passive.collision.WorldWrapUpSystem;
 import com.vb.ilt.util.GdxUtils;
@@ -68,6 +71,7 @@ public class GameScreen extends ScreenAdapter{
         assetManager.finishLoading();
 
         Skin skin = assetManager.get(AssetDescriptors.SKIN);
+        TiledMapManager tiledMapManager = new TiledMapManager("maps/level_1");
 
         EntitySystem dialogSystem = new ConversationSystem(assetManager, hudViewport, batch);
         dialogSystem.setProcessing(false);
@@ -80,6 +84,10 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new WorldObjectsCollisionSystem());
         engine.addSystem(new WorldWrapUpSystem());
         engine.addSystem(new NPCCollisionSystem());
+        engine.addSystem(new SensorCollisionSystem(tiledMapManager));
+
+        engine.addSystem(new CleanUpSystem());
+
 
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsSystem());
@@ -99,7 +107,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(dialogSystem);
 
-        engine.addSystem(new StartUpSystem(camera));
+        engine.addSystem(new StartUpSystem(camera, tiledMapManager, "conversations/level1.json"));
 
     }
 

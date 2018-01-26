@@ -37,7 +37,7 @@ public class WorldRenderSystem extends EntitySystem{
         IsometricTiledMapRenderer mapRenderer = Mappers.MAP_RENDERER.get(tiledMaps.first()).mapRenderer;
 
         viewport.apply();
-        batch.setProjectionMatrix(viewport.getCamera().combined);
+        batch.setProjectionMatrix(viewport.getCamera().projection);
         mapRenderer.setView((OrthographicCamera) viewport.getCamera());
         mapRenderer.render(new int[]{0, 1});
         getEngine().getSystem(CharacterRenderSystem.class).update(deltaTime);
