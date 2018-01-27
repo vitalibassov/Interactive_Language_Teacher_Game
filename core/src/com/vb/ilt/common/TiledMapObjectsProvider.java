@@ -16,7 +16,6 @@ import com.vb.ilt.config.GameConfig;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class TiledMapObjectsProvider {
 
     private static final Logger log = new Logger(TiledMapObjectsProvider.class.getName(), Logger.DEBUG);
@@ -32,49 +31,43 @@ public class TiledMapObjectsProvider {
     }
 
     public Array<PolygonMapObject> getCollisionObjects(){
-        MapLayer objectsLayer = map.getLayers().get("Collision");
-        MapObjects objects = objectsLayer.getObjects();
-        return objects.getByType(PolygonMapObject.class);
+        return getMapObjects("Collision").getByType(PolygonMapObject.class);
     }
 
     public Vector2 getPlayerSpawnPoint(){
-        MapLayer objectsLayer = map.getLayers().get("SpawnPoints");
-        MapObjects objects = objectsLayer.getObjects();
-        MapObject object = objects.get("SpawnPlayer");
-        Rectangle rect = ((RectangleMapObject) object).getRectangle();
+        MapObjects objects = getMapObjects("SpawnPoints");
+        Rectangle rect = ((RectangleMapObject) objects.get("SpawnPlayer")).getRectangle();
         return worldToIso(rect);
     }
 
     public Map<Vector2, String> getNpcSpawnPoints(){
-        MapLayer objectsLayer = map.getLayers().get("NPCSpawnPoints");
-        MapObjects objects = objectsLayer.getObjects();
-        Map<Vector2, String> spawnPoints = new HashMap<Vector2, String>();
-        for(MapObject object: objects){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            spawnPoints.put(worldToIso(rect), object.getName());
-        }
-        return spawnPoints;
+        return getSpawnPoints("NPCSpawnPoints");
     }
 
     public Map<Vector2, String> getSpawnsNearSensors(){
-        MapLayer objectsLayer = map.getLayers().get("SensorSpawns");
-        MapObjects objects = objectsLayer.getObjects();
-        Map<Vector2, String> spawnPoints = new HashMap<Vector2, String>();
-        for(MapObject object: objects){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            spawnPoints.put(worldToIso(rect), object.getName());
-        }
-        return spawnPoints;
+        return getSpawnPoints("SensorSpawns");
     }
 
     public Map<PolygonMapObject, String> getSensors(){
-        MapLayer objectsLayer = map.getLayers().get("Sensors");
-        MapObjects objects = objectsLayer.getObjects();
         Map<PolygonMapObject, String> sensors = new HashMap<PolygonMapObject, String>();
-        for(PolygonMapObject object: objects.getByType(PolygonMapObject.class)){
+        for(PolygonMapObject object: getMapObjects("Sensors").getByType(PolygonMapObject.class)){
             sensors.put(object, object.getName());
         }
         return sensors;
+    }
+    // Layer must have objects with name and they must be rectangles
+    private Map<Vector2, String> getSpawnPoints(String layerName){
+        Map<Vector2, String> points = new HashMap<Vector2, String>();
+        for (MapObject object : getMapObjects(layerName)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            points.put(worldToIso(rect), object.getName());
+        }
+        return points;
+    }
+
+    private MapObjects getMapObjects(String layerName){
+        MapLayer objectsLayer = map.getLayers().get(layerName);
+        return objectsLayer.getObjects();
     }
 
     private Vector2 worldToIso(Rectangle spawnRect) {

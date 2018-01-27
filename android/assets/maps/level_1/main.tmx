@@ -21,8 +21,8 @@
   </data>
  </layer>
  <objectgroup name="Sensors">
-  <object id="30" name="house" x="1599" y="4606">
-   <polygon points="0,0 0.5,-97.5 22.25,-95.25 23,2"/>
+  <object id="30" name="house" x="1580.5" y="4599.5">
+   <polygon points="0,0 0.603261,-97.5 26.8451,-95.25 27.75,2"/>
   </object>
  </objectgroup>
  <objectgroup name="NPCSpawnPoints">
@@ -34,7 +34,7 @@
   <object id="8" name="SpawnPlayer" x="1984.54" y="4451.67" width="49.3636" height="52.8864"/>
  </objectgroup>
  <objectgroup name="SensorSpawns">
-  <object id="33" name="house" x="1693" y="4576" width="4.75" height="10.25"/>
+  <object id="33" name="house" x="1662.5" y="4573.5" width="4.75" height="10.25"/>
  </objectgroup>
  <objectgroup name="Collision">
   <object id="16" x="1473" y="4161">
@@ -43,7 +43,7 @@
   <object id="22" x="1602.67" y="3634.67">
    <polygon points="0,0 6,-150 -279.333,-256.667 -279.333,-536.667 -40.6667,-551.333 -51.3333,-719.333 -404,-774.667 -452.667,-190"/>
   </object>
-  <object id="28" x="1343" y="4740">
+  <object id="28" x="1343.25" y="4739.75">
    <polygon points="0,0 265,0 265,-374 0,-374"/>
   </object>
  </objectgroup>

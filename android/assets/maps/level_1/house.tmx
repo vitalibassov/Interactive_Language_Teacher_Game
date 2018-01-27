@@ -29,7 +29,7 @@
   </object>
  </objectgroup>
  <objectgroup name="SensorSpawns">
-  <object id="1" name="main" x="819.5" y="570.5" width="14.5" height="9.5"/>
+  <object id="1" name="main" x="839" y="583" width="14.5" height="9.5"/>
  </objectgroup>
  <objectgroup name="Sensors">
   <object id="2" name="main" x="917.167" y="481.682">

@@ -44,11 +44,12 @@ public class NPCCollisionSystem extends CollisionBase{
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)) {
                 Engine engine = getEngine();
                 ConversationSystem dialogSystem = engine.getSystem(ConversationSystem.class);
-                dialogSystem.setNpcAndRun(npc);
-                AnimationComponent animation = Mappers.ANIMATION.get(player);
-                animation.setAnimationIndex(0);
-                DirectionComponent direction = Mappers.DIRECTION.get(player);
-                direction.direction = Direction.IDLE;
+                if(dialogSystem.setNpcAndRun(npc)) {
+                    AnimationComponent animation = Mappers.ANIMATION.get(player);
+                    animation.setAnimationIndex(0);
+                    DirectionComponent direction = Mappers.DIRECTION.get(player);
+                    direction.direction = Direction.IDLE;
+                }
                 return true;
             }
         }

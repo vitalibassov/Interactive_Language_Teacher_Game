@@ -62,7 +62,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         stage.draw();
     }
 
-    public void setNpcAndRun (Entity entity){
+    public boolean setNpcAndRun (Entity entity){
 
         NPCComponent npcComponent = Mappers.NPC.get(entity);
         this.conversations = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first()).conversations;
@@ -76,11 +76,12 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
         if (this.npcType.isNone()){
             setProcessing(false);
-            return;
+            return false;
         }
 
         buildStage(this.conversations);
         setProcessing(true);
+        return true;
     }
 
     private void buildStage(Queue<Conversation> conversations) {
