@@ -1,38 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="64" nextobjectid="11">
+<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="64" nextobjectid="13">
  <tileset firstgid="1" source="../textures/grass.tsx"/>
  <tileset firstgid="8" source="../textures/testing_tree.tsx"/>
+ <tileset firstgid="9" source="../textures/testTextures.tsx"/>
  <layer name="Background" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZmBgYB7Fo3gUj2I8mGMQuGEUDz4MAMDqBLY=
+   eJxjYBgFgx1wEoGtSTTPmgg8at6oebQwDwaobd4ooD8AAGrKE0U=
   </data>
  </layer>
  <layer name="Top Background" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2BwAw40ehSMglEwOAAAP8AAEQ==
+   eJxjYBgF1AScRGBSzaMmoJV5tlQ2z4ZKZg4V86gdfqNgFNADAADitAJ/
   </data>
  </layer>
  <layer name="Foreground" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDHfAAcWjYBRQEwAAK6AAEQ==
+   eJxjYBgFwwFwjppHEbCksnmD3b/UNM+fRPM4icSjYPADAN2+ASs=
   </data>
  </layer>
  <objectgroup name="Collision">
-  <object id="8" x="451.333" y="820.667">
-   <polygon points="0,0 -3.33333,-116.667 124.667,-116.667 124.667,11.3333"/>
-  </object>
-  <object id="9" x="896" y="704">
-   <polygon points="0,0 -192,0 -192,128 0,128"/>
-  </object>
-  <object id="10" x="896" y="512">
-   <polygon points="0,0 -256,0 -256,-128 0,-128"/>
+  <object id="12" x="384" y="448">
+   <polygon points="0,0 64,0 64,64 128,64 128,256 64,256 64,320 0,320"/>
   </object>
  </objectgroup>
  <objectgroup name="SensorSpawns">
-  <object id="1" name="main" x="839" y="583" width="14.5" height="9.5"/>
+  <object id="1" name="main" x="739" y="567" width="14.5" height="9.5"/>
  </objectgroup>
  <objectgroup name="Sensors">
-  <object id="2" name="main" x="917.167" y="481.682">
+  <object id="2" name="main" x="884.167" y="438.682">
    <polygon points="0,0 -31,-1 -31,231 -5,235"/>
   </object>
  </objectgroup>

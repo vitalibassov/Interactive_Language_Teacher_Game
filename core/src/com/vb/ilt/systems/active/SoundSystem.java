@@ -24,16 +24,21 @@ public class SoundSystem extends EntitySystem{
     }
 
     private void playerWalking(float deltaTime){
-        final float stepTime = 0.3f;
+        final float stepTime = 0.40f;
         Entity player = getEngine().getEntitiesFor(PLAYER).first();
         SoundComponent sound = Mappers.SOUND.get(player);
         DirectionComponent direction = Mappers.DIRECTION.get(player);
         if (!direction.direction.isIdle()) {
             if (currentStepDuration >= stepTime) {
                 currentStepDuration = 0;
-                sound.step.play();
+                sound.sound.play();
             }
             currentStepDuration += deltaTime;
         }
+    }
+
+    public void playSound(Entity entity){
+        SoundComponent sound = Mappers.SOUND.get(entity);
+        sound.sound.play();
     }
 }

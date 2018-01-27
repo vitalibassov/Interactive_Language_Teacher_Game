@@ -24,4 +24,6 @@ public final class AssetDescriptors {
             new AssetDescriptor<TextureAtlas>(AssetPaths.DIALOGS, TextureAtlas.class);
     public static final AssetDescriptor<Sound> STEP_SOUND =
             new AssetDescriptor<Sound>(AssetPaths.STEP_SOUND, Sound.class);
+    public static final AssetDescriptor<Sound> DOOR_SOUND =
+            new AssetDescriptor<Sound>(AssetPaths.DOOR_SOUND, Sound.class);
 }

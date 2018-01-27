@@ -6,12 +6,10 @@ import com.badlogic.gdx.utils.Pool;
 
 public class SoundComponent implements Component, Pool.Poolable{
 
-    public Sound step;
-    public Sound greeting;
+    public Sound sound;
 
     @Override
     public void reset() {
-        step = null;
-        greeting = null;
+        sound = null;
     }
 }

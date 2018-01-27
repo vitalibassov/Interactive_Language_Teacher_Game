@@ -58,7 +58,7 @@ public class EntityFactorySystem extends EntitySystem{
     private static final float VISION_RANGE = 6f;
 
     private static final float ANIMATION_TIME_FRONT = 0.075f;
-    private static final float ANIMATION_TIME_WALKING = 0.02f;
+    private static final float ANIMATION_TIME_WALKING = 0.025f;
 
     private static final int DEFAULT_PLAYER_Z_ORDER = 1;
     private static final int DEFAULT_NPC_Z_ORDER = 2;
@@ -146,7 +146,7 @@ public class EntityFactorySystem extends EntitySystem{
         log.debug(texture.region.toString());
 
         SoundComponent sound = engine.createComponent(SoundComponent.class);
-        sound.step = assetManager.get(AssetDescriptors.STEP_SOUND);
+        sound.sound = assetManager.get(AssetDescriptors.STEP_SOUND);
 
         DirectionComponent direction = engine.createComponent(DirectionComponent.class);
         direction.direction = Direction.IDLE;
@@ -218,6 +218,7 @@ public class EntityFactorySystem extends EntitySystem{
                 props.get("height", Integer.class) - VISION_RANGE * 2f);
 
         bounds.polygon = polygonToIso(new Polygon(vertices));
+        bounds.polygon.setPosition(0.05f, 0.45f);
 
         WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
 
@@ -237,12 +238,15 @@ public class EntityFactorySystem extends EntitySystem{
             position.x = bounds.polygon.getX();
             position.y = bounds.polygon.getY();
 
+            SoundComponent sound = engine.createComponent(SoundComponent.class);
+            sound.sound = assetManager.get(AssetDescriptors.DOOR_SOUND);
+
             WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
 
             PortalSensorComponent portalSensor = engine.createComponent(PortalSensorComponent.class);
             portalSensor.name = sensor.getValue();
 
-            addEntity(bounds, portalSensor, position, worldObject);
+            addEntity(bounds, portalSensor, position, worldObject, sound);
         }
     }
 
@@ -353,6 +357,6 @@ public class EntityFactorySystem extends EntitySystem{
 
     private Vector2 polygonPosToIso(Polygon polygon){
         return new Vector2((polygon.getY() + polygon.getX()) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER),
-                            (polygon.getY() - polygon.getX()) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER ) + GameConfig.DEFAULT_Y_OFFSET);
+                (polygon.getY() - polygon.getX()) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER ) + GameConfig.DEFAULT_Y_OFFSET);
     }
 }

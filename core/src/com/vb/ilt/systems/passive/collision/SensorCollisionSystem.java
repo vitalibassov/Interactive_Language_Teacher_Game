@@ -12,6 +12,7 @@ import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
 import com.vb.ilt.entity.components.world.WorldObjectComponent;
+import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.passive.CleanUpSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
 import com.vb.ilt.util.Mappers;
@@ -50,6 +51,7 @@ public class SensorCollisionSystem extends CollisionBase{
         for(Entity sensor : sensors){
             BoundsComponent objectBounds = Mappers.BOUNDS.get(sensor);
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)){
+                getEngine().getSystem(SoundSystem.class).playSound(sensor);
                 String currentName = mapManager.getCurrentMap();
                 TiledMapObjectsProvider provider = this.mapManager.getMapProvider(Mappers.PORTAL_SENSOR.get(sensor).name);
                 cleanUpAndRepopulate(provider);

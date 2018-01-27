@@ -11,4 +11,5 @@ public final class AssetPaths {
     public static final String NPC = "characters/npc/npc.atlas";
     public static final String DIALOGS = "dialog/dialogs.atlas";
     public static final String STEP_SOUND = "sounds/step.wav";
+    public static final String DOOR_SOUND = "sounds/door.wav";
 }

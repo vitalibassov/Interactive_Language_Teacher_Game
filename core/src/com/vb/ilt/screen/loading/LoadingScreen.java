@@ -50,6 +50,7 @@ public class LoadingScreen extends ScreenAdapter {
         assetManager.load(AssetDescriptors.NPC);
         assetManager.load(AssetDescriptors.DIALOGS);
         assetManager.load(AssetDescriptors.STEP_SOUND);
+        assetManager.load(AssetDescriptors.DOOR_SOUND);
     }
 
     @Override
