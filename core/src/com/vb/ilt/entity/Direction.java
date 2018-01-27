@@ -1,6 +1,5 @@
 package com.vb.ilt.entity;
 
-
 public enum Direction {
     IDLE(0),
     UP(1),

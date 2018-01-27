@@ -42,7 +42,6 @@ public class GameScreen extends ScreenAdapter{
     private final InteractiveLangTeacherGame game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
-    //private final Skin skin;
 
     private OrthographicCamera camera;
     private Viewport viewport;

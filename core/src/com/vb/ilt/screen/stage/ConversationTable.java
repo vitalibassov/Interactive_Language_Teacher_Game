@@ -18,7 +18,6 @@ import com.vb.ilt.systems.active.ConversationCallback;
 
 import java.util.List;
 
-
 public class ConversationTable extends Table{
 
     private final ConversationCallback conversationCallback;

@@ -21,7 +21,6 @@ import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.screen.stage.ConversationTable;
 import com.vb.ilt.util.Mappers;
 
-
 public class ConversationSystem extends EntitySystem implements ConversationCallback {
 
     private static final Logger log = new Logger(ConversationSystem.class.getName(), Logger.DEBUG);

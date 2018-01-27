@@ -36,16 +36,9 @@ public class MovementSystem extends IteratingSystem{
         NPCCollisionSystem npcCollisionSystem = getEngine().getSystem(NPCCollisionSystem.class);
         SensorCollisionSystem sensorCollisionSystem = getEngine().getSystem(SensorCollisionSystem.class);
 
-        //log.debug(collisionSystem.checkCollision(movement.velocity) + " : COLLISION OBJECTS");
-        //log.debug(wrapUpSystem.checkCollision(movement.velocity) + " : WORLD WRAP UP");
-        //log.debug(npcCollisionSystem.checkCollision(movement.velocity) + " : NPC COLLISION");
-        //log.debug(sensorCollisionSystem.checkCollision(movement.velocity) + " : SENSOR COLLISION");
-
         if(!(sensorCollisionSystem.checkCollision(movement.velocity) || collisionSystem.checkCollision(movement.velocity) || wrapUpSystem.checkCollision(movement.velocity) || npcCollisionSystem.checkCollision(movement.velocity))){
             position.x += movement.velocity.x;
             position.y += movement.velocity.y;
         }
-
-        //log.debug("X= " + position.x + " Y= " + position.y);
     }
 }

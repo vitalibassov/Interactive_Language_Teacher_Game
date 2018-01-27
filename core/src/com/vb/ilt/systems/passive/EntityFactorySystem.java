@@ -50,7 +50,6 @@ import com.vb.ilt.shape.ShapeUtils;
 
 import java.util.Map;
 
-
 public class EntityFactorySystem extends EntitySystem{
 
     private static final float BOUNDS_OFFSET_X = 0.15f;
@@ -98,16 +97,7 @@ public class EntityFactorySystem extends EntitySystem{
         position.y = spawnPoint.y;
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-        bounds.polygon = new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y,dimension.width / 1.5f, dimension.height / 3f));
-
-        float [] vertices = bounds.polygon.getVertices();
-        float [] newVertices = new float[vertices.length];
-        for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
-            newVertices[i] = (vertices[j] + vertices[i]);
-            newVertices[j] = (vertices[j] - vertices[i]) / 2f;
-        }
-
-        bounds.polygon = new Polygon(newVertices);
+        bounds.polygon = polygonToIso(new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y,dimension.width / 1.5f, dimension.height / 3f)));
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
         AnimationComponent animation = engine.createComponent(AnimationComponent.class);
@@ -187,16 +177,7 @@ public class EntityFactorySystem extends EntitySystem{
             position.y = point.getKey().y;
 
             BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-            bounds.polygon = new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y, dimension.width / 1.5f, dimension.height / 3f));
-
-            float[] vertices = bounds.polygon.getVertices();
-            float[] newVertices = new float[vertices.length];
-            for (int i = 0, j = 1; j < vertices.length; i += 2, j += 2) {
-                newVertices[i] = (vertices[j] + vertices[i]);
-                newVertices[j] = (vertices[j] - vertices[i]) / 2f;
-            }
-
-            bounds.polygon = new Polygon(newVertices);
+            bounds.polygon = polygonToIso(new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y, dimension.width / 1.5f, dimension.height / 3f)));
 
             AnimationComponent animation = engine.createComponent(AnimationComponent.class);
             Animation<TextureRegion> npcFront = new Animation<TextureRegion>(
@@ -235,15 +216,8 @@ public class EntityFactorySystem extends EntitySystem{
         float [] vertices = ShapeUtils.createRectangle(VISION_RANGE, VISION_RANGE,
                 props.get("width", Integer.class) - VISION_RANGE * 2f,
                 props.get("height", Integer.class) - VISION_RANGE * 2f);
-        float [] newVertices = new float[vertices.length];
 
-        for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
-            newVertices[i] = (vertices[j] + vertices[i]) / GameConfig.MAP_SCALE_MULTIPLIER;
-            newVertices[j] = (vertices[j] - vertices[i]) / GameConfig.MAP_SCALE_MULTIPLIER / 2f + GameConfig.DEFAULT_Y_OFFSET;
-        }
-
-        bounds.polygon= new Polygon(newVertices);
-        //bounds.polygon.setPosition(10, -10);
+        bounds.polygon = polygonToIso(new Polygon(vertices));
 
         WorldObjectComponent worldObject = engine.createComponent(WorldObjectComponent.class);
 
@@ -252,20 +226,12 @@ public class EntityFactorySystem extends EntitySystem{
 
     public void createPortalSensors(Map<PolygonMapObject, String> sensors){
         for (Map.Entry<PolygonMapObject, String> sensor : sensors.entrySet()){
-            Polygon originPolygon = sensor.getKey().getPolygon();
-            float [] vertices = originPolygon.getVertices();
-            float [] newVertices = new float[vertices.length];
-            for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
-                newVertices[i] = (vertices[j] + vertices[i]) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER);
-                newVertices[j] = (vertices[j] - vertices[i]) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER);
-            }
-
             BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-            bounds.polygon = new Polygon(newVertices);
+            Polygon originPolygon = sensor.getKey().getPolygon();
+            bounds.polygon = polygonToMapIso(originPolygon);
 
-            bounds.polygon.setPosition(
-                    (originPolygon.getY() + originPolygon.getX()) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER),
-                    (originPolygon.getY() - originPolygon.getX()) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER )+ GameConfig.DEFAULT_Y_OFFSET);
+            Vector2 polygonPos = polygonPosToIso(originPolygon);
+            bounds.polygon.setPosition(polygonPos.x, polygonPos.y);
 
             PositionComponent position = engine.createComponent(PositionComponent.class);
             position.x = bounds.polygon.getX();
@@ -282,7 +248,6 @@ public class EntityFactorySystem extends EntitySystem{
 
     public void createPortalSensorSpawns(Map<Vector2, String> spawns){
         for(Map.Entry<Vector2, String> point : spawns.entrySet()) {
-            String typeStr = point.getValue();
 
             PositionComponent position = engine.createComponent(PositionComponent.class);
             position.x = point.getKey().x;
@@ -300,20 +265,12 @@ public class EntityFactorySystem extends EntitySystem{
     public void createCollisionObjects(Array<PolygonMapObject> mapObjects){
         log.debug("mapObjects size= " + mapObjects.size);
         for(PolygonMapObject object : mapObjects){
-            Polygon originPolygon = object.getPolygon();
-            float [] vertices = originPolygon.getVertices();
-            float [] newVertices = new float[vertices.length];
-            for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
-                newVertices[i] = (vertices[j] + vertices[i]) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER);
-                newVertices[j] = (vertices[j] - vertices[i]) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER);
-            }
-
             BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-            bounds.polygon = new Polygon(newVertices);
+            Polygon originPolygon = object.getPolygon();
+            bounds.polygon = polygonToMapIso(originPolygon);
 
-            bounds.polygon.setPosition(
-                    (originPolygon.getY() + originPolygon.getX()) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER),
-                    (originPolygon.getY() - originPolygon.getX()) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER )+ GameConfig.DEFAULT_Y_OFFSET);
+            Vector2 polygonPos = polygonPosToIso(originPolygon);
+            bounds.polygon.setPosition(polygonPos.x, polygonPos.y);
 
             PositionComponent position = engine.createComponent(PositionComponent.class);
             position.x = bounds.polygon.getX();
@@ -374,5 +331,28 @@ public class EntityFactorySystem extends EntitySystem{
         engine.addEntity(entity);
     }
 
+    private Polygon polygonToMapIso(Polygon originPolygon){
+        float [] vertices = originPolygon.getVertices();
+        float [] newVertices = new float[vertices.length];
+        for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
+            newVertices[i] = (vertices[j] + vertices[i]) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER);
+            newVertices[j] = (vertices[j] - vertices[i]) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER);
+        }
+        return new Polygon(newVertices);
+    }
 
+    private Polygon polygonToIso(Polygon originPolygon){
+        float [] vertices = originPolygon.getVertices();
+        float [] newVertices = new float[vertices.length];
+        for(int i = 0, j = 1; j < vertices.length; i += 2, j += 2){
+            newVertices[i] = (vertices[j] + vertices[i]);
+            newVertices[j] = (vertices[j] - vertices[i]) / 2f;
+        }
+        return new Polygon(newVertices);
+    }
+
+    private Vector2 polygonPosToIso(Polygon polygon){
+        return new Vector2((polygon.getY() + polygon.getX()) / (GameConfig.TILE_HEIGHT * GameConfig.MAP_SCALE_MULTIPLIER),
+                            (polygon.getY() - polygon.getX()) / (GameConfig.TILE_WIDTH * GameConfig.MAP_SCALE_MULTIPLIER ) + GameConfig.DEFAULT_Y_OFFSET);
+    }
 }

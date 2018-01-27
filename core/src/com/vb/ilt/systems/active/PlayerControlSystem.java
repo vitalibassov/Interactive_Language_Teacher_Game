@@ -50,22 +50,19 @@ public class PlayerControlSystem extends EntitySystem {
         ControlsComponent controlsComp = Mappers.CONTROLS.get(control);
         DirectionComponent direction = Mappers.DIRECTION.get(player);
 
-        Vector2 worldTouch = getWorldTouch();
+        controlHandling(movement, animation, controlsComp, direction);
+    }
 
+    private void controlHandling(MovementComponent movement, AnimationComponent animation, ControlsComponent controlsComp, DirectionComponent direction) {
         movement.velocity.setZero();
-
-        boolean up = Gdx.input.isKeyPressed(Input.Keys.UP) || controlsComp.topRight.contains(worldTouch);
-        boolean down = Gdx.input.isKeyPressed(Input.Keys.DOWN) || controlsComp.bottomLeft.contains(worldTouch);
-        boolean right = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || controlsComp.bottomRight.contains(worldTouch);
-        boolean left = Gdx.input.isKeyPressed(Input.Keys.LEFT) || controlsComp.topLeft.contains(worldTouch);
-
-        if (up) {
+        Vector2 worldTouch = getWorldTouch();
+        if (Gdx.input.isKeyPressed(Input.Keys.UP) || controlsComp.topRight.contains(worldTouch)) {
             applyDirection(movement.velocity, animation, direction, Direction.UP, 1, 1);
-        } else if (down) {
+        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || controlsComp.bottomLeft.contains(worldTouch)) {
             applyDirection(movement.velocity, animation, direction, Direction.DOWN, -1, -1);
-        } else if (right) {
+        } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || controlsComp.bottomRight.contains(worldTouch)) {
             applyDirection(movement.velocity, animation, direction, Direction.RIGHT, 1, -1);
-        } else if (left) {
+        } else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || controlsComp.topLeft.contains(worldTouch)) {
             applyDirection(movement.velocity, animation, direction, Direction.LEFT, -1, 1);
         } else {
             applyDirection(movement.velocity, animation, direction, Direction.IDLE, 0, 0);

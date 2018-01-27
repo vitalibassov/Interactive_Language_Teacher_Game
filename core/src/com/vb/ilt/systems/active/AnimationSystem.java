@@ -7,10 +7,6 @@ import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.util.Mappers;
 
-/**
- * Created by vitaa on 2017-12-24.
- */
-
 public class AnimationSystem extends IteratingSystem{
 
     private static final Family FAMILY = Family.all(
