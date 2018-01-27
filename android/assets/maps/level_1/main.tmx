@@ -21,7 +21,7 @@
   </data>
  </layer>
  <objectgroup name="Sensors">
-  <object id="30" name="house" x="1580.5" y="4599.5">
+  <object id="30" name="house" x="1582" y="4600">
    <polygon points="0,0 0.603261,-97.5 26.8451,-95.25 27.75,2"/>
   </object>
  </objectgroup>

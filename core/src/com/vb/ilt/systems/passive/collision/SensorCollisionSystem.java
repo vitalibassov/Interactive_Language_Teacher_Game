@@ -11,8 +11,6 @@ import com.vb.ilt.common.TiledMapObjectsProvider;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
-import com.vb.ilt.entity.components.world.PortalSensorSpawnComponent;
-import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.systems.passive.CleanUpSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
@@ -33,17 +31,6 @@ public class SensorCollisionSystem extends CollisionBase{
             PositionComponent.class
     ).get();
 
-    private static final Family SENSOR_SPAWN = Family.all(
-            WorldObjectComponent.class,
-            PortalSensorSpawnComponent.class,
-            PositionComponent.class
-    ).get();
-
-    private static final Family MAP_FAMILY = Family.all(
-            TiledMapComponent.class
-    ).get();
-
-
     public SensorCollisionSystem(TiledMapManager mapManager) {
         super(SENSORS_FAMILY);
         this.mapManager = mapManager;
@@ -63,42 +50,34 @@ public class SensorCollisionSystem extends CollisionBase{
         for(Entity sensor : sensors){
             BoundsComponent objectBounds = Mappers.BOUNDS.get(sensor);
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)){
-
-                PortalSensorComponent portalSensor = Mappers.PORTAL_SENSOR.get(sensor);
-                String portalSensorName = portalSensor.name;
-                String currentMapName = mapManager.getCurrentMap();
-                log.debug(currentMapName);
-                CleanUpSystem cleanUp = getEngine().getSystem(CleanUpSystem.class);
-                EntityFactorySystem factory = getEngine().getSystem(EntityFactorySystem.class);
-
-                TiledMapObjectsProvider provider = this.mapManager.getMapProvider(portalSensorName);
-
-                log.debug(portalSensorName);
-
-                cleanUp.cleanUp();
-
-                log.debug("PROVIDER: " + provider);
-
-                Map<Vector2, String> sensorSpawnPoints = provider.getSpawnsNearSensors();
-
-                factory.createMap(provider.getMap());
-                factory.createPortalSensors(provider.getSensors());
-                factory.createPortalSensorSpawns(sensorSpawnPoints);
-                factory.createNPCs(provider.getNpcSpawnPoints());
-                factory.createCollisionObjects(provider.getCollisionObjects());
-
-                for (Map.Entry<Vector2, String> point : sensorSpawnPoints.entrySet()){
-                    log.debug("CURRENT MAP NAME: " + currentMapName);
-                    if (point.getValue().equals(currentMapName)){
-                        log.debug("PRESUMPTIVE POSITION: X= " + point.getKey().x + "Y= " + point.getKey().y);
-                        playerPos.x = point.getKey().x;
-                        playerPos.y = point.getKey().y;
-                        break;
-                    }
-                }
+                String currentName = mapManager.getCurrentMap();
+                TiledMapObjectsProvider provider = this.mapManager.getMapProvider(Mappers.PORTAL_SENSOR.get(sensor).name);
+                cleanUpAndRepopulate(provider);
+                setPlayerPosOnNewMap(playerPos, currentName, provider.getSpawnsNearSensors());
                 return true;
             }
         }
         return false;
+    }
+
+    private void cleanUpAndRepopulate(TiledMapObjectsProvider provider) {
+        EntityFactorySystem factory = getEngine().getSystem(EntityFactorySystem.class);
+        CleanUpSystem cleanUp = getEngine().getSystem(CleanUpSystem.class);
+        cleanUp.cleanUp();
+        factory.createMap(provider.getMap());
+        factory.createPortalSensors(provider.getSensors());
+        factory.createPortalSensorSpawns(provider.getSpawnsNearSensors());
+        factory.createNPCs(provider.getNpcSpawnPoints());
+        factory.createCollisionObjects(provider.getCollisionObjects());
+    }
+
+    private void setPlayerPosOnNewMap(PositionComponent playerPos, String currentMapName, Map<Vector2, String> sensorSpawnPoints) {
+        for (Map.Entry<Vector2, String> point : sensorSpawnPoints.entrySet()){
+            if (point.getValue().equals(currentMapName)){
+                playerPos.x = point.getKey().x;
+                playerPos.y = point.getKey().y;
+                break;
+            }
+        }
     }
 }

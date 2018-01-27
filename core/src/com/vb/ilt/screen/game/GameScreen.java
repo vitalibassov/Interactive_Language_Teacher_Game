@@ -26,6 +26,7 @@ import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;
 import com.vb.ilt.systems.active.ZOrderSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
+import com.vb.ilt.systems.debug.EntityLogger;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.systems.passive.CleanUpSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
@@ -107,6 +108,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(dialogSystem);
 
         engine.addSystem(new StartUpSystem(camera, tiledMapManager, "conversations/level1.json"));
+        engine.addSystem(new EntityLogger());
 
     }
 
