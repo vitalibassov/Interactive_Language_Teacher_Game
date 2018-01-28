@@ -35,5 +35,8 @@ public final class GameConfig {
     public static final float CONTROLS_X = 40f;
     public static final float CONTROLS_Y = 40f;
 
+    public static final float SOUNDS_VOLUME = 0.75f;
+    public static final float MUSIC_VOLUME = 0.5f;
+
     private GameConfig(){}
 }

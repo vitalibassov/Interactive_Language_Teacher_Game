@@ -3,6 +3,7 @@ package com.vb.ilt.systems.active;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
+import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.SoundComponent;
@@ -39,6 +40,6 @@ public class SoundSystem extends EntitySystem{
 
     public void playSound(Entity entity){
         SoundComponent sound = Mappers.SOUND.get(entity);
-        sound.sound.play();
+        sound.sound.play(GameConfig.SOUNDS_VOLUME);
     }
 }

@@ -6,7 +6,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.utils.ImmutableArray;
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -30,6 +32,7 @@ import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.MusicComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
@@ -325,6 +328,13 @@ public class EntityFactorySystem extends EntitySystem{
         ConversationComponent conversation = engine.createComponent(ConversationComponent.class);
         conversation.conversations = conversations;
         addEntity(conversation);
+    }
+
+    public void createMusic(AssetDescriptor<Music> music){
+        MusicComponent musicComponent = engine.createComponent(MusicComponent.class);
+        musicComponent.music = assetManager.get(music);
+        musicComponent.music.setVolume(GameConfig.MUSIC_VOLUME);
+        addEntity(musicComponent);
     }
 
     private void addEntity(Component ... components){

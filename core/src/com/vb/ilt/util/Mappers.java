@@ -6,6 +6,7 @@ import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.MusicComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.TextureComponent;
@@ -52,6 +53,8 @@ public final class Mappers {
             ComponentMapper.getFor(PortalSensorComponent.class);
     public static final ComponentMapper<PortalSensorSpawnComponent> PORTAL_SENSOR_SPAWN =
             ComponentMapper.getFor(PortalSensorSpawnComponent.class);
+    public static final ComponentMapper<MusicComponent> MUSIC =
+            ComponentMapper.getFor(MusicComponent.class);
 
     private Mappers(){}
 }

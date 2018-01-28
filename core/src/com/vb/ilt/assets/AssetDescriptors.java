@@ -1,6 +1,7 @@
 package com.vb.ilt.assets;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -26,4 +27,6 @@ public final class AssetDescriptors {
             new AssetDescriptor<Sound>(AssetPaths.STEP_SOUND, Sound.class);
     public static final AssetDescriptor<Sound> DOOR_SOUND =
             new AssetDescriptor<Sound>(AssetPaths.DOOR_SOUND, Sound.class);
+    public static final AssetDescriptor<Music> MAIN_MUSIC =
+            new AssetDescriptor<Music>(AssetPaths.MAIN_MUSIC, Music.class);
 }
