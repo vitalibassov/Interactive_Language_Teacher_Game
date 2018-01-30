@@ -17,6 +17,7 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
 
     private final AssetManager assetManager;
     private Array<String> availableWords = new Array<String>();
+    //private LinkedHashMap<String, String> availableWords = new LinkedHashMap<String, String>();
     private Table words;
 
     public DictionaryTable(AssetManager assetManager) {
@@ -25,7 +26,6 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
 
         for (String word : Gdx.files.internal("dictionary/dictionary.txt").readString().split("\n")){
             availableWords.add(word);
-
         }
 
         init();

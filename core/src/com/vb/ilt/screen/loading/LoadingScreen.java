@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.common.GameManager;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.screen.game.GameScreen;
 import com.vb.ilt.util.GdxUtils;
@@ -52,6 +53,8 @@ public class LoadingScreen extends ScreenAdapter {
         assetManager.load(AssetDescriptors.STEP_SOUND);
         assetManager.load(AssetDescriptors.DOOR_SOUND);
         assetManager.load(AssetDescriptors.MAIN_MUSIC);
+
+        GameManager.INSTANCE.doStuff();
     }
 
     @Override

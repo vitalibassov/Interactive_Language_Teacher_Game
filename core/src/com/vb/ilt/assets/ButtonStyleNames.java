@@ -1,6 +1,6 @@
 package com.vb.ilt.assets;
 
-public class ButtonStyleNames {
+public final class ButtonStyleNames {
 
     public static final String PLAY = "play";
     public static final String QUIT = "quit";
