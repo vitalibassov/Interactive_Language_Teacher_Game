@@ -41,12 +41,16 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
         }
 
         words.pack();
+        //words.debug();
+        words.top();
+
         ScrollPane scrollPane = new ScrollPane(words);
         scrollPane.setFadeScrollBars(false);
+        scrollPane.pack();
 
         add(search).width(500).height(50).pad(40).row();
         add(scrollPane).width(500).height(800).padBottom(40);
-        
+
         setBackground(getSkin().getDrawable("panel"));
         setSize(500, 800);
         pack();
@@ -56,7 +60,7 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
         Label label = new Label(word, getSkin());
         label.setWrap(true);
         label.setAlignment(Align.left);
-        words.add(label).padLeft(30).padRight(30).left().grow().row();
+        words.add(label).padLeft(15).padRight(15).left().top().growX().row();
     }
 
     @Override
@@ -74,6 +78,10 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
                 addRowToWords(word, this.words);
             }
         }
+        if (!this.words.hasChildren()){
+            addRowToWords("No results...", this.words);
+        }
+
         log.debug(text);
     }
 }
