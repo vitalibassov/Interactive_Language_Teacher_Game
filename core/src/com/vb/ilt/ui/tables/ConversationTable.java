@@ -1,4 +1,4 @@
-package com.vb.ilt.screen.stage;
+package com.vb.ilt.ui.tables;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

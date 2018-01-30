@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="left-down" width="100" height="100" tilewidth="128" tileheight="64" nextobjectid="43">
+<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="left-down" width="100" height="100" tilewidth="128" tileheight="64" nextobjectid="44">
  <tileset firstgid="1" source="../textures/grass.tsx"/>
  <tileset firstgid="8" source="../textures/testing_tree.tsx"/>
  <tileset firstgid="9" source="../textures/water.tsx"/>

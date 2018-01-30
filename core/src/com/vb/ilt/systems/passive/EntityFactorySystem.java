@@ -19,9 +19,11 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
@@ -41,6 +43,7 @@ import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
+import com.vb.ilt.entity.components.hud.StageComponent;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
@@ -50,6 +53,7 @@ import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
 import com.vb.ilt.entity.components.world.WorldCollisionObjectComponent;
 import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.shape.ShapeUtils;
+import com.vb.ilt.ui.tables.HudTable;
 
 import java.util.Map;
 
@@ -295,12 +299,16 @@ public class EntityFactorySystem extends EntitySystem{
 
         HudComponent hud = engine.createComponent(HudComponent.class);
 
+        DimensionComponent dimensions = engine.createComponent(DimensionComponent.class);
+        dimensions.width = GameConfig.CONTROLS_SIZE;
+        dimensions.height = GameConfig.CONTROLS_SIZE;
+
         PositionComponent position = engine.createComponent(PositionComponent.class);
         position.x = GameConfig.CONTROLS_X;
         position.y = GameConfig.CONTROLS_Y;
 
         ControlsComponent controls = engine.createComponent(ControlsComponent.class);
-        final float HALF_SIZE = GameConfig.CONTROLS_SIZE / 2f;
+        final float HALF_SIZE = dimensions.width / 2f;
         controls.bottomLeft = new Polygon(ShapeUtils.createRectangle(
                 position.x, position.y,
                 HALF_SIZE, HALF_SIZE
@@ -321,7 +329,18 @@ public class EntityFactorySystem extends EntitySystem{
         TextureComponent texture = engine.createComponent(TextureComponent.class);
         texture.region = hudAtlas.findRegion(RegionNames.CONTROLS);
 
-        addEntity(hud, controls, position, texture);
+        addEntity(hud, controls, position, texture, dimensions);
+    }
+
+    public void createHud(Viewport hudViewport){
+        StageComponent stage = engine.createComponent(StageComponent.class);
+        Stage hudStage = new Stage(hudViewport, batch);
+        hudStage.addActor(new HudTable(assetManager));
+        stage.stage = hudStage;
+
+        HudComponent hud = engine.createComponent(HudComponent.class);
+
+        addEntity(hud, stage);
     }
 
     public void createDialogs(Queue<Conversation> conversations) {

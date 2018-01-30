@@ -27,7 +27,8 @@
   "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
     "default": {
       "font": "default-font",
-      "fontColor": "white"
+      "fontColor": "white",
+      "background": "text-field"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
@@ -35,6 +36,16 @@
       "down": "small-button-down",
       "up": "small-button-up",
       "imageUp": "quit"
+    },
+    "dict":{
+      "down": "small-button-down",
+      "up": "small-button-up",
+      "imageUp": "dict"
+    },
+    "pause":{
+      "down": "small-button-down",
+      "up": "small-button-up",
+      "imageUp": "pause"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {

@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
@@ -19,7 +18,7 @@ import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
 import com.vb.ilt.systems.active.ConversationSystem;
-import com.vb.ilt.systems.active.HudRenderSystem;
+import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.MusicSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -70,7 +69,6 @@ public class GameScreen extends ScreenAdapter{
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.finishLoading();
 
-        Skin skin = assetManager.get(AssetDescriptors.SKIN);
         TiledMapManager tiledMapManager = new TiledMapManager("maps/level_1");
 
         EntitySystem dialogSystem = new ConversationSystem(assetManager, hudViewport, batch);
@@ -103,12 +101,12 @@ public class GameScreen extends ScreenAdapter{
         //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
 
 
-        engine.addSystem(new HudRenderSystem(hudViewport, batch));
+        engine.addSystem(new HudSystem(hudViewport, batch));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
         engine.addSystem(dialogSystem);
 
-        engine.addSystem(new StartUpSystem(camera, tiledMapManager, "conversations/level1.json"));
+        engine.addSystem(new StartUpSystem(camera, hudViewport, tiledMapManager, "conversations/level1.json"));
         engine.addSystem(new EntityLogger());
 
     }

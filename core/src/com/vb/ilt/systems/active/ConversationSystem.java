@@ -18,7 +18,7 @@ import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
-import com.vb.ilt.screen.stage.ConversationTable;
+import com.vb.ilt.ui.tables.ConversationTable;
 import com.vb.ilt.util.Mappers;
 
 public class ConversationSystem extends EntitySystem implements ConversationCallback {
@@ -34,7 +34,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private final Viewport hudViewport;
     private final SpriteBatch batch;
 
-    private HudRenderSystem hudRenderSystem;
+    private HudSystem hudSystem;
     private PlayerControlSystem playerControlSystem;
     private MovementSystem movementSystem;
 
@@ -50,7 +50,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void addedToEngine(Engine engine) {
-        hudRenderSystem = engine.getSystem(HudRenderSystem.class);
+        hudSystem = engine.getSystem(HudSystem.class);
         playerControlSystem = engine.getSystem(PlayerControlSystem.class);
         movementSystem = engine.getSystem(MovementSystem.class);
     }
@@ -102,7 +102,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     @Override
     public void exit() {
         this.setProcessing(false);
-        this.hudRenderSystem.setProcessing(true);
+        this.hudSystem.setProcessing(true);
         this.movementSystem.setProcessing(true);
         this.playerControlSystem.setProcessing(true);
     }
@@ -124,7 +124,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     public void setProcessing(boolean processing) {
         if (stage != null && npcType != null && processing) {
             super.setProcessing(true);
-            this.hudRenderSystem.setProcessing(false);
+            this.hudSystem.setProcessing(false);
             this.movementSystem.setProcessing(false);
             this.playerControlSystem.setProcessing(false);
         } else {

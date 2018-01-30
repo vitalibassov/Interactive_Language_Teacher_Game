@@ -12,6 +12,7 @@ import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
+import com.vb.ilt.entity.components.hud.StageComponent;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
@@ -55,6 +56,8 @@ public final class Mappers {
             ComponentMapper.getFor(PortalSensorSpawnComponent.class);
     public static final ComponentMapper<MusicComponent> MUSIC =
             ComponentMapper.getFor(MusicComponent.class);
+    public static final ComponentMapper<StageComponent> STAGE =
+            ComponentMapper.getFor(StageComponent.class);
 
     private Mappers(){}
 }
