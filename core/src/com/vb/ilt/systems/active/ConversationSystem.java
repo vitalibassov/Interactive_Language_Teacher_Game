@@ -13,13 +13,20 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.common.GameManager;
 import com.vb.ilt.entity.NPCType;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
+import com.vb.ilt.entity.components.hud.HudComponent;
+import com.vb.ilt.entity.components.hud.StageComponent;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.ui.stages.HudStage;
 import com.vb.ilt.ui.tables.ConversationTable;
 import com.vb.ilt.util.Mappers;
+
+import java.util.List;
+import java.util.Map;
 
 public class ConversationSystem extends EntitySystem implements ConversationCallback {
 
@@ -40,6 +47,11 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     private static final Family CONVERSATION = Family.all(
             ConversationComponent.class
+    ).get();
+
+    private static final Family DICT = Family.all(
+            HudComponent.class,
+            StageComponent.class
     ).get();
 
     public ConversationSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
@@ -112,7 +124,11 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         log.debug("ANSWER: " + answer);
         Dialog dialog = this.conversations.first().getNext(answer);
         if (dialog == null){
-            this.conversations.removeFirst();
+            Entity hud = getEngine().getEntitiesFor(DICT).first();
+            StageComponent stage = Mappers.STAGE.get(hud);
+            Conversation finishedConv = this.conversations.removeFirst();
+            addNewWordsToDictionary(finishedConv.getAllText(), ((HudStage)stage.stage).getAvailableWords());
+            ((HudStage)stage.stage).updateWords();
             exit();
             return;
         }
@@ -135,6 +151,19 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             this.npcType = NPCType.NONE;
             this.conversations = null;
             this.npcConv = null;
+        }
+    }
+
+    private void addNewWordsToDictionary (List<String> text, Map<String, String> dictionary){
+        for (String s : text){
+            for (String word : s.toLowerCase().split(" ")){
+                if (dictionary.get(word) == null){
+                    String result = GameManager.INSTANCE.getBigDictionary().get(word);
+                    if (result != null) {
+                        dictionary.put(word, GameManager.INSTANCE.getBigDictionary().get(word));
+                    }
+                }
+            }
         }
     }
 }

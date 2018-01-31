@@ -1,32 +1,33 @@
 package com.vb.ilt.ui.tables;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.assets.AssetDescriptors;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class DictionaryTable extends Table implements TextField.TextFieldListener{
 
     private static final Logger log = new Logger(DictionaryTable.class.getName(), Logger.DEBUG);
 
     private final AssetManager assetManager;
-    private Array<String> availableWords = new Array<String>();
-    //private LinkedHashMap<String, String> availableWords = new LinkedHashMap<String, String>();
+    //private Array<String> availableWords = new Array<String>();
+    private LinkedHashMap<String, String> availableWords = new LinkedHashMap<String, String>();
     private Table words;
 
     public DictionaryTable(AssetManager assetManager) {
         super(assetManager.get(AssetDescriptors.SKIN));
         this.assetManager = assetManager;
 
-        for (String word : Gdx.files.internal("dictionary/dictionary.txt").readString().split("\n")){
-            availableWords.add(word);
-        }
+//        for (String word : Gdx.files.internal("dictionary/dictionary.txt").readString().split("\n")){
+//            availableWords.add(word);
+//        }
 
         init();
     }
@@ -36,8 +37,8 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
         search.setTextFieldListener(this);
 
         this.words = new Table();
-        for (String s : availableWords){
-            addRowToWords(s, words);
+        for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
+            addRowToWords(wordEntry.getValue(), words);
         }
 
         words.pack();
@@ -68,14 +69,13 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
         super.act(delta);
     }
 
-
     @Override
     public void keyTyped(TextField textField, char c) {
         words.clear();
         String text = textField.getText();
-        for (String word : availableWords){
-            if (word.contains(text)){
-                addRowToWords(word, this.words);
+        for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
+            if (wordEntry.getValue().contains(text)){
+                addRowToWords(wordEntry.getValue(), this.words);
             }
         }
         if (!this.words.hasChildren()){
@@ -83,5 +83,16 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
         }
 
         log.debug(text);
+    }
+
+    public void updateWords(){
+        words.clear();
+        for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
+            addRowToWords(wordEntry.getValue(), this.words);
+        }
+    }
+
+    public Map<String, String> getAvailableWords() {
+        return availableWords;
     }
 }

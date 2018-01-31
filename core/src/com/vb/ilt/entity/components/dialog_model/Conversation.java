@@ -3,6 +3,8 @@ package com.vb.ilt.entity.components.dialog_model;
 import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.entity.NPCType;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Conversation{
@@ -40,5 +42,15 @@ public class Conversation{
 
     public void setToStart (){
         dialogIndex = 0;
+    }
+
+    public List<String> getAllText(){
+        List<String> text = new ArrayList<String>();
+        for (Map.Entry<Integer, Dialog> dialogEntry : dialogs.entrySet()){
+            Dialog dialog = dialogEntry.getValue();
+            text.add(dialog.getNpctext());
+            text.addAll(dialog.getPlayerAnswers());
+        }
+        return text;
     }
 }

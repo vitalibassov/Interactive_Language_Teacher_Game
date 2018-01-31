@@ -21,7 +21,7 @@ public final class GameManager {
 
     private void loadDictionary(){
         for (String word : Gdx.files.internal("dictionary/dictionary.txt").readString().split("\n")){
-            String[] engrus = word.toLowerCase().split(" -- ");
+            String[] engrus = word.toLowerCase().split("\t");
             if (engrus.length == 2){
                 //System.out.println(engrus[0]);
                 bigDictionary.put(engrus[0], engrus[0] + " - " + engrus[1]);
@@ -31,6 +31,10 @@ public final class GameManager {
         //seven records are lost somehow... (equal keys)
         log.debug("SIZE OF THE BIG DICTIONARY = " + bigDictionary.size());
 
+    }
+
+    public LinkedHashMap<String, String> getBigDictionary() {
+        return bigDictionary;
     }
 
     public void doStuff(){}
