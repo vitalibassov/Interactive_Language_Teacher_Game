@@ -20,7 +20,7 @@ button-up
   index: -1
 dict
   rotate: false
-  xy: 253, 166
+  xy: 335, 248
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
@@ -34,28 +34,35 @@ panel
   index: -1
 pause
   rotate: false
-  xy: 335, 248
-  size: 60, 60
-  orig: 60, 60
-  offset: 0, 0
-  index: -1
-quit
-  rotate: false
   xy: 2, 2
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-small-button-down
+plus
   rotate: false
   xy: 253, 228
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
-small-button-up
+quit
+  rotate: false
+  xy: 84, 84
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+small-button-down
   rotate: false
   xy: 2, 64
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+small-button-up
+  rotate: false
+  xy: 253, 146
   size: 80, 80
   orig: 80, 80
   offset: 0, 0

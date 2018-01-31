@@ -46,6 +46,11 @@
       "down": "small-button-down",
       "up": "small-button-up",
       "imageUp": "pause"
+    },
+    "plus":{
+      "down": "small-button-down",
+      "up": "small-button-up",
+      "imageUp": "plus"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {

@@ -1,34 +1,28 @@
 package com.vb.ilt.ui.tables;
 
-import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Logger;
-import com.vb.ilt.assets.AssetDescriptors;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class DictionaryTable extends Table implements TextField.TextFieldListener{
 
-    private static final Logger log = new Logger(DictionaryTable.class.getName(), Logger.DEBUG);
+public abstract class ListWithSearchTableBase extends Table implements TextField.TextFieldListener{
 
-    private final AssetManager assetManager;
-    //private Array<String> availableWords = new Array<String>();
-    private LinkedHashMap<String, String> availableWords = new LinkedHashMap<String, String>();
+    private final String btnStyle;
+    private final LinkedHashMap<String, String> availableWords = new LinkedHashMap<String, String>();
     private Table words;
 
-    public DictionaryTable(AssetManager assetManager) {
-        super(assetManager.get(AssetDescriptors.SKIN));
-        this.assetManager = assetManager;
-
-//        for (String word : Gdx.files.internal("dictionary/dictionary.txt").readString().split("\n")){
-//            availableWords.add(word);
-//        }
-
+    public ListWithSearchTableBase(Skin skin, String btnStyle) {
+        super(skin);
+        this.btnStyle = btnStyle;
         init();
     }
 
@@ -61,12 +55,15 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
         Label label = new Label(word, getSkin());
         label.setWrap(true);
         label.setAlignment(Align.left);
-        words.add(label).padLeft(15).padRight(15).left().top().growX().row();
-    }
-
-    @Override
-    public void act(float delta) {
-        super.act(delta);
+        words.add(label).padLeft(15).padRight(15).padTop(20).padBottom(20).left().top().growX();
+        ImageButton btn = new ImageButton(getSkin(), this.btnStyle);
+        btn.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                processBtn();
+            }
+        });
+        words.add(btn).row();
     }
 
     @Override
@@ -81,8 +78,6 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
         if (!this.words.hasChildren()){
             addRowToWords("No results...", this.words);
         }
-
-        log.debug(text);
     }
 
     public void updateWords(){
@@ -95,4 +90,6 @@ public class DictionaryTable extends Table implements TextField.TextFieldListene
     public Map<String, String> getAvailableWords() {
         return availableWords;
     }
+
+    abstract void processBtn ();
 }

@@ -11,21 +11,24 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
-import com.vb.ilt.ui.tables.DictionaryTable;
+import com.vb.ilt.ui.tables.AllWordsTabTable;
+import com.vb.ilt.ui.tables.MyWordsTabTable;
 
 import java.util.Map;
 
 public class HudStage extends Stage{
 
     private final AssetManager assetManager;
-    private final DictionaryTable dictTable;
+    private final MyWordsTabTable myWords;
+    private final AllWordsTabTable allWords;
     private Skin skin;
 
     public HudStage(AssetManager assetManager, Viewport viewport, SpriteBatch batch) {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.SKIN);
         this.assetManager = assetManager;
-        this.dictTable = new DictionaryTable(assetManager);
+        this.myWords = new MyWordsTabTable(this.skin);
+        this.allWords = new AllWordsTabTable(this.skin, this.myWords.getAvailableWords());
         init();
     }
 
@@ -33,7 +36,7 @@ public class HudStage extends Stage{
         Table mainTable = new Table();
         mainTable.defaults().pad(20);
 
-        dictTable.setVisible(false);
+        allWords.setVisible(false);
         Table buttonTable = new Table();
 
         ImageButton pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
@@ -42,7 +45,7 @@ public class HudStage extends Stage{
         dictButton.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                dictTable.setVisible(!dictTable.isVisible());
+                allWords.setVisible(!allWords.isVisible());
             }
         });
 
@@ -53,7 +56,7 @@ public class HudStage extends Stage{
 
         mainTable.add(buttonTable).top().right().expandY().expandX();
         mainTable.row();
-        mainTable.add(dictTable).top().right().expandX().expandY();
+        mainTable.add(allWords).top().right().expandX().expandY();
 
         mainTable.setFillParent(true);
         mainTable.pack();
@@ -61,10 +64,10 @@ public class HudStage extends Stage{
     }
 
     public Map<String, String> getAvailableWords(){
-        return dictTable.getAvailableWords();
+        return allWords.getAvailableWords();
     }
 
     public void updateWords(){
-        dictTable.updateWords();
+        allWords.updateWords();
     }
 }
