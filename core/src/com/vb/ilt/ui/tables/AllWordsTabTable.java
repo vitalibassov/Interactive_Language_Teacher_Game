@@ -12,7 +12,7 @@ public class AllWordsTabTable extends ListWithSearchTableBase{
     private final Map<String, String> availableWordsInAllWords;
 
     public AllWordsTabTable(Skin skin, Map<String, String> availableWordsInAllWords) {
-        super(skin, "plus");
+        super(skin, "add");
         this.availableWordsInAllWords = availableWordsInAllWords;
     }
 

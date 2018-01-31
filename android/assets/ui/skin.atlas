@@ -4,6 +4,13 @@ size: 512,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+add
+  rotate: false
+  xy: 253, 228
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 button-down
   rotate: false
   xy: 2, 228
@@ -18,9 +25,16 @@ button-up
   orig: 249, 80
   offset: 0, 0
   index: -1
+delete
+  rotate: false
+  xy: 2, 64
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 dict
   rotate: false
-  xy: 335, 248
+  xy: 2, 2
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
@@ -34,35 +48,28 @@ panel
   index: -1
 pause
   rotate: false
-  xy: 2, 2
+  xy: 84, 84
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
-plus
-  rotate: false
-  xy: 253, 228
-  size: 80, 80
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
 quit
   rotate: false
-  xy: 84, 84
+  xy: 335, 166
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 small-button-down
   rotate: false
-  xy: 2, 64
+  xy: 253, 146
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 small-button-up
   rotate: false
-  xy: 253, 146
+  xy: 335, 228
   size: 80, 80
   orig: 80, 80
   offset: 0, 0

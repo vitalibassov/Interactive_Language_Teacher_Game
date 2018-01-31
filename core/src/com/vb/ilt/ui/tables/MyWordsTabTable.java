@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 public class MyWordsTabTable extends ListWithSearchTableBase{
 
     public MyWordsTabTable(Skin skin) {
-        super(skin, "minus");
+        super(skin, "delete");
     }
 
     @Override
