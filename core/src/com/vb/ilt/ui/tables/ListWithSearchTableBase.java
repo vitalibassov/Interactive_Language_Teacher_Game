@@ -45,7 +45,7 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
 
         add(search).growX().pad(40).row();
         add(scrollPane).grow().padBottom(40).padLeft(20).padRight(20);
-        //setFillParent(true);
+        setFillParent(true);
 
 //        add(search).width(800).height(50).pad(40).row();
 //        add(scrollPane).width(800).height(800).padBottom(40);

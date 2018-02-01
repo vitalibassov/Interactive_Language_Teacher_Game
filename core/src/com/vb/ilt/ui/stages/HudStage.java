@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
@@ -38,11 +39,14 @@ public class HudStage extends Stage{
         mainTable.defaults().pad(20);
 
         Table buttonTable = new Table();
+
         final Table dictTable = new Table();
+        final WidgetGroup tabContainer = new WidgetGroup();
+
         dictTable.setVisible(false);
 
         ImageButton pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
-        ImageButton dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
+        final ImageButton dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
 
         TextButton allWordsTab = new TextButton("All Words", skin);
         TextButton myWordsTab = new TextButton("My Words", skin);
@@ -54,6 +58,21 @@ public class HudStage extends Stage{
             }
         });
 
+        allWordsTab.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                tabContainer.removeActor(myWords);
+                tabContainer.addActor(allWords);
+            }
+        });
+
+        myWordsTab.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                tabContainer.removeActor(allWords);
+                tabContainer.addActor(myWords);
+            }
+        });
 
         buttonTable.add(dictButton);
         buttonTable.add(pauseButton).padLeft(60);
@@ -66,7 +85,8 @@ public class HudStage extends Stage{
         dictTable.add(allWordsTab).growX().pad(30);
         dictTable.add(myWordsTab).growX().pad(30);
         dictTable.row();
-        dictTable.add(this.allWords).grow().colspan(2).row();
+
+        dictTable.add(tabContainer).grow().colspan(2);
 
         dictTable.pack();
         dictTable.debug();
