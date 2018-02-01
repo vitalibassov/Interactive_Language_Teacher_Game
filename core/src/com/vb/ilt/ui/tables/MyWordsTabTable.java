@@ -9,7 +9,8 @@ public class MyWordsTabTable extends ListWithSearchTableBase{
     }
 
     @Override
-    void processBtn() {
-
+    void processBtn(String wordKey, String wordValue) {
+        getAvailableWords().remove(wordKey);
+        updateWords();
     }
 }

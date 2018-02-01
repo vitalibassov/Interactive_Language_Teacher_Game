@@ -62,7 +62,8 @@
     "default": {
       "font": "default-font",
       "up": "button-up",
-      "down": "button-down"
+      "down": "button-down",
+      "disabled": "button-down"
     }
   }
 }

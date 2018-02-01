@@ -48,8 +48,8 @@ public class HudStage extends Stage{
         ImageButton pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
         final ImageButton dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
 
-        TextButton allWordsTab = new TextButton("All Words", skin);
-        TextButton myWordsTab = new TextButton("My Words", skin);
+        final TextButton allWordsTab = new TextButton("All Words", skin);
+        final TextButton myWordsTab = new TextButton("My Words", skin);
 
         dictButton.addListener(new ChangeListener(){
             @Override
@@ -63,6 +63,8 @@ public class HudStage extends Stage{
             public void changed(ChangeEvent event, Actor actor) {
                 tabContainer.removeActor(myWords);
                 tabContainer.addActor(allWords);
+                allWords.updateWords();
+                switchButtonsState(allWordsTab, myWordsTab, true, false);
             }
         });
 
@@ -71,35 +73,43 @@ public class HudStage extends Stage{
             public void changed(ChangeEvent event, Actor actor) {
                 tabContainer.removeActor(allWords);
                 tabContainer.addActor(myWords);
+                myWords.updateWords();
+                switchButtonsState(myWordsTab, allWordsTab, true, false);
             }
         });
+
+        tabContainer.removeActor(myWords);
+        tabContainer.addActor(allWords);
+        allWords.updateWords();
+        switchButtonsState(allWordsTab, myWordsTab, true, false);
 
         buttonTable.add(dictButton);
         buttonTable.add(pauseButton).padLeft(60);
         buttonTable.pack();
 
-        this.allWords.debug();
-
         //this.allWords.setSize(800, 600);
         dictTable.setBackground(this.skin.getDrawable("panel"));
-        dictTable.add(allWordsTab).growX().pad(30);
-        dictTable.add(myWordsTab).growX().pad(30);
+        dictTable.add(allWordsTab).growX().padTop(50).padLeft(30).padRight(30);
+        dictTable.add(myWordsTab).growX().padTop(50).padLeft(30).padRight(30);
         dictTable.row();
 
         dictTable.add(tabContainer).grow().colspan(2);
 
         dictTable.pack();
-        dictTable.debug();
 
         mainTable.add(buttonTable).top().right().expandY().expandX();
         mainTable.row();
-        mainTable.add(dictTable).width(1000).height(800).top().right().expandX().expandY();
+        mainTable.add(dictTable).width(1000).height(900).top().right().expandX().expandY();
 
         mainTable.setFillParent(true);
 
         mainTable.pack();
-        mainTable.debug();
         this.addActor(mainTable);
+    }
+
+    private void switchButtonsState(TextButton btn1, TextButton btn2, boolean b1, boolean b2){
+        btn1.setDisabled(b1);
+        btn2.setDisabled(b2);
     }
 
     public Map<String, String> getAvailableWords(){

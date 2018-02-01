@@ -9,15 +9,15 @@ public class AllWordsTabTable extends ListWithSearchTableBase{
 
     private static final Logger log = new Logger(AllWordsTabTable.class.getName(), Logger.DEBUG);
 
-    private final Map<String, String> availableWordsInAllWords;
+    private final Map<String, String> availableWordsInMyWords;
 
-    public AllWordsTabTable(Skin skin, Map<String, String> availableWordsInAllWords) {
+    public AllWordsTabTable(Skin skin, Map<String, String> availableWordsInMyWords) {
         super(skin, "add");
-        this.availableWordsInAllWords = availableWordsInAllWords;
+        this.availableWordsInMyWords = availableWordsInMyWords;
     }
 
     @Override
-    void processBtn() {
-        log.debug("BUTTON IS PROCESSING");
+    void processBtn(String wordKey, String wordValue) {
+        availableWordsInMyWords.put(wordKey, wordValue);
     }
 }

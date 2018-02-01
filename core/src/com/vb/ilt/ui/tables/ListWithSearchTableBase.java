@@ -18,6 +18,7 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
 
     private final String btnStyle;
     private final LinkedHashMap<String, String> availableWords = new LinkedHashMap<String, String>();
+    private TextField search;
     private Table words;
 
     public ListWithSearchTableBase(Skin skin, String btnStyle) {
@@ -27,12 +28,12 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
     }
 
     private void init(){
-        TextField search = new TextField("", getSkin());
-        search.setTextFieldListener(this);
+        this.search = new TextField("", getSkin());
+        this.search.setTextFieldListener(this);
 
         this.words = new Table();
         for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
-            addRowToWords(wordEntry.getValue(), words);
+            addRowToWords(wordEntry.getKey(), wordEntry.getValue(), words);
         }
 
         words.pack();
@@ -43,7 +44,7 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         scrollPane.setFadeScrollBars(false);
         scrollPane.pack();
 
-        add(search).growX().pad(40).row();
+        add(this.search).growX().pad(40).row();
         add(scrollPane).grow().padBottom(40).padLeft(20).padRight(20);
         setFillParent(true);
 
@@ -54,39 +55,39 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         pack();
     }
 
-    private void addRowToWords(String word, Table words){
-        Label label = new Label(word, getSkin());
+    private void addRowToWords(final String wordKey, final String wordValue, Table words){
+        Label label = new Label(wordValue, getSkin());
         label.setWrap(true);
         label.setAlignment(Align.left);
         words.add(label).padLeft(15).padRight(15).padTop(20).padBottom(20).left().top().growX();
-        ImageButton btn = new ImageButton(getSkin(), this.btnStyle);
-        btn.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                processBtn();
-            }
-        });
-        words.add(btn).row();
+        if (wordKey != null) {
+            ImageButton btn = new ImageButton(getSkin(), this.btnStyle);
+            btn.setName(wordValue);
+            btn.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    processBtn(wordKey, wordValue);
+                }
+            });
+            words.add(btn).row();
+        }
     }
 
     @Override
     public void keyTyped(TextField textField, char c) {
-        words.clear();
-        String text = textField.getText();
-        for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
-            if (wordEntry.getValue().contains(text)){
-                addRowToWords(wordEntry.getValue(), this.words);
-            }
-        }
-        if (!this.words.hasChildren()){
-            addRowToWords("No results...", this.words);
-        }
+        updateWords();
     }
 
     public void updateWords(){
         words.clear();
+        String text = this.search.getText();
         for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
-            addRowToWords(wordEntry.getValue(), this.words);
+            if (wordEntry.getValue().contains(text)){
+                addRowToWords(wordEntry.getKey(), wordEntry.getValue(), this.words);
+            }
+        }
+        if (!this.words.hasChildren()){
+            addRowToWords(null,"No results...", this.words);
         }
     }
 
@@ -94,5 +95,5 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         return availableWords;
     }
 
-    abstract void processBtn ();
+    abstract void processBtn (String wordKey, String wordValue);
 }
