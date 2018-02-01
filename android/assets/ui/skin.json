@@ -51,6 +51,11 @@
       "down": "small-button-down",
       "up": "small-button-up",
       "imageUp": "add"
+    },
+    "delete":{
+      "down": "small-button-down",
+      "up": "small-button-up",
+      "imageUp": "delete"
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {

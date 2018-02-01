@@ -43,11 +43,14 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         scrollPane.setFadeScrollBars(false);
         scrollPane.pack();
 
-        add(search).width(800).height(50).pad(40).row();
-        add(scrollPane).width(800).height(800).padBottom(40);
+        add(search).growX().pad(40).row();
+        add(scrollPane).grow().padBottom(40).padLeft(20).padRight(20);
+        //setFillParent(true);
 
-        setBackground(getSkin().getDrawable("panel"));
-        setSize(800, 800);
+//        add(search).width(800).height(50).pad(40).row();
+//        add(scrollPane).width(800).height(800).padBottom(40);
+//
+//        setSize(800, 800);
         pack();
     }
 

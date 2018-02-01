@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
@@ -36,16 +37,20 @@ public class HudStage extends Stage{
         Table mainTable = new Table();
         mainTable.defaults().pad(20);
 
-        allWords.setVisible(false);
         Table buttonTable = new Table();
+        final Table dictTable = new Table();
+        dictTable.setVisible(false);
 
         ImageButton pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
         ImageButton dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
 
+        TextButton allWordsTab = new TextButton("All Words", skin);
+        TextButton myWordsTab = new TextButton("My Words", skin);
+
         dictButton.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                allWords.setVisible(!allWords.isVisible());
+                dictTable.setVisible(!dictTable.isVisible());
             }
         });
 
@@ -54,12 +59,26 @@ public class HudStage extends Stage{
         buttonTable.add(pauseButton).padLeft(60);
         buttonTable.pack();
 
+        this.allWords.debug();
+
+        //this.allWords.setSize(800, 600);
+        dictTable.setBackground(this.skin.getDrawable("panel"));
+        dictTable.add(allWordsTab).growX().pad(30);
+        dictTable.add(myWordsTab).growX().pad(30);
+        dictTable.row();
+        dictTable.add(this.allWords).grow().colspan(2).row();
+
+        dictTable.pack();
+        dictTable.debug();
+
         mainTable.add(buttonTable).top().right().expandY().expandX();
         mainTable.row();
-        mainTable.add(allWords).top().right().expandX().expandY();
+        mainTable.add(dictTable).width(1000).height(800).top().right().expandX().expandY();
 
         mainTable.setFillParent(true);
+
         mainTable.pack();
+        mainTable.debug();
         this.addActor(mainTable);
     }
 
