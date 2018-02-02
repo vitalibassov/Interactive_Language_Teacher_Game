@@ -49,6 +49,9 @@ public class ConversationStage extends Stage {
         mainTable.defaults().pad(20);
         this.npcText = new Label("", skin);
         this.npcText.setWrap(true);
+
+        //this.npcText.setFontScale(2);
+
         Table buttonTable = new Table();
 
         Table container = new Table();
@@ -89,7 +92,6 @@ public class ConversationStage extends Stage {
         mainTable.center();
         mainTable.setFillParent(true);
         mainTable.pack();
-        mainTable.debugAll();
 
         container.setFillParent(true);
         container.defaults().pad(20);

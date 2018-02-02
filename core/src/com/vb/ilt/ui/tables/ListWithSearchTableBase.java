@@ -55,12 +55,12 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         pack();
     }
 
-    private void addRowToWords(final String wordKey, final String wordValue, Table words){
+    protected void addRowToWords(final String wordKey, final String wordValue, Table words){
         Label label = new Label(wordValue, getSkin());
         label.setWrap(true);
         label.setAlignment(Align.left);
         words.add(label).padLeft(15).padRight(15).padTop(20).padBottom(20).left().top().growX();
-        if (wordKey != null) {
+        if (checkWordKey(wordKey)) {
             ImageButton btn = new ImageButton(getSkin(), this.btnStyle);
             btn.setName(wordValue);
             btn.addListener(new ChangeListener() {
@@ -71,6 +71,11 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
             });
             words.add(btn).row();
         }
+        words.add().row();
+    }
+
+    protected boolean checkWordKey(final String wordKey){
+        return wordKey != null;
     }
 
     @Override

@@ -19,5 +19,11 @@ public class AllWordsTabTable extends ListWithSearchTableBase{
     @Override
     void processBtn(String wordKey, String wordValue) {
         availableWordsInMyWords.put(wordKey, wordValue);
+        updateWords();
+    }
+
+    @Override
+    protected boolean checkWordKey(String wordKey) {
+        return wordKey != null && !availableWordsInMyWords.containsKey(wordKey);
     }
 }
