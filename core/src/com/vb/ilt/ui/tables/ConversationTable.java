@@ -23,6 +23,7 @@ public class ConversationTable extends Table{
     private final ConversationCallback conversationCallback;
     private Label npcText;
     private Table dialogTable = new Table();
+    //private Table
     private TextureRegion region;
 
     public ConversationTable(AssetManager assetManager, TextureRegion region, ConversationCallback conversationCallback) {
