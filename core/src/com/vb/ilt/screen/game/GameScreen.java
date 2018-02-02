@@ -75,7 +75,7 @@ public class GameScreen extends ScreenAdapter{
         dialogSystem.setProcessing(false);
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
-
+        engine.addSystem(new StartUpSystem(camera, hudViewport, tiledMapManager, "conversations/level1.json"));
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new SoundSystem());
@@ -106,7 +106,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(dialogSystem);
 
-        engine.addSystem(new StartUpSystem(camera, hudViewport, tiledMapManager, "conversations/level1.json"));
+
         engine.addSystem(new EntityLogger());
 
     }

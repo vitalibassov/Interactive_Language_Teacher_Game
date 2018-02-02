@@ -38,6 +38,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private NPCType npcType;
     private final Viewport hudViewport;
     private final SpriteBatch batch;
+    private HudStage hudStage;
 
     private HudSystem hudSystem;
     private PlayerControlSystem playerControlSystem;
@@ -63,6 +64,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         hudSystem = engine.getSystem(HudSystem.class);
         playerControlSystem = engine.getSystem(PlayerControlSystem.class);
         movementSystem = engine.getSystem(MovementSystem.class);
+        hudStage = (HudStage) Mappers.STAGE.get(engine.getEntitiesFor(DICT).first()).stage;
     }
 
     @Override
@@ -116,24 +118,28 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void exit() {
-        this.setProcessing(false);
         this.hudSystem.setProcessing(true);
         this.movementSystem.setProcessing(true);
         this.playerControlSystem.setProcessing(true);
+        this.setMyAvailableWordsToMainDictionary(this.hudStage);
+        this.setProcessing(false);
     }
+
+    private void setMyAvailableWordsToMainDictionary(HudStage stage){
+        stage.setAvailableMyWords(this.npcConv.getAvailableMyWords());
+        stage.updateWords();
+    }
+
+
 
     @Override
     public void nextDialog(String answer) {
         log.debug("ANSWER: " + answer);
         Dialog dialog = this.conversations.first().getNext(answer);
         if (dialog == null){
-            Entity hud = getEngine().getEntitiesFor(DICT).first();
-            StageComponent stageComp = Mappers.STAGE.get(hud);
-            HudStage stage = (HudStage)stageComp.stage;
             Conversation finishedConv = this.conversations.removeFirst();
-            addNewWordsToDictionary(finishedConv.getAllText(), stage.getAvailableAllWords());
-            stage.setAvailableMyWords(this.npcConv.getAvailableMyWords());
-            stage.updateWords();
+            addNewWordsToDictionary(finishedConv.getAllText(), hudStage.getAvailableAllWords());
+            setMyAvailableWordsToMainDictionary(this.hudStage);
             exit();
             return;
         }
