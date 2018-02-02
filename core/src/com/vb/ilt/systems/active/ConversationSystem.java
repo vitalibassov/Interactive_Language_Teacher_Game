@@ -8,7 +8,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -21,8 +20,8 @@ import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.hud.StageComponent;
 import com.vb.ilt.entity.components.npc.ConversationComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.ui.stages.ConversationStage;
 import com.vb.ilt.ui.stages.HudStage;
-import com.vb.ilt.ui.tables.ConversationTable;
 import com.vb.ilt.util.Mappers;
 
 import java.util.List;
@@ -34,9 +33,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     private final AssetManager assetManager;
 
-    private ConversationTable npcConv;
+    private ConversationStage npcConv;
     private Queue<Conversation> conversations;
-    private Stage stage;
     private NPCType npcType;
     private final Viewport hudViewport;
     private final SpriteBatch batch;
@@ -69,8 +67,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void update(float deltaTime) {
-        stage.act();
-        stage.draw();
+        npcConv.act();
+        npcConv.draw();
     }
 
     public boolean setNpcAndRun (Entity entity){
@@ -96,8 +94,15 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     }
 
     private void buildStage(Queue<Conversation> conversations) {
+        Entity hud = getEngine().getEntitiesFor(DICT).first();
+        StageComponent stageComp = Mappers.STAGE.get(hud);
+
         TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
-        this.npcConv = new ConversationTable(assetManager, atlas.findRegion(this.npcType.name().toLowerCase()), this);
+        this.npcConv = new ConversationStage(hudViewport, batch, assetManager.get(AssetDescriptors.SKIN), atlas.findRegion(this.npcType.name().toLowerCase()), this);
+        HudStage stage = (HudStage)stageComp.stage;
+        this.npcConv.setAvailableAllWords(stage.getAvailableAllWords());
+        this.npcConv.setAvailableMyWords(stage.getAvailableMyWords());
+        this.npcConv.updateWords();
 
         conversations.first().setToStart();
         Dialog firstDialog = conversations.first().getNext(null);
@@ -105,10 +110,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.npcConv.updateDialog(firstDialog.getNpctext());
         this.npcConv.setAnswers(firstDialog.getPlayerAnswers());
 
-        this.stage = new Stage(hudViewport, batch);
-        this.stage.addActor(npcConv);
 
-        Gdx.input.setInputProcessor(stage);
+        Gdx.input.setInputProcessor(npcConv);
     }
 
     @Override
@@ -125,10 +128,12 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         Dialog dialog = this.conversations.first().getNext(answer);
         if (dialog == null){
             Entity hud = getEngine().getEntitiesFor(DICT).first();
-            StageComponent stage = Mappers.STAGE.get(hud);
+            StageComponent stageComp = Mappers.STAGE.get(hud);
+            HudStage stage = (HudStage)stageComp.stage;
             Conversation finishedConv = this.conversations.removeFirst();
-            addNewWordsToDictionary(finishedConv.getAllText(), ((HudStage)stage.stage).getAvailableWords());
-            ((HudStage)stage.stage).updateWords();
+            addNewWordsToDictionary(finishedConv.getAllText(), stage.getAvailableAllWords());
+            stage.setAvailableMyWords(this.npcConv.getAvailableMyWords());
+            stage.updateWords();
             exit();
             return;
         }
@@ -138,15 +143,15 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void setProcessing(boolean processing) {
-        if (stage != null && npcType != null && processing) {
+        if (npcConv != null && npcType != null && processing) {
             super.setProcessing(true);
             this.hudSystem.setProcessing(false);
             this.movementSystem.setProcessing(false);
             this.playerControlSystem.setProcessing(false);
         } else {
             super.setProcessing(false);
-            if (this.stage != null){
-                this.stage.dispose();
+            if (this.npcConv != null){
+                this.npcConv.dispose();
             }
             this.npcType = NPCType.NONE;
             this.conversations = null;

@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
@@ -17,6 +18,8 @@ import java.util.Map;
 
 public class HudStage extends Stage{
 
+    private static final Logger log = new Logger(HudStage.class.getName(), Logger.DEBUG);
+
     private final AssetManager assetManager;
     private final DictionaryTable dictTable;
     private Skin skin;
@@ -25,7 +28,7 @@ public class HudStage extends Stage{
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.SKIN);
         this.assetManager = assetManager;
-        this.dictTable = new DictionaryTable(this.skin);
+        this.dictTable = new DictionaryTable(skin);
         init();
     }
 
@@ -61,8 +64,16 @@ public class HudStage extends Stage{
     }
 
 
-    public Map<String, String> getAvailableWords(){
-        return dictTable.getAvailableWords();
+    public Map<String, String> getAvailableAllWords(){
+        return dictTable.getAvailableAllWords();
+    }
+
+    public Map<String, String> getAvailableMyWords(){
+        return dictTable.getAvailableMyWords();
+    }
+
+    public void setAvailableMyWords(Map<String, String> words){
+        dictTable.setAvailableMyWords(words);
     }
 
     public void updateWords(){

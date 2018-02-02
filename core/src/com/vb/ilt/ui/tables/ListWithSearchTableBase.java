@@ -95,5 +95,10 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         return availableWords;
     }
 
+    public void setAvailableWords(Map<String, String> availableWords) {
+        this.availableWords.clear();
+        this.availableWords.putAll(availableWords);
+    }
+
     abstract void processBtn (String wordKey, String wordValue);
 }

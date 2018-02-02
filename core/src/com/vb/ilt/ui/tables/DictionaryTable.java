@@ -70,11 +70,24 @@ public class DictionaryTable extends Table{
         btn2.setDisabled(b2);
     }
 
-    public Map<String, String> getAvailableWords(){
+    public Map<String, String> getAvailableAllWords(){
         return allWords.getAvailableWords();
+    }
+
+    public Map<String, String> getAvailableMyWords(){
+        return myWords.getAvailableWords();
+    }
+
+    public void setAvailableAllWords(Map<String, String> words){
+        allWords.setAvailableWords(words);
+    }
+
+    public void setAvailableMyWords(Map<String, String> words){
+        myWords.setAvailableWords(words);
     }
 
     public void updateWords(){
         allWords.updateWords();
+        myWords.updateWords();
     }
 }
