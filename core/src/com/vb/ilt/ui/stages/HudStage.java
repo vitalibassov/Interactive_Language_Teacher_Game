@@ -24,11 +24,20 @@ public class HudStage extends Stage{
     private final DictionaryTable dictTable;
     private Skin skin;
 
+
     public HudStage(AssetManager assetManager, Viewport viewport, SpriteBatch batch) {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.SKIN);
         this.assetManager = assetManager;
         this.dictTable = new DictionaryTable(skin);
+        init();
+    }
+
+    public HudStage(AssetManager assetManager, Viewport viewport, SpriteBatch batch, Map<String, String> allWords, Map<String, String> myWords) {
+        super(viewport, batch);
+        this.skin = assetManager.get(AssetDescriptors.SKIN);
+        this.assetManager = assetManager;
+        this.dictTable = new DictionaryTable(skin, allWords, myWords);
         init();
     }
 

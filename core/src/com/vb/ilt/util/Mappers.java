@@ -3,6 +3,7 @@ package com.vb.ilt.util;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
+import com.vb.ilt.entity.components.DictionaryComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
@@ -58,6 +59,8 @@ public final class Mappers {
             ComponentMapper.getFor(MusicComponent.class);
     public static final ComponentMapper<StageComponent> STAGE =
             ComponentMapper.getFor(StageComponent.class);
+    public static final ComponentMapper<DictionaryComponent> DICT =
+            ComponentMapper.getFor(DictionaryComponent.class);
 
     private Mappers(){}
 }

@@ -9,6 +9,7 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.ConversationUnpacker;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.common.TiledMapObjectsProvider;
+import com.vb.ilt.entity.components.DictionaryComponent;
 
 
 public class StartUpSystem extends EntitySystem{
@@ -50,7 +51,8 @@ public class StartUpSystem extends EntitySystem{
         factory.createPlayer(provider.getPlayerSpawnPoint());
         factory.createCollisionObjects(provider.getCollisionObjects());
         factory.createMusic(AssetDescriptors.MAIN_MUSIC);
-        factory.createHud(hudViewport);
+        DictionaryComponent dict = factory.createDictionary();
+        factory.createHud(hudViewport, dict);
 
         factory.createControls();
 

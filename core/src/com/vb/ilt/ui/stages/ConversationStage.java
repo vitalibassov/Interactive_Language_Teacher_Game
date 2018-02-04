@@ -44,6 +44,16 @@ public class ConversationStage extends Stage {
         init();
     }
 
+    public ConversationStage(Viewport viewport, SpriteBatch batch, Skin skin,
+                             TextureRegion region, ConversationCallback conversationCallback, Map<String, String> allWords, Map<String, String> myWords) {
+        super(viewport, batch);
+        this.skin = skin;
+        this.conversationCallback = conversationCallback;
+        this.dictTable = new DictionaryTable(skin, allWords, myWords);
+        this.region = region;
+        init();
+    }
+
     private void init(){
         Table mainTable = new Table();
         mainTable.defaults().pad(20);

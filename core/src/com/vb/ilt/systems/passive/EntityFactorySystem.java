@@ -30,6 +30,7 @@ import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.NPCType;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
+import com.vb.ilt.entity.components.DictionaryComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
@@ -54,6 +55,7 @@ import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.shape.ShapeUtils;
 import com.vb.ilt.ui.stages.HudStage;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class EntityFactorySystem extends EntitySystem{
@@ -331,13 +333,21 @@ public class EntityFactorySystem extends EntitySystem{
         addEntity(hud, controls, position, texture, dimensions);
     }
 
-    public void createHud(Viewport hudViewport){
+    public void createHud(Viewport hudViewport, DictionaryComponent dictionaryComponent){
         StageComponent stage = engine.createComponent(StageComponent.class);
-        stage.stage = new HudStage(assetManager, hudViewport, batch);
+        stage.stage = new HudStage(assetManager, hudViewport, batch, dictionaryComponent.allWords, dictionaryComponent.myWords);
 
         HudComponent hud = engine.createComponent(HudComponent.class);
 
         addEntity(hud, stage);
+    }
+
+    public DictionaryComponent createDictionary(){
+        DictionaryComponent dict = engine.createComponent(DictionaryComponent.class);
+        dict.allWords = new LinkedHashMap<String, String>();
+        dict.myWords = new LinkedHashMap<String, String>();
+        addEntity(dict);
+        return dict;
     }
 
     public void createDialogs(Queue<Conversation> conversations) {
@@ -352,6 +362,8 @@ public class EntityFactorySystem extends EntitySystem{
         musicComponent.music.setVolume(GameConfig.MUSIC_VOLUME);
         addEntity(musicComponent);
     }
+
+
 
     private void addEntity(Component ... components){
         Entity entity = engine.createEntity();

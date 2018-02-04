@@ -16,6 +16,11 @@ public class AllWordsTabTable extends ListWithSearchTableBase{
         this.availableWordsInMyWords = availableWordsInMyWords;
     }
 
+    public AllWordsTabTable(Skin skin, Map<String, String> availableWordsInMyWords, Map<String, String> availableWords) {
+        super(skin, "add", availableWords);
+        this.availableWordsInMyWords = availableWordsInMyWords;
+    }
+
     @Override
     void processBtn(String wordKey, String wordValue) {
         availableWordsInMyWords.put(wordKey, wordValue);
@@ -24,6 +29,8 @@ public class AllWordsTabTable extends ListWithSearchTableBase{
 
     @Override
     protected boolean checkWordKey(String wordKey) {
+        log.debug("WORD KEY= " + wordKey);
+        log.debug("AVAILABLE WORDS IS NULL= " + (availableWordsInMyWords == null));
         return wordKey != null && !availableWordsInMyWords.containsKey(wordKey);
     }
 }

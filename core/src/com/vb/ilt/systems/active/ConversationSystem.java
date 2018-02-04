@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.entity.NPCType;
+import com.vb.ilt.entity.components.DictionaryComponent;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 import com.vb.ilt.entity.components.hud.HudComponent;
@@ -36,9 +37,12 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private ConversationStage npcConv;
     private Queue<Conversation> conversations;
     private NPCType npcType;
+    private HudStage hudStage;
+    private DictionaryComponent dictionaryComponent;
     private final Viewport hudViewport;
     private final SpriteBatch batch;
-    private HudStage hudStage;
+
+
 
     private HudSystem hudSystem;
     private PlayerControlSystem playerControlSystem;
@@ -49,8 +53,11 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     ).get();
 
     private static final Family DICT = Family.all(
-            HudComponent.class,
-            StageComponent.class
+            DictionaryComponent.class
+    ).get();
+
+    private static final Family HUD_STAGE = Family.all(
+            HudComponent.class, StageComponent.class
     ).get();
 
     public ConversationSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
@@ -64,7 +71,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         hudSystem = engine.getSystem(HudSystem.class);
         playerControlSystem = engine.getSystem(PlayerControlSystem.class);
         movementSystem = engine.getSystem(MovementSystem.class);
-        hudStage = (HudStage) Mappers.STAGE.get(engine.getEntitiesFor(DICT).first()).stage;
+        hudStage = (HudStage) Mappers.STAGE.get(engine.getEntitiesFor(HUD_STAGE).first()).stage;
+        dictionaryComponent = Mappers.DICT.get(engine.getEntitiesFor(DICT).first());
     }
 
     @Override
@@ -96,14 +104,15 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     }
 
     private void buildStage(Queue<Conversation> conversations) {
-        Entity hud = getEngine().getEntitiesFor(DICT).first();
-        StageComponent stageComp = Mappers.STAGE.get(hud);
-
         TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
-        this.npcConv = new ConversationStage(hudViewport, batch, assetManager.get(AssetDescriptors.SKIN), atlas.findRegion(this.npcType.name().toLowerCase()), this);
-        HudStage stage = (HudStage)stageComp.stage;
-        this.npcConv.setAvailableAllWords(stage.getAvailableAllWords());
-        this.npcConv.setAvailableMyWords(stage.getAvailableMyWords());
+
+        log.debug("ALL WORDS IS NULL= " + (dictionaryComponent.allWords == null));
+        log.debug("MY WORDS IS NULL= " + (dictionaryComponent.myWords == null));
+        this.npcConv = new ConversationStage(hudViewport, batch,
+                assetManager.get(AssetDescriptors.SKIN),
+                atlas.findRegion(this.npcType.name().toLowerCase()), this);
+        this.npcConv.setAvailableAllWords(dictionaryComponent.allWords);
+        this.npcConv.setAvailableMyWords(dictionaryComponent.myWords);
         this.npcConv.updateWords();
 
         conversations.first().setToStart();
@@ -121,16 +130,11 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.hudSystem.setProcessing(true);
         this.movementSystem.setProcessing(true);
         this.playerControlSystem.setProcessing(true);
-        this.setMyAvailableWordsToMainDictionary(this.hudStage);
+        this.dictionaryComponent.myWords.clear();
+        this.dictionaryComponent.myWords.putAll(this.npcConv.getAvailableMyWords());
+        this.hudStage.updateWords();
         this.setProcessing(false);
     }
-
-    private void setMyAvailableWordsToMainDictionary(HudStage stage){
-        stage.setAvailableMyWords(this.npcConv.getAvailableMyWords());
-        stage.updateWords();
-    }
-
-
 
     @Override
     public void nextDialog(String answer) {
@@ -138,8 +142,9 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         Dialog dialog = this.conversations.first().getNext(answer);
         if (dialog == null){
             Conversation finishedConv = this.conversations.removeFirst();
-            addNewWordsToDictionary(finishedConv.getAllText(), hudStage.getAvailableAllWords());
-            setMyAvailableWordsToMainDictionary(this.hudStage);
+            Entity dictionaryEntity = getEngine().getEntitiesFor(DICT).first();
+            DictionaryComponent dictionaryComponent = Mappers.DICT.get(dictionaryEntity);
+            addNewWordsToDictionary(finishedConv.getAllText(), dictionaryComponent.allWords);
             exit();
             return;
         }
@@ -168,10 +173,11 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private void addNewWordsToDictionary (List<String> text, Map<String, String> dictionary){
         for (String s : text){
             for (String word : s.toLowerCase().split(" ")){
-                if (dictionary.get(word) == null){
-                    String result = GameManager.INSTANCE.getBigDictionary().get(word);
+                String formattedWord = word.replaceAll("\\W", "");
+                if (dictionary.get(formattedWord) == null){
+                    String result = GameManager.INSTANCE.getBigDictionary().get(formattedWord);
                     if (result != null) {
-                        dictionary.put(word, GameManager.INSTANCE.getBigDictionary().get(word));
+                        dictionary.put(formattedWord, GameManager.INSTANCE.getBigDictionary().get(formattedWord));
                     }
                 }
             }

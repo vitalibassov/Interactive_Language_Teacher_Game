@@ -17,13 +17,21 @@ import java.util.Map;
 public abstract class ListWithSearchTableBase extends Table implements TextField.TextFieldListener{
 
     private final String btnStyle;
-    private final LinkedHashMap<String, String> availableWords = new LinkedHashMap<String, String>();
+    private final Map<String, String> availableWords;
     private TextField search;
     private Table words;
 
     public ListWithSearchTableBase(Skin skin, String btnStyle) {
         super(skin);
         this.btnStyle = btnStyle;
+        this.availableWords = new LinkedHashMap<String, String>();
+        init();
+    }
+
+    public ListWithSearchTableBase(Skin skin, String btnStyle, Map<String, String> availableWords) {
+        super(skin);
+        this.btnStyle = btnStyle;
+        this.availableWords = availableWords;
         init();
     }
 

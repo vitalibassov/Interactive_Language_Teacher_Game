@@ -23,6 +23,15 @@ public class DictionaryTable extends Table{
         init();
     }
 
+    public DictionaryTable(Skin skin, Map<String, String> allWords, Map<String, String> myWords) {
+        this.skin = skin;
+
+        this.myWords = new MyWordsTabTable(this.skin, myWords);
+        this.allWords = new AllWordsTabTable(this.skin, this.myWords.getAvailableWords(), allWords);
+
+        init();
+    }
+
     private void init(){
         final WidgetGroup tabContainer = new WidgetGroup();
 
