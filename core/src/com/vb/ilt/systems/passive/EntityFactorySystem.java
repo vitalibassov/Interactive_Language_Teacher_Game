@@ -55,8 +55,8 @@ import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.shape.ShapeUtils;
 import com.vb.ilt.ui.stages.HudStage;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class EntityFactorySystem extends EntitySystem{
 
@@ -344,8 +344,8 @@ public class EntityFactorySystem extends EntitySystem{
 
     public DictionaryComponent createDictionary(){
         DictionaryComponent dict = engine.createComponent(DictionaryComponent.class);
-        dict.allWords = new LinkedHashMap<String, String>();
-        dict.myWords = new LinkedHashMap<String, String>();
+        dict.allWords = new TreeMap<String, String>();
+        dict.myWords = new TreeMap<String, String>();
         addEntity(dict);
         return dict;
     }
