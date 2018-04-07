@@ -15,7 +15,6 @@ import com.badlogic.gdx.utils.Logger;
  */
 public class DebugCameraInfo {
 
-    // == constants ==
     private static final Logger log = new Logger(DebugCameraInfo.class.getName(), Logger.DEBUG);
 
     private static final String MAX_ZOOM_IN = "maxZoomIn";
@@ -51,7 +50,6 @@ public class DebugCameraInfo {
 
     private final String FILE_PATH = "debug/debug-camera.json";
 
-    // == attributes ==
     private float maxZoomIn;
     private float maxZoomOut;
     private float moveSpeed;
@@ -70,12 +68,10 @@ public class DebugCameraInfo {
 
     private FileHandle fileHandle;
 
-    // == constructors ==
     public DebugCameraInfo() {
         init();
     }
 
-    // == init ==
     private void init() {
         fileHandle = Gdx.files.internal(FILE_PATH);
 
@@ -87,7 +83,6 @@ public class DebugCameraInfo {
         }
     }
 
-    // == private methods ==
     private void load() {
         try {
             JsonReader reader = new JsonReader();
@@ -131,7 +126,6 @@ public class DebugCameraInfo {
         logKey = DEFAULT_LOG_KEY;
     }
 
-    // == public methods ==
     public float getMaxZoomIn() {
         return maxZoomIn;
     }
@@ -201,7 +195,6 @@ public class DebugCameraInfo {
 
     }
 
-    // == static methods ==
     private static int getInputKeyValue(JsonValue root, String name, int defaultInputKey) {
         String keyString = root.getString(name, Input.Keys.toString(defaultInputKey));
         return Input.Keys.valueOf(keyString);

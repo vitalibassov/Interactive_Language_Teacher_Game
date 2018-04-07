@@ -25,6 +25,7 @@ import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;
 import com.vb.ilt.systems.active.ZOrderSystem;
+import com.vb.ilt.systems.debug.DebugCameraSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.EntityLogger;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
@@ -75,7 +76,7 @@ public class GameScreen extends ScreenAdapter{
         dialogSystem.setProcessing(false);
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
-        engine.addSystem(new StartUpSystem(camera, hudViewport, tiledMapManager, "conversations/level1.json"));
+        engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, "conversations/level_1.json"));
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new SoundSystem());
@@ -98,7 +99,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new WorldRenderSystem(viewport, batch));
 
        // engine.addSystem(new GridRenderSystem(viewport, renderer));
-        //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
+        engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
 
 
         engine.addSystem(new HudSystem(hudViewport, batch));

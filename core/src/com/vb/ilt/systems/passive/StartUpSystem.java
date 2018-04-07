@@ -3,7 +3,6 @@ package com.vb.ilt.systems.passive;
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.ConversationUnpacker;
@@ -15,13 +14,11 @@ import com.vb.ilt.entity.components.DictionaryComponent;
 public class StartUpSystem extends EntitySystem{
 
     private EntityFactorySystem factory;
-    private final OrthographicCamera camera;
     private final TiledMapManager mapManager;
     private final String conversationName;
     private final Viewport hudViewport;
 
-    public StartUpSystem(OrthographicCamera camera, Viewport hudViewport, TiledMapManager mapManager, String conversationName) {
-        this.camera = camera;
+    public StartUpSystem(Viewport hudViewport, TiledMapManager mapManager, String conversationName) {
         this.mapManager = mapManager;
         this.conversationName = conversationName;
         this.hudViewport = hudViewport;

@@ -43,8 +43,8 @@ public class NPCCollisionSystem extends CollisionBase{
             BoundsComponent objectBounds = Mappers.BOUNDS.get(npc);
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)) {
                 Engine engine = getEngine();
-                ConversationSystem dialogSystem = engine.getSystem(ConversationSystem.class);
-                if(dialogSystem.setNpcAndRun(npc)) {
+                ConversationSystem conversationSystem = engine.getSystem(ConversationSystem.class);
+                if(conversationSystem.setNpcAndRun(npc)) {
                     AnimationComponent animation = Mappers.ANIMATION.get(player);
                     animation.setAnimationIndex(0);
                     DirectionComponent direction = Mappers.DIRECTION.get(player);

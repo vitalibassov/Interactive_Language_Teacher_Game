@@ -42,8 +42,6 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private final Viewport hudViewport;
     private final SpriteBatch batch;
 
-
-
     private HudSystem hudSystem;
     private PlayerControlSystem playerControlSystem;
     private MovementSystem movementSystem;
@@ -57,7 +55,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     ).get();
 
     private static final Family HUD_STAGE = Family.all(
-            HudComponent.class, StageComponent.class
+            HudComponent.class,
+            StageComponent.class
     ).get();
 
     public ConversationSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
@@ -82,7 +81,6 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     }
 
     public boolean setNpcAndRun (Entity entity){
-
         NPCComponent npcComponent = Mappers.NPC.get(entity);
         this.conversations = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first()).conversations;
 

@@ -10,11 +10,15 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.components.AnimationComponent;
+import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
+import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
+import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
+import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.util.Mappers;
 
 public class PlayerControlSystem extends EntitySystem {
@@ -33,7 +37,11 @@ public class PlayerControlSystem extends EntitySystem {
     ).get();
 
     public static final Family CONTROLS = Family.all(
-            ControlsComponent.class
+            ControlsComponent.class,
+            DimensionComponent.class,
+            PositionComponent.class,
+            TextureComponent.class,
+            HudComponent.class
     ).get();
 
     public PlayerControlSystem(Viewport hudViewport) {
