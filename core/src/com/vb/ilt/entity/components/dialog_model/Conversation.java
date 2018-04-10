@@ -1,7 +1,7 @@
 package com.vb.ilt.entity.components.dialog_model;
 
 import com.badlogic.gdx.utils.Logger;
-import com.vb.ilt.entity.NPCType;
+import com.vb.ilt.entity.CharacterType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,11 @@ public class Conversation{
     private static final Logger log = new Logger(Conversation.class.getName(), Logger.DEBUG);
 
     //This class contains One conversation with one NPC
-    private NPCType type;
+    private CharacterType type;
     private Map<Integer, Dialog> dialogs;
     private int dialogIndex = 0;
 
-    public Conversation(Map<Integer, Dialog> dialogs, NPCType type) {
+    public Conversation(Map<Integer, Dialog> dialogs, CharacterType type) {
         this.dialogs = dialogs;
         this.type = type;
     }
@@ -36,7 +36,7 @@ public class Conversation{
         return dialogs.get(this.dialogIndex);
     }
 
-    public NPCType getType() {
+    public CharacterType getType() {
         return type;
     }
 

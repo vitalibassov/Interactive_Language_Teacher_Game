@@ -24,6 +24,8 @@ import com.vb.ilt.util.Mappers;
 public class PlayerControlSystem extends EntitySystem {
 
     private final Viewport hudViewport;
+    private DirectionComponent playerDirection;
+    private AnimationComponent playerAnimation;
 
     //Inappropriate behavior if the value is lower
     private static final float MIN_STOP_VELOCITY = 0.05f;
@@ -54,11 +56,11 @@ public class PlayerControlSystem extends EntitySystem {
         Entity control = getEngine().getEntitiesFor(CONTROLS).first();
 
         MovementComponent movement = Mappers.MOVEMENT.get(player);
-        AnimationComponent animation = Mappers.ANIMATION.get(player);
+        this.playerAnimation = Mappers.ANIMATION.get(player);
         ControlsComponent controlsComp = Mappers.CONTROLS.get(control);
-        DirectionComponent direction = Mappers.DIRECTION.get(player);
+        this.playerDirection = Mappers.DIRECTION.get(player);
 
-        controlHandling(movement, animation, controlsComp, direction);
+        controlHandling(movement, this.playerAnimation, controlsComp, this.playerDirection);
     }
 
     private void controlHandling(MovementComponent movement, AnimationComponent animation, ControlsComponent controlsComp, DirectionComponent direction) {
@@ -98,5 +100,14 @@ public class PlayerControlSystem extends EntitySystem {
             return deltaTime * GameConfig.STOPPING_SPEED;
         }
         return 0;
+    }
+
+    @Override
+    public void setProcessing(boolean processing) {
+        super.setProcessing(processing);
+        if (!processing){
+            this.playerDirection.direction = Direction.IDLE;
+            this.playerAnimation.setAnimationIndex(Direction.IDLE.getValue());
+        }
     }
 }

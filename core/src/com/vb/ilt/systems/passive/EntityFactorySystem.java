@@ -27,7 +27,7 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.Direction;
-import com.vb.ilt.entity.NPCType;
+import com.vb.ilt.entity.CharacterType;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DictionaryComponent;
@@ -44,7 +44,7 @@ import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.hud.StageComponent;
-import com.vb.ilt.entity.components.npc.ConversationComponent;
+import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
 import com.vb.ilt.entity.components.world.PortalSensorSpawnComponent;
@@ -173,7 +173,7 @@ public class EntityFactorySystem extends EntitySystem{
             String typeStr = point.getValue();
 
             NPCComponent npc = engine.createComponent(NPCComponent.class);
-            npc.type = NPCType.valueOf(typeStr.toUpperCase());
+            npc.type = CharacterType.valueOf(typeStr.toUpperCase());
 
             DimensionComponent dimension = engine.createComponent(DimensionComponent.class);
             dimension.width = GameConfig.PLAYER_WIDTH;
@@ -349,8 +349,8 @@ public class EntityFactorySystem extends EntitySystem{
         return dict;
     }
 
-    public void createDialogs(Queue<Conversation> conversations) {
-        ConversationComponent conversation = engine.createComponent(ConversationComponent.class);
+    public void createStory(Queue<Conversation> conversations) {
+        StoryComponent conversation = engine.createComponent(StoryComponent.class);
         conversation.conversations = conversations;
         addEntity(conversation);
     }

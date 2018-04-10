@@ -7,10 +7,7 @@ import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Logger;
-import com.vb.ilt.entity.Direction;
-import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
-import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.systems.active.ConversationSystem;
@@ -44,12 +41,7 @@ public class NPCCollisionSystem extends CollisionBase{
             if (contains(tempPolygon.getTransformedVertices(), objectBounds.polygon)) {
                 Engine engine = getEngine();
                 ConversationSystem conversationSystem = engine.getSystem(ConversationSystem.class);
-                if(conversationSystem.setNpcAndRun(npc)) {
-                    AnimationComponent animation = Mappers.ANIMATION.get(player);
-                    animation.setAnimationIndex(0);
-                    DirectionComponent direction = Mappers.DIRECTION.get(player);
-                    direction.direction = Direction.IDLE;
-                }
+                conversationSystem.setNpcAndRun(npc);
                 return true;
             }
         }

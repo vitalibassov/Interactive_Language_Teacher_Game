@@ -15,6 +15,7 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.systems.active.AnimationSystem;
+import com.vb.ilt.systems.active.AuthorSpeechSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
 import com.vb.ilt.systems.active.ConversationSystem;
@@ -79,8 +80,8 @@ public class GameScreen extends ScreenAdapter{
 
         TiledMapManager tiledMapManager = new TiledMapManager(String.format(MAP_PATH_PATTERN, level));
 
-        EntitySystem dialogSystem = new ConversationSystem(assetManager, hudViewport, batch);
-        dialogSystem.setProcessing(false);
+        EntitySystem conversationSystem = new ConversationSystem(assetManager, hudViewport, batch);
+        conversationSystem.setProcessing(false);
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
         engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
@@ -111,8 +112,9 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new HudSystem(hudViewport, batch));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
-        engine.addSystem(dialogSystem);
-        
+        engine.addSystem(conversationSystem);
+        engine.addSystem(new AuthorSpeechSystem(assetManager, hudViewport, batch));
+
         engine.addSystem(new EntityLogger());
 
     }

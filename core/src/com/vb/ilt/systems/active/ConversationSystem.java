@@ -13,14 +13,15 @@ import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
-import com.vb.ilt.entity.NPCType;
+import com.vb.ilt.entity.CharacterType;
 import com.vb.ilt.entity.components.DictionaryComponent;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.hud.StageComponent;
-import com.vb.ilt.entity.components.npc.ConversationComponent;
+import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.ui.stages.ConversationCallback;
 import com.vb.ilt.ui.stages.ConversationStage;
 import com.vb.ilt.ui.stages.HudStage;
 import com.vb.ilt.util.Mappers;
@@ -36,7 +37,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     private ConversationStage npcConv;
     private Queue<Conversation> conversations;
-    private NPCType npcType;
+    private CharacterType characterType;
     private HudStage hudStage;
     private DictionaryComponent dictionaryComponent;
     private final Viewport hudViewport;
@@ -46,8 +47,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private PlayerControlSystem playerControlSystem;
     private MovementSystem movementSystem;
 
-    private static final Family CONVERSATION = Family.all(
-            ConversationComponent.class
+    private static final Family STORY = Family.all(
+            StoryComponent.class
     ).get();
 
     private static final Family DICT = Family.all(
@@ -82,16 +83,16 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     public boolean setNpcAndRun (Entity entity){
         NPCComponent npcComponent = Mappers.NPC.get(entity);
-        this.conversations = Mappers.CONVERSATION.get(getEngine().getEntitiesFor(CONVERSATION).first()).conversations;
+        this.conversations = Mappers.STORY.get(getEngine().getEntitiesFor(STORY).first()).conversations;
 
         if (this.conversations.size != 0) {
             Conversation current = this.conversations.first();
-            this.npcType = current.getType() == npcComponent.type ? npcComponent.type : NPCType.NONE;
+            this.characterType = current.getType() == npcComponent.type ? npcComponent.type : CharacterType.NONE;
         }else{
-            this.npcType = NPCType.NONE;
+            this.characterType = CharacterType.NONE;
         }
 
-        if (this.npcType.isNone()){
+        if (this.characterType.isNone()){
             setProcessing(false);
             return false;
         }
@@ -108,7 +109,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         log.debug("MY WORDS IS NULL= " + (dictionaryComponent.myWords == null));
         this.npcConv = new ConversationStage(hudViewport, batch,
                 assetManager.get(AssetDescriptors.SKIN),
-                atlas.findRegion(this.npcType.name().toLowerCase()), this);
+                atlas.findRegion(this.characterType.name().toLowerCase()), this);
         this.npcConv.setAvailableAllWords(dictionaryComponent.allWords);
         this.npcConv.setAvailableMyWords(dictionaryComponent.myWords);
         this.npcConv.updateWords();
@@ -152,7 +153,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void setProcessing(boolean processing) {
-        if (npcConv != null && npcType != null && processing) {
+        if (npcConv != null && characterType != null && processing) {
             super.setProcessing(true);
             this.hudSystem.setProcessing(false);
             this.movementSystem.setProcessing(false);
@@ -162,7 +163,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             if (this.npcConv != null){
                 this.npcConv.dispose();
             }
-            this.npcType = NPCType.NONE;
+            this.characterType = CharacterType.NONE;
             this.conversations = null;
             this.npcConv = null;
         }

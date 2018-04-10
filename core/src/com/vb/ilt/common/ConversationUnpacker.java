@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
-import com.vb.ilt.entity.NPCType;
+import com.vb.ilt.entity.CharacterType;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 
@@ -27,7 +27,7 @@ public class ConversationUnpacker extends JsonReader{
         Queue<Conversation> conversations = new Queue<Conversation>();
         for (JsonValue nextConversation : root.iterator()){
             for (JsonValue npc : nextConversation){
-                NPCType type = NPCType.valueOf(npc.name().toUpperCase());
+                CharacterType type = CharacterType.valueOf(npc.name().toUpperCase());
                 Map<Integer, Dialog> dialogs = new HashMap<Integer, Dialog>();
                 for (JsonValue npcDialog : npc){
                     String npctext = npcDialog.getString("text");

@@ -44,7 +44,7 @@ public class StartUpSystem extends EntitySystem{
         factory.createPortalSensorSpawns(provider.getSpawnsNearSensors());
         factory.createMap(provider.getMap());
         factory.createNPCs(provider.getNpcSpawnPoints());
-        factory.createDialogs(unpacker.getConversations());
+        factory.createStory(unpacker.getConversations());
         factory.createPlayer(provider.getPlayerSpawnPoint());
         factory.createCollisionObjects(provider.getCollisionObjects());
         factory.createMusic(AssetDescriptors.MAIN_MUSIC);

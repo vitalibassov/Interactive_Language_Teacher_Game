@@ -14,7 +14,7 @@ import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.ZOrderComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.StageComponent;
-import com.vb.ilt.entity.components.npc.ConversationComponent;
+import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
 import com.vb.ilt.entity.components.world.PortalSensorSpawnComponent;
@@ -45,8 +45,8 @@ public final class Mappers {
             ComponentMapper.getFor(ZOrderComponent.class);
     public static final ComponentMapper<NPCComponent> NPC =
             ComponentMapper.getFor(NPCComponent.class);
-    public static final ComponentMapper<ConversationComponent> CONVERSATION =
-            ComponentMapper.getFor(ConversationComponent.class);
+    public static final ComponentMapper<StoryComponent> STORY =
+            ComponentMapper.getFor(StoryComponent.class);
     public static final ComponentMapper<SoundComponent> SOUND =
             ComponentMapper.getFor(SoundComponent.class);
     public static final ComponentMapper<DirectionComponent> DIRECTION =

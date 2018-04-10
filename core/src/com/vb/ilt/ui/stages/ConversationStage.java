@@ -17,7 +17,6 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.config.GameConfig;
-import com.vb.ilt.systems.active.ConversationCallback;
 import com.vb.ilt.ui.tables.DictionaryTable;
 
 import java.util.List;
