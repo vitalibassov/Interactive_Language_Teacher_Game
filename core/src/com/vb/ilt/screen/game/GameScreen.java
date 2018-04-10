@@ -40,9 +40,15 @@ import com.vb.ilt.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter{
 
+    private static final String MAP_PATH_PATTERN = "maps/%s";
+    private static final String CONVERSATION_PATH_PATTERN = "conversations/%s.json";
+    private static final String PROPERTIES_PATH_PATTERN = "props/%s.properties";
+
     private final InteractiveLangTeacherGame game;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
+
+    private final String level;
 
     private OrthographicCamera camera;
     private Viewport viewport;
@@ -51,10 +57,11 @@ public class GameScreen extends ScreenAdapter{
     private PooledEngine engine;
     private BitmapFont font;
 
-    public GameScreen(InteractiveLangTeacherGame game/*, Skin skin*/) {
+    public GameScreen(InteractiveLangTeacherGame game, String level) {
         this.game = game;
-        assetManager = game.getAssetManager();
-        batch = game.getBatch();
+        this.assetManager = game.getAssetManager();
+        this.batch = game.getBatch();
+        this.level = level;
     }
 
     @Override
@@ -70,13 +77,13 @@ public class GameScreen extends ScreenAdapter{
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.finishLoading();
 
-        TiledMapManager tiledMapManager = new TiledMapManager("maps/level_1");
+        TiledMapManager tiledMapManager = new TiledMapManager(String.format(MAP_PATH_PATTERN, level));
 
         EntitySystem dialogSystem = new ConversationSystem(assetManager, hudViewport, batch);
         dialogSystem.setProcessing(false);
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
-        engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, "conversations/level_1.json"));
+        engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new SoundSystem());
@@ -87,7 +94,6 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new SensorCollisionSystem(tiledMapManager));
 
         engine.addSystem(new CleanUpSystem());
-
 
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsSystem());
@@ -106,8 +112,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
         engine.addSystem(dialogSystem);
-
-
+        
         engine.addSystem(new EntityLogger());
 
     }

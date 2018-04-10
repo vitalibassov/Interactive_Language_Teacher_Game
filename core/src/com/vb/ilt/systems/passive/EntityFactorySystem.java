@@ -76,7 +76,6 @@ public class EntityFactorySystem extends EntitySystem{
     private PooledEngine engine;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
-    private TextureAtlas gamePlayAtlas;
 
     public EntityFactorySystem(AssetManager assetManager, SpriteBatch batch){
         this.batch = batch;

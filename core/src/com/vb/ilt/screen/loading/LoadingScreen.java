@@ -71,7 +71,8 @@ public class LoadingScreen extends ScreenAdapter {
         renderer.end();
 
         if (changeScreen) {
-            game.setScreen(new GameScreen(game));
+            //TODO Temporary hard coded level
+            game.setScreen(new GameScreen(game, "level_1"));
         }
     }
 
