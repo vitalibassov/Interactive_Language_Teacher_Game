@@ -1,26 +1,33 @@
 
-dialogs.png
-size: 4096,1024
+text_panels.png
+size: 4096,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+author
+  rotate: false
+  xy: 1284, 2
+  size: 720, 1000
+  orig: 720, 1000
+  offset: 0, 0
+  index: -1
 blacksmith
   rotate: false
-  xy: 2, 2
+  xy: 2, 1004
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 merchant
   rotate: false
-  xy: 1284, 2
+  xy: 2, 282
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 shepherd
   rotate: false
-  xy: 2566, 2
+  xy: 1284, 1004
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0

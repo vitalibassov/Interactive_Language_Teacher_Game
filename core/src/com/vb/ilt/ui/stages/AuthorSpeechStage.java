@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.ButtonStyleNames;
-import com.vb.ilt.config.GameConfig;
 
 public class AuthorSpeechStage extends Stage {
 
@@ -37,15 +36,14 @@ public class AuthorSpeechStage extends Stage {
 
     private void init(){
         Table mainTable = new Table();
-        mainTable.defaults().pad(20);
+        mainTable.defaults().pad(20f);
         this.authorText = new Label("", skin);
         this.authorText.setWrap(true);
 
         //this.npcText.setFontScale(2);
 
-        Table buttonTable = new Table();
-
         Table container = new Table();
+        Table buttonTable = new Table();
 
         ImageButton exitButton = new ImageButton(skin, ButtonStyleNames.QUIT);
 
@@ -57,26 +55,23 @@ public class AuthorSpeechStage extends Stage {
         });
 
 
-        buttonTable.add(exitButton).right().top().expandY();
+        buttonTable.add(exitButton).right().top();
 
         ScrollPane scrollPane = new ScrollPane(authorText);
         scrollPane.setFadeScrollBars(false);
 
-
-        mainTable.add(buttonTable).expandX().expandY().right().top().row();
-        mainTable.add(scrollPane).bottom().right().width(GameConfig.HUD_WIDTH - 400).height(GameConfig.HUD_HEIGHT / 2f).padBottom(50);
+        mainTable.add(buttonTable).right().top().row();
+        mainTable.add(scrollPane).center().width(640f).height(870f);
 
         mainTable.setBackground(new TextureRegionDrawable(region));
         mainTable.center();
-        mainTable.setFillParent(true);
+        mainTable.setSize(720f, 1000f);
+
         mainTable.pack();
 
         container.setFillParent(true);
-        container.defaults().pad(20);
+        container.add(mainTable);
 
-        container.pack();
-
-        this.addActor(mainTable);
         this.addActor(container);
     }
 

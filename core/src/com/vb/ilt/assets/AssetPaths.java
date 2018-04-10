@@ -9,7 +9,7 @@ public final class AssetPaths {
     public static final String SKIN = "ui/skin.json";
     public static final String PLAYER = "characters/player/player.atlas";
     public static final String NPC = "characters/npc/npc.atlas";
-    public static final String DIALOGS = "dialog/dialogs.atlas";
+    public static final String DIALOGS = "text_panels/text_panels.atlas";
     public static final String STEP_SOUND = "sounds/step.wav";
     public static final String DOOR_SOUND = "sounds/door.wav";
     public static final String MAIN_MUSIC = "music/main.mp3";

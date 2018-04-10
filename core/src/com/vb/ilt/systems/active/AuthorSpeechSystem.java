@@ -35,7 +35,7 @@ public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
                 hudViewport,
                 batch,
                 assetManager.get(AssetDescriptors.SKIN),
-                assetManager.get(AssetDescriptors.DIALOGS).findRegion("merchant"),
+                assetManager.get(AssetDescriptors.DIALOGS).findRegion("author"),
                 this
         );
     }
@@ -55,7 +55,6 @@ public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
             isReading = true;
         }
         if (isReading){
-            log.info("IS READING");
             actStage();
         }
     }
@@ -76,7 +75,7 @@ public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
     }
 
     private boolean isReady(float delta){
-        final int INTERVAL = 5;
+        final int INTERVAL = 3;
         accumulator += delta;
         if (accumulator >= INTERVAL){
             accumulator = 0f;
