@@ -1,5 +1,6 @@
 package com.vb.ilt.ui.stages;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -48,13 +49,20 @@ public class HudStage extends Stage{
         Table buttonTable = new Table();
         this.dictTable.setVisible(false);
 
-        ImageButton pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
+        final ImageButton pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
         final ImageButton dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
 
         dictButton.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 dictTable.setVisible(!dictTable.isVisible());
+            }
+        });
+
+        pauseButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                Gdx.app.exit();
             }
         });
 
