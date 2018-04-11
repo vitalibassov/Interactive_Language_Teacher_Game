@@ -11,16 +11,18 @@ public final class GameManager {
 
     private int currentLevel;
     private final LinkedHashMap<String, String> bigDictionary;
+    private GameState gameState;
 
     public static final GameManager INSTANCE = new GameManager();
 
     private GameManager() {
         this.bigDictionary = new LinkedHashMap<String, String>();
+        this.gameState = GameState.PLAYING;
         loadDictionary();
     }
 
     private void loadDictionary(){
-        for (String word : Gdx.files.internal("dictionary/dictionary.txt").readString().split("\n")){
+        for (String word : Gdx.files.internal("dictionary/dictionary").readString().split("\n")){
             String[] engrus = word.toLowerCase().split("\t");
             if (engrus.length == 2){
                 //System.out.println(engrus[0]);
@@ -37,5 +39,10 @@ public final class GameManager {
         return bigDictionary;
     }
 
-    public void doStuff(){}
+    public boolean isPlaying(){return gameState.isPlaying();}
+    public boolean isPause(){return gameState.isPause();}
+    public boolean isFinished(){return gameState.isFinish();}
+
+    public void setStateFinished(){gameState = GameState.FINISH;}
+    public void setStatePlaying(){gameState = GameState.PLAYING;}
 }

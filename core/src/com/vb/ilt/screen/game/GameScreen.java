@@ -12,13 +12,16 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.common.GameManager;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.screen.loading.LoadingScreen;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.AuthorSpeechSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
 import com.vb.ilt.systems.active.ConversationSystem;
+import com.vb.ilt.systems.active.FinishSystem;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.MusicSystem;
@@ -85,6 +88,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
         engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
+        engine.addSystem(new FinishSystem());
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new SoundSystem());
@@ -123,6 +127,9 @@ public class GameScreen extends ScreenAdapter{
     public void render(float delta) {
         GdxUtils.clearScreen();
         engine.update(delta);
+        if (GameManager.INSTANCE.isFinished()) {
+            game.setScreen(new LoadingScreen(game));
+        }
     }
 
     @Override
@@ -140,6 +147,5 @@ public class GameScreen extends ScreenAdapter{
     public void dispose() {
         renderer.dispose();
         engine.removeAllEntities();
-        assetManager.dispose();
     }
 }
