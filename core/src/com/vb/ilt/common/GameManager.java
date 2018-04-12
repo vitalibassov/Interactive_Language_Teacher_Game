@@ -10,6 +10,7 @@ public final class GameManager {
     private static final Logger log = new Logger(GameManager.class.getName(), Logger.DEBUG);
 
     private int currentLevel;
+    private int score;
     private final LinkedHashMap<String, String> bigDictionary;
     private GameState gameState;
 
@@ -41,4 +42,7 @@ public final class GameManager {
     public void setStateFinished(){gameState = GameState.FINISH;}
     public void setStatePause(){gameState = GameState.PAUSE;}
     public void setStatePlaying(){gameState = GameState.PLAYING;}
+
+    public int getScore() { return score;}
+    public void increaseScoreBy(int amount){score += amount;}
 }

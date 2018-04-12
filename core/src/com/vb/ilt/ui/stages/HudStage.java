@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.assets.RegionNames;
+import com.vb.ilt.common.GameManager;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -28,6 +29,7 @@ public class HudStage extends Stage{
 
     private final AssetManager assetManager;
     private final DictionaryTable dictTable;
+    private Label score;
     private PauseCallback pauseCallback;
     private Skin skin;
 
@@ -78,7 +80,7 @@ public class HudStage extends Stage{
 
         Table scoreTable = new Table();
         Image image = new Image(assetManager.get(AssetDescriptors.SKIN).getDrawable(RegionNames.COIN));
-        Label score = new Label("2000", skin);
+        score = new Label("", skin);
         score.setFontScale(2f);
 
         scoreTable.add(image);
@@ -106,5 +108,11 @@ public class HudStage extends Stage{
 
     public void setPauseCallback(PauseCallback pauseCallback) {
         this.pauseCallback = pauseCallback;
+    }
+
+    @Override
+    public void act() {
+        super.act();
+        score.setText(""+GameManager.INSTANCE.getScore());
     }
 }
