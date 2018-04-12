@@ -71,6 +71,7 @@ public class LoadingScreen extends ScreenAdapter {
 
         if (changeScreen) {
             //TODO Temporary hard coded level
+            GameManager.INSTANCE.reset();
             game.setScreen(new GameScreen(game, "level_1"));
         }
     }

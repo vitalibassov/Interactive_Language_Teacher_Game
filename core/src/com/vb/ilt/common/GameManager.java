@@ -49,4 +49,9 @@ public final class GameManager {
 
     public void commitTempScoreAmount(){score += tempScore;}
     public void dropTempScore(){tempScore = 0;}
+
+    public void reset(){
+        tempScore = 0;
+        score = 0;
+    }
 }
