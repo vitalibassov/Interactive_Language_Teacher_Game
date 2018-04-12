@@ -4,7 +4,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -12,6 +14,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
+import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -73,10 +76,20 @@ public class HudStage extends Stage{
             }
         });
 
+        Table scoreTable = new Table();
+        Image image = new Image(assetManager.get(AssetDescriptors.SKIN).getDrawable(RegionNames.COIN));
+        Label score = new Label("2000", skin);
+        score.setFontScale(2f);
+
+        scoreTable.add(image);
+        scoreTable.add(score).padLeft(15f);
+        scoreTable.pack();
+
         buttonTable.add(dictButton);
         buttonTable.add(pauseButton).padLeft(60);
         buttonTable.pack();
 
+        mainTable.add(scoreTable).top().left().expandY().expandX();
         mainTable.add(buttonTable).top().right().expandY().expandX();
         mainTable.row();
         mainTable.add(this.dictTable).width(1000).height(900).top().right().expandX().expandY();
@@ -85,19 +98,6 @@ public class HudStage extends Stage{
 
         mainTable.pack();
         this.addActor(mainTable);
-    }
-
-
-    public Map<String, String> getAvailableAllWords(){
-        return dictTable.getAvailableAllWords();
-    }
-
-    public Map<String, String> getAvailableMyWords(){
-        return dictTable.getAvailableMyWords();
-    }
-
-    public void setAvailableMyWords(Map<String, String> words){
-        dictTable.setAvailableMyWords(words);
     }
 
     public void updateWords(){

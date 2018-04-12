@@ -34,8 +34,8 @@ public class PauseStage extends Stage {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.SKIN);
         this.pausePanel = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.PAUSE_PANEL);
-        this.pauseCallback = pauseCallback;
         this.background = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.PAUSE_BACKGROUND);
+        this.pauseCallback = pauseCallback;
         init();
     }
 

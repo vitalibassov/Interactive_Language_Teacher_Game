@@ -1,5 +1,6 @@
 package com.vb.ilt.ui.stages;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,7 +14,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
+import com.vb.ilt.assets.RegionNames;
 
 public class AuthorSpeechStage extends Stage {
 
@@ -26,10 +29,10 @@ public class AuthorSpeechStage extends Stage {
     private TextureRegion region;
 
 
-    public AuthorSpeechStage(Viewport viewport, SpriteBatch batch, Skin skin, TextureRegion region, ExitCallback exitCallback) {
+    public AuthorSpeechStage(Viewport viewport, SpriteBatch batch, AssetManager assetManager, ExitCallback exitCallback) {
         super(viewport, batch);
-        this.skin = skin;
-        this.region = region;
+        this.skin = assetManager.get(AssetDescriptors.SKIN);
+        this.region = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.PAUSE_PANEL);
         this.exitCallback = exitCallback;
         init();
     }

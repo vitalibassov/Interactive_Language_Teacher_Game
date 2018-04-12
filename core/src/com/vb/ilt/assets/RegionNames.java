@@ -17,6 +17,7 @@ public final class RegionNames {
     public static final String AUTHOR_SPEECH = "author";
     public static final String PAUSE_PANEL = "pausePanel";
     public static final String PAUSE_BACKGROUND = "pauseBackground";
+    public static final String COIN = "coin";
 
     public static final String NPC_SHEPHERD = CharacterType.SHEPHERD.name().toLowerCase();
     public static final String NPC_BLACKSMITH = CharacterType.BLACKSMITH.name().toLowerCase();
