@@ -362,8 +362,6 @@ public class EntityFactorySystem extends EntitySystem{
         addEntity(musicComponent);
     }
 
-
-
     private void addEntity(Component ... components){
         Entity entity = engine.createEntity();
         for(Component c : components){

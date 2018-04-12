@@ -38,8 +38,8 @@ public class TexturePackerApp{
 
         TexturePacker.process(settings,
                 RAW_ASSETS_PATH + "/text_panels",
-                ASSETS_PATH + "/text_panels",
-                "text_panels"
+                ASSETS_PATH + "/panels",
+                "panels"
         );
         TexturePacker.process(settings,
                 RAW_ASSETS_PATH + "/skin",

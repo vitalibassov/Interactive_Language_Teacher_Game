@@ -103,7 +103,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     }
 
     private void buildStage(Queue<Conversation> conversations) {
-        TextureAtlas atlas = assetManager.get(AssetDescriptors.DIALOGS);
+        TextureAtlas atlas = assetManager.get(AssetDescriptors.PANELS);
 
         log.debug("ALL WORDS IS NULL= " + (dictionaryComponent.allWords == null));
         log.debug("MY WORDS IS NULL= " + (dictionaryComponent.myWords == null));

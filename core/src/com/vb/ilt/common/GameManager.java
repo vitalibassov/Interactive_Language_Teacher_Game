@@ -25,14 +25,9 @@ public final class GameManager {
         for (String word : Gdx.files.internal("dictionary/dictionary").readString().split("\n")){
             String[] engrus = word.toLowerCase().split("\t");
             if (engrus.length == 2){
-                //System.out.println(engrus[0]);
                 bigDictionary.put(engrus[0], engrus[0] + " - " + engrus[1]);
             }
         }
-
-        //seven records are lost somehow... (equal keys)
-        log.debug("SIZE OF THE BIG DICTIONARY = " + bigDictionary.size());
-
     }
 
     public LinkedHashMap<String, String> getBigDictionary() {
@@ -44,5 +39,6 @@ public final class GameManager {
     public boolean isFinished(){return gameState.isFinish();}
 
     public void setStateFinished(){gameState = GameState.FINISH;}
+    public void setStatePause(){gameState = GameState.PAUSE;}
     public void setStatePlaying(){gameState = GameState.PLAYING;}
 }

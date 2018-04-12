@@ -35,11 +35,13 @@ import com.vb.ilt.systems.debug.EntityLogger;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.systems.passive.CleanUpSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
+import com.vb.ilt.systems.passive.PauseSystem;
 import com.vb.ilt.systems.passive.StartUpSystem;
 import com.vb.ilt.systems.passive.collision.NPCCollisionSystem;
 import com.vb.ilt.systems.passive.collision.SensorCollisionSystem;
 import com.vb.ilt.systems.passive.collision.WorldObjectsCollisionSystem;
 import com.vb.ilt.systems.passive.collision.WorldWrapUpSystem;
+import com.vb.ilt.ui.stages.PauseCallback;
 import com.vb.ilt.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter{
@@ -86,6 +88,8 @@ public class GameScreen extends ScreenAdapter{
         EntitySystem conversationSystem = new ConversationSystem(assetManager, hudViewport, batch);
         conversationSystem.setProcessing(false);
 
+        EntitySystem hudSystem = new HudSystem(hudViewport, batch);
+
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
         engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
         engine.addSystem(new FinishSystem());
@@ -113,7 +117,8 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
 
 
-        engine.addSystem(new HudSystem(hudViewport, batch));
+        engine.addSystem(hudSystem);
+        engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
         engine.addSystem(conversationSystem);

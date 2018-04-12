@@ -49,7 +49,7 @@ public class LoadingScreen extends ScreenAdapter {
         assetManager.load(AssetDescriptors.SKIN);
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.load(AssetDescriptors.NPC);
-        assetManager.load(AssetDescriptors.DIALOGS);
+        assetManager.load(AssetDescriptors.PANELS);
         assetManager.load(AssetDescriptors.STEP_SOUND);
         assetManager.load(AssetDescriptors.DOOR_SOUND);
         assetManager.load(AssetDescriptors.MAIN_MUSIC);

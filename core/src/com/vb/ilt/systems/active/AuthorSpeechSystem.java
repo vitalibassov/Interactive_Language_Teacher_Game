@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.ui.stages.AuthorSpeechStage;
@@ -35,7 +36,7 @@ public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
                 hudViewport,
                 batch,
                 assetManager.get(AssetDescriptors.SKIN),
-                assetManager.get(AssetDescriptors.DIALOGS).findRegion("author"),
+                assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.AUTHOR_SPEECH),
                 this
         );
     }

@@ -1,5 +1,6 @@
 package com.vb.ilt.systems.active;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
@@ -12,9 +13,12 @@ import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.hud.StageComponent;
+import com.vb.ilt.systems.passive.PauseSystem;
+import com.vb.ilt.ui.stages.HudStage;
+import com.vb.ilt.ui.stages.PauseCallback;
 import com.vb.ilt.util.Mappers;
 
-public class HudSystem extends EntitySystem{
+public class HudSystem extends EntitySystem implements PauseCallback{
 
     private final Viewport hudViewport;
     private final SpriteBatch batch;
@@ -35,6 +39,13 @@ public class HudSystem extends EntitySystem{
     public HudSystem(Viewport hudViewport, SpriteBatch batch) {
         this.hudViewport = hudViewport;
         this.batch = batch;
+    }
+
+    @Override
+    public void addedToEngine(Engine engine) {
+        super.addedToEngine(engine);
+        Entity hud = engine.getEntitiesFor(HUD_FAMILY).first();
+        ((HudStage)Mappers.STAGE.get(hud).stage).setPauseCallback(this);
     }
 
     @Override
@@ -64,5 +75,24 @@ public class HudSystem extends EntitySystem{
         batch.draw(texture.region, position.x, position.y, dimension.width, dimension.height);
 
         batch.end();
+    }
+
+    @Override
+    public void setSystemsDisabledAndShowPauseMenu(Class<? extends EntitySystem>... systems) {
+        getEngine().getSystem(PauseSystem.class).setProcessing(true);
+        toggleSystems(false, systems);
+    }
+
+    @Override
+    public void setSystemsEnabledAndClosePauseMenu(Class<? extends EntitySystem>... systems) {
+        getEngine().getSystem(PauseSystem.class).setProcessing(false);
+        toggleSystems(true, systems);
+    }
+
+    private void toggleSystems(boolean switcher, Class<? extends EntitySystem>... systems){
+        Engine engine = getEngine();
+        for (Class<? extends EntitySystem> systemClass: systems){
+            engine.getSystem(systemClass).setProcessing(switcher);
+        }
     }
 }

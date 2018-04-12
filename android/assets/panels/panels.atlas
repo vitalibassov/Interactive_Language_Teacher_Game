@@ -1,5 +1,5 @@
 
-text_panels.png
+panels.png
 size: 4096,2048
 format: RGBA8888
 filter: Nearest,Nearest
@@ -23,6 +23,20 @@ merchant
   xy: 2, 282
   size: 1280, 720
   orig: 1280, 720
+  offset: 0, 0
+  index: -1
+pauseBackground
+  rotate: false
+  xy: 2, 270
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+pausePanel
+  rotate: false
+  xy: 2566, 1324
+  size: 720, 400
+  orig: 720, 400
   offset: 0, 0
   index: -1
 shepherd

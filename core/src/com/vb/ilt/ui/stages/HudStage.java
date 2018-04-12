@@ -1,6 +1,5 @@
 package com.vb.ilt.ui.stages;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,6 +12,9 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
+import com.vb.ilt.systems.active.HudSystem;
+import com.vb.ilt.systems.active.MovementSystem;
+import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.ui.tables.DictionaryTable;
 
 import java.util.Map;
@@ -23,6 +25,7 @@ public class HudStage extends Stage{
 
     private final AssetManager assetManager;
     private final DictionaryTable dictTable;
+    private PauseCallback pauseCallback;
     private Skin skin;
 
 
@@ -62,7 +65,11 @@ public class HudStage extends Stage{
         pauseButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
+                pauseCallback.setSystemsDisabledAndShowPauseMenu(
+                        MovementSystem.class,
+                        HudSystem.class,
+                        PlayerControlSystem.class
+                );
             }
         });
 
@@ -95,5 +102,9 @@ public class HudStage extends Stage{
 
     public void updateWords(){
         dictTable.updateWords();
+    }
+
+    public void setPauseCallback(PauseCallback pauseCallback) {
+        this.pauseCallback = pauseCallback;
     }
 }
