@@ -115,7 +115,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.npcConv.updateWords();
 
         conversations.first().setToStart();
-        Dialog firstDialog = conversations.first().getNextAndIncreaseScore(null);
+        Dialog firstDialog = conversations.first().getNext(null);
 
         this.npcConv.updateDialog(firstDialog.getNpctext());
         this.npcConv.setAnswers(firstDialog.getPlayerAnswers());
@@ -139,7 +139,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     @Override
     public void nextDialog(String answer) {
         log.debug("ANSWER: " + answer);
-        Dialog dialog = this.conversations.first().getNextAndIncreaseScore(answer);
+        GameManager.INSTANCE.increaseTempScoreBy(this.conversations.first().getCurrentDialog().getScore(answer));
+        Dialog dialog = this.conversations.first().getNext(answer);
         if (dialog == null){
             GameManager.INSTANCE.commitTempScoreAmount();
             Conversation finishedConv = this.conversations.removeFirst();
