@@ -28,6 +28,8 @@ public class HudStage extends Stage{
 
     private static final Logger log = new Logger(HudStage.class.getName(), Logger.DEBUG);
 
+    private int currentScore = 0;
+
     private final AssetManager assetManager;
     private final DictionaryTable dictTable;
     private Label score;
@@ -82,7 +84,7 @@ public class HudStage extends Stage{
 
         Table scoreTable = new Table();
         Image image = new Image(assetManager.get(AssetDescriptors.SKIN).getDrawable(RegionNames.COIN));
-        score = new Label("", skin);
+        score = new Label("0", skin);
         score.setFontScale(2f);
 
         scoreTable.add(image);
@@ -115,6 +117,15 @@ public class HudStage extends Stage{
     @Override
     public void act() {
         super.act();
-        score.setText(""+GameManager.INSTANCE.getScore());
+        final int actualScore = GameManager.INSTANCE.getScore();
+        if (currentScore < actualScore) {
+            currentScore += 5;
+            if (currentScore > actualScore)setScore(actualScore);
+            else setScore(currentScore);
+        }
+    }
+
+    private void setScore(int amount){
+        score.setText(""+amount);
     }
 }
