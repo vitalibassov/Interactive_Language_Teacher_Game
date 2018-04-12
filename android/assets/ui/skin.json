@@ -1,7 +1,7 @@
 {
   "com.badlogic.gdx.graphics.g2d.BitmapFont": {
     "default-font": {
-      "file": "fonts/sitka_32.fnt"
+      "file": "fonts/sitka_42.fnt"
     }
   },
   "com.badlogic.gdx.graphics.Color": {

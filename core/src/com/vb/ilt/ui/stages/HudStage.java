@@ -16,6 +16,7 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
+import com.vb.ilt.systems.active.AuthorSpeechSystem;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -73,7 +74,8 @@ public class HudStage extends Stage{
                 pauseCallback.setSystemsDisabledAndShowPauseMenu(
                         MovementSystem.class,
                         HudSystem.class,
-                        PlayerControlSystem.class
+                        PlayerControlSystem.class,
+                        AuthorSpeechSystem.class
                 );
             }
         });
@@ -94,7 +96,7 @@ public class HudStage extends Stage{
         mainTable.add(scoreTable).top().left().expandY().expandX();
         mainTable.add(buttonTable).top().right().expandY().expandX();
         mainTable.row();
-        mainTable.add(this.dictTable).width(1000).height(900).top().right().expandX().expandY();
+        mainTable.add(this.dictTable).width(1000).height(900).top().right().expandX().expandY().colspan(2);
 
         mainTable.setFillParent(true);
 

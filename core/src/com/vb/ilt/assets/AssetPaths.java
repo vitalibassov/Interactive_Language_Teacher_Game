@@ -4,7 +4,7 @@ public final class AssetPaths {
 
     private AssetPaths(){}
 
-    public static final String FONT = "ui/fonts/sitka_32.fnt";
+    public static final String FONT = "ui/fonts/sitka_42.fnt";
     public static final String HUD = "ui/hud/hud.atlas";
     public static final String SKIN = "ui/skin.json";
     public static final String PLAYER = "characters/player/player.atlas";
