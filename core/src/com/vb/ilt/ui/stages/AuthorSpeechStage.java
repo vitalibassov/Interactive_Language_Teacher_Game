@@ -32,7 +32,7 @@ public class AuthorSpeechStage extends Stage {
     public AuthorSpeechStage(Viewport viewport, SpriteBatch batch, AssetManager assetManager, ExitCallback exitCallback) {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.SKIN);
-        this.region = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.PAUSE_PANEL);
+        this.region = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.AUTHOR_SPEECH);
         this.exitCallback = exitCallback;
         init();
     }

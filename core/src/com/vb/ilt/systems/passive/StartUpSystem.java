@@ -57,22 +57,22 @@ public class StartUpSystem extends EntitySystem{
 //        Conversation conv = conversations.removeFirst();
 //        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////////");
 //        System.out.println(conv.getType());
-//        Dialog d = conv.getNext(null);
+//        Dialog d = conv.getNextAndIncreaseScore(null);
 //        System.out.println(d.getNpctext());
 //        for (String s : d.getPlayerAnswers()){
 //            System.out.println(s);
 //        }
-//        d = conv.getNext("[MERCHANT] Answer 2");
+//        d = conv.getNextAndIncreaseScore("[MERCHANT] Answer 2");
 //        System.out.println(d.getNpctext());
 //        for (String s : d.getPlayerAnswers()){
 //            System.out.println(s);
 //        }
-//        d = conv.getNext("[MERCHANT] Answer 3 in Index 2");
+//        d = conv.getNextAndIncreaseScore("[MERCHANT] Answer 3 in Index 2");
 //        System.out.println(d.getNpctext());
 //        for (String s : d.getPlayerAnswers()){
 //            System.out.println(s);
 //        }
-//        d = conv.getNext("[MERCHANT] Okay GoodBye");
+//        d = conv.getNextAndIncreaseScore("[MERCHANT] Okay GoodBye");
 //        System.out.println(d);
 //        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////////");
     }

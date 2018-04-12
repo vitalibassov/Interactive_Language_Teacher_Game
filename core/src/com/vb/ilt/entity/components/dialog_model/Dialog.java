@@ -11,16 +11,20 @@ public class Dialog {
     private static final Logger log = new Logger(Dialog.class.getName(), Logger.DEBUG);
 
     private String npctext;
-    private Map<String, Integer> playerAnswers;
+    private Map<String, Answer> playerAnswers;
 
-    public Dialog(String npctext, Map<String, Integer> playerAnswers) {
+    public Dialog(String npctext, Map<String, Answer> playerAnswers) {
         this.npctext = npctext;
         this.playerAnswers = playerAnswers;
     }
 
-    public int getDestinationID(String answer){
-        log.debug(answer);
-        return playerAnswers.get(answer);
+    public int getDestinationID(String answerStr){
+        log.debug(answerStr);
+        return playerAnswers.get(answerStr).getDestinationId();
+    }
+
+    public int getScore(String answerStr){
+        return playerAnswers.get(answerStr).getScore();
     }
 
     public String getNpctext() {

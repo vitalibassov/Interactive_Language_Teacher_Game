@@ -1,6 +1,7 @@
 package com.vb.ilt.entity.components.dialog_model;
 
 import com.badlogic.gdx.utils.Logger;
+import com.vb.ilt.common.GameManager;
 import com.vb.ilt.entity.CharacterType;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class Conversation{
     }
 
     //first Dialog, if answer == null
-    public Dialog getNext(String answer){
+    public Dialog getNextAndIncreaseScore(String answer){
 
         if (dialogIndex == -1){
             return null;
@@ -31,6 +32,8 @@ public class Conversation{
         }
 
         Dialog currentDialog = dialogs.get(dialogIndex);
+        GameManager.INSTANCE.increaseTempScoreBy(currentDialog.getScore(answer));
+        log.info("SCORE TO INCREASE: " + currentDialog.getScore(answer));
         this.dialogIndex = currentDialog.getDestinationID(answer);
 
         return dialogs.get(this.dialogIndex);

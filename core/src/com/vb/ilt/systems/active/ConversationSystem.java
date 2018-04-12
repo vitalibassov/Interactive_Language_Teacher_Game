@@ -115,7 +115,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.npcConv.updateWords();
 
         conversations.first().setToStart();
-        Dialog firstDialog = conversations.first().getNext(null);
+        Dialog firstDialog = conversations.first().getNextAndIncreaseScore(null);
 
         this.npcConv.updateDialog(firstDialog.getNpctext());
         this.npcConv.setAnswers(firstDialog.getPlayerAnswers());
@@ -126,6 +126,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void exit() {
+        GameManager.INSTANCE.dropTempScore();
         this.hudSystem.setProcessing(true);
         this.movementSystem.setProcessing(true);
         this.playerControlSystem.setProcessing(true);
@@ -138,8 +139,9 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     @Override
     public void nextDialog(String answer) {
         log.debug("ANSWER: " + answer);
-        Dialog dialog = this.conversations.first().getNext(answer);
+        Dialog dialog = this.conversations.first().getNextAndIncreaseScore(answer);
         if (dialog == null){
+            GameManager.INSTANCE.commitTempScoreAmount();
             Conversation finishedConv = this.conversations.removeFirst();
             Entity dictionaryEntity = getEngine().getEntitiesFor(DICT).first();
             DictionaryComponent dictionaryComponent = Mappers.DICT.get(dictionaryEntity);

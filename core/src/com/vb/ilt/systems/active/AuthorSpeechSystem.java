@@ -48,7 +48,7 @@ public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
 
         if (conversationQueue.size != 0 && conversationQueue.first().getType().isPlayer() && !isReading && isReady(deltaTime)){
             systemSwitch(false);
-            stage.updateText(conversationQueue.removeFirst().getNext(null).getNpctext());
+            stage.updateText(conversationQueue.removeFirst().getNextAndIncreaseScore(null).getNpctext());
             Gdx.input.setInputProcessor(stage);
             isReading = true;
         }

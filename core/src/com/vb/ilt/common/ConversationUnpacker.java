@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.vb.ilt.entity.CharacterType;
+import com.vb.ilt.entity.components.dialog_model.Answer;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 
@@ -31,9 +32,13 @@ public class ConversationUnpacker extends JsonReader{
                 Map<Integer, Dialog> dialogs = new HashMap<Integer, Dialog>();
                 for (JsonValue npcDialog : npc){
                     String npctext = npcDialog.getString("text");
-                    Map<String, Integer> answers = new HashMap<String, Integer>();
+                    Map<String, Answer> answers = new HashMap<String, Answer>();
                     for (JsonValue answer : npcDialog.get("answers")){
-                        answers.put(answer.getString("text"), answer.getInt("destinationID"));
+                        answers.put(answer.getString("text"), new Answer(
+                                answer.getString("text"),
+                                answer.getInt("destinationID"),
+                                answer.getInt("score")
+                        ));
                     }
                     Dialog dialog = new Dialog(npctext, answers);
                     dialogs.put(Integer.valueOf(npcDialog.name()), dialog);
