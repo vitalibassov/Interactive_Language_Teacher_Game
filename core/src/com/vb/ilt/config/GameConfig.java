@@ -31,7 +31,7 @@ public final class GameConfig {
     public static final float PLAYER_HALF_WIDTH = PLAYER_WIDTH / 2f;
     public static final float PLAYER_HALF_HEIGHT = PLAYER_HEIGHT /2f;
 
-    public static final float CONTROLS_SIZE = 300f;
+    public static final float CONTROLS_SIZE = 400f;
     public static final float CONTROLS_X = 40f;
     public static final float CONTROLS_Y = 40f;
 

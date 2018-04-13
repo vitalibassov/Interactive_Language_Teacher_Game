@@ -29,8 +29,8 @@ public class AllWordsTabTable extends ListWithSearchTableBase{
 
     @Override
     protected boolean checkWordKey(String wordKey) {
-        log.debug("WORD KEY= " + wordKey);
-        log.debug("AVAILABLE WORDS IS NULL= " + (availableWordsInMyWords == null));
+        //log.debug("WORD KEY= " + wordKey);
+        //log.debug("AVAILABLE WORDS IS NULL= " + (availableWordsInMyWords == null));
         return wordKey != null && !availableWordsInMyWords.containsKey(wordKey);
     }
 }

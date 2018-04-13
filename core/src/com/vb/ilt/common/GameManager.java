@@ -1,6 +1,8 @@
 package com.vb.ilt.common;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Logger;
 
 import java.util.LinkedHashMap;
@@ -24,11 +26,10 @@ public final class GameManager {
     }
 
     private void loadDictionary(){
-        for (String word : Gdx.files.internal("dictionary/dictionary").readString().split("\n")){
-            String[] engrus = word.toLowerCase().split("\t");
-            if (engrus.length == 2){
-                bigDictionary.put(engrus[0], engrus[0] + " - " + engrus[1]);
-            }
+        for (JsonValue word : new JsonReader().parse(Gdx.files.internal("dictionary/dictionary.json"))){
+            String eng = word.name().toLowerCase();
+            String rus = word.asString().toLowerCase();
+            bigDictionary.put(eng, eng + " - " + rus);
         }
     }
 
