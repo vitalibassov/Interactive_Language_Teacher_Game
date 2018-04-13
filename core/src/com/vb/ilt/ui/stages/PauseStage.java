@@ -1,11 +1,11 @@
 package com.vb.ilt.ui.stages;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
+import com.vb.ilt.common.GameManager;
 import com.vb.ilt.systems.active.AuthorSpeechSystem;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MovementSystem;
@@ -33,7 +34,7 @@ public class PauseStage extends Stage {
 
     public PauseStage(Viewport viewport, SpriteBatch batch, AssetManager assetManager, PauseCallback pauseCallback) {
         super(viewport, batch);
-        this.skin = assetManager.get(AssetDescriptors.SKIN);
+        this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.pausePanel = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.PAUSE_PANEL);
         this.background = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.PAUSE_BACKGROUND);
         this.pauseCallback = pauseCallback;
@@ -50,8 +51,8 @@ public class PauseStage extends Stage {
         Table buttonTable = new Table();
         buttonTable.pad(20f);
 
-        TextButton exitButton = new TextButton("QUIT", skin);
-        TextButton resumeButton = new TextButton("RESUME", skin);
+        Button exitButton = new TextButton("QUIT", skin);
+        Button resumeButton = new TextButton("RESUME", skin);
 
         resumeButton.addListener(new ChangeListener() {
             @Override
@@ -68,7 +69,7 @@ public class PauseStage extends Stage {
         exitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
+                GameManager.INSTANCE.setStateQuit();
             }
         });
         buttonTable.add(exitButton).padRight(10f);

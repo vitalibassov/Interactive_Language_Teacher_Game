@@ -16,6 +16,7 @@ import com.vb.ilt.common.GameManager;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.screen.loading.LoadingScreen;
+import com.vb.ilt.screen.menu.MainMenuScreen;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.AuthorSpeechSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
@@ -134,6 +135,8 @@ public class GameScreen extends ScreenAdapter{
         engine.update(delta);
         if (GameManager.INSTANCE.isFinished()) {
             game.setScreen(new LoadingScreen(game));
+        }else if (GameManager.INSTANCE.isQuit()){
+            game.setScreen(new MainMenuScreen(game));
         }
     }
 

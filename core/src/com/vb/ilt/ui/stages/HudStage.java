@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -39,7 +40,7 @@ public class HudStage extends Stage{
 
     public HudStage(AssetManager assetManager, Viewport viewport, SpriteBatch batch) {
         super(viewport, batch);
-        this.skin = assetManager.get(AssetDescriptors.SKIN);
+        this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.assetManager = assetManager;
         this.dictTable = new DictionaryTable(skin);
         init();
@@ -47,7 +48,7 @@ public class HudStage extends Stage{
 
     public HudStage(AssetManager assetManager, Viewport viewport, SpriteBatch batch, Map<String, String> allWords, Map<String, String> myWords) {
         super(viewport, batch);
-        this.skin = assetManager.get(AssetDescriptors.SKIN);
+        this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.assetManager = assetManager;
         this.dictTable = new DictionaryTable(skin, allWords, myWords);
         init();
@@ -60,8 +61,8 @@ public class HudStage extends Stage{
         Table buttonTable = new Table();
         this.dictTable.setVisible(false);
 
-        final ImageButton pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
-        final ImageButton dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
+        final Button pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
+        final Button dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
 
         dictButton.addListener(new ChangeListener(){
             @Override
@@ -83,7 +84,7 @@ public class HudStage extends Stage{
         });
 
         Table scoreTable = new Table();
-        Image image = new Image(assetManager.get(AssetDescriptors.SKIN).getDrawable(RegionNames.COIN));
+        Image image = new Image(assetManager.get(AssetDescriptors.UI_SKIN).getDrawable(RegionNames.COIN));
         score = new Label("0", skin);
         score.setFontScale(2f);
 

@@ -11,7 +11,7 @@ import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.config.GameConfig;
-import com.vb.ilt.screen.game.GameScreen;
+import com.vb.ilt.screen.menu.MainMenuScreen;
 import com.vb.ilt.util.GdxUtils;
 
 public class LoadingScreen extends ScreenAdapter {
@@ -46,7 +46,7 @@ public class LoadingScreen extends ScreenAdapter {
 
         assetManager.load(AssetDescriptors.FONT);
         assetManager.load(AssetDescriptors.HUD);
-        assetManager.load(AssetDescriptors.SKIN);
+        assetManager.load(AssetDescriptors.UI_SKIN);
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.load(AssetDescriptors.NPC);
         assetManager.load(AssetDescriptors.PANELS);
@@ -71,8 +71,7 @@ public class LoadingScreen extends ScreenAdapter {
 
         if (changeScreen) {
             //TODO Temporary hard coded level
-            GameManager.INSTANCE.reset();
-            game.setScreen(new GameScreen(game, "level_1"));
+            game.setScreen(new MainMenuScreen(game));
         }
     }
 

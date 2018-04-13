@@ -39,10 +39,12 @@ public final class GameManager {
 
     public boolean isPlaying(){return gameState.isPlaying();}
     public boolean isPause(){return gameState.isPause();}
+    public boolean isQuit(){return gameState.isQuit();}
     public boolean isFinished(){return gameState.isFinish();}
 
     public void setStateFinished(){gameState = GameState.FINISH;}
     public void setStatePause(){gameState = GameState.PAUSE;}
+    public void setStateQuit(){gameState = GameState.QUIT;}
     public void setStatePlaying(){gameState = GameState.PLAYING;}
 
     public int getScore() { return score;}

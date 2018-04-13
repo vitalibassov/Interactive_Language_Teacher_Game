@@ -108,7 +108,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         log.debug("ALL WORDS IS NULL= " + (dictionaryComponent.allWords == null));
         log.debug("MY WORDS IS NULL= " + (dictionaryComponent.myWords == null));
         this.npcConv = new ConversationStage(hudViewport, batch,
-                assetManager.get(AssetDescriptors.SKIN),
+                assetManager.get(AssetDescriptors.UI_SKIN),
                 atlas.findRegion(this.characterType.name().toLowerCase()), this);
         this.npcConv.setAvailableAllWords(dictionaryComponent.allWords);
         this.npcConv.setAvailableMyWords(dictionaryComponent.myWords);

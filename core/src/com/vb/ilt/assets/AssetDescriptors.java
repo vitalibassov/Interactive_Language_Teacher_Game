@@ -15,7 +15,7 @@ public final class AssetDescriptors {
             new AssetDescriptor<BitmapFont>(AssetPaths.FONT, BitmapFont.class);
     public static final AssetDescriptor<TextureAtlas> HUD =
             new AssetDescriptor<TextureAtlas>(AssetPaths.HUD, TextureAtlas.class);
-    public static final AssetDescriptor<Skin> SKIN =
+    public static final AssetDescriptor<Skin> UI_SKIN =
             new AssetDescriptor<Skin>(AssetPaths.SKIN, Skin.class);
     public static final AssetDescriptor<TextureAtlas> PLAYER =
             new AssetDescriptor<TextureAtlas>(AssetPaths.PLAYER, TextureAtlas.class);

@@ -1,6 +1,7 @@
 package com.vb.ilt.ui.tables;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -69,8 +70,9 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         label.setAlignment(Align.left);
         words.add(label).padLeft(15).padRight(15).padTop(20).padBottom(20).left().top().growX();
         if (checkWordKey(wordKey)) {
-            ImageButton btn = new ImageButton(getSkin(), this.btnStyle);
+            Button btn = new ImageButton(getSkin(), this.btnStyle);
             btn.setName(wordValue);
+            btn.setSize(30f, 30f);
             btn.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {

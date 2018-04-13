@@ -1,6 +1,7 @@
 package com.vb.ilt.ui.tables;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -35,8 +36,8 @@ public class DictionaryTable extends Table{
     private void init(){
         final WidgetGroup tabContainer = new WidgetGroup();
 
-        final TextButton allWordsTab = new TextButton("All Words", skin);
-        final TextButton myWordsTab = new TextButton("My Words", skin);
+        final Button allWordsTab = new TextButton("All Words", skin);
+        final Button myWordsTab = new TextButton("My Words", skin);
 
         allWordsTab.addListener(new ChangeListener() {
             @Override
@@ -74,7 +75,7 @@ public class DictionaryTable extends Table{
         this.pack();
     }
 
-    private void switchButtonsState(TextButton btn1, TextButton btn2, boolean b1, boolean b2){
+    private void switchButtonsState(Button btn1, Button btn2, boolean b1, boolean b2){
         btn1.setDisabled(b1);
         btn2.setDisabled(b2);
     }

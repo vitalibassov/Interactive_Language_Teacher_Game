@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -67,8 +68,8 @@ public class ConversationStage extends Stage {
 
         this.dictTable.setVisible(false);
 
-        ImageButton exitButton = new ImageButton(skin, ButtonStyleNames.QUIT);
-        final ImageButton dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
+        Button exitButton = new ImageButton(skin, ButtonStyleNames.QUIT);
+        Button dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
 
         exitButton.addListener(new ChangeListener() {
             @Override
