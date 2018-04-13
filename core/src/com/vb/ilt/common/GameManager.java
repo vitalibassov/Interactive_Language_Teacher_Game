@@ -12,6 +12,7 @@ public final class GameManager {
     private static final Logger log = new Logger(GameManager.class.getName(), Logger.DEBUG);
 
     private int currentLevel;
+    private final int maxScore = 24000;
     private int tempScore;
     private int score;
     private final LinkedHashMap<String, String> bigDictionary;
@@ -52,6 +53,14 @@ public final class GameManager {
 
     public void commitTempScoreAmount(){score += tempScore;}
     public void dropTempScore(){tempScore = 0;}
+
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public int getMaxScore() {
+        return maxScore;
+    }
 
     public void reset(){
         tempScore = 0;

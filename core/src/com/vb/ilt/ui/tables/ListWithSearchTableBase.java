@@ -98,7 +98,6 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         String text = this.search.getText();
         for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
             if (wordEntry.getValue().contains(text)){
-                System.out.println(wordEntry.getKey() + " : " + wordEntry.getValue());
                 addRowToWords(wordEntry.getKey(), wordEntry.getValue(), this.words);
             }
         }

@@ -15,7 +15,6 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.config.GameConfig;
-import com.vb.ilt.screen.loading.LoadingScreen;
 import com.vb.ilt.screen.menu.MainMenuScreen;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.AuthorSpeechSystem;
@@ -93,7 +92,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(new EntityFactorySystem(assetManager, batch));
         engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
-        engine.addSystem(new FinishSystem());
+
 
         engine.addSystem(new PlayerControlSystem(hudViewport));
         engine.addSystem(new SoundSystem());
@@ -120,6 +119,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(hudSystem);
         engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
+        engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
         engine.addSystem(conversationSystem);
@@ -133,10 +133,12 @@ public class GameScreen extends ScreenAdapter{
     public void render(float delta) {
         GdxUtils.clearScreen();
         engine.update(delta);
-        if (GameManager.INSTANCE.isFinished()) {
-            game.setScreen(new LoadingScreen(game));
-        }else if (GameManager.INSTANCE.isQuit()){
+        if (GameManager.INSTANCE.isQuit()){
             game.setScreen(new MainMenuScreen(game));
+        }else if (GameManager.INSTANCE.isFinished()){
+            engine.getSystem(MovementSystem.class).setProcessing(false);
+            engine.getSystem(PlayerControlSystem.class).setProcessing(false);
+            engine.getSystem(HudSystem.class).setProcessing(false);
         }
     }
 

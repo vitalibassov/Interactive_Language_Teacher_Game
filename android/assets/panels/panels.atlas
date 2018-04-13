@@ -4,6 +4,13 @@ size: 4096,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+assessmentPanel
+  rotate: false
+  xy: 2, 2
+  size: 720, 400
+  orig: 720, 400
+  offset: 0, 0
+  index: -1
 author
   rotate: false
   xy: 2566, 846
@@ -34,14 +41,14 @@ merchant
   index: -1
 pauseBackground
   rotate: false
-  xy: 2566, 834
+  xy: 3288, 1836
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 pausePanel
   rotate: false
-  xy: 2, 2
+  xy: 2566, 444
   size: 720, 400
   orig: 720, 400
   offset: 0, 0
