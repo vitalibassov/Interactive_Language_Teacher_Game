@@ -72,14 +72,13 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         if (checkWordKey(wordKey)) {
             Button btn = new ImageButton(getSkin(), this.btnStyle);
             btn.setName(wordValue);
-            btn.setSize(30f, 30f);
             btn.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     processBtn(wordKey, wordValue);
                 }
             });
-            words.add(btn).row();
+            words.add(btn).width(100f).height(100f).row();
         }
         words.add().row();
     }
