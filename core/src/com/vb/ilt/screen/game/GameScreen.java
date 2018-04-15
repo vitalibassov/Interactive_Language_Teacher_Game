@@ -115,7 +115,6 @@ public class GameScreen extends ScreenAdapter{
        // engine.addSystem(new GridRenderSystem(viewport, renderer));
         engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
 
-
         engine.addSystem(hudSystem);
         engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
         engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));

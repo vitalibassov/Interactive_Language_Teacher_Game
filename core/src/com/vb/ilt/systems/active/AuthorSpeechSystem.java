@@ -46,7 +46,7 @@ public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
     protected void processEntity(Entity entity, float deltaTime) {
         Queue<Conversation> conversationQueue = Mappers.STORY.get(entity).conversations;
 
-        if (conversationQueue.size != 0 && conversationQueue.first().getType().isPlayer() && !isReading && isReady(deltaTime)){
+        if (conversationQueue.size != 0 && conversationQueue.first().getType().isAuthor() && !isReading && isReady(deltaTime)){
             systemSwitch(false);
             stage.updateText(conversationQueue.removeFirst().getNext(null).getNpctext());
             Gdx.input.setInputProcessor(stage);
