@@ -1,7 +1,7 @@
 import os
 
-path = ".\\shepherd"
-name = "shepherd"
+path = ".\\npc\\frog"
+name = "frog"
 counter = 1
 
 for filename in os.listdir(path):

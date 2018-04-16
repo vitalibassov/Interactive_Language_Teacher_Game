@@ -17,7 +17,7 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
-import com.vb.ilt.systems.active.AuthorSpeechSystem;
+import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -78,7 +78,7 @@ public class HudStage extends Stage{
                         MovementSystem.class,
                         HudSystem.class,
                         PlayerControlSystem.class,
-                        AuthorSpeechSystem.class
+                        MonologueSystem.class
                 );
             }
         });

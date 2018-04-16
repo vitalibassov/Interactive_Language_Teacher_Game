@@ -30,9 +30,9 @@
   </object>
  </objectgroup>
  <objectgroup name="NPCSpawnPoints">
-  <object id="23" name="blacksmith" x="2049" y="4147"/>
-  <object id="24" name="merchant" x="2278" y="4218"/>
-  <object id="25" name="shepherd" x="2302" y="4682"/>
+  <object id="23" name="frog" x="2049" y="4147"/>
+  <object id="24" name="bee" x="2278" y="4218"/>
+  <object id="25" name="cat" x="2302" y="4682"/>
  </objectgroup>
  <objectgroup name="SpawnPoints">
   <object id="8" name="SpawnPlayer" x="1984.54" y="4451.67" width="49.3636" height="52.8864"/>

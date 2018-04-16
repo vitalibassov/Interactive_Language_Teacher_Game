@@ -11,8 +11,10 @@ public final class AssetDescriptors {
 
     private AssetDescriptors(){}
 
-    public static final AssetDescriptor<BitmapFont> FONT =
-            new AssetDescriptor<BitmapFont>(AssetPaths.FONT, BitmapFont.class);
+    public static final AssetDescriptor<BitmapFont> DEFAULT_FONT =
+            new AssetDescriptor<BitmapFont>(AssetPaths.DEFAULT_FONT, BitmapFont.class);
+    public static final AssetDescriptor<BitmapFont> STENCIL_FONT =
+            new AssetDescriptor<BitmapFont>(AssetPaths.STENCIL_FONT, BitmapFont.class);
     public static final AssetDescriptor<TextureAtlas> HUD =
             new AssetDescriptor<TextureAtlas>(AssetPaths.HUD, TextureAtlas.class);
     public static final AssetDescriptor<Skin> UI_SKIN =
@@ -21,6 +23,8 @@ public final class AssetDescriptors {
             new AssetDescriptor<TextureAtlas>(AssetPaths.PLAYER, TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> NPC =
             new AssetDescriptor<TextureAtlas>(AssetPaths.NPC, TextureAtlas.class);
+    public static final AssetDescriptor<TextureAtlas> CLOSE_UP =
+            new AssetDescriptor<TextureAtlas>(AssetPaths.CLOSE_UP, TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> PANELS =
             new AssetDescriptor<TextureAtlas>(AssetPaths.DIALOGS, TextureAtlas.class);
     public static final AssetDescriptor<Sound> STEP_SOUND =

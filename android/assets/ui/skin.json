@@ -2,6 +2,9 @@
   "com.badlogic.gdx.graphics.g2d.BitmapFont": {
     "default-font": {
       "file": "fonts/sitka_42.fnt"
+    },
+    "Stencil_54":{
+      "file": "fonts/Stencil_54.fnt"
     }
   },
   "com.badlogic.gdx.graphics.Color": {
@@ -21,6 +24,10 @@
   "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
     "default": {
       "font": "default-font",
+      "fontColor": "white"
+    },
+    "stencil": {
+      "font": "Stencil_54",
       "fontColor": "white"
     }
   },

@@ -14,23 +14,34 @@ import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.ui.stages.AuthorSpeechStage;
 import com.vb.ilt.ui.stages.ExitCallback;
+import com.vb.ilt.ui.stages.MainCharacterSpeechStage;
+import com.vb.ilt.ui.stages.MonologueStage;
 import com.vb.ilt.util.Mappers;
 
-public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
+public class MonologueSystem extends IteratingSystem implements ExitCallback{
 
-    private static final Logger log = new Logger(AuthorSpeechSystem.class.getName(), Logger.DEBUG);
+    private static final Logger log = new Logger(MonologueSystem.class.getName(), Logger.DEBUG);
 
     private boolean isReading = false;
-    private final AuthorSpeechStage stage;
+    private final MonologueStage authorSpeechStage;
+    private final MonologueStage mainCharacterSpeechStage;
     private float accumulator = 0f;
+
+    private MonologueStage monologueStage;
 
     private static final Family FAMILY = Family.all(
             StoryComponent.class
     ).get();
 
-    public AuthorSpeechSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
+    public MonologueSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
         super(FAMILY);
-        stage = new AuthorSpeechStage(
+        authorSpeechStage = new AuthorSpeechStage(
+                hudViewport,
+                batch,
+                assetManager,
+                this
+        );
+        mainCharacterSpeechStage = new MainCharacterSpeechStage(
                 hudViewport,
                 batch,
                 assetManager,
@@ -39,17 +50,23 @@ public class AuthorSpeechSystem extends IteratingSystem implements ExitCallback{
     }
 
     private void actStage(){
-        stage.act();
-        stage.draw();
+        monologueStage.act();
+        monologueStage.draw();
     }
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         Queue<Conversation> conversationQueue = Mappers.STORY.get(entity).conversations;
-
-        if (conversationQueue.size != 0 && conversationQueue.first().getType().isAuthor() && !isReading && isReady(deltaTime)){
+        if (conversationQueue.size != 0 && !isReading && isReady(deltaTime)){
+            if (conversationQueue.first().getType().isAuthor()){
+                monologueStage = authorSpeechStage;
+            }else if(conversationQueue.first().getType().isProtagonist()){
+                monologueStage = mainCharacterSpeechStage;
+            }else {
+                return;
+            }
             systemSwitch(false);
-            stage.updateText(conversationQueue.removeFirst().getNext(null).getNpctext());
-            Gdx.input.setInputProcessor(stage);
+            monologueStage.updateText(conversationQueue.removeFirst().getNext(null).getNpctext());
+            Gdx.input.setInputProcessor(monologueStage);
             isReading = true;
         }
         if (isReading){

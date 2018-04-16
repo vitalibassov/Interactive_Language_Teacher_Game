@@ -11,13 +11,6 @@ assessmentPanel
   orig: 720, 400
   offset: 0, 0
   index: -1
-author
-  rotate: false
-  xy: 2566, 846
-  size: 720, 1000
-  orig: 720, 1000
-  offset: 0, 0
-  index: -1
 background
   rotate: false
   xy: 2, 1126
@@ -25,18 +18,32 @@ background
   orig: 1280, 720
   offset: 0, 0
   index: -1
-blacksmith
+bee
   rotate: false
   xy: 2, 404
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
-merchant
+cat
   rotate: false
   xy: 1284, 1126
   size: 1280, 720
   orig: 1280, 720
+  offset: 0, 0
+  index: -1
+frog
+  rotate: false
+  xy: 1284, 404
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+monologue
+  rotate: false
+  xy: 2566, 846
+  size: 720, 1000
+  orig: 720, 1000
   offset: 0, 0
   index: -1
 pauseBackground
@@ -51,12 +58,5 @@ pausePanel
   xy: 2566, 444
   size: 720, 400
   orig: 720, 400
-  offset: 0, 0
-  index: -1
-shepherd
-  rotate: false
-  xy: 1284, 404
-  size: 1280, 720
-  orig: 1280, 720
   offset: 0, 0
   index: -1

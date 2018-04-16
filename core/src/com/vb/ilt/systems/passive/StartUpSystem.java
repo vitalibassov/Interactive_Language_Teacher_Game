@@ -62,17 +62,17 @@ public class StartUpSystem extends EntitySystem{
 //        for (String s : d.getPlayerAnswers()){
 //            System.out.println(s);
 //        }
-//        d = conv.getNextAndIncreaseScore("[MERCHANT] Answer 2");
+//        d = conv.getNextAndIncreaseScore("[CAT] Answer 2");
 //        System.out.println(d.getNpctext());
 //        for (String s : d.getPlayerAnswers()){
 //            System.out.println(s);
 //        }
-//        d = conv.getNextAndIncreaseScore("[MERCHANT] Answer 3 in Index 2");
+//        d = conv.getNextAndIncreaseScore("[CAT] Answer 3 in Index 2");
 //        System.out.println(d.getNpctext());
 //        for (String s : d.getPlayerAnswers()){
 //            System.out.println(s);
 //        }
-//        d = conv.getNextAndIncreaseScore("[MERCHANT] Okay GoodBye");
+//        d = conv.getNextAndIncreaseScore("[CAT] Okay GoodBye");
 //        System.out.println(d);
 //        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////////");
     }

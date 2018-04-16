@@ -44,11 +44,13 @@ public class LoadingScreen extends ScreenAdapter {
         viewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT, camera);
         renderer = new ShapeRenderer();
 
-        assetManager.load(AssetDescriptors.FONT);
+        assetManager.load(AssetDescriptors.DEFAULT_FONT);
+        assetManager.load(AssetDescriptors.STENCIL_FONT);
         assetManager.load(AssetDescriptors.HUD);
         assetManager.load(AssetDescriptors.UI_SKIN);
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.load(AssetDescriptors.NPC);
+        assetManager.load(AssetDescriptors.CLOSE_UP);
         assetManager.load(AssetDescriptors.PANELS);
         assetManager.load(AssetDescriptors.STEP_SOUND);
         assetManager.load(AssetDescriptors.DOOR_SOUND);

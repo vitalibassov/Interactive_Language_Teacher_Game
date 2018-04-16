@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="64" nextobjectid="13">
+<map version="1.0" tiledversion="1.1.4" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="64" infinite="0" nextobjectid="13">
  <tileset firstgid="1" source="../textures/grass.tsx"/>
  <tileset firstgid="8" source="../textures/testing_tree.tsx"/>
  <tileset firstgid="9" source="../textures/testTextures.tsx"/>
@@ -32,6 +32,6 @@
   </object>
  </objectgroup>
  <objectgroup name="NPCSpawnPoints">
-  <object id="4" name="shepherd" x="542.167" y="557.833" width="6.5" height="3.5"/>
+  <object id="4" name="frog" x="542.167" y="557.833" width="6.5" height="3.5"/>
  </objectgroup>
 </map>

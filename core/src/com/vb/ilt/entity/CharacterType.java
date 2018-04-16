@@ -4,14 +4,14 @@ public enum CharacterType {
     NONE,
     AUTHOR,
     PROTAGONIST,
-    BLACKSMITH,
-    MERCHANT,
-    SHEPHERD;
+    BEE,
+    CAT,
+    FROG;
 
     public boolean isNone(){return this == NONE;}
     public boolean isAuthor() {return this == AUTHOR;}
     public boolean isProtagonist(){return this == PROTAGONIST;}
-    public boolean isBlacksmith(){return this == BLACKSMITH;}
-    public boolean isMerchant(){return this == MERCHANT;}
-    public boolean isShepherd(){return this == SHEPHERD;}
+    public boolean isBee(){return this == BEE;}
+    public boolean isCat(){return this == CAT;}
+    public boolean isFrog(){return this == FROG;}
 }

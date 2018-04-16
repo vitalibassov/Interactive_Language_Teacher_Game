@@ -120,7 +120,6 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.npcConv.updateDialog(firstDialog.getNpctext());
         this.npcConv.setAnswers(firstDialog.getPlayerAnswers());
 
-
         Gdx.input.setInputProcessor(npcConv);
     }
 

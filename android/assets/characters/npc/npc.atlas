@@ -4,406 +4,406 @@ size: 4096,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-blacksmith
+bee
   rotate: false
   xy: 2, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 1
-blacksmith
+bee
   rotate: false
   xy: 2, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 2
-blacksmith
+bee
   rotate: false
   xy: 132, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 3
-blacksmith
+bee
   rotate: false
   xy: 2, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 4
-blacksmith
+bee
   rotate: false
   xy: 132, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 5
-blacksmith
+bee
   rotate: false
   xy: 262, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 6
-blacksmith
+bee
   rotate: false
   xy: 132, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 7
-blacksmith
+bee
   rotate: false
   xy: 262, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 8
-blacksmith
+bee
   rotate: false
   xy: 392, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 9
-blacksmith
+bee
   rotate: false
   xy: 262, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 10
-blacksmith
+bee
   rotate: false
   xy: 392, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 11
-blacksmith
+bee
   rotate: false
   xy: 522, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 12
-blacksmith
+bee
   rotate: false
   xy: 392, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 13
-blacksmith
+bee
   rotate: false
   xy: 522, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 14
-blacksmith
+bee
   rotate: false
   xy: 652, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 15
-blacksmith
+bee
   rotate: false
   xy: 522, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 16
-blacksmith
+bee
   rotate: false
   xy: 522, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 17
-merchant
+cat
   rotate: false
   xy: 652, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 1
-merchant
+cat
   rotate: false
   xy: 782, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 2
-merchant
+cat
   rotate: false
   xy: 652, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 3
-merchant
+cat
   rotate: false
   xy: 782, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 4
-merchant
+cat
   rotate: false
   xy: 912, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 5
-merchant
+cat
   rotate: false
   xy: 782, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 6
-merchant
+cat
   rotate: false
   xy: 912, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 7
-merchant
+cat
   rotate: false
   xy: 1042, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 8
-merchant
+cat
   rotate: false
   xy: 912, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 9
-merchant
+cat
   rotate: false
   xy: 1042, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 10
-merchant
+cat
   rotate: false
   xy: 1172, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 11
-merchant
+cat
   rotate: false
   xy: 1042, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 12
-merchant
+cat
   rotate: false
   xy: 1172, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 13
-merchant
+cat
   rotate: false
   xy: 1302, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 14
-merchant
+cat
   rotate: false
   xy: 1172, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 15
-merchant
+cat
   rotate: false
   xy: 1302, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 16
-merchant
+cat
   rotate: false
   xy: 1302, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 17
-shepherd
+frog
   rotate: false
   xy: 1432, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 1
-shepherd
+frog
   rotate: false
   xy: 1302, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 2
-shepherd
+frog
   rotate: false
   xy: 1432, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 3
-shepherd
+frog
   rotate: false
   xy: 1562, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 4
-shepherd
+frog
   rotate: false
   xy: 1432, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 5
-shepherd
+frog
   rotate: false
   xy: 1562, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 6
-shepherd
+frog
   rotate: false
   xy: 1692, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 7
-shepherd
+frog
   rotate: false
   xy: 1562, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 8
-shepherd
+frog
   rotate: false
   xy: 1692, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 9
-shepherd
+frog
   rotate: false
   xy: 1822, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 10
-shepherd
+frog
   rotate: false
   xy: 1692, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 11
-shepherd
+frog
   rotate: false
   xy: 1822, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 12
-shepherd
+frog
   rotate: false
   xy: 1952, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 13
-shepherd
+frog
   rotate: false
   xy: 1822, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 14
-shepherd
+frog
   rotate: false
   xy: 1952, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 15
-shepherd
+frog
   rotate: false
   xy: 2082, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 16
-shepherd
+frog
   rotate: false
   xy: 1952, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 17
-shepherd
+frog
   rotate: false
   xy: 2082, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 18
-shepherd
+frog
   rotate: false
   xy: 2212, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 19
-shepherd
+frog
   rotate: false
   xy: 2082, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 20
-shepherd
+frog
   rotate: false
   xy: 2212, 260
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 21
-shepherd
+frog
   rotate: false
   xy: 2342, 518
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 22
-shepherd
+frog
   rotate: false
   xy: 2212, 2
   size: 128, 256
   orig: 128, 256
   offset: 0, 0
   index: 23
-shepherd
+frog
   rotate: false
   xy: 2212, 2
   size: 128, 256

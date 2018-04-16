@@ -25,6 +25,12 @@ public class TexturePackerApp{
         );
 
         TexturePacker.process(settings,
+                RAW_ASSETS_PATH + "/characters/close_up",
+                ASSETS_PATH + "/characters/close_up",
+                "close_up"
+        );
+
+        TexturePacker.process(settings,
                 RAW_ASSETS_PATH + "/hud",
                 ASSETS_PATH + "/ui/hud",
                 "hud"
