@@ -335,10 +335,11 @@ public class EntityFactorySystem extends EntitySystem{
     public void createHud(Viewport hudViewport, DictionaryComponent dictionaryComponent){
         StageComponent stage = engine.createComponent(StageComponent.class);
         stage.stage = new HudStage(assetManager, hudViewport, batch, dictionaryComponent.allWords, dictionaryComponent.myWords);
-
+        SoundComponent sound = engine.createComponent(SoundComponent.class);
+        sound.sound = assetManager.get(AssetDescriptors.ACHIEVEMENT_SOUND);
         HudComponent hud = engine.createComponent(HudComponent.class);
 
-        addEntity(hud, stage);
+        addEntity(hud, stage, sound);
     }
 
     public DictionaryComponent createDictionary(){

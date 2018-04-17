@@ -17,5 +17,6 @@ public final class AssetPaths {
     public static final String STEP_SOUND = "sounds/step.wav";
     public static final String DOOR_SOUND = "sounds/door.wav";
     public static final String FINISHED_SOUND = "sounds/finished.wav";
+    public static final String ACHIEVEMENT_SOUND = "sounds/achievement.wav";
     public static final String MAIN_MUSIC = "music/main.mp3";
 }

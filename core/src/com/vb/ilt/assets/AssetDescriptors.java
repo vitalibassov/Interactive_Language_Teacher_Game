@@ -34,6 +34,8 @@ public final class AssetDescriptors {
             new AssetDescriptor<Sound>(AssetPaths.DOOR_SOUND, Sound.class);
     public static final AssetDescriptor<Sound> FINISHED_SOUND =
             new AssetDescriptor<Sound>(AssetPaths.FINISHED_SOUND, Sound.class);
+    public static final AssetDescriptor<Sound> ACHIEVEMENT_SOUND =
+            new AssetDescriptor<Sound>(AssetPaths.ACHIEVEMENT_SOUND, Sound.class);
     public static final AssetDescriptor<Music> MAIN_MUSIC =
             new AssetDescriptor<Music>(AssetPaths.MAIN_MUSIC, Music.class);
 }

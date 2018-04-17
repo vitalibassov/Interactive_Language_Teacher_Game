@@ -15,6 +15,7 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.entity.CharacterType;
 import com.vb.ilt.entity.components.DictionaryComponent;
+import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 import com.vb.ilt.entity.components.hud.HudComponent;
@@ -57,9 +58,10 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             DictionaryComponent.class
     ).get();
 
-    private static final Family HUD_STAGE = Family.all(
+    private static final Family HUD = Family.all(
             HudComponent.class,
-            StageComponent.class
+            StageComponent.class,
+            SoundComponent.class
     ).get();
 
     public ConversationSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
@@ -73,7 +75,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         hudSystem = engine.getSystem(HudSystem.class);
         playerControlSystem = engine.getSystem(PlayerControlSystem.class);
         movementSystem = engine.getSystem(MovementSystem.class);
-        hudStage = (HudStage) Mappers.STAGE.get(engine.getEntitiesFor(HUD_STAGE).first()).stage;
+        hudStage = (HudStage) Mappers.STAGE.get(engine.getEntitiesFor(HUD).first()).stage;
         dictionaryComponent = Mappers.DICT.get(engine.getEntitiesFor(DICT).first());
     }
 
@@ -159,6 +161,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
                 Entity dictionaryEntity = getEngine().getEntitiesFor(DICT).first();
                 DictionaryComponent dictionaryComponent = Mappers.DICT.get(dictionaryEntity);
                 addNewWordsToDictionary(finishedConv.getAllText(), dictionaryComponent.allWords);
+                Engine engine = getEngine();
+                engine.getSystem(SoundSystem.class).playSound(engine.getEntitiesFor(HUD).first());
                 exit();
             }else{
                 throw new RuntimeException("WE'VE GOT A PROBLEM...");
