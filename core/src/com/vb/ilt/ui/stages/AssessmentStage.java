@@ -1,5 +1,6 @@
 package com.vb.ilt.ui.stages;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Logger;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
@@ -119,5 +121,13 @@ public class AssessmentStage extends Stage{
         for (int i = 0; i < emptyStars; i++){
             starsTable.add(new Image(this.emptyStar));
         }
+
+        new Timer().scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                Gdx.input.vibrate(300);
+            }
+        }, 0f, 0.5f, stars - 1);
+
     }
 }

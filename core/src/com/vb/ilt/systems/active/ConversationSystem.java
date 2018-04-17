@@ -163,6 +163,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
                 addNewWordsToDictionary(finishedConv.getAllText(), dictionaryComponent.allWords);
                 Engine engine = getEngine();
                 engine.getSystem(SoundSystem.class).playSound(engine.getEntitiesFor(HUD).first());
+                Gdx.input.vibrate(1000);
                 exit();
             }else{
                 throw new RuntimeException("WE'VE GOT A PROBLEM...");
