@@ -351,8 +351,10 @@ public class EntityFactorySystem extends EntitySystem{
 
     public void createStory(Queue<Conversation> conversations) {
         StoryComponent conversation = engine.createComponent(StoryComponent.class);
+        SoundComponent sound = engine.createComponent(SoundComponent.class);
+        sound.sound = assetManager.get(AssetDescriptors.FINISHED_SOUND);
         conversation.conversations = conversations;
-        addEntity(conversation);
+        addEntity(conversation, sound);
     }
 
     public void createMusic(AssetDescriptor<Music> music){

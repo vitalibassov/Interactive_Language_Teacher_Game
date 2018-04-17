@@ -12,7 +12,10 @@ public final class AssetPaths {
     public static final String NPC = "characters/npc/npc.atlas";
     public static final String CLOSE_UP = "characters/close_up/close_up.atlas";
     public static final String DIALOGS = "panels/panels.atlas";
+
+
     public static final String STEP_SOUND = "sounds/step.wav";
     public static final String DOOR_SOUND = "sounds/door.wav";
+    public static final String FINISHED_SOUND = "sounds/finished.wav";
     public static final String MAIN_MUSIC = "music/main.mp3";
 }

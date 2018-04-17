@@ -113,7 +113,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new CharacterRenderSystem(batch));
         engine.addSystem(new WorldRenderSystem(viewport, batch));
 
-       // engine.addSystem(new GridRenderSystem(viewport, renderer));
+        //engine.addSystem(new GridRenderSystem(viewport, renderer));
         engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
 
         engine.addSystem(hudSystem);
@@ -133,6 +133,7 @@ public class GameScreen extends ScreenAdapter{
         GdxUtils.clearScreen();
         engine.update(delta);
         if (GameManager.INSTANCE.isQuit()){
+            engine.getSystem(MusicSystem.class).setEnabled(false);
             game.setScreen(new MainMenuScreen(game));
         }else if (GameManager.INSTANCE.isFinished()){
             engine.getSystem(MovementSystem.class).setProcessing(false);
