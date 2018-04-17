@@ -47,6 +47,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private PlayerControlSystem playerControlSystem;
     private MovementSystem movementSystem;
 
+    private boolean dropTempScore = false;
+
     private static final Family STORY = Family.all(
             StoryComponent.class
     ).get();
@@ -98,6 +100,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         }
 
         buildStage(this.conversations);
+        this.dropTempScore = false;
         setProcessing(true);
         return true;
     }
@@ -114,8 +117,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         this.npcConv.setAvailableMyWords(dictionaryComponent.myWords);
         this.npcConv.updateWords();
 
-        conversations.first().setToStart();
-        Dialog firstDialog = conversations.first().getNext(null);
+        Dialog firstDialog = conversations.first().getCurrentDialog();
+
 
         this.npcConv.updateDialog(firstDialog.getNpctext());
         this.npcConv.setAnswers(firstDialog.getPlayerAnswers());
@@ -125,7 +128,9 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void exit() {
-        GameManager.INSTANCE.dropTempScore();
+        if (this.dropTempScore){
+            GameManager.INSTANCE.dropTempScore();
+        }
         this.hudSystem.setProcessing(true);
         this.movementSystem.setProcessing(true);
         this.playerControlSystem.setProcessing(true);
@@ -145,6 +150,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         if (dialog == null){
             Conversation.NonConversationalAction nonConversationalAction = conversation.checkForNonConversationalAction();
             if (nonConversationalAction.isQuitConversation()){
+                conversation.setToStart();
+                dropTempScore = true;
                 exit();
             }else if (nonConversationalAction.isFinishConversation()){
                 GameManager.INSTANCE.commitTempScoreAmount();

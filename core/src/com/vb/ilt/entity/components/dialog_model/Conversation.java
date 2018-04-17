@@ -28,10 +28,6 @@ public class Conversation{
     //first Dialog, if answer == null
     public Dialog getNext(String answer){
 
-        if (answer == null){
-            return dialogs.get(0);
-        }
-
         Dialog currentDialog = dialogs.get(dialogIndex);
         this.dialogIndex = currentDialog.getDestinationID(answer);
 

@@ -65,7 +65,7 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
                 return;
             }
             systemSwitch(false);
-            monologueStage.updateText(conversationQueue.removeFirst().getNext(null).getNpctext());
+            monologueStage.updateText(conversationQueue.removeFirst().getCurrentDialog().getNpctext());
             Gdx.input.setInputProcessor(monologueStage);
             isReading = true;
         }
