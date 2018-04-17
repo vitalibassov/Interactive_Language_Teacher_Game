@@ -630,7 +630,7 @@
         "answers": [
           {
             "score": 200,
-            "destinationID": -1,
+            "destinationID": -2,
             "text": "Good bye, frog!"
           }
         ]

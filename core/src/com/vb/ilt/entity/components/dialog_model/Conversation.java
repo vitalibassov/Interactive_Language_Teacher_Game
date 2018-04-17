@@ -28,9 +28,7 @@ public class Conversation{
     //first Dialog, if answer == null
     public Dialog getNext(String answer){
 
-        if (dialogIndex == -1){
-            return null;
-        }else if (answer == null){
+        if (answer == null){
             return dialogs.get(0);
         }
 
@@ -38,6 +36,17 @@ public class Conversation{
         this.dialogIndex = currentDialog.getDestinationID(answer);
 
         return dialogs.get(this.dialogIndex);
+    }
+
+    public NonConversationalAction checkForNonConversationalAction(){
+        if (this.dialogIndex < 0){
+            if (this.dialogIndex == NonConversationalAction.QUIT_CONVERSATION.getValue()){
+                return NonConversationalAction.QUIT_CONVERSATION;
+            }else if (this.dialogIndex == NonConversationalAction.FINISH_CONVERSATION.getValue()){
+                return NonConversationalAction.FINISH_CONVERSATION;
+            }
+        }
+        return NonConversationalAction.NONE;
     }
 
     public Dialog getCurrentDialog(){
@@ -60,5 +69,22 @@ public class Conversation{
             text.addAll(dialog.getPlayerAnswers());
         }
         return text;
+    }
+
+    public enum NonConversationalAction{
+        NONE(0),
+        QUIT_CONVERSATION(-1),
+        FINISH_CONVERSATION(-2);
+
+        private int value;
+
+        public int getValue(){return value;}
+
+        NonConversationalAction(int value){this.value = value;}
+
+        public boolean isNone(){return this == NONE;}
+        public boolean isQuitConversation(){return this == QUIT_CONVERSATION;}
+        public boolean isFinishConversation(){return this == FINISH_CONVERSATION;}
+
     }
 }

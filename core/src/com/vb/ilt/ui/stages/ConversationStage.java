@@ -30,6 +30,7 @@ public class ConversationStage extends Stage {
     private final ConversationCallback conversationCallback;
     private final Skin skin;
     private final DictionaryTable dictTable;
+    private ScrollPane scrollPane;
     private Label npcText;
     private Table dialogTable;
 
@@ -91,12 +92,12 @@ public class ConversationStage extends Stage {
 
         this.dialogTable = new Table();
 
-        ScrollPane scrollPane = new ScrollPane(dialogTable);
-        scrollPane.setFadeScrollBars(false);
+        this.scrollPane = new ScrollPane(dialogTable);
+        this.scrollPane.setFadeScrollBars(false);
 
 
         mainTable.add(buttonTable).expandX().expandY().right().top().row();
-        mainTable.add(scrollPane).bottom().right().width(GameConfig.HUD_WIDTH - 400).height(GameConfig.HUD_HEIGHT / 2f).padBottom(50);
+        mainTable.add(this.scrollPane).bottom().right().width(GameConfig.HUD_WIDTH - 400).height(GameConfig.HUD_HEIGHT / 2f).padBottom(50);
 
         mainTable.setBackground(new TextureRegionDrawable(region));
         mainTable.center();
@@ -134,6 +135,8 @@ public class ConversationStage extends Stage {
             this.dialogTable.add(answBtn).pad(20).grow().row();
         }
         this.dialogTable.pack();
+        this.scrollPane.setScrollPercentY(0);
+
     }
 
     public void setAvailableAllWords(Map<String, String> words){

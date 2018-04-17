@@ -139,14 +139,23 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     public void nextDialog(String answer) {
         log.debug("ANSWER: " + answer);
         GameManager.INSTANCE.increaseTempScoreBy(this.conversations.first().getCurrentDialog().getScore(answer));
-        Dialog dialog = this.conversations.first().getNext(answer);
+        Conversation conversation = this.conversations.first();
+        Dialog dialog = conversation.getNext(answer);
+
         if (dialog == null){
-            GameManager.INSTANCE.commitTempScoreAmount();
-            Conversation finishedConv = this.conversations.removeFirst();
-            Entity dictionaryEntity = getEngine().getEntitiesFor(DICT).first();
-            DictionaryComponent dictionaryComponent = Mappers.DICT.get(dictionaryEntity);
-            addNewWordsToDictionary(finishedConv.getAllText(), dictionaryComponent.allWords);
-            exit();
+            Conversation.NonConversationalAction nonConversationalAction = conversation.checkForNonConversationalAction();
+            if (nonConversationalAction.isQuitConversation()){
+                exit();
+            }else if (nonConversationalAction.isFinishConversation()){
+                GameManager.INSTANCE.commitTempScoreAmount();
+                Conversation finishedConv = this.conversations.removeFirst();
+                Entity dictionaryEntity = getEngine().getEntitiesFor(DICT).first();
+                DictionaryComponent dictionaryComponent = Mappers.DICT.get(dictionaryEntity);
+                addNewWordsToDictionary(finishedConv.getAllText(), dictionaryComponent.allWords);
+                exit();
+            }else{
+                throw new RuntimeException("WE'VE GOT A PROBLEM...");
+            }
             return;
         }
         npcConv.updateDialog(dialog.getNpctext());
