@@ -20,6 +20,7 @@ import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
 import com.vb.ilt.systems.active.ConversationSystem;
+import com.vb.ilt.systems.active.FinishSystem;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
@@ -117,7 +118,7 @@ public class GameScreen extends ScreenAdapter{
 
         engine.addSystem(hudSystem);
         engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
-        //engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
+        engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
         engine.addSystem(conversationSystem);
