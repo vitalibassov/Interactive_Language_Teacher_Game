@@ -12,7 +12,7 @@ public final class GameManager {
     private static final Logger log = new Logger(GameManager.class.getName(), Logger.DEBUG);
 
     private int currentLevel;
-    private final int maxScore = 24000;
+    private final int maxScore = 4490;
     private int tempScore;
     private int score;
     private final LinkedHashMap<String, String> bigDictionary;
