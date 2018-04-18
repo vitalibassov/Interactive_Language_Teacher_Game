@@ -10,12 +10,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Logger;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 
 public abstract class ListWithSearchTableBase extends Table implements TextField.TextFieldListener{
+
+    private static final Logger log = new Logger(ListWithSearchTableBase.class.getName(), Logger.DEBUG);
 
     private final String btnStyle;
     private final Map<String, String> availableWords;
@@ -37,8 +40,13 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
     }
 
     private void init(){
+        Table searchTable = new Table();
+        searchTable.defaults().pad(10f);
+
         this.search = new TextField("", getSkin());
         this.search.setTextFieldListener(this);
+        searchTable.add(this.search).growX();
+        searchTable.setBackground(getSkin().getDrawable("text-field"));
 
         this.words = new Table();
         for (Map.Entry<String, String> wordEntry : availableWords.entrySet()){
@@ -53,7 +61,7 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         scrollPane.setFadeScrollBars(false);
         scrollPane.pack();
 
-        add(this.search).growX().pad(40).row();
+        add(searchTable).growX().pad(40).row();
         add(scrollPane).grow().padBottom(40).padLeft(20).padRight(20);
         setFillParent(true);
 
@@ -61,6 +69,7 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
 //        add(scrollPane).width(800).height(800).padBottom(40);
 //
 //        setSize(800, 800);
+
         pack();
     }
 
@@ -112,6 +121,10 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
     public void setAvailableWords(Map<String, String> availableWords) {
         this.availableWords.clear();
         this.availableWords.putAll(availableWords);
+    }
+
+    public void hideKeyboard(){
+        this.search.getOnscreenKeyboard().show(false);
     }
 
     abstract void processBtn (String wordKey, String wordValue);

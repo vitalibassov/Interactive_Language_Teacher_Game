@@ -6,91 +6,91 @@ filter: Nearest,Nearest
 repeat: none
 add
   rotate: false
-  xy: 1387, 682
+  xy: 1387, 680
   size: 69, 70
   orig: 69, 70
   offset: 0, 0
   index: -1
 button-down
   rotate: false
-  xy: 1004, 820
+  xy: 1004, 818
   size: 381, 138
   orig: 381, 138
   offset: 0, 0
   index: -1
 button-up
   rotate: false
-  xy: 1004, 680
+  xy: 1004, 678
   size: 381, 138
   orig: 381, 138
   offset: 0, 0
   index: -1
 coin
   rotate: false
-  xy: 1725, 841
+  xy: 1725, 839
   size: 112, 117
   orig: 112, 117
   offset: 0, 0
   index: -1
 delete
   rotate: false
-  xy: 1004, 259
+  xy: 1004, 257
   size: 88, 80
   orig: 88, 80
   offset: 0, 0
   index: -1
 quit
   rotate: false
-  xy: 1004, 259
+  xy: 1004, 257
   size: 88, 80
   orig: 88, 80
   offset: 0, 0
   index: -1
 dict
   rotate: false
-  xy: 1583, 818
+  xy: 1583, 816
   size: 140, 140
   orig: 140, 140
   offset: 0, 0
   index: -1
 empty-star
   rotate: false
-  xy: 1004, 485
+  xy: 1004, 483
   size: 194, 193
   orig: 194, 193
   offset: 0, 0
   index: -1
 panel
   rotate: false
-  xy: 2, 58
+  xy: 2, 56
   size: 1000, 900
   orig: 1000, 900
   offset: 0, 0
   index: -1
 pause
   rotate: false
-  xy: 1144, 408
+  xy: 1144, 406
   size: 44, 75
   orig: 44, 75
   offset: 0, 0
   index: -1
 small-button-down
   rotate: false
-  xy: 1004, 341
+  xy: 1004, 339
   size: 138, 142
   orig: 138, 142
   offset: 0, 0
   index: -1
 small-button-up
   rotate: false
-  xy: 1200, 536
+  xy: 1200, 534
   size: 138, 142
   orig: 138, 142
   offset: 0, 0
   index: -1
 star
   rotate: false
-  xy: 1387, 754
+  xy: 1387, 752
   size: 194, 204
   orig: 194, 204
   offset: 0, 0
@@ -98,7 +98,7 @@ star
 text-field
   rotate: false
   xy: 2, 2
-  size: 268, 54
-  orig: 268, 54
+  size: 1115, 52
+  orig: 1115, 52
   offset: 0, 0
   index: -1

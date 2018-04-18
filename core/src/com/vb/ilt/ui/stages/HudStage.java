@@ -68,6 +68,9 @@ public class HudStage extends Stage{
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 dictTable.setVisible(!dictTable.isVisible());
+                if (!dictTable.isVisible()){
+                    dictTable.hideKeyboard();
+                }
             }
         });
 

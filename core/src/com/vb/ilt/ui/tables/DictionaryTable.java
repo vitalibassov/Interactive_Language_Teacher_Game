@@ -100,4 +100,9 @@ public class DictionaryTable extends Table{
         allWords.updateWords();
         myWords.updateWords();
     }
+
+    public void hideKeyboard(){
+        allWords.hideKeyboard();
+        myWords.hideKeyboard();
+    }
 }
