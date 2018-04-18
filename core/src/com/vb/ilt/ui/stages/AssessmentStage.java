@@ -120,16 +120,38 @@ public class AssessmentStage extends Stage{
         new Timer().scheduleTask(new Timer.Task() {
             @Override
             public void run() {
-                starsTable.add(new Image(star)).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
+                final Image image = new Image(star);
+                starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
                 Gdx.input.vibrate(300);
+                runImageTransitionEffect(image, 15, 1f);
             }
         }, 0f, 0.5f, stars - 1);
 
         new Timer().scheduleTask(new Timer.Task() {
             @Override
             public void run() {
-                starsTable.add(new Image(emptyStar)).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
+                Image image = new Image(emptyStar);
+                starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
+                runImageTransitionEffect(image, 15, 1f);
             }
         }, 0.5f * stars, 0.5f, emptyStars - 1);
+    }
+
+    private void runImageTransitionEffect(final Image image, int frames, float speed){
+        final float alpha = 1f / (float)(frames);
+        image.getColor().a = 0f;
+        new Timer().scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                increaseImageAlpha(alpha, image);
+            }
+        }, 0f, speed / (float) frames, frames - 1);
+    }
+
+    private void increaseImageAlpha(float alpha, Image image){
+        image.getColor().a = image.getColor().a + alpha;
+        if (image.getColor().a > 1){
+            image.getColor().a = 1;
+        }
     }
 }
