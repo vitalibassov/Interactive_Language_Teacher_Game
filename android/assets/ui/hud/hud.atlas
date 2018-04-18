@@ -1,9 +1,23 @@
 
 hud.png
-size: 1024,1024
+size: 2048,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+bar
+  rotate: false
+  xy: 2, 516
+  size: 1105, 38
+  orig: 1105, 38
+  offset: 0, 0
+  index: -1
+bar-frame
+  rotate: false
+  xy: 2, 556
+  size: 1115, 52
+  orig: 1115, 52
+  offset: 0, 0
+  index: -1
 controls
   rotate: false
   xy: 2, 2

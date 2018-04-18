@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.screen.menu.MainMenuScreen;
@@ -32,6 +33,8 @@ public class LoadingScreen extends ScreenAdapter {
     private final InteractiveLangTeacherGame game;
     private final AssetManager assetManager;
 
+    private LoadingStage loadingStage;
+
     public LoadingScreen(InteractiveLangTeacherGame game) {
         this.game = game;
         assetManager = game.getAssetManager();
@@ -39,14 +42,26 @@ public class LoadingScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        log.debug("show");
+
         camera = new OrthographicCamera();
         viewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT, camera);
         renderer = new ShapeRenderer();
 
+        assetManager.load(AssetDescriptors.HUD);
+        assetManager.finishLoading();
+
+        log.debug("IS NULL: " + (assetManager.get(AssetDescriptors.HUD).findRegion(RegionNames.BAR_FRAME) == null));
+        log.debug("IS NULL: " + (assetManager.get(AssetDescriptors.HUD).findRegion(RegionNames.BAR) == null));
+        loadingStage = new LoadingStage(viewport, game.getBatch(),
+                assetManager.get(AssetDescriptors.HUD).findRegion(RegionNames.BAR_FRAME),
+                assetManager.get(AssetDescriptors.HUD).findRegion(RegionNames.BAR));
+
+        log.debug("show");
+
+
         assetManager.load(AssetDescriptors.DEFAULT_FONT);
         assetManager.load(AssetDescriptors.STENCIL_FONT);
-        assetManager.load(AssetDescriptors.HUD);
+
         assetManager.load(AssetDescriptors.UI_SKIN);
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.load(AssetDescriptors.NPC);
@@ -65,23 +80,17 @@ public class LoadingScreen extends ScreenAdapter {
         update(delta);
 
         GdxUtils.clearScreen();
-        viewport.apply();
-        renderer.setProjectionMatrix(camera.combined);
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
 
         draw();
 
-        renderer.end();
-
         if (changeScreen) {
-            //TODO Temporary hard coded level
             game.setScreen(new MainMenuScreen(game));
         }
     }
 
     private void update(float delta) {
         progress = assetManager.getProgress();
-
+        loadingStage.setBarWidth(progress);
         if (assetManager.update()) {
             waitTime -= delta;
 
@@ -92,11 +101,8 @@ public class LoadingScreen extends ScreenAdapter {
     }
 
     private void draw() {
-        float progressBarX = (GameConfig.HUD_WIDTH - PROGRESS_BAR_WIDTH) / 2f;
-        float progressBarY = (GameConfig.HUD_HEIGHT - PROGRESS_BAR_HEIGHT) / 2f;
-
-        renderer.rect(progressBarX, progressBarY,
-                progress * PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT);
+        loadingStage.act();
+        loadingStage.draw();
     }
 
     @Override

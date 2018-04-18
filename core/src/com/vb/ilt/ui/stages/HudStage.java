@@ -17,8 +17,8 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
-import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.HudSystem;
+import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.ui.tables.DictionaryTable;
@@ -57,7 +57,6 @@ public class HudStage extends Stage{
     private void init(){
         Table mainTable = new Table();
         mainTable.defaults().pad(20);
-
         Table buttonTable = new Table();
         this.dictTable.setVisible(false);
 
