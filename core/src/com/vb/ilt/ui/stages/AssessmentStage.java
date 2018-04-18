@@ -123,7 +123,7 @@ public class AssessmentStage extends Stage{
                 final Image image = new Image(star);
                 starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
                 Gdx.input.vibrate(300);
-                runImageTransitionEffect(image, 15, 1f);
+                runImageTransitionEffect(image, 15, 0.5f);
             }
         }, 0f, 0.5f, stars - 1);
 
@@ -132,7 +132,7 @@ public class AssessmentStage extends Stage{
             public void run() {
                 Image image = new Image(emptyStar);
                 starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
-                runImageTransitionEffect(image, 15, 1f);
+                runImageTransitionEffect(image, 15, 0.5f);
             }
         }, 0.5f * stars, 0.5f, emptyStars - 1);
     }
