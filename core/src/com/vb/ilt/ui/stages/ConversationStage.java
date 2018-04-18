@@ -121,7 +121,7 @@ public class ConversationStage extends Stage {
 
     public void setAnswers(List<String> answers){
         this.dialogTable.clear();
-        this.dialogTable.add(this.npcText).growX().top().row();
+        this.dialogTable.add(this.npcText).growX().padLeft(35f).padRight(35f).top().row();
         for (String answer : answers){
             final TextButton answBtn = new TextButton(answer, skin, "answer");
             answBtn.getLabelCell().pad(10f, 35f, 10f, 35f);
@@ -133,7 +133,7 @@ public class ConversationStage extends Stage {
             });
             answBtn.getLabel().setWrap(true);
             answBtn.getLabel().setAlignment(Align.center);
-            this.dialogTable.add(answBtn).pad(20).growX().height(70f).row();
+            this.dialogTable.add(answBtn).pad(5f, 20f, 5f, 20f).growX().height(120f).row();
         }
         this.dialogTable.pack();
         this.scrollPane.setScrollPercentY(0);

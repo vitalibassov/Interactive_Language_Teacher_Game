@@ -118,24 +118,24 @@ public class AssessmentStage extends Stage{
 //        }
 
         new Timer().scheduleTask(new Timer.Task() {
-            @Override
-            public void run() {
-                final Image image = new Image(star);
-                starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
-                Gdx.input.vibrate(300);
-                runImageTransitionEffect(image, 15, 0.5f);
-            }
-        }, 0f, 0.5f, stars - 1);
+        @Override
+        public void run() {
+            final Image image = new Image(star);
+            starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
+            Gdx.input.vibrate(300);
+            runImageTransitionEffect(image, 15, 0.5f);
+        }
+    }, 0f, 0.5f, stars - 1);
 
         new Timer().scheduleTask(new Timer.Task() {
-            @Override
-            public void run() {
-                Image image = new Image(emptyStar);
-                starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
-                runImageTransitionEffect(image, 15, 0.5f);
-            }
-        }, 0.5f * stars, 0.5f, emptyStars - 1);
-    }
+        @Override
+        public void run() {
+            Image image = new Image(emptyStar);
+            starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
+            runImageTransitionEffect(image, 15, 0.5f);
+        }
+    }, 0.5f * stars, 0.5f, emptyStars - 1);
+}
 
     private void runImageTransitionEffect(final Image image, int frames, float speed){
         final float alpha = 1f / (float)(frames);
