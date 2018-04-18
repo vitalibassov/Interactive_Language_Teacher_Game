@@ -57,7 +57,7 @@ public class ConversationStage extends Stage {
 
     private void init(){
         Table mainTable = new Table();
-        mainTable.defaults().pad(20);
+        mainTable.defaults().pad(20f, 20f, 0f, 20f);
         this.npcText = new Label("", skin);
         this.npcText.setWrap(true);
 
@@ -91,13 +91,13 @@ public class ConversationStage extends Stage {
 
 
         this.dialogTable = new Table();
+        this.dialogTable.top();
 
         this.scrollPane = new ScrollPane(dialogTable);
         this.scrollPane.setFadeScrollBars(false);
 
-
         mainTable.add(buttonTable).expandX().expandY().right().top().row();
-        mainTable.add(this.scrollPane).bottom().right().width(GameConfig.HUD_WIDTH - 400).height(GameConfig.HUD_HEIGHT / 2f).padBottom(50);
+        mainTable.add(this.scrollPane).bottom().right().width(GameConfig.HUD_WIDTH - 400).height(GameConfig.HUD_HEIGHT / 2f + 70f).padTop(50);
 
         mainTable.setBackground(new TextureRegionDrawable(region));
         mainTable.center();
@@ -112,6 +112,7 @@ public class ConversationStage extends Stage {
 
         this.addActor(mainTable);
         this.addActor(container);
+        this.setDebugAll(true);
     }
 
     public void updateDialog(String text){
@@ -120,10 +121,10 @@ public class ConversationStage extends Stage {
 
     public void setAnswers(List<String> answers){
         this.dialogTable.clear();
-        this.dialogTable.add(this.npcText).grow().row();
+        this.dialogTable.add(this.npcText).growX().top().row();
         for (String answer : answers){
-            final TextButton answBtn = new TextButton(answer, skin);
-            answBtn.getLabelCell().pad(35f);
+            final TextButton answBtn = new TextButton(answer, skin, "answer");
+            answBtn.getLabelCell().pad(10f, 35f, 10f, 35f);
             answBtn.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
@@ -131,8 +132,8 @@ public class ConversationStage extends Stage {
                 }
             });
             answBtn.getLabel().setWrap(true);
-            answBtn.getLabel().setAlignment(Align.left);
-            this.dialogTable.add(answBtn).pad(20).grow().row();
+            answBtn.getLabel().setAlignment(Align.center);
+            this.dialogTable.add(answBtn).pad(20).growX().height(70f).row();
         }
         this.dialogTable.pack();
         this.scrollPane.setScrollPercentY(0);

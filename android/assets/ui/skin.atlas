@@ -1,110 +1,124 @@
 
 skin.png
-size: 2048,1024
+size: 4096,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 add
   rotate: false
-  xy: 1387, 722
+  xy: 1387, 601
   size: 69, 70
   orig: 69, 70
   offset: 0, 0
   index: -1
+answer-down
+  rotate: false
+  xy: 1004, 951
+  size: 1450, 70
+  orig: 1450, 70
+  offset: 0, 0
+  index: -1
+answer-up
+  rotate: false
+  xy: 1004, 879
+  size: 1450, 70
+  orig: 1450, 70
+  offset: 0, 0
+  index: -1
 button-down
   rotate: false
-  xy: 1004, 860
+  xy: 1004, 739
   size: 381, 138
   orig: 381, 138
   offset: 0, 0
   index: -1
 button-up
   rotate: false
-  xy: 1004, 720
+  xy: 1004, 599
   size: 381, 138
   orig: 381, 138
   offset: 0, 0
   index: -1
 coin
   rotate: false
-  xy: 1725, 881
+  xy: 2, 2
   size: 112, 117
   orig: 112, 117
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 2, 2
+  xy: 3573, 981
   size: 8, 40
   orig: 8, 40
   offset: 0, 0
   index: -1
 delete
   rotate: false
-  xy: 1004, 299
+  xy: 2456, 887
   size: 88, 80
   orig: 88, 80
   offset: 0, 0
   index: -1
 quit
   rotate: false
-  xy: 1004, 299
+  xy: 2456, 887
   size: 88, 80
   orig: 88, 80
   offset: 0, 0
   index: -1
 dict
   rotate: false
-  xy: 1583, 858
+  xy: 1583, 737
   size: 140, 140
   orig: 140, 140
   offset: 0, 0
   index: -1
 empty-star
   rotate: false
-  xy: 1004, 525
+  xy: 1004, 404
   size: 194, 193
   orig: 194, 193
   offset: 0, 0
   index: -1
 panel
   rotate: false
-  xy: 2, 98
+  xy: 2, 121
   size: 1000, 900
   orig: 1000, 900
   offset: 0, 0
   index: -1
 pause
   rotate: false
-  xy: 1144, 448
+  xy: 1725, 802
   size: 44, 75
   orig: 44, 75
   offset: 0, 0
   index: -1
 small-button-down
   rotate: false
-  xy: 1004, 381
+  xy: 1004, 260
   size: 138, 142
   orig: 138, 142
   offset: 0, 0
   index: -1
 small-button-up
   rotate: false
-  xy: 1200, 576
+  xy: 1200, 455
   size: 138, 142
   orig: 138, 142
   offset: 0, 0
   index: -1
 star
   rotate: false
-  xy: 1387, 794
+  xy: 1387, 673
   size: 194, 204
   orig: 194, 204
   offset: 0, 0
   index: -1
 text-field
   rotate: false
-  xy: 2, 44
+  xy: 2456, 969
   size: 1115, 52
   orig: 1115, 52
   offset: 0, 0

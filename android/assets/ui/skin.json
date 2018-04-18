@@ -71,6 +71,12 @@
       "up": "button-up",
       "down": "button-down",
       "disabled": "button-down"
+    },
+    "answer": {
+      "font": "default-font",
+      "up": "answer-up",
+      "down": "answer-down",
+      "disabled": "answer-down"
     }
   }
 }

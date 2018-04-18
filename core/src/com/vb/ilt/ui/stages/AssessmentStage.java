@@ -46,14 +46,11 @@ public class AssessmentStage extends Stage{
     private void init(){
 
         mainTable = new Table();
-        mainTable.defaults().pad(20f);
-
         //this.npcText.setFontScale(2);
 
         Table container = new Table();
 
         buttonTable = new Table();
-        buttonTable.pad(20f);
 
         Button exitButton = new TextButton("QUIT", skin);
 
@@ -69,12 +66,11 @@ public class AssessmentStage extends Stage{
 
         mainTable.setBackground(new TextureRegionDrawable(assessmentPanel));
         mainTable.center();
-        mainTable.setSize(720f, 400f);
 
         mainTable.pack();
 
         container.setFillParent(true);
-        container.add(mainTable);
+        container.add(mainTable).width(720f).height(400f);
         container.background(new TextureRegionDrawable(background));
 
         this.addActor(container);
@@ -87,8 +83,7 @@ public class AssessmentStage extends Stage{
         int stars;
         int emptyStars;
 
-        Table starsTable = new Table();
-        starsTable.defaults().pad(20f);
+        final Table starsTable = new Table();
 
         log.info("SCORE: " + score);
         log.info("MAX_SCORE: " + maxScore);
@@ -112,22 +107,29 @@ public class AssessmentStage extends Stage{
 
         log.info("STARS: " + stars);
         log.info("EMPTY_STARS: " + emptyStars);
-        mainTable.add(starsTable).center().padTop(120f).row();
-        mainTable.add(buttonTable).center();
+        mainTable.add(starsTable).center().padTop(80f).row();
+        mainTable.add(buttonTable).center().padTop(20f);
 
-        for (int i = 0; i < stars; i++){
-            starsTable.add(new Image(this.star));
-        }
-        for (int i = 0; i < emptyStars; i++){
-            starsTable.add(new Image(this.emptyStar));
-        }
+//        for (int i = 0; i < stars; i++){
+//            starsTable.add(new Image(this.star));
+//        }
+//        for (int i = 0; i < emptyStars; i++){
+//            starsTable.add(new Image(this.emptyStar));
+//        }
 
         new Timer().scheduleTask(new Timer.Task() {
             @Override
             public void run() {
+                starsTable.add(new Image(star)).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
                 Gdx.input.vibrate(300);
             }
         }, 0f, 0.5f, stars - 1);
 
+        new Timer().scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                starsTable.add(new Image(emptyStar)).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
+            }
+        }, 0.5f * stars, 0.5f, emptyStars - 1);
     }
 }
