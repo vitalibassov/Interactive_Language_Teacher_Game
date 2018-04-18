@@ -112,7 +112,7 @@ public class ConversationStage extends Stage {
 
         this.addActor(mainTable);
         this.addActor(container);
-        this.setDebugAll(true);
+        //this.setDebugAll(true);
     }
 
     public void updateDialog(String text){
