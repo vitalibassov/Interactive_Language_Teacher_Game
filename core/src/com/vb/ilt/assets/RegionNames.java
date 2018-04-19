@@ -6,7 +6,11 @@ public final class RegionNames {
 
     private RegionNames(){}
 
-    public static final String CONTROLS = "controls";
+    public static final String CONTROLS_IDLE = "controls-idle";
+    public static final String CONTROLS_UP = "controls-up";
+    public static final String CONTROLS_DOWN = "controls-down";
+    public static final String CONTROLS_LEFT = "controls-left";
+    public static final String CONTROLS_RIGHT = "controls-right";
 
     public static final String PLAYER_FRONT = "playerFront";
     public static final String PLAYER_LEFT = "playerLeft";

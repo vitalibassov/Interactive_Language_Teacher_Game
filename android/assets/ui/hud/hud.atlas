@@ -1,6 +1,6 @@
 
 hud.png
-size: 2048,1024
+size: 4096,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -18,9 +18,37 @@ bar-frame
   orig: 1115, 52
   offset: 0, 0
   index: -1
-controls
+controls-down
   rotate: false
   xy: 2, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+controls-idle
+  rotate: false
+  xy: 516, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+controls-left
+  rotate: false
+  xy: 1030, 2
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+controls-right
+  rotate: false
+  xy: 1544, 96
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+controls-up
+  rotate: false
+  xy: 2058, 96
   size: 512, 512
   orig: 512, 512
   offset: 0, 0

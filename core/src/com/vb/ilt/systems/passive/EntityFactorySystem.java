@@ -327,7 +327,7 @@ public class EntityFactorySystem extends EntitySystem{
         ));
 
         TextureComponent texture = engine.createComponent(TextureComponent.class);
-        texture.region = hudAtlas.findRegion(RegionNames.CONTROLS);
+        texture.region = hudAtlas.findRegion(RegionNames.CONTROLS_IDLE);
 
         addEntity(hud, controls, position, texture, dimensions);
     }

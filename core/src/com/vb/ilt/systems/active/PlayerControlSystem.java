@@ -5,8 +5,10 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.components.AnimationComponent;
@@ -23,9 +25,12 @@ import com.vb.ilt.util.Mappers;
 
 public class PlayerControlSystem extends EntitySystem {
 
+    private final AssetManager assetManager;
     private final Viewport hudViewport;
+
     private DirectionComponent playerDirection;
     private AnimationComponent playerAnimation;
+    private TextureComponent controlsRegion;
 
     //Inappropriate behavior if the value is lower
     private static final float MIN_STOP_VELOCITY = 0.05f;
@@ -46,8 +51,9 @@ public class PlayerControlSystem extends EntitySystem {
             HudComponent.class
     ).get();
 
-    public PlayerControlSystem(Viewport hudViewport) {
+    public PlayerControlSystem(Viewport hudViewport, AssetManager assetManager) {
         this.hudViewport = hudViewport;
+        this.assetManager = assetManager;
     }
 
     @Override
@@ -59,6 +65,8 @@ public class PlayerControlSystem extends EntitySystem {
         this.playerAnimation = Mappers.ANIMATION.get(player);
         ControlsComponent controlsComp = Mappers.CONTROLS.get(control);
         this.playerDirection = Mappers.DIRECTION.get(player);
+
+        this.controlsRegion = Mappers.TEXTURE.get(control);
 
         controlHandling(movement, this.playerAnimation, controlsComp, this.playerDirection);
     }
@@ -84,6 +92,7 @@ public class PlayerControlSystem extends EntitySystem {
         velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f * y;
         animationComp.setAnimationIndex(direction.getValue());
         directionComp.direction = direction;
+        controlsRegion.region = assetManager.get(AssetDescriptors.HUD).findRegion("controls-"+direction.name().toLowerCase());
     }
 
     private Vector2 getWorldTouch(){

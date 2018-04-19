@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
@@ -44,6 +45,8 @@ import com.vb.ilt.ui.stages.PauseCallback;
 import com.vb.ilt.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter{
+
+    private static final Logger log = new Logger(GameScreen.class.getName(), Logger.DEBUG);
 
     private static final String MAP_PATH_PATTERN = "maps/%s";
     private static final String CONVERSATION_PATH_PATTERN = "conversations/%s.json";
@@ -93,7 +96,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
 
 
-        engine.addSystem(new PlayerControlSystem(hudViewport));
+        engine.addSystem(new PlayerControlSystem(hudViewport, assetManager));
         engine.addSystem(new SoundSystem());
         engine.addSystem(new MusicSystem());
         engine.addSystem(new WorldObjectsCollisionSystem());
