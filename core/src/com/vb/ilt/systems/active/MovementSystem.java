@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.utils.Logger;
-import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.ParticlesComponent;
 import com.vb.ilt.entity.components.PositionComponent;
@@ -22,7 +21,6 @@ public class MovementSystem extends IteratingSystem{
     private static final Family FAMILY = Family.all(
             PositionComponent.class,
             MovementComponent.class,
-            DirectionComponent.class,
             ParticlesComponent.class
     ).get();
 
@@ -34,7 +32,6 @@ public class MovementSystem extends IteratingSystem{
     protected void processEntity(Entity entity, float deltaTime) {
         PositionComponent position = Mappers.POSITION.get(entity);
         MovementComponent movement = Mappers.MOVEMENT.get(entity);
-        DirectionComponent direction = Mappers.DIRECTION.get(entity);
         this.particlesComponent = Mappers.DIRT_PARTICLES.get(entity);
 
         WorldObjectsCollisionSystem collisionSystem = getEngine().getSystem(WorldObjectsCollisionSystem.class);
@@ -42,7 +39,7 @@ public class MovementSystem extends IteratingSystem{
         NPCCollisionSystem npcCollisionSystem = getEngine().getSystem(NPCCollisionSystem.class);
         SensorCollisionSystem sensorCollisionSystem = getEngine().getSystem(SensorCollisionSystem.class);
 
-        if (direction.direction.isIdle()){
+        if (movement.velocity.isZero()){
             this.particlesComponent.toProcess = false;
         }else {
             this.particlesComponent.toProcess = true;

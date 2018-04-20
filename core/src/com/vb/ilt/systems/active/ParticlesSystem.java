@@ -45,7 +45,7 @@ public class ParticlesSystem extends IteratingSystem {
         log.debug("PARTICLE ARRAY SIZE: " + effects.size);
         if (particlesComponent.toProcess && isReady(deltaTime) && this.effects.size <= GameConfig.PARTICLE_LIMIT) {
             ParticleEffectPool.PooledEffect effect = particlesComponent.pooledEffect.obtain();
-            effect.setPosition(positionComponent.x + GameConfig.PLAYER_HALF_WIDTH, positionComponent.y);
+            effect.setPosition(positionComponent.x + particlesComponent.offset.x, positionComponent.y + particlesComponent.offset.y);
             effect.start();
             this.effects.add(effect);
         }

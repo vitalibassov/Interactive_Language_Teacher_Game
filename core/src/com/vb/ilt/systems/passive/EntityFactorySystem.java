@@ -167,6 +167,7 @@ public class EntityFactorySystem extends EntitySystem{
 
         ParticlesComponent particles = engine.createComponent(ParticlesComponent.class);
         particles.pooledEffect = new ParticleEffectPool(assetManager.get(AssetDescriptors.DIRT_PARTICLES), 5, 20);
+        particles.offset = new Vector2(GameConfig.PLAYER_HALF_WIDTH, 0f);
 
         addEntity(position, dimension, bounds, movement, player, texture, animation, zOrder, sound, direction, particles);
     }
