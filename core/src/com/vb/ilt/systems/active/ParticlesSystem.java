@@ -42,7 +42,6 @@ public class ParticlesSystem extends IteratingSystem {
         PositionComponent positionComponent = Mappers.POSITION.get(entity);
         ParticlesComponent particlesComponent = Mappers.DIRT_PARTICLES.get(entity);
 
-        log.debug("PARTICLE ARRAY SIZE: " + effects.size);
         if (particlesComponent.toProcess && isReady(deltaTime) && this.effects.size <= GameConfig.PARTICLE_LIMIT) {
             ParticleEffectPool.PooledEffect effect = particlesComponent.pooledEffect.obtain();
             effect.setPosition(positionComponent.x + particlesComponent.offset.x, positionComponent.y + particlesComponent.offset.y);

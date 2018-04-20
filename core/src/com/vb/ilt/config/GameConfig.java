@@ -40,5 +40,7 @@ public final class GameConfig {
 
     public static final int PARTICLE_LIMIT = 100;
 
+    public static final boolean DEBUG_MODE = true;
+
     private GameConfig(){}
 }
