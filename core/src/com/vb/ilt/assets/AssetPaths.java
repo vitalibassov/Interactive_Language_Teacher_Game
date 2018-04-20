@@ -18,4 +18,6 @@ public final class AssetPaths {
     public static final String FINISHED_SOUND = "sounds/finished.wav";
     public static final String ACHIEVEMENT_SOUND = "sounds/achievement.wav";
     public static final String MAIN_MUSIC = "music/main.mp3";
+
+    public static final String DIRT_PARTICLES = "effects/dirt.pfx";
 }

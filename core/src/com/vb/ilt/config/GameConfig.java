@@ -38,5 +38,7 @@ public final class GameConfig {
     public static final float SOUNDS_VOLUME = 0.75f;
     public static final float MUSIC_VOLUME = 0.5f;
 
+    public static final int PARTICLE_LIMIT = 100;
+
     private GameConfig(){}
 }

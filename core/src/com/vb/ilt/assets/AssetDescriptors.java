@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -38,4 +39,7 @@ public final class AssetDescriptors {
             new AssetDescriptor<Sound>(AssetPaths.ACHIEVEMENT_SOUND, Sound.class);
     public static final AssetDescriptor<Music> MAIN_MUSIC =
             new AssetDescriptor<Music>(AssetPaths.MAIN_MUSIC, Music.class);
+
+    public static final AssetDescriptor<ParticleEffect> DIRT_PARTICLES =
+            new AssetDescriptor<ParticleEffect>(AssetPaths.DIRT_PARTICLES, ParticleEffect.class);
 }

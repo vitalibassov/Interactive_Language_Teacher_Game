@@ -72,6 +72,8 @@ public class LoadingScreen extends ScreenAdapter {
         assetManager.load(AssetDescriptors.FINISHED_SOUND);
         assetManager.load(AssetDescriptors.ACHIEVEMENT_SOUND);
         assetManager.load(AssetDescriptors.MAIN_MUSIC);
+
+        assetManager.load(AssetDescriptors.DIRT_PARTICLES);
         GameManager.INSTANCE.setStatePlaying();
     }
 

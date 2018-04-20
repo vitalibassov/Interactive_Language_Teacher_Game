@@ -26,10 +26,12 @@ import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.MusicSystem;
+import com.vb.ilt.systems.active.ParticlesSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;
 import com.vb.ilt.systems.active.ZOrderSystem;
+import com.vb.ilt.systems.debug.DebugCameraSystem;
 import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.EntityLogger;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
@@ -116,12 +118,13 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new WorldRenderSystem(viewport, batch));
 
         //engine.addSystem(new GridRenderSystem(viewport, renderer));
-        //engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
+        engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
 
         engine.addSystem(hudSystem);
         engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
         engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
+        engine.addSystem(new ParticlesSystem(batch, viewport));
 
         engine.addSystem(conversationSystem);
         engine.addSystem(new MonologueSystem(assetManager, hudViewport, batch));

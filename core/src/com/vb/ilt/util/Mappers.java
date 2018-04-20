@@ -8,6 +8,7 @@ import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.MusicComponent;
+import com.vb.ilt.entity.components.ParticlesComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.TextureComponent;
@@ -61,6 +62,8 @@ public final class Mappers {
             ComponentMapper.getFor(StageComponent.class);
     public static final ComponentMapper<DictionaryComponent> DICT =
             ComponentMapper.getFor(DictionaryComponent.class);
+    public static final ComponentMapper<ParticlesComponent> DIRT_PARTICLES =
+            ComponentMapper.getFor(ParticlesComponent.class);
 
     private Mappers(){}
 }

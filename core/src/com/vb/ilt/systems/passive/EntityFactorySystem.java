@@ -10,6 +10,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -35,6 +36,7 @@ import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
 import com.vb.ilt.entity.components.MusicComponent;
+import com.vb.ilt.entity.components.ParticlesComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
@@ -163,7 +165,10 @@ public class EntityFactorySystem extends EntitySystem{
         ZOrderComponent zOrder = engine.createComponent(ZOrderComponent.class);
         zOrder.z = DEFAULT_PLAYER_Z_ORDER;
 
-        addEntity(position, dimension, bounds, movement, player, texture, animation, zOrder, sound, direction);
+        ParticlesComponent particles = engine.createComponent(ParticlesComponent.class);
+        particles.pooledEffect = new ParticleEffectPool(assetManager.get(AssetDescriptors.DIRT_PARTICLES), 5, 20);
+
+        addEntity(position, dimension, bounds, movement, player, texture, animation, zOrder, sound, direction, particles);
     }
 
     public void createNPCs(Map<Vector2, String> spawnPoints){
