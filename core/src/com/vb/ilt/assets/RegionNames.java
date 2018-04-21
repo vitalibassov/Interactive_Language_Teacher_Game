@@ -1,7 +1,5 @@
 package com.vb.ilt.assets;
 
-import com.vb.ilt.entity.CharacterType;
-
 public final class RegionNames {
 
     private RegionNames(){}
@@ -32,9 +30,5 @@ public final class RegionNames {
 
     public static final String BAR_FRAME = "bar-frame";
     public static final String BAR = "bar";
-
-    public static final String NPC_SHEPHERD = CharacterType.FROG.name().toLowerCase();
-    public static final String NPC_BLACKSMITH = CharacterType.BEE.name().toLowerCase();
-    public static final String NPC_MERCHANT = CharacterType.CAT.name().toLowerCase();
 
 }

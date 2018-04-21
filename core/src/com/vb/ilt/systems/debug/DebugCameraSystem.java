@@ -14,7 +14,7 @@ public class DebugCameraSystem extends EntitySystem {
 
     private final OrthographicCamera camera;
 
-    public DebugCameraSystem(float startX, float startY, OrthographicCamera camera){
+    public DebugCameraSystem(OrthographicCamera camera){
         this.camera = camera;
 
     }

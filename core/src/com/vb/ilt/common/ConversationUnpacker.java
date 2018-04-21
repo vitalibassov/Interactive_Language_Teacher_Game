@@ -3,7 +3,6 @@ package com.vb.ilt.common;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.vb.ilt.entity.CharacterType;
 import com.vb.ilt.entity.components.dialog_model.Answer;
@@ -15,8 +14,6 @@ import java.util.Map;
 
 public class ConversationUnpacker extends JsonReader{
 
-    private static final Logger log = new Logger(ConversationUnpacker.class.getName(), Logger.DEBUG);
-
     private final FileHandle json;
 
     public ConversationUnpacker(FileHandle json) {
@@ -25,14 +22,14 @@ public class ConversationUnpacker extends JsonReader{
 
     public Queue<Conversation> getConversations(){
         JsonValue root = this.parse(json);
-        Queue<Conversation> conversations = new Queue<Conversation>();
+        Queue<Conversation> conversations = new Queue<>();
         for (JsonValue nextConversation : root.iterator()){
             for (JsonValue npc : nextConversation){
                 CharacterType type = CharacterType.valueOf(npc.name().toUpperCase());
-                Map<Integer, Dialog> dialogs = new HashMap<Integer, Dialog>();
+                Map<Integer, Dialog> dialogs = new HashMap<>();
                 for (JsonValue npcDialog : npc){
                     String npctext = npcDialog.getString("text");
-                    Map<String, Answer> answers = new HashMap<String, Answer>();
+                    Map<String, Answer> answers = new HashMap<>();
                     for (JsonValue answer : npcDialog.get("answers")){
                         answers.put(answer.getString("text"), new Answer(
                                 answer.getString("text"),

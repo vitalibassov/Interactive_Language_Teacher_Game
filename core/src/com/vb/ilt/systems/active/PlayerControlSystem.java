@@ -15,7 +15,6 @@ import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
 import com.vb.ilt.entity.components.MovementComponent;
-import com.vb.ilt.entity.components.ParticlesComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
@@ -32,12 +31,11 @@ public class PlayerControlSystem extends EntitySystem {
     private DirectionComponent playerDirection;
     private AnimationComponent playerAnimation;
     private TextureComponent controlsRegion;
-    private ParticlesComponent particlesComponent;
 
     //Inappropriate behavior if the value is lower
     private static final float MIN_STOP_VELOCITY = 0.05f;
 
-    public static final Family PLAYER = Family.all(
+    private static final Family PLAYER = Family.all(
             PlayerComponent.class,
             MovementComponent.class,
             AnimationComponent.class,
@@ -45,7 +43,7 @@ public class PlayerControlSystem extends EntitySystem {
             DirectionComponent.class
     ).get();
 
-    public static final Family CONTROLS = Family.all(
+    private static final Family CONTROLS = Family.all(
             ControlsComponent.class,
             DimensionComponent.class,
             PositionComponent.class,

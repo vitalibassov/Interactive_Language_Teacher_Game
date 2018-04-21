@@ -1,5 +1,6 @@
 package com.vb.ilt.ui.stages;
 
+import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -20,6 +21,9 @@ import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PauseStage extends Stage {
 
@@ -57,12 +61,12 @@ public class PauseStage extends Stage {
         resumeButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                pauseCallback.setSystemsEnabledAndClosePauseMenu(
-                        MovementSystem.class,
-                        HudSystem.class,
-                        PlayerControlSystem.class,
-                        MonologueSystem.class
-                );
+                List<Class<? extends EntitySystem>> list = new ArrayList<>();
+                list.add(MovementSystem.class);
+                list.add(HudSystem.class);
+                list.add(PlayerControlSystem.class);
+                list.add(MonologueSystem.class);
+                pauseCallback.setSystemsEnabledAndClosePauseMenu(list);
             }
         });
 

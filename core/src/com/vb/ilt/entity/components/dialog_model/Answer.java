@@ -16,23 +16,11 @@ public class Answer {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
     public int getDestinationId() {
         return destinationId;
     }
 
-    public void setDestinationId(int destinationId) {
-        this.destinationId = destinationId;
-    }
-
     public int getScore() {
         return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
 }

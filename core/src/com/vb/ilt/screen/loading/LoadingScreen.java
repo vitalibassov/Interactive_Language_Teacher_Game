@@ -19,14 +19,9 @@ public class LoadingScreen extends ScreenAdapter {
 
     private static final Logger log = new Logger(LoadingScreen.class.getName(), Logger.DEBUG);
 
-    private static final float PROGRESS_BAR_WIDTH = GameConfig.HUD_WIDTH / 2f;
-    private static final float PROGRESS_BAR_HEIGHT = 60;
-
-    private OrthographicCamera camera;
     private Viewport viewport;
     private ShapeRenderer renderer;
 
-    private float progress;
     private float waitTime = 0.75f;
     private boolean changeScreen = false;
 
@@ -43,8 +38,7 @@ public class LoadingScreen extends ScreenAdapter {
     @Override
     public void show() {
 
-        camera = new OrthographicCamera();
-        viewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT, camera);
+        viewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT, new OrthographicCamera());
         renderer = new ShapeRenderer();
 
         assetManager.load(AssetDescriptors.HUD);
@@ -91,8 +85,7 @@ public class LoadingScreen extends ScreenAdapter {
     }
 
     private void update(float delta) {
-        progress = assetManager.getProgress();
-        loadingStage.setBarWidth(progress);
+        loadingStage.setBarWidth(assetManager.getProgress());
         if (assetManager.update()) {
             waitTime -= delta;
 
@@ -124,13 +117,5 @@ public class LoadingScreen extends ScreenAdapter {
         log.debug("dispose");
         renderer.dispose();
         renderer = null;
-    }
-
-    private static void waitMillis(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

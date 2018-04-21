@@ -1,14 +1,10 @@
 package com.vb.ilt.entity.components.dialog_model;
 
-import com.badlogic.gdx.utils.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Dialog {
-
-    private static final Logger log = new Logger(Dialog.class.getName(), Logger.DEBUG);
 
     private String npctext;
     private Map<String, Answer> playerAnswers;
@@ -19,7 +15,6 @@ public class Dialog {
     }
 
     public int getDestinationID(String answerStr){
-        log.debug(answerStr);
         return playerAnswers.get(answerStr).getDestinationId();
     }
 
@@ -32,6 +27,6 @@ public class Dialog {
     }
 
     public List<String> getPlayerAnswers() {
-        return new ArrayList<String>(playerAnswers.keySet());
+        return new ArrayList<>(playerAnswers.keySet());
     }
 }

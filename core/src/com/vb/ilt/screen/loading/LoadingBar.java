@@ -6,9 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class LoadingBar extends Actor {
 
-    TextureRegion barRegion;
+    private TextureRegion barRegion;
 
-    public LoadingBar(TextureRegion barRegion) {
+    LoadingBar(TextureRegion barRegion) {
         this.barRegion = barRegion;
     }
 

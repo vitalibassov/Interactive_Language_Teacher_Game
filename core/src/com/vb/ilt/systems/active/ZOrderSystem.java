@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
-import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.ZOrderComponent;
@@ -13,8 +12,6 @@ import com.vb.ilt.util.Mappers;
 
 
 public class ZOrderSystem extends EntitySystem{
-
-    private static final Logger log = new Logger(ZOrderSystem.class.getName(), Logger.DEBUG);
 
     private static final int BEHIND_PLAYER = 0;
     private static final int IN_FRONT_PLAYER = 2;

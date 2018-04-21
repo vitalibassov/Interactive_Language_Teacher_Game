@@ -46,7 +46,6 @@ public class AssessmentStage extends Stage{
     private void init(){
 
         mainTable = new Table();
-        //this.npcText.setFontScale(2);
 
         Table container = new Table();
 
@@ -110,12 +109,8 @@ public class AssessmentStage extends Stage{
         mainTable.add(starsTable).center().padTop(80f).row();
         mainTable.add(buttonTable).center().padTop(20f);
 
-//        for (int i = 0; i < stars; i++){
-//            starsTable.add(new Image(this.star));
-//        }
-//        for (int i = 0; i < emptyStars; i++){
-//            starsTable.add(new Image(this.emptyStar));
-//        }
+        final int starsFrames = 15;
+        final float starsSpeed = 0.5f;
 
         new Timer().scheduleTask(new Timer.Task() {
         @Override
@@ -123,7 +118,7 @@ public class AssessmentStage extends Stage{
             final Image image = new Image(star);
             starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
             Gdx.input.vibrate(300);
-            runImageTransitionEffect(image, 15, 0.5f);
+            runImageTransitionEffect(image, starsFrames, starsSpeed);
         }
     }, 0f, 0.5f, stars - 1);
 
@@ -132,7 +127,7 @@ public class AssessmentStage extends Stage{
         public void run() {
             Image image = new Image(emptyStar);
             starsTable.add(image).width(120f).height(120f).pad(0f, 5f, 0f, 5f);
-            runImageTransitionEffect(image, 15, 0.5f);
+            runImageTransitionEffect(image, starsFrames, starsSpeed);
         }
     }, 0.5f * stars, 0.5f, emptyStars - 1);
 }

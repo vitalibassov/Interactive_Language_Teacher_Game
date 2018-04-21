@@ -6,7 +6,6 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.components.ParticlesComponent;
@@ -15,7 +14,6 @@ import com.vb.ilt.util.Mappers;
 
 public class ParticlesSystem extends IteratingSystem {
 
-    private static final Logger log = new Logger(ParticlesSystem.class.getName(), Logger.DEBUG);
     private final Array<ParticleEffectPool.PooledEffect> effects;
     private final Batch batch;
     private final Viewport viewport;
@@ -75,7 +73,7 @@ public class ParticlesSystem extends IteratingSystem {
         }
     }
 
-    public boolean isReady(float delta){
+    private boolean isReady(float delta){
         accumulator += delta;
         if (accumulator >= this.INTERVAL){
             accumulator = 0;

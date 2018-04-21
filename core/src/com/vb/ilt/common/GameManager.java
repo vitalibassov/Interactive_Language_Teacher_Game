@@ -3,16 +3,12 @@ package com.vb.ilt.common;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.Logger;
 
 import java.util.LinkedHashMap;
 
 public final class GameManager {
 
-    private static final Logger log = new Logger(GameManager.class.getName(), Logger.DEBUG);
-
-    private int currentLevel;
-    private final int maxScore = 4490;
+    private String currentLevel;
     private int tempScore;
     private int score;
     private final LinkedHashMap<String, String> bigDictionary;
@@ -21,7 +17,7 @@ public final class GameManager {
     public static final GameManager INSTANCE = new GameManager();
 
     private GameManager() {
-        this.bigDictionary = new LinkedHashMap<String, String>();
+        this.bigDictionary = new LinkedHashMap<>();
         this.gameState = GameState.PLAYING;
         loadDictionary();
     }
@@ -54,12 +50,12 @@ public final class GameManager {
     public void commitTempScoreAmount(){score += tempScore;}
     public void dropTempScore(){tempScore = 0;}
 
-    public int getCurrentLevel() {
+    public String getCurrentLevel() {
         return currentLevel;
     }
 
     public int getMaxScore() {
-        return maxScore;
+        return 4490;
     }
 
     public void reset(){

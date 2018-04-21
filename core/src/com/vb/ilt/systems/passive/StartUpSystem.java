@@ -36,8 +36,6 @@ public class StartUpSystem extends EntitySystem{
     }
 
     private void startUp(){
-        //TiledMapObjectsProvider provider = new TiledMapObjectsProvider("maps/main_map.tmx");
-        //TiledMapObjectsProvider provider = new TiledMapObjectsProvider("maps/level_1/main.tmx");
         ConversationUnpacker unpacker = new ConversationUnpacker(Gdx.files.internal(this.conversationName));
         TiledMapObjectsProvider provider = this.mapManager.getMapProvider("main");
         factory.createPortalSensors(provider.getSensors());
@@ -50,30 +48,6 @@ public class StartUpSystem extends EntitySystem{
         factory.createMusic(AssetDescriptors.MAIN_MUSIC);
         DictionaryComponent dict = factory.createDictionary();
         factory.createHud(hudViewport, dict);
-
         factory.createControls();
-
-//        Queue<Conversation> conversations = new ConversationUnpacker(Gdx.files.internal("conversations/level1.json")).getConversations();
-//        Conversation conv = conversations.removeFirst();
-//        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////////");
-//        System.out.println(conv.getType());
-//        Dialog d = conv.getNextAndIncreaseScore(null);
-//        System.out.println(d.getNpctext());
-//        for (String s : d.getPlayerAnswers()){
-//            System.out.println(s);
-//        }
-//        d = conv.getNextAndIncreaseScore("[CAT] Answer 2");
-//        System.out.println(d.getNpctext());
-//        for (String s : d.getPlayerAnswers()){
-//            System.out.println(s);
-//        }
-//        d = conv.getNextAndIncreaseScore("[CAT] Answer 3 in Index 2");
-//        System.out.println(d.getNpctext());
-//        for (String s : d.getPlayerAnswers()){
-//            System.out.println(s);
-//        }
-//        d = conv.getNextAndIncreaseScore("[CAT] Okay GoodBye");
-//        System.out.println(d);
-//        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////////");
     }
 }

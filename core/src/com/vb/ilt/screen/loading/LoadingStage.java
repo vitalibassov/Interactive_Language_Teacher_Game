@@ -17,11 +17,10 @@ public class LoadingStage extends Stage{
     private TextureRegion barFrameRegion;
     private TextureRegion barRegion;
     private Actor bar;
-    private Table barFrame;
 
     protected TextureRegion region;
 
-    public LoadingStage(Viewport viewport, Batch batch, TextureRegion barFrameRegion, TextureRegion barRegion) {
+    LoadingStage(Viewport viewport, Batch batch, TextureRegion barFrameRegion, TextureRegion barRegion) {
         super(viewport, batch);
         this.barRegion = barRegion;
         this.barFrameRegion = barFrameRegion;
@@ -32,7 +31,7 @@ public class LoadingStage extends Stage{
         Table container = new Table();
         container.setFillParent(true);
 
-        this.barFrame = new Table();
+        Table barFrame = new Table();
         barFrame.setBackground(new TextureRegionDrawable(barFrameRegion));
 
         this.bar = new LoadingBar(barRegion);

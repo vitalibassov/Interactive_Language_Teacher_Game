@@ -1,5 +1,6 @@
 package com.vb.ilt.ui.stages;
 
+import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -11,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
@@ -23,11 +23,11 @@ import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.ui.tables.DictionaryTable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class HudStage extends Stage{
-
-    private static final Logger log = new Logger(HudStage.class.getName(), Logger.DEBUG);
 
     private int currentScore = 0;
 
@@ -76,12 +76,12 @@ public class HudStage extends Stage{
         pauseButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                pauseCallback.setSystemsDisabledAndShowPauseMenu(
-                        MovementSystem.class,
-                        HudSystem.class,
-                        PlayerControlSystem.class,
-                        MonologueSystem.class
-                );
+                List<Class<? extends EntitySystem>> list = new ArrayList<>();
+                list.add(MovementSystem.class);
+                list.add(HudSystem.class);
+                list.add(PlayerControlSystem.class);
+                list.add(MonologueSystem.class);
+                pauseCallback.setSystemsDisabledAndShowPauseMenu(list);
             }
         });
 

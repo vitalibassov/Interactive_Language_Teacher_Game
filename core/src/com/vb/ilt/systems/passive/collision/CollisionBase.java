@@ -21,7 +21,7 @@ public abstract class CollisionBase extends EntitySystem{
             BoundsComponent.class
     ).get();
 
-    public CollisionBase(Family FAMILY) {
+    CollisionBase(Family FAMILY) {
         this.COLLISION_OBJECTS = FAMILY;
     }
 
@@ -58,7 +58,7 @@ public abstract class CollisionBase extends EntitySystem{
         return false;
     }
 
-    protected static Family getPLAYER() {
+    static Family getPLAYER() {
         return PLAYER;
     }
 }

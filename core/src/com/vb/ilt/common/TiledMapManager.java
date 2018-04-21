@@ -12,7 +12,7 @@ public class TiledMapManager {
     private String currentMap;
 
     public TiledMapManager(String levelName){
-        tiledMapObjects = new HashMap<String, TiledMapObjectsProvider>();
+        tiledMapObjects = new HashMap<>();
         for (FileHandle file : Gdx.files.internal(levelName).list()){
             tiledMapObjects.put(file.nameWithoutExtension(), new TiledMapObjectsProvider(file.toString()));
             System.out.println(file.nameWithoutExtension());

@@ -5,7 +5,6 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.common.TiledMapObjectsProvider;
 import com.vb.ilt.entity.components.BoundsComponent;
@@ -20,8 +19,6 @@ import com.vb.ilt.util.Mappers;
 import java.util.Map;
 
 public class SensorCollisionSystem extends CollisionBase{
-
-    private static final Logger log = new Logger(SensorCollisionSystem.class.getName(), Logger.DEBUG);
 
     private final TiledMapManager mapManager;
 

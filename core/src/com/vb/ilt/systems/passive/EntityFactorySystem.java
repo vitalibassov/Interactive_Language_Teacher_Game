@@ -140,14 +140,14 @@ public class EntityFactorySystem extends EntitySystem{
                 Animation.PlayMode.LOOP_PINGPONG
         );
 
-        Array<Animation<TextureRegion>> anims = new Array<Animation<TextureRegion>>();
+        Array<Animation<TextureRegion>> anims = new Array<>();
         anims.add(playerFront);
         anims.add(playerUp);
         anims.add(playerDown);
         anims.add(playerLeft);
         anims.add(playerRight);
 
-        animation.animations = new ImmutableArray<Animation<TextureRegion>>(anims);
+        animation.animations = new ImmutableArray<>(anims);
         animation.setAnimationIndex(0);
 
         TextureComponent texture = engine.createComponent(TextureComponent.class);
@@ -199,10 +199,10 @@ public class EntityFactorySystem extends EntitySystem{
                     Animation.PlayMode.LOOP_PINGPONG
             );
 
-            Array<Animation<TextureRegion>> anims = new Array<Animation<TextureRegion>>();
+            Array<Animation<TextureRegion>> anims = new Array<>();
             anims.add(npcFront);
 
-            animation.animations = new ImmutableArray<Animation<TextureRegion>>(anims);
+            animation.animations = new ImmutableArray<>(anims);
             animation.setAnimationIndex(0);
 
             TextureComponent texture = engine.createComponent(TextureComponent.class);
@@ -350,8 +350,8 @@ public class EntityFactorySystem extends EntitySystem{
 
     public DictionaryComponent createDictionary(){
         DictionaryComponent dict = engine.createComponent(DictionaryComponent.class);
-        dict.allWords = new TreeMap<String, String>();
-        dict.myWords = new TreeMap<String, String>();
+        dict.allWords = new TreeMap<>();
+        dict.myWords = new TreeMap<>();
         addEntity(dict);
         return dict;
     }

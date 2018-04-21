@@ -18,6 +18,8 @@ import com.vb.ilt.ui.stages.HudStage;
 import com.vb.ilt.ui.stages.PauseCallback;
 import com.vb.ilt.util.Mappers;
 
+import java.util.List;
+
 public class HudSystem extends EntitySystem implements PauseCallback{
 
     private final Viewport hudViewport;
@@ -78,18 +80,18 @@ public class HudSystem extends EntitySystem implements PauseCallback{
     }
 
     @Override
-    public void setSystemsDisabledAndShowPauseMenu(Class<? extends EntitySystem>... systems) {
+    public void setSystemsDisabledAndShowPauseMenu(List<Class<? extends EntitySystem>> systems) {
         getEngine().getSystem(PauseSystem.class).setProcessing(true);
         toggleSystems(false, systems);
     }
 
     @Override
-    public void setSystemsEnabledAndClosePauseMenu(Class<? extends EntitySystem>... systems) {
+    public void setSystemsEnabledAndClosePauseMenu(List<Class<? extends EntitySystem>> systems) {
         getEngine().getSystem(PauseSystem.class).setProcessing(false);
         toggleSystems(true, systems);
     }
 
-    private void toggleSystems(boolean switcher, Class<? extends EntitySystem>... systems){
+    private void toggleSystems(boolean switcher, List<Class<? extends EntitySystem>> systems){
         Engine engine = getEngine();
         for (Class<? extends EntitySystem> systemClass: systems){
             engine.getSystem(systemClass).setProcessing(switcher);

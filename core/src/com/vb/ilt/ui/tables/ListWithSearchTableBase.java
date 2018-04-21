@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Logger;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,21 +17,19 @@ import java.util.Map;
 
 public abstract class ListWithSearchTableBase extends Table implements TextField.TextFieldListener{
 
-    private static final Logger log = new Logger(ListWithSearchTableBase.class.getName(), Logger.DEBUG);
-
     private final String btnStyle;
     private final Map<String, String> availableWords;
     private TextField search;
     private Table words;
 
-    public ListWithSearchTableBase(Skin skin, String btnStyle) {
+    ListWithSearchTableBase(Skin skin, String btnStyle) {
         super(skin);
         this.btnStyle = btnStyle;
-        this.availableWords = new LinkedHashMap<String, String>();
+        this.availableWords = new LinkedHashMap<>();
         init();
     }
 
-    public ListWithSearchTableBase(Skin skin, String btnStyle, Map<String, String> availableWords) {
+    ListWithSearchTableBase(Skin skin, String btnStyle, Map<String, String> availableWords) {
         super(skin);
         this.btnStyle = btnStyle;
         this.availableWords = availableWords;
@@ -54,7 +51,6 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         }
 
         words.pack();
-        //words.debug();
         words.top();
 
         ScrollPane scrollPane = new ScrollPane(words);
@@ -65,15 +61,10 @@ public abstract class ListWithSearchTableBase extends Table implements TextField
         add(scrollPane).grow().padBottom(40).padLeft(20).padRight(20);
         setFillParent(true);
 
-//        add(search).width(800).height(50).pad(40).row();
-//        add(scrollPane).width(800).height(800).padBottom(40);
-//
-//        setSize(800, 800);
-
         pack();
     }
 
-    protected void addRowToWords(final String wordKey, final String wordValue, Table words){
+    private void addRowToWords(final String wordKey, final String wordValue, Table words){
         Label label = new Label(wordValue, getSkin());
         label.setWrap(true);
         label.setAlignment(Align.left);

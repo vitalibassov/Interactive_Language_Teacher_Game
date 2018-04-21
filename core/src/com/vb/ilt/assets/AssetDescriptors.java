@@ -13,33 +13,33 @@ public final class AssetDescriptors {
     private AssetDescriptors(){}
 
     public static final AssetDescriptor<BitmapFont> DEFAULT_FONT =
-            new AssetDescriptor<BitmapFont>(AssetPaths.DEFAULT_FONT, BitmapFont.class);
+            new AssetDescriptor<>(AssetPaths.DEFAULT_FONT, BitmapFont.class);
     public static final AssetDescriptor<BitmapFont> STENCIL_FONT =
-            new AssetDescriptor<BitmapFont>(AssetPaths.STENCIL_FONT, BitmapFont.class);
+            new AssetDescriptor<>(AssetPaths.STENCIL_FONT, BitmapFont.class);
     public static final AssetDescriptor<TextureAtlas> HUD =
-            new AssetDescriptor<TextureAtlas>(AssetPaths.HUD, TextureAtlas.class);
+            new AssetDescriptor<>(AssetPaths.HUD, TextureAtlas.class);
     public static final AssetDescriptor<Skin> UI_SKIN =
-            new AssetDescriptor<Skin>(AssetPaths.SKIN, Skin.class);
+            new AssetDescriptor<>(AssetPaths.SKIN, Skin.class);
     public static final AssetDescriptor<TextureAtlas> PLAYER =
-            new AssetDescriptor<TextureAtlas>(AssetPaths.PLAYER, TextureAtlas.class);
+            new AssetDescriptor<>(AssetPaths.PLAYER, TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> NPC =
-            new AssetDescriptor<TextureAtlas>(AssetPaths.NPC, TextureAtlas.class);
+            new AssetDescriptor<>(AssetPaths.NPC, TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> CLOSE_UP =
-            new AssetDescriptor<TextureAtlas>(AssetPaths.CLOSE_UP, TextureAtlas.class);
+            new AssetDescriptor<>(AssetPaths.CLOSE_UP, TextureAtlas.class);
     public static final AssetDescriptor<TextureAtlas> PANELS =
-            new AssetDescriptor<TextureAtlas>(AssetPaths.DIALOGS, TextureAtlas.class);
+            new AssetDescriptor<>(AssetPaths.DIALOGS, TextureAtlas.class);
 
     public static final AssetDescriptor<Sound> STEP_SOUND =
-            new AssetDescriptor<Sound>(AssetPaths.STEP_SOUND, Sound.class);
+            new AssetDescriptor<>(AssetPaths.STEP_SOUND, Sound.class);
     public static final AssetDescriptor<Sound> DOOR_SOUND =
-            new AssetDescriptor<Sound>(AssetPaths.DOOR_SOUND, Sound.class);
+            new AssetDescriptor<>(AssetPaths.DOOR_SOUND, Sound.class);
     public static final AssetDescriptor<Sound> FINISHED_SOUND =
-            new AssetDescriptor<Sound>(AssetPaths.FINISHED_SOUND, Sound.class);
+            new AssetDescriptor<>(AssetPaths.FINISHED_SOUND, Sound.class);
     public static final AssetDescriptor<Sound> ACHIEVEMENT_SOUND =
-            new AssetDescriptor<Sound>(AssetPaths.ACHIEVEMENT_SOUND, Sound.class);
+            new AssetDescriptor<>(AssetPaths.ACHIEVEMENT_SOUND, Sound.class);
     public static final AssetDescriptor<Music> MAIN_MUSIC =
-            new AssetDescriptor<Music>(AssetPaths.MAIN_MUSIC, Music.class);
+            new AssetDescriptor<>(AssetPaths.MAIN_MUSIC, Music.class);
 
     public static final AssetDescriptor<ParticleEffect> DIRT_PARTICLES =
-            new AssetDescriptor<ParticleEffect>(AssetPaths.DIRT_PARTICLES, ParticleEffect.class);
+            new AssetDescriptor<>(AssetPaths.DIRT_PARTICLES, ParticleEffect.class);
 }

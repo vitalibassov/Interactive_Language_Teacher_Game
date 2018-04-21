@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.config.GameConfig;
@@ -24,8 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ConversationStage extends Stage {
-
-    private static final Logger log = new Logger(ConversationStage.class.getName(), Logger.DEBUG);
 
     private final ConversationCallback conversationCallback;
     private final Skin skin;

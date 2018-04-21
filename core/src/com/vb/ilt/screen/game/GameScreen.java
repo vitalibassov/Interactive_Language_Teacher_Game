@@ -6,9 +6,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
@@ -48,8 +46,6 @@ import com.vb.ilt.util.GdxUtils;
 
 public class GameScreen extends ScreenAdapter{
 
-    private static final Logger log = new Logger(GameScreen.class.getName(), Logger.DEBUG);
-
     private static final String MAP_PATH_PATTERN = "maps/%s";
     private static final String CONVERSATION_PATH_PATTERN = "conversations/%s.json";
     private static final String PROPERTIES_PATH_PATTERN = "props/%s.properties";
@@ -65,7 +61,6 @@ public class GameScreen extends ScreenAdapter{
     private Viewport hudViewport;
     private ShapeRenderer renderer;
     private PooledEngine engine;
-    private BitmapFont font;
 
     public GameScreen(InteractiveLangTeacherGame game, String level) {
         this.game = game;
@@ -112,7 +107,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new ZOrderSystem());
 
-        engine.addSystem(new CameraFollowingPlayerSystem(camera, viewport));
+        engine.addSystem(new CameraFollowingPlayerSystem(camera));
         engine.addSystem(new AnimationSystem());
         engine.addSystem(new CharacterRenderSystem(batch));
         engine.addSystem(new WorldRenderSystem(viewport, batch));
@@ -123,7 +118,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
         engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
         if (GameConfig.DEBUG_MODE){
-            engine.addSystem(new DebugCameraSystem(GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y, camera));
+            engine.addSystem(new DebugCameraSystem(camera));
             engine.addSystem(new DebugRenderSystem(viewport, renderer));
         }
 

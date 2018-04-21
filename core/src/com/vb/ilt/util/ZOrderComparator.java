@@ -4,10 +4,6 @@ import com.badlogic.ashley.core.Entity;
 
 import java.util.Comparator;
 
-/**
- * Created by vitaa on 2017-12-24.
- */
-
 public class ZOrderComparator implements Comparator<Entity> {
 
     public static final ZOrderComparator INSTANCE = new ZOrderComparator();

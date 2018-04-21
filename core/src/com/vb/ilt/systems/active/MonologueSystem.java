@@ -7,7 +7,6 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.entity.components.dialog_model.Conversation;
@@ -19,8 +18,6 @@ import com.vb.ilt.ui.stages.MonologueStage;
 import com.vb.ilt.util.Mappers;
 
 public class MonologueSystem extends IteratingSystem implements ExitCallback{
-
-    private static final Logger log = new Logger(MonologueSystem.class.getName(), Logger.DEBUG);
 
     private boolean isReading = false;
     private final MonologueStage authorSpeechStage;
@@ -77,7 +74,6 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
 
     @Override
     public void exit() {
-        log.info("EXIT AUTHOR SPEECH");
         isReading = false;
         systemSwitch(true);
     }

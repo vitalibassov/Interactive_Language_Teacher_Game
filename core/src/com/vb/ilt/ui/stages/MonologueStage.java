@@ -11,14 +11,14 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 
 public abstract class MonologueStage extends Stage {
-    protected final Skin skin;
-    protected Label text;
-    protected ExitCallback exitCallback;
-    protected final AssetManager assetManager;
+    final Skin skin;
+    Label text;
+    ExitCallback exitCallback;
+    final AssetManager assetManager;
 
     protected TextureRegion region;
 
-    public MonologueStage(Viewport viewport, Batch batch, AssetManager assetManager, ExitCallback exitCallback) {
+    MonologueStage(Viewport viewport, Batch batch, AssetManager assetManager, ExitCallback exitCallback) {
         super(viewport, batch);
         this.assetManager = assetManager;
         this.skin = assetManager.get(AssetDescriptors.UI_SKIN);

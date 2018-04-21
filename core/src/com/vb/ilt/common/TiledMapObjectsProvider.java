@@ -10,7 +10,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.config.GameConfig;
 
 import java.util.HashMap;
@@ -18,11 +17,9 @@ import java.util.Map;
 
 public class TiledMapObjectsProvider {
 
-    private static final Logger log = new Logger(TiledMapObjectsProvider.class.getName(), Logger.DEBUG);
-
     private final TiledMap map;
 
-    public TiledMapObjectsProvider(String initialMap) {
+    TiledMapObjectsProvider(String initialMap) {
         map = new TmxMapLoader().load(initialMap);
     }
 
@@ -49,7 +46,7 @@ public class TiledMapObjectsProvider {
     }
 
     public Map<PolygonMapObject, String> getSensors(){
-        Map<PolygonMapObject, String> sensors = new HashMap<PolygonMapObject, String>();
+        Map<PolygonMapObject, String> sensors = new HashMap<>();
         for(PolygonMapObject object: getMapObjects("Sensors").getByType(PolygonMapObject.class)){
             sensors.put(object, object.getName());
         }
@@ -57,7 +54,7 @@ public class TiledMapObjectsProvider {
     }
     // Layer must have objects with name and they must be rectangles
     private Map<Vector2, String> getSpawnPoints(String layerName){
-        Map<Vector2, String> points = new HashMap<Vector2, String>();
+        Map<Vector2, String> points = new HashMap<>();
         for (MapObject object : getMapObjects(layerName)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             points.put(worldToIso(rect), object.getName());

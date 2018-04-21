@@ -4,13 +4,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.Map;
 
-public class MyWordsTabTable extends ListWithSearchTableBase{
+class MyWordsTabTable extends ListWithSearchTableBase{
 
-    public MyWordsTabTable(Skin skin) {
+    MyWordsTabTable(Skin skin) {
         super(skin, "delete");
     }
 
-    public MyWordsTabTable(Skin skin, Map<String, String> availableWords) {
+    MyWordsTabTable(Skin skin, Map<String, String> availableWords) {
         super(skin, "delete", availableWords);
     }
 

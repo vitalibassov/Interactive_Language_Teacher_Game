@@ -1,6 +1,5 @@
 package com.vb.ilt.entity.components.dialog_model;
 
-import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.entity.CharacterType;
 
 import java.util.ArrayList;
@@ -8,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Conversation{
-
-    private static final Logger log = new Logger(Conversation.class.getName(), Logger.DEBUG);
 
     //This class contains One conversation with one NPC
     private CharacterType type;
@@ -21,11 +18,6 @@ public class Conversation{
         this.type = type;
     }
 
-    public int getScore(Dialog dialog, String answer){
-        return dialog.getScore(answer);
-    }
-
-    //first Dialog, if answer == null
     public Dialog getNext(String answer){
 
         Dialog currentDialog = dialogs.get(dialogIndex);
@@ -58,7 +50,7 @@ public class Conversation{
     }
 
     public List<String> getAllText(){
-        List<String> text = new ArrayList<String>();
+        List<String> text = new ArrayList<>();
         for (Map.Entry<Integer, Dialog> dialogEntry : dialogs.entrySet()){
             Dialog dialog = dialogEntry.getValue();
             text.add(dialog.getNpctext());
@@ -81,6 +73,5 @@ public class Conversation{
         public boolean isNone(){return this == NONE;}
         public boolean isQuitConversation(){return this == QUIT_CONVERSATION;}
         public boolean isFinishConversation(){return this == FINISH_CONVERSATION;}
-
     }
 }

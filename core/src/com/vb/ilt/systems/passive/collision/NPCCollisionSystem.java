@@ -6,7 +6,6 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Logger;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
@@ -14,7 +13,6 @@ import com.vb.ilt.systems.active.ConversationSystem;
 import com.vb.ilt.util.Mappers;
 
 public class NPCCollisionSystem extends CollisionBase{
-    private static final Logger log = new Logger(WorldWrapUpSystem.class.getName(), Logger.DEBUG);
 
     private static final Family NPC = Family.all(
             NPCComponent.class,

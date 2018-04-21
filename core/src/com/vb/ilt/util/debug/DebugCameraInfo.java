@@ -7,12 +7,6 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Logger;
 
-/**
- * Info/Configuration for {@link DebugCameraController}.
- * Loads configuration from file in assetsDir/debug/debug-camera.json
- *
- * @author goran on 22/08/2016.
- */
 public class DebugCameraInfo {
 
     private static final Logger log = new Logger(DebugCameraInfo.class.getName(), Logger.DEBUG);
