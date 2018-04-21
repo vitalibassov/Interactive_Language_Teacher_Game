@@ -26,7 +26,7 @@ import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.MusicSystem;
-import com.vb.ilt.systems.active.ParticlesSystem;
+import com.vb.ilt.systems.passive.ParticlesSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;

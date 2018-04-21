@@ -1,4 +1,4 @@
-package com.vb.ilt.systems.active;
+package com.vb.ilt.systems.passive;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -38,6 +38,18 @@ public class ParticlesSystem extends IteratingSystem {
     }
 
     @Override
+    public boolean checkProcessing() {
+        return false;
+    }
+
+    @Override
+    public void update(float deltaTime) {
+        batch.begin();
+        super.update(deltaTime);
+        batch.end();
+    }
+
+    @Override
     protected void processEntity(Entity entity, float deltaTime) {
         PositionComponent positionComponent = Mappers.POSITION.get(entity);
         ParticlesComponent particlesComponent = Mappers.DIRT_PARTICLES.get(entity);
@@ -55,9 +67,7 @@ public class ParticlesSystem extends IteratingSystem {
         for (int i = 0; i < this.effects.size; i++) {
             ParticleEffectPool.PooledEffect pooledEffect = effects.get(i);
             pooledEffect.update(deltaTime);
-            batch.begin();
             pooledEffect.draw(batch);
-            batch.end();
             if (pooledEffect.isComplete()) {
                 this.effects.removeIndex(i);
                 pooledEffect.free();

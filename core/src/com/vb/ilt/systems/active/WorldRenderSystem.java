@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
+import com.vb.ilt.systems.passive.ParticlesSystem;
 import com.vb.ilt.util.Mappers;
 
 public class WorldRenderSystem extends EntitySystem{
@@ -40,6 +41,7 @@ public class WorldRenderSystem extends EntitySystem{
         batch.setProjectionMatrix(viewport.getCamera().projection);
         mapRenderer.setView((OrthographicCamera) viewport.getCamera());
         mapRenderer.render(new int[]{0, 1});
+        getEngine().getSystem(ParticlesSystem.class).update(deltaTime);
         getEngine().getSystem(CharacterRenderSystem.class).update(deltaTime);
         mapRenderer.render(new int[]{2});
     }
