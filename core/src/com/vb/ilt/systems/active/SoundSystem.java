@@ -39,7 +39,9 @@ public class SoundSystem extends EntitySystem{
     }
 
     public void playSound(Entity entity){
-        SoundComponent sound = Mappers.SOUND.get(entity);
-        sound.sound.play(GameConfig.SOUNDS_VOLUME);
+        if (Mappers.SOUND.has(entity)){
+            SoundComponent sound = Mappers.SOUND.get(entity);
+            sound.sound.play(GameConfig.SOUNDS_VOLUME);
+        }
     }
 }
