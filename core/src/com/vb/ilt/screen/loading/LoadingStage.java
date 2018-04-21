@@ -1,6 +1,6 @@
 package com.vb.ilt.screen.loading;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,7 +21,7 @@ public class LoadingStage extends Stage{
 
     protected TextureRegion region;
 
-    public LoadingStage(Viewport viewport, SpriteBatch batch, TextureRegion barFrameRegion, TextureRegion barRegion) {
+    public LoadingStage(Viewport viewport, Batch batch, TextureRegion barFrameRegion, TextureRegion barRegion) {
         super(viewport, batch);
         this.barRegion = barRegion;
         this.barFrameRegion = barFrameRegion;

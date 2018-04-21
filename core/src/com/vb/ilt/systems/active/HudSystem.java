@@ -5,7 +5,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.PositionComponent;
@@ -21,7 +21,7 @@ import com.vb.ilt.util.Mappers;
 public class HudSystem extends EntitySystem implements PauseCallback{
 
     private final Viewport hudViewport;
-    private final SpriteBatch batch;
+    private final Batch batch;
 
     private static final Family CONTROLS_FAMILY = Family.all(
             HudComponent.class,
@@ -36,7 +36,7 @@ public class HudSystem extends EntitySystem implements PauseCallback{
             StageComponent.class
     ).get();
 
-    public HudSystem(Viewport hudViewport, SpriteBatch batch) {
+    public HudSystem(Viewport hudViewport, Batch batch) {
         this.hudViewport = hudViewport;
         this.batch = batch;
     }

@@ -1,7 +1,7 @@
 package com.vb.ilt.ui.stages;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -18,7 +18,7 @@ public abstract class MonologueStage extends Stage {
 
     protected TextureRegion region;
 
-    public MonologueStage(Viewport viewport, SpriteBatch batch, AssetManager assetManager, ExitCallback exitCallback) {
+    public MonologueStage(Viewport viewport, Batch batch, AssetManager assetManager, ExitCallback exitCallback) {
         super(viewport, batch);
         this.assetManager = assetManager;
         this.skin = assetManager.get(AssetDescriptors.UI_SKIN);

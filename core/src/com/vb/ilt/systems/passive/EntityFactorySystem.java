@@ -10,8 +10,8 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
@@ -27,8 +27,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
-import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.CharacterType;
+import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DictionaryComponent;
@@ -46,8 +46,8 @@ import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.hud.StageComponent;
-import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
 import com.vb.ilt.entity.components.world.PortalSensorSpawnComponent;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
@@ -77,9 +77,9 @@ public class EntityFactorySystem extends EntitySystem{
 
     private PooledEngine engine;
     private final AssetManager assetManager;
-    private final SpriteBatch batch;
+    private final Batch batch;
 
-    public EntityFactorySystem(AssetManager assetManager, SpriteBatch batch){
+    public EntityFactorySystem(AssetManager assetManager, Batch batch){
         this.batch = batch;
         this.assetManager = assetManager;
     }

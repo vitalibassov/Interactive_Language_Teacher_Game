@@ -5,8 +5,8 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -26,7 +26,6 @@ import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.MusicSystem;
-import com.vb.ilt.systems.passive.ParticlesSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;
@@ -37,6 +36,7 @@ import com.vb.ilt.systems.debug.EntityLogger;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.systems.passive.CleanUpSystem;
 import com.vb.ilt.systems.passive.EntityFactorySystem;
+import com.vb.ilt.systems.passive.ParticlesSystem;
 import com.vb.ilt.systems.passive.PauseSystem;
 import com.vb.ilt.systems.passive.StartUpSystem;
 import com.vb.ilt.systems.passive.collision.NPCCollisionSystem;
@@ -56,7 +56,7 @@ public class GameScreen extends ScreenAdapter{
 
     private final InteractiveLangTeacherGame game;
     private final AssetManager assetManager;
-    private final SpriteBatch batch;
+    private final Batch batch;
 
     private final String level;
 

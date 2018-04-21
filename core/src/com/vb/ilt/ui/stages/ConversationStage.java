@@ -1,6 +1,6 @@
 package com.vb.ilt.ui.stages;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -36,7 +36,7 @@ public class ConversationStage extends Stage {
 
     private TextureRegion region;
 
-    public ConversationStage(Viewport viewport, SpriteBatch batch, Skin skin, TextureRegion region, ConversationCallback conversationCallback) {
+    public ConversationStage(Viewport viewport, Batch batch, Skin skin, TextureRegion region, ConversationCallback conversationCallback) {
         super(viewport, batch);
         this.skin = skin;
         this.conversationCallback = conversationCallback;
@@ -45,7 +45,7 @@ public class ConversationStage extends Stage {
         init();
     }
 
-    public ConversationStage(Viewport viewport, SpriteBatch batch, Skin skin,
+    public ConversationStage(Viewport viewport, Batch batch, Skin skin,
                              TextureRegion region, ConversationCallback conversationCallback, Map<String, String> allWords, Map<String, String> myWords) {
         super(viewport, batch);
         this.skin = skin;

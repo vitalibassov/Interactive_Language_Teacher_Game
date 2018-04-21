@@ -1,7 +1,7 @@
 package com.vb.ilt.ui.stages;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,8 +16,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
-import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.HudSystem;
+import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
 
@@ -32,7 +32,7 @@ public class PauseStage extends Stage {
     private TextureRegion background;
 
 
-    public PauseStage(Viewport viewport, SpriteBatch batch, AssetManager assetManager, PauseCallback pauseCallback) {
+    public PauseStage(Viewport viewport, Batch batch, AssetManager assetManager, PauseCallback pauseCallback) {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.pausePanel = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.PAUSE_PANEL);

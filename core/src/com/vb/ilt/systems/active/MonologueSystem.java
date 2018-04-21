@@ -6,7 +6,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -33,7 +33,7 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
             StoryComponent.class
     ).get();
 
-    public MonologueSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
+    public MonologueSystem(AssetManager assetManager, Viewport hudViewport, Batch batch) {
         super(FAMILY);
         authorSpeechStage = new AuthorSpeechStage(
                 hudViewport,

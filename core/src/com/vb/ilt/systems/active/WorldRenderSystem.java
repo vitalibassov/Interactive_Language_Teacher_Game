@@ -5,7 +5,7 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -19,7 +19,7 @@ public class WorldRenderSystem extends EntitySystem{
 
     private static final Logger log = new Logger(WorldRenderSystem.class.getName(), Logger.DEBUG);
 
-    private final SpriteBatch batch;
+    private final Batch batch;
     private final Viewport viewport;
 
     private static final Family MAP_FAMILY = Family.all(
@@ -27,7 +27,7 @@ public class WorldRenderSystem extends EntitySystem{
             TiledMapRendererComponent.class
     ).get();
 
-    public WorldRenderSystem(Viewport viewport, SpriteBatch batch) {
+    public WorldRenderSystem(Viewport viewport, Batch batch) {
         this.viewport = viewport;
         this.batch = batch;
     }

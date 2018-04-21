@@ -6,7 +6,7 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
@@ -20,8 +20,8 @@ import com.vb.ilt.entity.components.dialog_model.Conversation;
 import com.vb.ilt.entity.components.dialog_model.Dialog;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.entity.components.hud.StageComponent;
-import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.entity.components.npc.NPCComponent;
+import com.vb.ilt.entity.components.npc.StoryComponent;
 import com.vb.ilt.ui.stages.ConversationCallback;
 import com.vb.ilt.ui.stages.ConversationStage;
 import com.vb.ilt.ui.stages.HudStage;
@@ -42,7 +42,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     private HudStage hudStage;
     private DictionaryComponent dictionaryComponent;
     private final Viewport hudViewport;
-    private final SpriteBatch batch;
+    private final Batch batch;
 
     private HudSystem hudSystem;
     private PlayerControlSystem playerControlSystem;
@@ -64,7 +64,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             SoundComponent.class
     ).get();
 
-    public ConversationSystem(AssetManager assetManager, Viewport hudViewport, SpriteBatch batch) {
+    public ConversationSystem(AssetManager assetManager, Viewport hudViewport, Batch batch) {
         this.assetManager = assetManager;
         this.hudViewport = hudViewport;
         this.batch = batch;

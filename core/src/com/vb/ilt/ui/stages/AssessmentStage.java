@@ -2,7 +2,7 @@ package com.vb.ilt.ui.stages;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -33,7 +33,7 @@ public class AssessmentStage extends Stage{
     private TextureRegion emptyStar;
 
 
-    public AssessmentStage(Viewport viewport, SpriteBatch batch, AssetManager assetManager) {
+    public AssessmentStage(Viewport viewport, Batch batch, AssetManager assetManager) {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.assessmentPanel = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.ASSESSMENT_PANEL);

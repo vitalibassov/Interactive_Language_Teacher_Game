@@ -1,7 +1,7 @@
 package com.vb.ilt.ui.stages;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -38,7 +38,7 @@ public class HudStage extends Stage{
     private Skin skin;
 
 
-    public HudStage(AssetManager assetManager, Viewport viewport, SpriteBatch batch) {
+    public HudStage(AssetManager assetManager, Viewport viewport, Batch batch) {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.assetManager = assetManager;
@@ -46,7 +46,7 @@ public class HudStage extends Stage{
         init();
     }
 
-    public HudStage(AssetManager assetManager, Viewport viewport, SpriteBatch batch, Map<String, String> allWords, Map<String, String> myWords) {
+    public HudStage(AssetManager assetManager, Viewport viewport, Batch batch, Map<String, String> allWords, Map<String, String> myWords) {
         super(viewport, batch);
         this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.assetManager = assetManager;

@@ -3,7 +3,7 @@ package com.vb.ilt.systems.passive;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.TextureComponent;
@@ -13,7 +13,7 @@ import com.vb.ilt.util.ZOrderComparator;
 
 public class CharacterRenderSystem extends SortedIteratingSystem {
 
-    private final SpriteBatch batch;
+    private final Batch batch;
     private static final Family GAME_OBJECTS_FAMILY = Family.all(
             PositionComponent.class,
             TextureComponent.class,
@@ -26,7 +26,7 @@ public class CharacterRenderSystem extends SortedIteratingSystem {
         return false;
     }
 
-    public CharacterRenderSystem(SpriteBatch batch) {
+    public CharacterRenderSystem(Batch batch) {
         super(GAME_OBJECTS_FAMILY, ZOrderComparator.INSTANCE);
         this.batch = batch;
     }

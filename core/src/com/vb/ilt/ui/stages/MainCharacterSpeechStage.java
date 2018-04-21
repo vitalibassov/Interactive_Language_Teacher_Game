@@ -1,7 +1,7 @@
 package com.vb.ilt.ui.stages;
 
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -19,7 +19,7 @@ import com.vb.ilt.assets.RegionNames;
 public class MainCharacterSpeechStage extends MonologueStage{
     private static final Logger log = new Logger(ConversationStage.class.getName(), Logger.DEBUG);
 
-    public MainCharacterSpeechStage(Viewport viewport, SpriteBatch batch, AssetManager assetManager, ExitCallback exitCallback) {
+    public MainCharacterSpeechStage(Viewport viewport, Batch batch, AssetManager assetManager, ExitCallback exitCallback) {
         super(viewport, batch, assetManager, exitCallback);
     }
 
