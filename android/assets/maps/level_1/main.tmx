@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.4" orientation="isometric" renderorder="left-down" width="100" height="100" tilewidth="128" tileheight="64" infinite="0" nextobjectid="44">
  <tileset firstgid="1" source="../textures/grass.tsx"/>
- <tileset firstgid="8" source="../textures/testing_tree.tsx"/>
+ <tileset firstgid="8" name="testing_tree" tilewidth="512" tileheight="256" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="512" height="256" source="../textures/testing_tree.png"/>
+  </tile>
+ </tileset>
  <tileset firstgid="9" source="../textures/water.tsx"/>
  <tileset firstgid="58" source="../textures/water2.tsx"/>
  <tileset firstgid="107" source="../textures/domik.tsx"/>
@@ -13,7 +18,7 @@
  </layer>
  <layer name="Top Background" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt1EsKwjAYhdHsfwkt1tbXKkrX1slfLerMwRU9B8KdfiSQ1gAAAAAAAAAAAAAAAAAAAAAAAAAAAIBPzG8OOc/37z2yvMd32f6opfmvAAAAflmXDuDFkA7g7lB7ilawN9XeohX/ra8da6+hDh6OtZdoBXvndAAAAAAAAAAAAAAQsQIJuhHP
+   eJzt1TsOwjAQBFCX3L8EEf6cAnE2GgNRSEWkTOS8J1nbjsbOphQAAAAAAAAAAAAAAAAAAAAAAAAAAABgisfIIWfYv/vIch/L8t5Rz2JfAQAAtGybDsCPLh2Aj32d52gK+k513qMp1m1X57HOWygHX4c6r9EU9F3SAQAAGrdJB1iBsY71DgDt8u+f17BbXQNLYifB/3w/tMR7BgCY5gWT9BIf
   </data>
  </layer>
  <layer name="Foreground" width="100" height="100">

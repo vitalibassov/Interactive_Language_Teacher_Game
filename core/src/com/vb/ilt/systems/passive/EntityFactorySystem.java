@@ -62,13 +62,13 @@ import java.util.TreeMap;
 
 public class EntityFactorySystem extends EntitySystem{
 
-    private static final float BOUNDS_OFFSET_X = 0.15f;
-    private static final float BOUNDS_OFFSET_Y = 0.015f;
+    private static final float BOUNDS_OFFSET_X = 0.5f;
+    private static final float BOUNDS_OFFSET_Y = 0.5f;
 
     private static final float VISION_RANGE = 6f;
 
-    private static final float ANIMATION_TIME_FRONT = 0.075f;
-    private static final float ANIMATION_TIME_WALKING = 0.025f;
+    private static final float ANIMATION_TIME_FRONT = 0.04f;
+    private static final float ANIMATION_TIME_WALKING = 0.015f;
 
     private static final int DEFAULT_PLAYER_Z_ORDER = 1;
     private static final int DEFAULT_NPC_Z_ORDER = 2;
@@ -106,38 +106,38 @@ public class EntityFactorySystem extends EntitySystem{
         position.y = spawnPoint.y;
 
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-        bounds.polygon = polygonToIso(new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y,dimension.width / 1.5f, dimension.height / 3f)));
+        bounds.polygon = polygonToIso(new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, BOUNDS_OFFSET_Y,dimension.width / 2f, dimension.height / 2f)));
 
         MovementComponent movement = engine.createComponent(MovementComponent.class);
         AnimationComponent animation = engine.createComponent(AnimationComponent.class);
         Animation<TextureRegion> playerFront = new Animation<TextureRegion>(
                 ANIMATION_TIME_FRONT,
                 playerAtlas.findRegions(RegionNames.PLAYER_FRONT),
-                Animation.PlayMode.LOOP_PINGPONG
+                Animation.PlayMode.LOOP
         );
 
         Animation<TextureRegion> playerUp = new Animation<TextureRegion>(
                 ANIMATION_TIME_WALKING,
                 playerAtlas.findRegions(RegionNames.PLAYER_UP),
-                Animation.PlayMode.LOOP_PINGPONG
+                Animation.PlayMode.LOOP
         );
 
         Animation<TextureRegion> playerDown = new Animation<TextureRegion>(
                 ANIMATION_TIME_WALKING,
                 playerAtlas.findRegions(RegionNames.PLAYER_DOWN),
-                Animation.PlayMode.LOOP_PINGPONG
+                Animation.PlayMode.LOOP
         );
 
         Animation<TextureRegion> playerRight = new Animation<TextureRegion>(
                 ANIMATION_TIME_WALKING,
                 playerAtlas.findRegions(RegionNames.PLAYER_RIGHT),
-                Animation.PlayMode.LOOP_PINGPONG
+                Animation.PlayMode.LOOP
         );
 
         Animation<TextureRegion> playerLeft = new Animation<TextureRegion>(
                 ANIMATION_TIME_WALKING,
                 playerAtlas.findRegions(RegionNames.PLAYER_LEFT),
-                Animation.PlayMode.LOOP_PINGPONG
+                Animation.PlayMode.LOOP
         );
 
         Array<Animation<TextureRegion>> anims = new Array<>();

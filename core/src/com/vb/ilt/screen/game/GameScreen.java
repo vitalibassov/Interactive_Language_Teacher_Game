@@ -113,7 +113,6 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new WorldRenderSystem(viewport, batch));
 
 
-
         engine.addSystem(hudSystem);
         engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
         engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));

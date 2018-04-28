@@ -7,6 +7,7 @@ import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
@@ -15,6 +16,8 @@ import com.vb.ilt.systems.passive.ParticlesSystem;
 import com.vb.ilt.util.Mappers;
 
 public class WorldRenderSystem extends EntitySystem{
+
+    private static final Logger log = new Logger(WorldRenderSystem.class.getName(), Logger.DEBUG);
 
     private final Batch batch;
     private final Viewport viewport;

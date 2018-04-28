@@ -42,4 +42,5 @@ public final class AssetDescriptors {
 
     public static final AssetDescriptor<ParticleEffect> DIRT_PARTICLES =
             new AssetDescriptor<>(AssetPaths.DIRT_PARTICLES, ParticleEffect.class);
+
 }

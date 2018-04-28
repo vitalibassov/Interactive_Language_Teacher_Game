@@ -6,7 +6,9 @@ public enum CharacterType {
     PROTAGONIST,
     BEE,
     CAT,
-    FROG;
+    FROG,
+    FISH;
+
 
     public boolean isNone(){return this == NONE;}
     public boolean isAuthor() {return this == AUTHOR;}
@@ -14,4 +16,5 @@ public enum CharacterType {
     public boolean isBee(){return this == BEE;}
     public boolean isCat(){return this == CAT;}
     public boolean isFrog(){return this == FROG;}
+    public boolean isFish(){return this == FISH;}
 }

@@ -81,6 +81,7 @@ public class LoadingScreen extends ScreenAdapter {
 
         if (changeScreen) {
             game.setScreen(new MainMenuScreen(game));
+            //game.setScreen(new GameScreen(game, "level_1"));
         }
     }
 
