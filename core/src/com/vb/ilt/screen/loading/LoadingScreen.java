@@ -1,7 +1,10 @@
 package com.vb.ilt.screen.loading;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Logger;
@@ -9,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.assets.AssetPaths;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.config.GameConfig;
@@ -56,6 +60,10 @@ public class LoadingScreen extends ScreenAdapter {
         assetManager.load(AssetDescriptors.DEFAULT_FONT);
         assetManager.load(AssetDescriptors.STENCIL_FONT);
 
+        for (FileHandle file : Gdx.files.internal(AssetPaths.NPC_SOUNDS).list()){
+            assetManager.load(AssetPaths.NPC_SOUNDS + "/" + file.name(), Sound.class);
+        }
+
         assetManager.load(AssetDescriptors.UI_SKIN);
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.load(AssetDescriptors.NPC);
@@ -68,6 +76,7 @@ public class LoadingScreen extends ScreenAdapter {
         assetManager.load(AssetDescriptors.MAIN_MUSIC);
 
         assetManager.load(AssetDescriptors.DIRT_PARTICLES);
+
         GameManager.INSTANCE.setStatePlaying();
     }
 

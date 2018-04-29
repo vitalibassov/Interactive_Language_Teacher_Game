@@ -101,8 +101,10 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             return;
         }
 
+
         buildStage(this.conversations);
         this.dropTempScore = false;
+        getEngine().getSystem(SoundSystem.class).playSound(entity, 1f);
         setProcessing(true);
     }
 

@@ -9,6 +9,7 @@ import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
@@ -25,6 +26,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
+import com.vb.ilt.assets.AssetPaths;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.CharacterType;
@@ -167,7 +169,7 @@ public class EntityFactorySystem extends EntitySystem{
 
         ParticlesComponent particles = engine.createComponent(ParticlesComponent.class);
         particles.pooledEffect = new ParticleEffectPool(assetManager.get(AssetDescriptors.DIRT_PARTICLES), 5, 20);
-        particles.offset = new Vector2(GameConfig.PLAYER_HALF_WIDTH, 0f);
+        particles.offset = new Vector2(GameConfig.PLAYER_HALF_WIDTH, GameConfig.PLAYER_HALF_HEIGHT / 2f);
 
         addEntity(position, dimension, bounds, movement, player, texture, animation, zOrder, sound, direction, particles);
     }
@@ -190,7 +192,7 @@ public class EntityFactorySystem extends EntitySystem{
             position.y = point.getKey().y;
 
             BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
-            bounds.polygon = polygonToIso(new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, -BOUNDS_OFFSET_Y, dimension.width / 1.5f, dimension.height / 3f)));
+            bounds.polygon = polygonToIso(new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, BOUNDS_OFFSET_Y,dimension.width / 2f, dimension.height / 2f)));
 
             AnimationComponent animation = engine.createComponent(AnimationComponent.class);
             Animation<TextureRegion> npcFront = new Animation<TextureRegion>(
@@ -207,12 +209,14 @@ public class EntityFactorySystem extends EntitySystem{
 
             TextureComponent texture = engine.createComponent(TextureComponent.class);
             texture.region = anims.get(0).getKeyFrame(0);
-            log.debug(texture.region.toString());
 
             ZOrderComponent zOrder = engine.createComponent(ZOrderComponent.class);
             zOrder.z = DEFAULT_NPC_Z_ORDER;
 
-            addEntity(position, dimension, bounds, texture, animation, npc, zOrder);
+            SoundComponent sound = engine.createComponent(SoundComponent.class);
+            sound.sound = assetManager.get(String.format("%s/%s.wav", AssetPaths.NPC_SOUNDS, typeStr), Sound.class);
+
+            addEntity(position, dimension, bounds, texture, animation, npc, zOrder, sound);
         }
     }
 
