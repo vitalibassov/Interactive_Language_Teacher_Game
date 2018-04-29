@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -18,6 +19,8 @@ import com.vb.ilt.ui.stages.AssessmentStage;
 import com.vb.ilt.util.Mappers;
 
 public class FinishSystem extends IteratingSystem{
+
+    private static final Logger log = new Logger(FinishSystem.class.getName(), Logger.DEBUG);
 
     private final Stage finishStage;
     private float accumulator;
@@ -44,6 +47,7 @@ public class FinishSystem extends IteratingSystem{
         }
         if (isReady(deltaTime)){
             Queue<Conversation> conversationQueue = Mappers.STORY.get(entity).conversations;
+            log.debug("CURRENT CONVERSATION QUEUE: " + conversationQueue.size);
             if (conversationQueue.size == 0 && GameManager.INSTANCE.isPlaying() && !inProcess){
                 inProcess = true;
                 new Timer().scheduleTask(new Timer.Task() {

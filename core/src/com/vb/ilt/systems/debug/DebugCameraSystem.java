@@ -25,7 +25,7 @@ public class DebugCameraSystem extends EntitySystem {
             debugCameraController.handleDebugInput(deltaTime);
             debugCameraController.applyTo(this.camera);
         }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.G)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F3)){
             if (debugCamera){
                 getEngine().getSystem(CameraFollowingPlayerSystem.class).setProcessing(true);
                 this.camera.zoom = 1f;

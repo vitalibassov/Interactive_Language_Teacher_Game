@@ -27,9 +27,6 @@ import com.vb.ilt.ui.stages.ConversationStage;
 import com.vb.ilt.ui.stages.HudStage;
 import com.vb.ilt.util.Mappers;
 
-import java.util.List;
-import java.util.Map;
-
 public class ConversationSystem extends EntitySystem implements ConversationCallback {
 
     private static final Logger log = new Logger(ConversationSystem.class.getName(), Logger.DEBUG);
@@ -101,10 +98,9 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             return;
         }
 
-
         buildStage(this.conversations);
         this.dropTempScore = false;
-        getEngine().getSystem(SoundSystem.class).playSound(entity, 1f);
+        getEngine().getSystem(SoundSystem.class).playSound(entity);
         setProcessing(true);
     }
 
@@ -158,10 +154,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
                 exit();
             }else if (nonConversationalAction.isFinishConversation()){
                 GameManager.INSTANCE.commitTempScoreAmount();
-                Conversation finishedConv = this.conversations.removeFirst();
-                Entity dictionaryEntity = getEngine().getEntitiesFor(DICT).first();
-                DictionaryComponent dictionaryComponent = Mappers.DICT.get(dictionaryEntity);
-                addNewWordsToDictionary(finishedConv.getAllText(), dictionaryComponent.allWords);
+                this.conversations.removeFirst();
                 Engine engine = getEngine();
                 engine.getSystem(SoundSystem.class).playSound(engine.getEntitiesFor(HUD).first());
                 Gdx.input.vibrate(1000);
@@ -190,20 +183,6 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
             this.characterType = CharacterType.NONE;
             this.conversations = null;
             this.npcConv = null;
-        }
-    }
-
-    private void addNewWordsToDictionary (List<String> text, Map<String, String> dictionary){
-        for (String s : text){
-            for (String word : s.toLowerCase().split(" ")){
-                String formattedWord = word.replaceAll("\\W", "");
-                if (dictionary.get(formattedWord) == null){
-                    String result = GameManager.INSTANCE.getBigDictionary().get(formattedWord);
-                    if (result != null) {
-                        dictionary.put(formattedWord, GameManager.INSTANCE.getBigDictionary().get(formattedWord));
-                    }
-                }
-            }
         }
     }
 }
