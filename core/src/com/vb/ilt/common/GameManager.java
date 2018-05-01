@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 
 public final class GameManager {
 
-    private String currentLevel;
+    private int maxScore;
     private int tempScore;
     private int score;
     private final LinkedHashMap<String, String> bigDictionary;
@@ -20,6 +20,11 @@ public final class GameManager {
         this.bigDictionary = new LinkedHashMap<>();
         this.gameState = GameState.PLAYING;
         loadDictionary();
+    }
+
+    public void setMaxScore(String levelName){
+        JsonValue jsonValue = new JsonReader().parse(Gdx.files.internal("props/" + levelName + ".json"));
+        this.maxScore = jsonValue.getInt("max_score");
     }
 
     private void loadDictionary(){
@@ -50,12 +55,8 @@ public final class GameManager {
     public void commitTempScoreAmount(){score += tempScore;}
     public void dropTempScore(){tempScore = 0;}
 
-    public String getCurrentLevel() {
-        return currentLevel;
-    }
-
     public int getMaxScore() {
-        return 4490;
+        return maxScore;
     }
 
     public void reset(){

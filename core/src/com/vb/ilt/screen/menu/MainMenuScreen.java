@@ -108,9 +108,11 @@ public class MainMenuScreen extends ScreenAdapter{
     }
 
     private void play(){
+        final String level = "level_1";
         GameManager.INSTANCE.setStatePlaying();
         GameManager.INSTANCE.reset();
-        game.setScreen(new GameScreen(game, "level_1"));
+        GameManager.INSTANCE.setMaxScore("level_1");
+        game.setScreen(new GameScreen(game, level));
     }
 
     private void quit(){
