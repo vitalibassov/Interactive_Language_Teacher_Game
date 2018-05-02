@@ -3,7 +3,6 @@ package com.vb.ilt.ui.stages;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -26,22 +25,19 @@ public class AuthorSpeechStage extends MonologueStage {
         this.text.setWrap(true);
 
         Table container = new Table();
-        Table buttonTable = new Table();
+        final Table buttonTable = new Table();
+        this.exitButton = new ImageButton(skin, ButtonStyleNames.QUIT);
 
-        Button exitButton = new ImageButton(skin, ButtonStyleNames.QUIT);
-
-        exitButton.addListener(new ChangeListener() {
+        this.exitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 exitCallback.exit();
             }
         });
 
-
-        buttonTable.add(exitButton).padTop(40f).right().top();
         Label label = new Label("AUTHOR SPEECH", skin, "stencil");
 
-
+        buttonTable.add( this.exitButton).padTop(40f).right().top();
         ScrollPane scrollPane = new ScrollPane(this.text);
         scrollPane.setFadeScrollBars(false);
 

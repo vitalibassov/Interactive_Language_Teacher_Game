@@ -3,7 +3,6 @@ package com.vb.ilt.ui.stages;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -28,9 +27,9 @@ public class MainCharacterSpeechStage extends MonologueStage{
 
         Table container = new Table();
 
-        Button letsPlay = new TextButton("Let's Play!", skin);
+        this.exitButton = new TextButton("Let's Play!", skin);
 
-        letsPlay.addListener(new ChangeListener() {
+        this.exitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 exitCallback.exit();
@@ -45,7 +44,7 @@ public class MainCharacterSpeechStage extends MonologueStage{
         Table textWithButton = new Table();
         textWithButton.add(mainCharacterImage).width(640f).height(400f).padBottom(20f).row();
         textWithButton.add(text).growX().left().row();
-        textWithButton.add(letsPlay).padTop(20f).padBottom(20f).expandX();
+        textWithButton.add( this.exitButton).padTop(20f).padBottom(20f).expandX();
 
 
         ScrollPane scrollPane = new ScrollPane(textWithButton);
