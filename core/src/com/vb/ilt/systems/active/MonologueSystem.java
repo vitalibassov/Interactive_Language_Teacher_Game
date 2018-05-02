@@ -24,6 +24,8 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
     private final MonologueStage mainCharacterSpeechStage;
     private float accumulator = 0f;
 
+    private Queue<Conversation> conversationQueue;
+
     private MonologueStage monologueStage;
 
     private static final Family FAMILY = Family.all(
@@ -47,12 +49,12 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
     }
 
     private void actStage(){
-        monologueStage.act();
-        monologueStage.draw();
+        this.monologueStage.act();
+        this.monologueStage.draw();
     }
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        Queue<Conversation> conversationQueue = Mappers.STORY.get(entity).conversations;
+        this.conversationQueue = Mappers.STORY.get(entity).conversations;
         if (conversationQueue.size != 0 && !isReading && isReady(deltaTime)){
             if (conversationQueue.first().getType().isAuthor()){
                 monologueStage = authorSpeechStage;
@@ -62,9 +64,9 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
                 return;
             }
             systemSwitch(false);
-            monologueStage.updateText(conversationQueue.removeFirst().getCurrentDialog().getNpctext());
-            monologueStage.postponeButtonAppearance();
-            Gdx.input.setInputProcessor(monologueStage);
+            this.monologueStage.updateText(conversationQueue.first().getCurrentDialog().getNpctext());
+            this.monologueStage.postponeButtonAppearance();
+            Gdx.input.setInputProcessor(this.monologueStage);
             isReading = true;
         }
         if (isReading){
@@ -76,6 +78,7 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
     @Override
     public void exit() {
         isReading = false;
+        this.conversationQueue.removeFirst();
         systemSwitch(true);
     }
 
