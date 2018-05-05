@@ -29,6 +29,7 @@ import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;
 import com.vb.ilt.systems.active.ZOrderSystem;
 import com.vb.ilt.systems.debug.DebugCameraSystem;
+import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.EntityLogger;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.systems.passive.CleanUpSystem;
@@ -117,7 +118,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
         if (GameConfig.DEBUG_MODE){
             engine.addSystem(new DebugCameraSystem(camera));
-            engine.addSystem(new com.vb.ilt.systems.debug.DebugRenderSystem(viewport, renderer));
+            engine.addSystem(new DebugRenderSystem(viewport, renderer));
         }
 
         engine.addSystem(new ParticlesSystem(batch, viewport));

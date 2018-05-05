@@ -107,7 +107,6 @@ public class HudStage extends Stage{
 
         mainTable.pack();
         this.addActor(mainTable);
-        this.setDebugAll(true);
     }
 
     public void updateWords(){
