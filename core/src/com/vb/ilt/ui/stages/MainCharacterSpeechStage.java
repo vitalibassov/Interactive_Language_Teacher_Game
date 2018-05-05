@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
@@ -27,7 +28,7 @@ public class MainCharacterSpeechStage extends MonologueStage{
 
         Table container = new Table();
 
-        this.exitButton = new TextButton("Let's Play!", skin);
+        this.exitButton = new TextButton("Let's Go!", skin);
 
         this.exitButton.addListener(new ChangeListener() {
             @Override
@@ -38,6 +39,7 @@ public class MainCharacterSpeechStage extends MonologueStage{
 
 
         Label label = new Label("THE DOG", skin, "stencil");
+        label.setAlignment(Align.center);
 
         Image mainCharacterImage = new Image(this.assetManager.get(AssetDescriptors.CLOSE_UP).findRegion(RegionNames.MAIN_CHARACTER_CLOSE_UP));
 

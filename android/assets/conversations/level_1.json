@@ -1,656 +1,1022 @@
 {
-  "0": {
-    "author": {
-      "0": {
-        "text": "Дорогой друг!\n\nПриветствую тебя в интерактивной игре, посвященной изучению английского языка для учеников младшего школьного возраста (1-4 класс). Данный урок будет посвящен теме «Животные - Animals». Здесь ты сможешь познакомиться с разными животными, участвовать в диалогах, учить слова в игровой форме и получать новые знания.",
-        "answers": []
+    "0": {
+      "author": {
+        "0": {
+          "text": "Дорогой друг!\n\nПриветствую тебя в интерактивной игре, посвященной изучению английского языка для учеников младшего школьного возраста (1-4 класс). Данный урок будет посвящен теме «Животные - Animals». Здесь ты сможешь познакомиться с разными животными, участвовать в диалогах, учить слова в игровой форме и получать новые знания.",
+          "answers": []
+        }
       }
-    }
-  },
-  "1": {
-    "protagonist": {
-      "0": {
-        "text": "Hello! My name is Pjosya. I'm glad to see you. I'm a dog. No, I'm still a little dog - a puppy. I'll be your friend here. It is very interesting. Here you will find new friends. You will learn a lot about animals.",
-        "answers": []
+    },
+    "1": {
+      "protagonist": {
+        "0": {
+          "text": "Hello! My name is Pjosya. I'm glad to see you. I'm a dog. No, I'm still a little dog - a puppy. I'll be your friend here. It is very interesting. Here you will find new friends. You will learn a lot about animals.",
+          "answers": []
+        }
       }
-    }
-  },
-  "2": {
-    "author": {
-      "0": {
-        "text": "За каждый правильный ответ ты будешь получать награды:\nXX (монет) за правильный ответ с первой попытки\nXX за правильный ответ со второй попытки\nXX за правильный ответ с третьей попытки\nXX за правильный ответ с четвертой попытки\nПо результатам раунда все набранные тобой монеты будут складываться и тебе будет выставлена соответственная оценка. В качестве подсказки тебе будет доступен словарь с необходимым списком слов для прохождения данного уровня. \nСтарайся усердно и у тебя все получится.\n\nP.S. Если что-то не понятно, то ты всегда можешь обратиться за помощью к родителям или учителю.\n\nУдачи!\n",
-        "answers": []
+    },
+    "2": {
+      "author": {
+        "0": {
+          "text": "За каждый правильный ответ ты будешь получать награды:\n100 (монет) за правильный ответ с первой попытки\n75 за правильный ответ со второй попытки\n50 за правильный ответ с третьей попытки\n25 за правильный ответ с четвертой попытки\nПо результатам раунда все набранные тобой монеты будут складываться и тебе будет выставлена соответственная оценка. В качестве подсказки тебе будет доступен словарь с необходимым списком слов для прохождения данного уровня. \nСтарайся усердно и у тебя все получится.\n\nP.S. Если что-то не понятно, то ты всегда можешь обратиться за помощью к родителям или учителю.\n\nНе забывай проверять словарь перед каждым диалогом, чтобы подготовиться заранее. \n\nУдачи!\n",
+          "answers": []
+        }
       }
-    }
-  },
-  "3": {
-    "frog": {
+    },
+    "3": {
+      "protagonist": {
+        "0": {
+          "text": "I heard a frog somewhere!\n\nLet's find it! \n ",
+          "answers": []
+        }
+      }
+    },
+    "4": {
+      "frog": {
+        "0": {
+          "text": "Croak-croak! Good day, Pjosya.",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 1,
+              "text": "Hello! What is \"croak-croak?"
+            },
+            {
+              "score": 0,
+              "destinationID": -1,
+              "text": "Good bye!"
+            }
+          ]
+        },
+        "1": {
+          "text": "I can speak so. You know, I forgot my name. Can you help me?",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 2,
+              "text": "Yes, of course."
+            },
+            {
+              "score": 0,
+              "destinationID": -1,
+              "text": "No, I am busy. Bye."
+            }
+          ]
+        },
+        "2": {
+          "text": "There are R F O G letters in my name. Please, do my name from letters.",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 3,
+              "text": "Your name is FORG."
+            },
+            {
+              "score": 0,
+              "destinationID": 4,
+              "text": "Your name is GOFR. "
+            },
+            {
+              "score": 100,
+              "destinationID": 9,
+              "text": "Your name is FROG."
+            },
+            {
+              "score": 0,
+              "destinationID": 5,
+              "text": "Your name is ROFG."
+            }
+          ]
+        },
+        "3": {
+          "text": "Try again! My name is...",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 6,
+              "text": "Your name is GOFR."
+            },
+            {
+              "score": 75,
+              "destinationID": 9,
+              "text": "Your name is FROG."
+            },
+            {
+              "score": 0,
+              "destinationID": 8,
+              "text": "Your name is ROFG."
+            }
+          ]
+        },
+        "4": {
+          "text": "Try again! My name is...",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 6,
+              "text": "Your name is FORG."
+            },
+            {
+              "score": 75,
+              "destinationID": 9,
+              "text": "Your name is FROG."
+            },
+            {
+              "score": 0,
+              "destinationID": 7,
+              "text": "Your name is ROFG."
+            }
+          ]
+        },
+        "5": {
+          "text": "Try again! My name is...",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 8,
+              "text": "Your name is FORG."
+            },
+            {
+              "score": 0,
+              "destinationID": 7,
+              "text": "Your name is GOFR."
+            },
+            {
+              "score": 75,
+              "destinationID": 9,
+              "text": "Your name is FROG."
+            }
+          ]
+        },
+        "6": {
+          "text": "One more try. My name is...",
+          "answers": [
+            {
+              "score": 50,
+              "destinationID": 9,
+              "text": "Your name is FROG."
+            },
+            {
+              "score": 0,
+              "destinationID": 10,
+              "text": "Your name is ROFG."
+            }
+          ]
+        },
+        "7": {
+          "text": "One more try. My name is...",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 10,
+              "text": "Your name is FORG."
+            },
+            {
+              "score": 50,
+              "destinationID": 9,
+              "text": "Your name is FROG."
+            }
+          ]
+        },
+        "8": {
+          "text": "One more try. My name is...",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 10,
+              "text": "Your name is GOFR."
+            },
+            {
+              "score": 50,
+              "destinationID": 9,
+              "text": "Your name is FROG."
+            }
+          ]
+        },
+        "9": {
+          "text": "Excellent! You are right. I see you know a lot about frogs. Can you help me more?",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 11,
+              "text": "Sure"
+            }
+          ]
+        },
+        "10": {
+          "text": "Too many mistakes. Right answer is...",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 9,
+              "text": "FROG"
+            }
+          ]
+        },
+        "11": {
+          "text": "Please, name my color",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 12,
+              "text": "YELLOW"
+            },
+            {
+              "score": 0,
+              "destinationID": 13,
+              "text": "ORANGE"
+            },
+            {
+              "score": 0,
+              "destinationID": 14,
+              "text": "RED"
+            },
+            {
+              "score": 100,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "12": {
+          "text": "Try again! Please, name my color",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 15,
+              "text": "ORANGE"
+            },
+            {
+              "score": 0,
+              "destinationID": 14,
+              "text": "RED"
+            },
+            {
+              "score": 75,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "13": {
+          "text": "Try again! Please, name my color",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 15,
+              "text": "YELLOW"
+            },
+            {
+              "score": 0,
+              "destinationID": 16,
+              "text": "RED"
+            },
+            {
+              "score": 75,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "14": {
+          "text": "Try again! Please, name my color",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 16,
+              "text": "ORANGE"
+            },
+            {
+              "score": 0,
+              "destinationID": 17,
+              "text": "YELLOW"
+            },
+            {
+              "score": 75,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "15": {
+          "text": "Try again! Please, name my color",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 19,
+              "text": "RED"
+            },
+            {
+              "score": 50,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "16": {
+          "text": "Try again! Please, name my color",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 19,
+              "text": "YELLOW"
+            },
+            {
+              "score": 50,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "17": {
+          "text": "Try again! Please, name my color",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 19,
+              "text": "ORANGE"
+            },
+            {
+              "score": 50,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "18": {
+          "text": "Excellent! You are right. Are you ready for next question?",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 20,
+              "text": "Yes, I am ready."
+            }
+          ]
+        },
+        "19": {
+          "text": "Too many mistakes. Right answer is...",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 18,
+              "text": "GREEN"
+            }
+          ]
+        },
+        "20": {
+          "text": "Do you know where GREEN FROG live?",
+          "answers": [
+            {
+              "score": 100,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            },
+            {
+              "score": 0,
+              "destinationID": 21,
+              "text": "IN THE HOUSE"
+            },
+            {
+              "score": 0,
+              "destinationID": 22,
+              "text": "IN THE FOREST"
+            },
+            {
+              "score": 0,
+              "destinationID": 23,
+              "text": "ON THE TREE"
+            }
+          ]
+        },
+        "21": {
+          "text": "Try again! Where GREEN FROG live?",
+          "answers": [
+            {
+              "score": 75,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            },
+            {
+              "score": 0,
+              "destinationID": 26,
+              "text": "IN THE FOREST"
+            },
+            {
+              "score": 0,
+              "destinationID": 24,
+              "text": "ON THE TREE"
+            }
+          ]
+        },
+        "22": {
+          "text": "Try again! Where GREEN FROG live?",
+          "answers": [
+            {
+              "score": 75,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            },
+            {
+              "score": 0,
+              "destinationID": 26,
+              "text": "IN THE HOUSE"
+            },
+            {
+              "score": 0,
+              "destinationID": 25,
+              "text": "ON THE TREE"
+            }
+          ]
+        },
+        "23": {
+          "text": "Try again! Where GREEN FROG live?",
+          "answers": [
+            {
+              "score": 75,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            },
+            {
+              "score": 0,
+              "destinationID": 24,
+              "text": "IN THE HOUSE"
+            },
+            {
+              "score": 0,
+              "destinationID": 25,
+              "text": "IN THE FOREST"
+            }
+          ]
+        },
+        "24": {
+          "text": "Try again! Where GREEN FROG live?",
+          "answers": [
+            {
+              "score": 50,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            },
+            {
+              "score": 50,
+              "destinationID": 28,
+              "text": "IN THE FOREST"
+            }
+          ]
+        },
+        "25": {
+          "text": "Try again! Where GREEN FROG live?",
+          "answers": [
+            {
+              "score": 50,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            },
+            {
+              "score": 0,
+              "destinationID": 28,
+              "text": "IN THE HOUSE"
+            }
+          ]
+        },
+        "26": {
+          "text": "Try again!",
+          "answers": [
+            {
+              "score": 50,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            },
+            {
+              "score": 0,
+              "destinationID": 28,
+              "text": "ON THE TREE"
+            }
+          ]
+        },
+        "27": {
+          "text": "Excellent! It is a right answer. My next question is: What do I like to do?",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 29,
+              "text": "I LIKE TO FLY"
+            },
+            {
+              "score": 100,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            },
+            {
+              "score": 0,
+              "destinationID": 30,
+              "text": "I LIKE TO RUN"
+            },
+            {
+              "score": 0,
+              "destinationID": 31,
+              "text": "I LIKE TO DANCE"
+            }
+          ]
+        },
+        "28": {
+          "text": "Too many mistakes. Right answer is...",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 27,
+              "text": "IN THE POND"
+            }
+          ]
+        },
+        "29": {
+          "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+          "answers": [
+            {
+              "score": 75,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            },
+            {
+              "score": 0,
+              "destinationID": 34,
+              "text": "I LIKE TO RUN"
+            },
+            {
+              "score": 0,
+              "destinationID": 33,
+              "text": "I LIKE TO DANCE"
+            }
+          ]
+        },
+        "30": {
+          "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 34,
+              "text": "I LIKE TO FLY"
+            },
+            {
+              "score": 75,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            },
+            {
+              "score": 0,
+              "destinationID": 32,
+              "text": "I LIKE TO DANCE"
+            }
+          ]
+        },
+        "31": {
+          "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 33,
+              "text": "I LIKE TO FLY"
+            },
+            {
+              "score": 75,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            },
+            {
+              "score": 0,
+              "destinationID": 32,
+              "text": "I LIKE TO RUN"
+            }
+          ]
+        },
+        "32": {
+          "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+          "answers": [
+            {
+              "score": 0,
+              "destinationID": 36,
+              "text": "I LIKE TO FLY"
+            },
+            {
+              "score": 50,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            }
+          ]
+        },
+        "33": {
+          "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+          "answers": [
+            {
+              "score": 50,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            },
+            {
+              "score": 0,
+              "destinationID": 36,
+              "text": "I LIKE TO RUN"
+            }
+          ]
+        },
+        "34": {
+          "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+          "answers": [
+            {
+              "score": 50,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            },
+            {
+              "score": 0,
+              "destinationID": 36,
+              "text": "I LIKE TO DANCE"
+            }
+          ]
+        },
+        "35": {
+          "text": "Excellent! I am a frog. I am green. I live in the pond. I like to jump. Thank you! Glad to see you more. Go and find the chicken. I saw it around houses.",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": -2,
+              "text": "Good bye, frog!"
+            }
+          ]
+        },
+        "36": {
+          "text": "Too many mistakes. Right answer is...",
+          "answers": [
+            {
+              "score": 25,
+              "destinationID": 35,
+              "text": "I LIKE TO JUMP"
+            }
+          ]
+        }
+      }
+    },
+  "5": {
+    "chicken": {
       "0": {
-        "text": "Croak-croak! Good day, Pjosya.",
+        "text": "Hello, my friend!",
         "answers": [
           {
             "score": 25,
             "destinationID": 1,
-            "text": "Hello! What is \"croak-croak?"
+            "text": "Hello!"
           },
           {
             "score": 0,
             "destinationID": -1,
-            "text": "Good bye!"
+            "text": "Sorry, you are not who I need..."
           }
         ]
       },
       "1": {
-        "text": "I can speak so. You know, I forgot my name. Can you help me?",
+        "text": "What do you think chickens usually do?",
         "answers": [
           {
-            "score": 25,
-            "destinationID": 2,
-            "text": "Yes, of course."
-          },
-          {
-            "score": 0,
-            "destinationID": -1,
-            "text": "No, I am busy. Bye."
-          }
-        ]
-      },
-      "2": {
-        "text": "There are R F O G letters in my name. Please, do my name from letters.",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 3,
-            "text": "Your name is FORG."
-          },
-          {
-            "score": 0,
-            "destinationID": 4,
-            "text": "Your name is GOFR. "
-          },
-          {
-            "score": 1000,
-            "destinationID": 9,
-            "text": "Your name is FROG."
-          },
-          {
-            "score": 0,
-            "destinationID": 5,
-            "text": "Your name is ROFG."
-          }
-        ]
-      },
-      "3": {
-        "text": "Try again! My name is...",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 6,
-            "text": "Your name is GOFR."
-          },
-          {
-            "score": 500,
-            "destinationID": 9,
-            "text": "Your name is FROG."
-          },
-          {
-            "score": 0,
-            "destinationID": 8,
-            "text": "Your name is ROFG."
-          }
-        ]
-      },
-      "4": {
-        "text": "Try again! My name is...",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 6,
-            "text": "Your name is FORG."
-          },
-          {
-            "score": 500,
-            "destinationID": 9,
-            "text": "Your name is FROG."
-          },
-          {
-            "score": 0,
-            "destinationID": 7,
-            "text": "Your name is ROFG."
-          }
-        ]
-      },
-      "5": {
-        "text": "Try again! My name is...",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 8,
-            "text": "Your name is FORG."
-          },
-          {
-            "score": 0,
-            "destinationID": 7,
-            "text": "Your name is GOFR."
-          },
-          {
-            "score": 500,
-            "destinationID": 9,
-            "text": "Your name is FROG."
-          }
-        ]
-      },
-      "6": {
-        "text": "One more try. My name is...",
-        "answers": [
-          {
-            "score": 250,
-            "destinationID": 9,
-            "text": "Your name is FROG."
-          },
-          {
-            "score": 0,
+            "score": 100,
             "destinationID": 10,
-            "text": "Your name is ROFG."
-          }
-        ]
-      },
-      "7": {
-        "text": "One more try. My name is...",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 10,
-            "text": "Your name is FORG."
-          },
-          {
-            "score": 250,
-            "destinationID": 9,
-            "text": "Your name is FROG."
-          }
-        ]
-      },
-      "8": {
-        "text": "One more try. My name is...",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 10,
-            "text": "Your name is GOFR."
-          },
-          {
-            "score": 250,
-            "destinationID": 9,
-            "text": "Your name is FROG."
-          }
-        ]
-      },
-      "9": {
-        "text": "Excellent! You are right. I see you know a lot about frogs. Can you help me more?",
-        "answers": [
-          {
-            "score": 20,
-            "destinationID": 11,
-            "text": "Sure"
-          }
-        ]
-      },
-      "10": {
-        "text": "Too many mistakes. Right answer is...",
-        "answers": [
-          {
-            "score": 50,
-            "destinationID": 9,
-            "text": "FROG"
-          }
-        ]
-      },
-      "11": {
-        "text": "Please, name my color",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 12,
-            "text": "YELLOW"
+            "text": "Lay eggs?"
           },
           {
             "score": 0,
-            "destinationID": 13,
-            "text": "ORANGE"
-          },
-          {
-            "score": 0,
-            "destinationID": 14,
-            "text": "RED"
-          },
-          {
-            "score": 1000,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "12": {
-        "text": "Try again! Please, name my color",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 15,
-            "text": "ORANGE"
-          },
-          {
-            "score": 0,
-            "destinationID": 14,
-            "text": "RED"
-          },
-          {
-            "score": 500,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "13": {
-        "text": "Try again! Please, name my color",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 15,
-            "text": "YELLOW"
-          },
-          {
-            "score": 0,
-            "destinationID": 16,
-            "text": "RED"
-          },
-          {
-            "score": 500,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "14": {
-        "text": "Try again! Please, name my color",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 16,
-            "text": "ORANGE"
-          },
-          {
-            "score": 0,
-            "destinationID": 17,
-            "text": "YELLOW"
-          },
-          {
-            "score": 500,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "15": {
-        "text": "Try again! Please, name my color",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 19,
-            "text": "RED"
-          },
-          {
-            "score": 250,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "16": {
-        "text": "Try again! Please, name my color",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 19,
-            "text": "YELLOW"
-          },
-          {
-            "score": 250,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "17": {
-        "text": "Try again! Please, name my color",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 19,
-            "text": "ORANGE"
-          },
-          {
-            "score": 250,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "18": {
-        "text": "Excellent! You are right. Are you ready for next question?",
-        "answers": [
-          {
-            "score": 20,
             "destinationID": 20,
-            "text": "Yes, I am ready."
-          }
-        ]
-      },
-      "19": {
-        "text": "Too many mistakes. Right answer is...",
-        "answers": [
-          {
-            "score": 50,
-            "destinationID": 18,
-            "text": "GREEN"
-          }
-        ]
-      },
-      "20": {
-        "text": "Do you know where GREEN FROG live?",
-        "answers": [
-          {
-            "score": 1000,
-            "destinationID": 27,
-            "text": "IN THE POND"
-          },
-          {
-            "score": 0,
-            "destinationID": 21,
-            "text": "IN THE HOUSE"
-          },
-          {
-            "score": 0,
-            "destinationID": 22,
-            "text": "IN THE FOREST"
-          },
-          {
-            "score": 0,
-            "destinationID": 23,
-            "text": "ON THE TREE"
-          }
-        ]
-      },
-      "21": {
-        "text": "Try again! Where GREEN FROG live?",
-        "answers": [
-          {
-            "score": 500,
-            "destinationID": 27,
-            "text": "IN THE POND"
-          },
-          {
-            "score": 0,
-            "destinationID": 26,
-            "text": "IN THE FOREST"
-          },
-          {
-            "score": 0,
-            "destinationID": 24,
-            "text": "ON THE TREE"
-          }
-        ]
-      },
-      "22": {
-        "text": "Try again! Where GREEN FROG live?",
-        "answers": [
-          {
-            "score": 500,
-            "destinationID": 27,
-            "text": "IN THE POND"
-          },
-          {
-            "score": 0,
-            "destinationID": 26,
-            "text": "IN THE HOUSE"
-          },
-          {
-            "score": 0,
-            "destinationID": 25,
-            "text": "ON THE TREE"
-          }
-        ]
-      },
-      "23": {
-        "text": "Try again! Where GREEN FROG live?",
-        "answers": [
-          {
-            "score": 500,
-            "destinationID": 27,
-            "text": "IN THE POND"
-          },
-          {
-            "score": 0,
-            "destinationID": 24,
-            "text": "IN THE HOUSE"
-          },
-          {
-            "score": 0,
-            "destinationID": 25,
-            "text": "IN THE FOREST"
-          }
-        ]
-      },
-      "24": {
-        "text": "Try again! Where GREEN FROG live?",
-        "answers": [
-          {
-            "score": 250,
-            "destinationID": 27,
-            "text": "IN THE POND"
-          },
-          {
-            "score": 250,
-            "destinationID": 28,
-            "text": "IN THE FOREST"
-          }
-        ]
-      },
-      "25": {
-        "text": "Try again! Where GREEN FROG live?",
-        "answers": [
-          {
-            "score": 250,
-            "destinationID": 27,
-            "text": "IN THE POND"
-          },
-          {
-            "score": 0,
-            "destinationID": 28,
-            "text": "IN THE HOUSE"
-          }
-        ]
-      },
-      "26": {
-        "text": "Try again!",
-        "answers": [
-          {
-            "score": 250,
-            "destinationID": 27,
-            "text": "IN THE POND"
-          },
-          {
-            "score": 0,
-            "destinationID": 28,
-            "text": "ON THE TREE"
-          }
-        ]
-      },
-      "27": {
-        "text": "Excellent! It is a right answer. My next question is: What do I like to do?",
-        "answers": [
-          {
-            "score": 0,
-            "destinationID": 29,
-            "text": "I LIKE TO FLY"
-          },
-          {
-            "score": 1000,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
+            "text": "Like to dance?"
           },
           {
             "score": 0,
             "destinationID": 30,
-            "text": "I LIKE TO RUN"
+            "text": "Write diplomas?"
           },
           {
             "score": 0,
-            "destinationID": 31,
-            "text": "I LIKE TO DANCE"
+            "destinationID": 40,
+            "text": "Play computer games?"
           }
         ]
       },
-      "28": {
-        "text": "Too many mistakes. Right answer is...",
+      "10": {
+        "text": "YES! You are right! It was nice to talk with you. Bye!",
         "answers": [
           {
             "score": 50,
-            "destinationID": 27,
-            "text": "IN THE POND"
+            "destinationID": -2,
+            "text": "Bye!"
           }
         ]
       },
-      "29": {
-        "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+      "20": {
+        "text": "No, try again.",
         "answers": [
           {
-            "score": 500,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
+            "score": 75,
+            "destinationID": 10,
+            "text": "Lay eggs?"
           },
           {
             "score": 0,
-            "destinationID": 34,
-            "text": "I LIKE TO RUN"
+            "destinationID": 100,
+            "text": "Write diplomas?"
           },
           {
             "score": 0,
-            "destinationID": 33,
-            "text": "I LIKE TO DANCE"
+            "destinationID": 100,
+            "text": "Play computer games?"
           }
         ]
       },
       "30": {
-        "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+        "text": "No, try again.",
         "answers": [
           {
-            "score": 0,
-            "destinationID": 34,
-            "text": "I LIKE TO FLY"
-          },
-          {
-            "score": 500,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
+            "score": 75,
+            "destinationID": 10,
+            "text": "Lay eggs?"
           },
           {
             "score": 0,
-            "destinationID": 32,
-            "text": "I LIKE TO DANCE"
+            "destinationID": 100,
+            "text": "Like to dance?"
+          },
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "Play computer games?"
           }
         ]
       },
-      "31": {
-        "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+      "40": {
+        "text": "No, try again.",
         "answers": [
           {
-            "score": 0,
-            "destinationID": 33,
-            "text": "I LIKE TO FLY"
-          },
-          {
-            "score": 500,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
+            "score": 75,
+            "destinationID": 10,
+            "text": "Lay eggs?"
           },
           {
             "score": 0,
-            "destinationID": 32,
-            "text": "I LIKE TO RUN"
+            "destinationID": 100,
+            "text": "Like to dance?"
+          },
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "Write diplomas?"
           }
         ]
       },
-      "32": {
-        "text": "Try again! What GREEN FROG live IN THE POND like to do?",
+      "100": {
+        "text": "No, your answers are not correct! You cannot think like chicken... Bye!",
         "answers": [
           {
             "score": 0,
-            "destinationID": 36,
-            "text": "I LIKE TO FLY"
-          },
-          {
-            "score": 250,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
-          }
-        ]
-      },
-      "33": {
-        "text": "Try again! What GREEN FROG live IN THE POND like to do?",
-        "answers": [
-          {
-            "score": 250,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
-          },
-          {
-            "score": 0,
-            "destinationID": 36,
-            "text": "I LIKE TO RUN"
-          }
-        ]
-      },
-      "34": {
-        "text": "Try again! What GREEN FROG live IN THE POND like to do?",
-        "answers": [
-          {
-            "score": 250,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
-          },
-          {
-            "score": 0,
-            "destinationID": 36,
-            "text": "I LIKE TO DANCE"
-          }
-        ]
-      },
-      "35": {
-        "text": "Excellent! I am a frog. I am green. I live in the pond. I like to jump. Thank you! Glad to see you more.",
-        "answers": [
-          {
-            "score": 200,
             "destinationID": -2,
-            "text": "Good bye, frog!"
-          }
-        ]
-      },
-      "36": {
-        "text": "Too many mistakes. Right answer is...",
-        "answers": [
-          {
-            "score": 50,
-            "destinationID": 35,
-            "text": "I LIKE TO JUMP"
+            "text": "See you... Maybe..."
           }
         ]
       }
     }
   },
-  "4": {
+  "6": {
+    "protagonist": {
+      "0": {
+        "text": "Why this house smells (пахнет) like honey !?\n\nLet's find out! (Давай выясним!)",
+        "answers": []
+      }
+    }
+  },
+  "7": {
+    "bee": {
+      "0": {
+        "text": "Bzzzzzz! Who are you?",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": 1,
+            "text": "I am a little dog! And who are you?"
+          },
+          {
+            "score": 0,
+            "destinationID": -1,
+            "text": "You are scary! Bye!"
+          }
+        ]
+      },
+      "1": {
+        "text": "I am a giant bee! RUN OR I WILL EAT YOU!",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": -2,
+            "text": "I RUN AS I CAN!"
+          }
+        ]
+      }
+    }
+  },
+  "8": {
     "author": {
       "0": {
-        "text": "ПОЗДРАВЛЯЮ ПРОШЁЛ ИГРУ!!! =))",
+        "text": "Кажется пчела не особо дружелюбна. Сходи ка найди пруд неподалеку. Там рыба прячется от кошки, думаю рыбе есть что сказать...",
+        "answers": []
+      }
+    }
+  },
+  "9": {
+    "protagonist": {
+      "0": {
+        "text": "I will try to use my strong sense of smell (обоняние) to find this fish!",
+        "answers": []
+      }
+    }
+  },
+  "10": {
+    "fish": {
+      "0": {
+        "text": "HEY! Are you cat?",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": 1,
+            "text": "No, I am just a little dog."
+          },
+          {
+            "score": 0,
+            "destinationID": -1,
+            "text": "YES! Boo!"
+          }
+        ]
+      },
+      "1": {
+        "text": "Good! Please, could you talk to the cat, which is living near the tree garden?",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": -2,
+            "text": "Sure! I will help you."
+          }
+        ]
+      }
+    }
+  },
+  "11": {
+    "protagonist": {
+      "0": {
+        "text": "Let's go and talk to the cat! The mister fish said that the cat lives near the garden.",
+        "answers": []
+      }
+    }
+  },
+  "12": {
+    "cat": {
+      "0": {
+        "text": "What do you need in my house!?",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": 1,
+            "text": "I am a little dog and I want to talk with you!"
+          },
+          {
+            "score": 0,
+            "destinationID": -1,
+            "text": "Nothing! Bye!"
+          }
+        ]
+      },
+      "1": {
+        "text": "Why?",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": 2,
+            "text": "The fish said that I need to talk with you. "
+          }
+        ]
+      },
+      "2":{
+        "text": "This stupid fish... I just tried to eat him.",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": 3,
+            "text": "WHAT!? Don't do that again!"
+          }
+        ]
+      },
+      "3": {
+        "text": "Only if you answer the question! What is my favourite food?",
+        "answers": [
+          {
+            "score": 0,
+            "destinationID": 20,
+            "text": "The miss chicken?"
+          },
+          {
+            "score": 0,
+            "destinationID": 30,
+            "text": "The mister giant angry bee?"
+          },
+          {
+            "score": 100,
+            "destinationID": 10,
+            "text": "The mister fish?"
+          },
+          {
+            "score": 0,
+            "destinationID": 40,
+            "text": "The mister frog?"
+          }
+        ]
+      },
+      "10": {
+        "text": "YES! I LIKE FISH! But... I promised to not eat him anymore... You won...",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": -2,
+            "text": "Yes! I'm glad know!"
+          }
+        ]
+      },
+      "20": {
+        "text": "No, I don't like chickens. You have the last change.",
+        "answers": [
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "The mister giant angry bee?"
+          },
+          {
+            "score": 75,
+            "destinationID": 10,
+            "text": "The mister fish?"
+          },
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "The mister frog?"
+          }
+        ]
+      },
+      "30": {
+        "text": "Nooo! Bees... Oh my God... You have the last change.",
+        "answers": [
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "The miss chicken?"
+          },
+          {
+            "score": 75,
+            "destinationID": 10,
+            "text": "The mister fish?"
+          },
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "The mister frog?"
+          }
+        ]
+      },
+      "40": {
+        "text": "No, I don't like jumping frogs... You have the last change.",
+        "answers": [
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "The miss chicken?"
+          },
+          {
+            "score": 0,
+            "destinationID": 100,
+            "text": "The mister giant angry bee?"
+          },
+          {
+            "score": 75,
+            "destinationID": 10,
+            "text": "The mister fish?"
+          }
+        ]
+      },
+      "100": {
+        "text": "No, your answers are not correct! But... Maybe I can just drink milk. You are lucky!",
+        "answers": [
+          {
+            "score": 25,
+            "destinationID": -2,
+            "text": "Thank you, mister cat!"
+          }
+        ]
+      }
+    }
+  },
+  "13":{
+    "author": {
+      "0": {
+        "text": "Кажется вам удалось спасти рыбу! Это очень здорово! Спешим вас обрадовать, что на этой счастливой ноте урок окончен. \n\nДЕРЖИ ОЦЕНКУ!",
         "answers": []
       }
     }

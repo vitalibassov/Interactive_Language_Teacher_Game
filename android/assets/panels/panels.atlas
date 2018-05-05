@@ -1,61 +1,75 @@
 
 panels.png
-size: 4096,2048
+size: 4096,4096
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 assessmentPanel
   rotate: false
-  xy: 2912, 404
+  xy: 1630, 2766
   size: 720, 400
   orig: 720, 400
   offset: 0, 0
   index: -1
 background
   rotate: false
-  xy: 2, 820
+  xy: 2, 2902
   size: 1626, 986
   orig: 1626, 986
   offset: 0, 0
   index: -1
 bee
   rotate: false
-  xy: 2, 98
+  xy: 2, 2180
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 cat
   rotate: false
-  xy: 1630, 1086
+  xy: 1630, 3168
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+chicken
+  rotate: false
+  xy: 2, 1458
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+fish
+  rotate: false
+  xy: 2, 736
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 frog
   rotate: false
-  xy: 1630, 364
+  xy: 2, 14
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 monologue
   rotate: false
-  xy: 2912, 806
+  xy: 2912, 2888
   size: 720, 1000
   orig: 720, 1000
   offset: 0, 0
   index: -1
 pauseBackground
   rotate: false
-  xy: 1284, 808
+  xy: 2, 2
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 pausePanel
   rotate: false
-  xy: 2912, 2
+  xy: 1284, 2364
   size: 720, 400
   orig: 720, 400
   offset: 0, 0

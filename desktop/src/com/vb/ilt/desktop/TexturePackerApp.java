@@ -52,10 +52,5 @@ public class TexturePackerApp{
                 ASSETS_PATH + "/ui",
                 "skin"
         );
-        TexturePacker.process(settings,
-                RAW_ASSETS_PATH + "/fireplace",
-                ASSETS_PATH + "/fireplace",
-                "fireplace"
-        );
     }
 }

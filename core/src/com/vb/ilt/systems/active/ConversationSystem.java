@@ -156,6 +156,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
                 exit();
             }else if (nonConversationalAction.isFinishConversation()){
                 GameManager.INSTANCE.commitTempScoreAmount();
+                dropTempScore = true;
                 this.conversations.removeFirst();
                 Engine engine = getEngine();
                 engine.getSystem(SoundSystem.class).playSound(engine.getEntitiesFor(HUD).first());
