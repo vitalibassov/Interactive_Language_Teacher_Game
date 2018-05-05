@@ -6,56 +6,56 @@ filter: Nearest,Nearest
 repeat: none
 assessmentPanel
   rotate: false
-  xy: 2, 2
+  xy: 2912, 404
   size: 720, 400
   orig: 720, 400
   offset: 0, 0
   index: -1
 background
   rotate: false
-  xy: 2, 1126
-  size: 1280, 720
-  orig: 1280, 720
+  xy: 2, 820
+  size: 1626, 986
+  orig: 1626, 986
   offset: 0, 0
   index: -1
 bee
   rotate: false
-  xy: 2, 404
+  xy: 2, 98
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 cat
   rotate: false
-  xy: 1284, 1126
+  xy: 1630, 1086
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 frog
   rotate: false
-  xy: 1284, 404
+  xy: 1630, 364
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
 monologue
   rotate: false
-  xy: 2566, 846
+  xy: 2912, 806
   size: 720, 1000
   orig: 720, 1000
   offset: 0, 0
   index: -1
 pauseBackground
   rotate: false
-  xy: 3288, 1836
+  xy: 1284, 808
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 pausePanel
   rotate: false
-  xy: 2566, 444
+  xy: 2912, 2
   size: 720, 400
   orig: 720, 400
   offset: 0, 0

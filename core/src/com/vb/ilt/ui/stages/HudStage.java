@@ -87,11 +87,11 @@ public class HudStage extends Stage{
 
         Table scoreTable = new Table();
         Image image = new Image(assetManager.get(AssetDescriptors.UI_SKIN).getDrawable(RegionNames.COIN));
-        score = new Label("0", skin);
-        score.setFontScale(2f);
+        this.score = new Label("0", skin);
+        this.score.setFontScale(2f);
 
         scoreTable.add(image);
-        scoreTable.add(score).padLeft(15f);
+        scoreTable.add(this.score).padLeft(15f);
         scoreTable.pack();
 
         buttonTable.add(dictButton);
@@ -107,6 +107,7 @@ public class HudStage extends Stage{
 
         mainTable.pack();
         this.addActor(mainTable);
+        this.setDebugAll(true);
     }
 
     public void updateWords(){
@@ -129,6 +130,6 @@ public class HudStage extends Stage{
     }
 
     private void setScore(int amount){
-        score.setText(""+amount);
+        this.score.setText(""+amount);
     }
 }

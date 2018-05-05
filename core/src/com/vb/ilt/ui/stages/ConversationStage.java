@@ -30,15 +30,17 @@ public class ConversationStage extends Stage {
     private ScrollPane scrollPane;
     private Label npcText;
     private Table dialogTable;
+    private boolean availableDictionary;
 
     private TextureRegion region;
 
-    public ConversationStage(Viewport viewport, Batch batch, Skin skin, TextureRegion region, ConversationCallback conversationCallback) {
+    public ConversationStage(Viewport viewport, Batch batch, Skin skin, TextureRegion region, ConversationCallback conversationCallback, boolean availableDictionary) {
         super(viewport, batch);
         this.skin = skin;
         this.conversationCallback = conversationCallback;
         this.dictTable = new DictionaryTable(skin);
         this.region = region;
+        this.availableDictionary = availableDictionary;
         init();
     }
 
@@ -83,7 +85,7 @@ public class ConversationStage extends Stage {
             }
         });
 
-        buttonTable.add(dictButton).right().top().expandY().padRight(60);
+        if (availableDictionary) buttonTable.add(dictButton).right().top().expandY().padRight(60);
         buttonTable.add(exitButton).right().top().expandY();
 
 

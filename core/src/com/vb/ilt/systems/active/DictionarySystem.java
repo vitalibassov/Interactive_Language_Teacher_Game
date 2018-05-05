@@ -47,7 +47,8 @@ public class DictionarySystem extends IntervalSystem{
             DictionaryComponent dictionaryComponent = Mappers.DICT.get(dictionaryEntity);
             addNewWordsToDictionary(storyComponent.conversations.first().getAllText(), dictionaryComponent.allWords);
             currentConversationSize = storyComponent.conversations.size;
-            ((HudStage)Mappers.STAGE.get(getEngine().getEntitiesFor(HUD_STAGE).first()).stage).updateWords();
+            HudStage hudStage = (HudStage)Mappers.STAGE.get(getEngine().getEntitiesFor(HUD_STAGE).first()).stage;
+            hudStage.updateWords();
         }
     }
 

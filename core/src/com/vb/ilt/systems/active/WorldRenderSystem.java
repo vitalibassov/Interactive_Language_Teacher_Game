@@ -43,6 +43,6 @@ public class WorldRenderSystem extends EntitySystem{
         mapRenderer.render(new int[]{0, 1});
         getEngine().getSystem(ParticlesSystem.class).update(deltaTime);
         getEngine().getSystem(CharacterRenderSystem.class).update(deltaTime);
-        mapRenderer.render(new int[]{2});
+        mapRenderer.render(new int[]{2, 3});
     }
 }

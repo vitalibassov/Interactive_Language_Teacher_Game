@@ -22,7 +22,6 @@ import com.vb.ilt.systems.active.ConversationSystem;
 import com.vb.ilt.systems.active.DictionarySystem;
 import com.vb.ilt.systems.active.FinishSystem;
 import com.vb.ilt.systems.active.HudSystem;
-import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
 import com.vb.ilt.systems.active.MusicSystem;
 import com.vb.ilt.systems.active.PlayerControlSystem;
@@ -118,14 +117,14 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
         if (GameConfig.DEBUG_MODE){
             engine.addSystem(new DebugCameraSystem(camera));
-            //engine.addSystem(new DebugRenderSystem(viewport, renderer));
+            engine.addSystem(new com.vb.ilt.systems.debug.DebugRenderSystem(viewport, renderer));
         }
 
         engine.addSystem(new ParticlesSystem(batch, viewport));
         engine.addSystem(new DictionarySystem());
 
         engine.addSystem(conversationSystem);
-        engine.addSystem(new MonologueSystem(assetManager, hudViewport, batch));
+        //engine.addSystem(new MonologueSystem(assetManager, hudViewport, batch));
 
         engine.addSystem(new EntityLogger());
 

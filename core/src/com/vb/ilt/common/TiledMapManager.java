@@ -14,10 +14,9 @@ public class TiledMapManager {
     public TiledMapManager(String levelName){
         tiledMapObjects = new HashMap<>();
         for (FileHandle file : Gdx.files.internal(levelName).list()){
+            if (file.extension().equals("tmx"))
             tiledMapObjects.put(file.nameWithoutExtension(), new TiledMapObjectsProvider(file.toString()));
             System.out.println(file.nameWithoutExtension());
-            System.out.println(file.toString());
-            file.name();
         }
     }
 

@@ -21,12 +21,15 @@ public final class GameConfig {
     public static final float HUD_WIDTH = 1920f;
     public static final float HUD_HEIGHT = 1080f;
 
+    public static final float HUD_WIDTH_CENTER = HUD_WIDTH / 2f;
+    public static final float HUD_HEIGHT_CENTER = HUD_HEIGHT / 2f;
+
     public static final float WORLD_CENTER_X = WORLD_WIDTH / 2f;
     public static final float WORLD_CENTER_Y = WORLD_HEIGHT / 2f;
 
-    public static final float PLAYER_WIDTH = 2f;
-    public static final float PLAYER_HEIGHT = 2f;
-    public static final float PLAYER_VELOCITY = 0.05f;
+    public static final float PLAYER_WIDTH = 1.5f;
+    public static final float PLAYER_HEIGHT = 1.5f;
+    public static final float PLAYER_VELOCITY = 0.03f;
     public static final float STOPPING_SPEED = 0.75f;
     public static final float PLAYER_HALF_WIDTH = PLAYER_WIDTH / 2f;
     public static final float PLAYER_HALF_HEIGHT = PLAYER_HEIGHT /2f;
@@ -41,6 +44,7 @@ public final class GameConfig {
     public static final int PARTICLE_LIMIT = 100;
 
     public static final boolean DEBUG_MODE = true;
+    public static final boolean AVAILABLE_CONVERSATION_DICTIONARY = false;
 
     private GameConfig(){}
 }

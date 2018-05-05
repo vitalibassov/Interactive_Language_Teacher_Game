@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Queue;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
+import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.CharacterType;
 import com.vb.ilt.entity.components.DictionaryComponent;
 import com.vb.ilt.entity.components.SoundComponent;
@@ -111,7 +112,8 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
         log.debug("MY WORDS IS NULL= " + (dictionaryComponent.myWords == null));
         this.npcConv = new ConversationStage(hudViewport, batch,
                 assetManager.get(AssetDescriptors.UI_SKIN),
-                atlas.findRegion(this.characterType.name().toLowerCase()), this);
+                atlas.findRegion(this.characterType.name().toLowerCase()), this,
+                GameConfig.AVAILABLE_CONVERSATION_DICTIONARY);
         this.npcConv.setAvailableAllWords(dictionaryComponent.allWords);
         this.npcConv.setAvailableMyWords(dictionaryComponent.myWords);
         this.npcConv.updateWords();
