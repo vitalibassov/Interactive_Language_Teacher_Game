@@ -67,7 +67,7 @@ public class EntityFactorySystem extends EntitySystem{
     private static final float BOUNDS_OFFSET_X = 0.5f;
     private static final float BOUNDS_OFFSET_Y = 0.5f;
 
-    private static final float VISION_RANGE = 1f;
+    private static final float VISION_RANGE = 6f;
 
     private static final float ANIMATION_TIME_FRONT = 0.04f;
     private static final float ANIMATION_TIME_WALKING = 0.015f;

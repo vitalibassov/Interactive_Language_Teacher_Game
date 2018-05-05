@@ -40,9 +40,9 @@ public class WorldRenderSystem extends EntitySystem{
         viewport.apply();
         batch.setProjectionMatrix(viewport.getCamera().projection);
         mapRenderer.setView((OrthographicCamera) viewport.getCamera());
-        mapRenderer.render(new int[]{0, 1});
+        mapRenderer.render(new int[]{0, 1, 2});
         getEngine().getSystem(ParticlesSystem.class).update(deltaTime);
         getEngine().getSystem(CharacterRenderSystem.class).update(deltaTime);
-        mapRenderer.render(new int[]{2, 3});
+        mapRenderer.render(new int[]{3, 4});
     }
 }
