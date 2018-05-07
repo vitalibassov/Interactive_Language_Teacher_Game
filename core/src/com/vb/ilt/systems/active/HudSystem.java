@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.TextureComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
@@ -35,7 +36,8 @@ public class HudSystem extends EntitySystem implements PauseCallback{
 
     private static final Family HUD_FAMILY = Family.all(
             HudComponent.class,
-            StageComponent.class
+            StageComponent.class,
+            SoundComponent.class
     ).get();
 
     public HudSystem(Viewport hudViewport, Batch batch) {

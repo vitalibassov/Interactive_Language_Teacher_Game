@@ -43,7 +43,7 @@ public final class GameConfig {
 
     public static final int PARTICLE_LIMIT = 100;
 
-    public static final boolean DEBUG_MODE = true;
+    public static final boolean DEBUG_MODE = false;
     public static final boolean AVAILABLE_CONVERSATION_DICTIONARY = false;
 
     private GameConfig(){}

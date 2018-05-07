@@ -51,7 +51,6 @@ public class MovementSystem extends IteratingSystem {
                     position.y += newVelocity.y;
                     break;
                 }
-
             }
         }
     }

@@ -30,6 +30,7 @@ import com.vb.ilt.systems.active.SoundSystem;
 import com.vb.ilt.systems.active.WorldRenderSystem;
 import com.vb.ilt.systems.active.ZOrderSystem;
 import com.vb.ilt.systems.debug.DebugCameraSystem;
+import com.vb.ilt.systems.debug.DebugRenderSystem;
 import com.vb.ilt.systems.debug.EntityLogger;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.systems.passive.CleanUpSystem;
@@ -47,7 +48,7 @@ import com.vb.ilt.util.GdxUtils;
 public class GameScreen extends ScreenAdapter{
 
     private static final String MAP_PATH_PATTERN = "maps/%s";
-    private static final String CONVERSATION_PATH_PATTERN = "conversations/%s.json";
+    private static final String CONVERSATION_PATH_PATTERN = "stories/%s.json";
     private static final String PROPERTIES_PATH_PATTERN = "props/%s.properties";
 
     private final InteractiveLangTeacherGame game;
@@ -118,7 +119,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
         if (GameConfig.DEBUG_MODE){
             engine.addSystem(new DebugCameraSystem(camera));
-            //engine.addSystem(new DebugRenderSystem(viewport, renderer));
+            engine.addSystem(new DebugRenderSystem(viewport, renderer));
         }
 
         engine.addSystem(new ParticlesSystem(batch, viewport));

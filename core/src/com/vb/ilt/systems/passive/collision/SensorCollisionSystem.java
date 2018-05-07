@@ -37,7 +37,7 @@ public class SensorCollisionSystem extends CollisionBase{
     @Override
     public boolean checkCollision(Vector2 velocity) {
         ImmutableArray<Entity> sensors = getEngine().getEntitiesFor(SENSORS_FAMILY);
-        Entity player = getEngine().getEntitiesFor(getPLAYER()).get(0);
+        Entity player = getEngine().getEntitiesFor(getPLAYER()).first();
 
         PositionComponent playerPos = Mappers.POSITION.get(player);
         BoundsComponent playerBounds = Mappers.BOUNDS.get(player);
