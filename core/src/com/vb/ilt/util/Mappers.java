@@ -6,7 +6,7 @@ import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DictionaryComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
-import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.VelocityComponent;
 import com.vb.ilt.entity.components.MusicComponent;
 import com.vb.ilt.entity.components.ParticlesComponent;
 import com.vb.ilt.entity.components.PositionComponent;
@@ -28,8 +28,8 @@ public final class Mappers {
             ComponentMapper.getFor(BoundsComponent.class);
     public static final ComponentMapper<DimensionComponent> DIMENSION =
             ComponentMapper.getFor(DimensionComponent.class);
-    public static final ComponentMapper<MovementComponent> MOVEMENT =
-            ComponentMapper.getFor(MovementComponent.class);
+    public static final ComponentMapper<VelocityComponent> MOVEMENT =
+            ComponentMapper.getFor(VelocityComponent.class);
     public static final ComponentMapper<PositionComponent> POSITION =
             ComponentMapper.getFor(PositionComponent.class);
     public static final ComponentMapper<TextureComponent> TEXTURE =

@@ -36,7 +36,7 @@ import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.DictionaryComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
-import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.VelocityComponent;
 import com.vb.ilt.entity.components.MusicComponent;
 import com.vb.ilt.entity.components.ParticlesComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
@@ -110,7 +110,7 @@ public class EntityFactorySystem extends EntitySystem{
         BoundsComponent bounds = engine.createComponent(BoundsComponent.class);
         bounds.polygon = polygonToIso(new Polygon(ShapeUtils.createRectangle(-BOUNDS_OFFSET_X, BOUNDS_OFFSET_Y,dimension.width / 2f, dimension.height / 2f)));
 
-        MovementComponent movement = engine.createComponent(MovementComponent.class);
+        VelocityComponent movement = engine.createComponent(VelocityComponent.class);
         AnimationComponent animation = engine.createComponent(AnimationComponent.class);
         Animation<TextureRegion> playerFront = new Animation<TextureRegion>(
                 ANIMATION_TIME_FRONT,

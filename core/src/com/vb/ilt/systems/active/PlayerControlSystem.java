@@ -14,7 +14,7 @@ import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.components.AnimationComponent;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
-import com.vb.ilt.entity.components.MovementComponent;
+import com.vb.ilt.entity.components.VelocityComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
@@ -37,7 +37,7 @@ public class PlayerControlSystem extends EntitySystem {
 
     private static final Family PLAYER = Family.all(
             PlayerComponent.class,
-            MovementComponent.class,
+            VelocityComponent.class,
             AnimationComponent.class,
             SoundComponent.class,
             DirectionComponent.class
@@ -61,7 +61,7 @@ public class PlayerControlSystem extends EntitySystem {
         Entity player = getEngine().getEntitiesFor(PLAYER).first();
         Entity control = getEngine().getEntitiesFor(CONTROLS).first();
 
-        MovementComponent movement = Mappers.MOVEMENT.get(player);
+        VelocityComponent movement = Mappers.MOVEMENT.get(player);
         this.playerAnimation = Mappers.ANIMATION.get(player);
         ControlsComponent controlsComp = Mappers.CONTROLS.get(control);
         this.playerDirection = Mappers.DIRECTION.get(player);
@@ -70,7 +70,7 @@ public class PlayerControlSystem extends EntitySystem {
         controlHandling(movement, this.playerAnimation, controlsComp, this.playerDirection);
     }
 
-    private void controlHandling(MovementComponent movement, AnimationComponent animation, ControlsComponent controlsComp, DirectionComponent direction) {
+    private void controlHandling(VelocityComponent movement, AnimationComponent animation, ControlsComponent controlsComp, DirectionComponent direction) {
         movement.velocity.setZero();
         Vector2 worldTouch = getWorldTouch();
         if (Gdx.input.isKeyPressed(Input.Keys.UP) || controlsComp.topRight.contains(worldTouch)) {
