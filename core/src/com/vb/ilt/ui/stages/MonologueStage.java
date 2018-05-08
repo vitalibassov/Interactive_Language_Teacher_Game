@@ -18,7 +18,7 @@ public abstract class MonologueStage extends Stage {
     ExitCallback exitCallback;
     final AssetManager assetManager;
     Button exitButton;
-    private final float APPEARANCE_DELAY = 5f;
+    private final float APPEARANCE_DELAY = 3f;
 
     protected TextureRegion region;
 

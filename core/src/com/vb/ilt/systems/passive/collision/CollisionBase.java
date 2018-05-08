@@ -27,7 +27,7 @@ public abstract class CollisionBase extends EntitySystem{
 
     public boolean checkCollision(Vector2 velocity){
         ImmutableArray<Entity> objects = getEngine().getEntitiesFor(COLLISION_OBJECTS);
-        Entity player = getEngine().getEntitiesFor(PLAYER).get(0);
+        Entity player = getEngine().getEntitiesFor(PLAYER).first();
 
         PositionComponent playerPos = Mappers.POSITION.get(player);
         BoundsComponent playerBounds = Mappers.BOUNDS.get(player);

@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.entity.components.world.TiledMapComponent;
 import com.vb.ilt.entity.components.world.TiledMapRendererComponent;
+import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.systems.passive.CharacterRenderSystem;
 import com.vb.ilt.systems.passive.ParticlesSystem;
 import com.vb.ilt.util.Mappers;
@@ -24,7 +25,8 @@ public class WorldRenderSystem extends EntitySystem{
 
     private static final Family MAP_FAMILY = Family.all(
             TiledMapComponent.class,
-            TiledMapRendererComponent.class
+            TiledMapRendererComponent.class,
+            WorldObjectComponent.class
     ).get();
 
     public WorldRenderSystem(Viewport viewport, Batch batch) {

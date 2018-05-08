@@ -12,13 +12,10 @@ import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.Direction;
 import com.vb.ilt.entity.components.AnimationComponent;
-import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.DirectionComponent;
-import com.vb.ilt.entity.components.VelocityComponent;
 import com.vb.ilt.entity.components.PlayerComponent;
-import com.vb.ilt.entity.components.PositionComponent;
-import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.TextureComponent;
+import com.vb.ilt.entity.components.VelocityComponent;
 import com.vb.ilt.entity.components.hud.ControlsComponent;
 import com.vb.ilt.entity.components.hud.HudComponent;
 import com.vb.ilt.util.Mappers;
@@ -39,14 +36,11 @@ public class PlayerControlSystem extends EntitySystem {
             PlayerComponent.class,
             VelocityComponent.class,
             AnimationComponent.class,
-            SoundComponent.class,
             DirectionComponent.class
     ).get();
 
     private static final Family CONTROLS = Family.all(
             ControlsComponent.class,
-            DimensionComponent.class,
-            PositionComponent.class,
             TextureComponent.class,
             HudComponent.class
     ).get();

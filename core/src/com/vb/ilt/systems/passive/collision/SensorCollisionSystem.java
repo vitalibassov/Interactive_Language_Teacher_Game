@@ -9,6 +9,7 @@ import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.common.TiledMapObjectsProvider;
 import com.vb.ilt.entity.components.BoundsComponent;
 import com.vb.ilt.entity.components.PositionComponent;
+import com.vb.ilt.entity.components.SoundComponent;
 import com.vb.ilt.entity.components.world.PortalSensorComponent;
 import com.vb.ilt.entity.components.world.WorldObjectComponent;
 import com.vb.ilt.systems.active.SoundSystem;
@@ -26,7 +27,7 @@ public class SensorCollisionSystem extends CollisionBase{
             WorldObjectComponent.class,
             PortalSensorComponent.class,
             BoundsComponent.class,
-            PositionComponent.class
+            SoundComponent.class
     ).get();
 
     public SensorCollisionSystem(TiledMapManager mapManager) {
