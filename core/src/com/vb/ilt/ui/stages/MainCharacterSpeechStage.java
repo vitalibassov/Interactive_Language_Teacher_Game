@@ -45,8 +45,8 @@ public class MainCharacterSpeechStage extends MonologueStage{
 
         Table textWithButton = new Table();
         textWithButton.add(mainCharacterImage).width(640f).height(400f).padBottom(20f).row();
-        textWithButton.add(text).growX().left().row();
-        textWithButton.add( this.exitButton).padTop(20f).padBottom(20f).expandX();
+        textWithButton.add(this.text).growX().left().row();
+        textWithButton.add(this.exitButton).padTop(20f).padBottom(20f).expandX();
 
 
         ScrollPane scrollPane = new ScrollPane(textWithButton);
@@ -57,12 +57,11 @@ public class MainCharacterSpeechStage extends MonologueStage{
 
         mainTable.setBackground(new TextureRegionDrawable(region));
         mainTable.center();
-        mainTable.setSize(720f, 1000f);
 
         mainTable.pack();
 
         container.setFillParent(true);
-        container.add(mainTable);
+        container.add(mainTable).width(720f).height(1000f);
 
         this.addActor(container);
     }
