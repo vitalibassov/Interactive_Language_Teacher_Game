@@ -62,7 +62,7 @@ public class HudSystem extends EntitySystem implements PauseCallback{
     public void update(float deltaTime) {
         renderControls();
         processHud();
-        if (Gdx.input.isKeyJustPressed(Input.Keys.BACK)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.BACK) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             Entity hud = getEngine().getEntitiesFor(HUD_FAMILY).first();
             StageComponent stage = Mappers.STAGE.get(hud);
             ((HudStage)stage.stage).pausePressed();
