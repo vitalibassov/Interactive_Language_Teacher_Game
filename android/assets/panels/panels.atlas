@@ -6,7 +6,7 @@ filter: Nearest,Nearest
 repeat: none
 assessmentPanel
   rotate: false
-  xy: 1284, 1324
+  xy: 2566, 2046
   size: 720, 400
   orig: 720, 400
   offset: 0, 0
@@ -69,8 +69,8 @@ pauseBackground
   index: -1
 pausePanel
   rotate: false
-  xy: 2566, 2046
-  size: 720, 400
-  orig: 720, 400
+  xy: 1284, 1324
+  size: 900, 400
+  orig: 900, 400
   offset: 0, 0
   index: -1
