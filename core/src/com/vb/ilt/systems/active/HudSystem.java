@@ -107,7 +107,9 @@ public class HudSystem extends EntitySystem implements PauseCallback{
     private void toggleSystems(boolean switcher, List<Class<? extends EntitySystem>> systems){
         Engine engine = getEngine();
         for (Class<? extends EntitySystem> systemClass: systems){
-            engine.getSystem(systemClass).setProcessing(switcher);
+            if (engine.getSystem(systemClass) != null) {
+                engine.getSystem(systemClass).setProcessing(switcher);
+            }
         }
     }
 }

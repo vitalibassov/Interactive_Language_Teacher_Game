@@ -34,6 +34,9 @@ public abstract class MonologueStage extends Stage {
         this.exitCallback = exitCallback;
         this.mainTable = new Table();
         this.mainTable.getColor().a = 0f;
+        this.mainTable.setSize(720f, 1000f);
+        this.mainTable.setPosition(GameConfig.HUD_WIDTH_CENTER - mainTable.getWidth() / 2f, GameConfig.HUD_HEIGHT - mainTable.getHeight() / 2f);
+
         init();
         postponeButtonAppearance(this.exitButton, this.APPEARANCE_DELAY);
     }
@@ -59,5 +62,11 @@ public abstract class MonologueStage extends Stage {
 
     public void fadeIn(){
         this.mainTable.addAction(Actions.alpha(1f, GameConfig.UI_TRANSITION_DURATION));
+        this.mainTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH_CENTER - mainTable.getWidth() / 2f, GameConfig.HUD_HEIGHT_CENTER - mainTable.getHeight() / 2f, GameConfig.UI_TRANSITION_DURATION));
+    }
+
+    public void fadeOut(){
+        this.mainTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION));
+        this.mainTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH_CENTER - mainTable.getWidth() / 2f, GameConfig.HUD_HEIGHT, GameConfig.UI_TRANSITION_DURATION));
     }
 }

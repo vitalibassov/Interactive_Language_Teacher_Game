@@ -95,10 +95,9 @@ public class PauseStage extends Stage {
 
         mainTable.setBackground(new TextureRegionDrawable(pausePanel));
         mainTable.center();
-        mainTable.setSize(720f, 400f);
 
         container.setFillParent(true);
-        container.add(mainTable);
+        container.add(mainTable).width(900f).height(400f);
         container.background(new TextureRegionDrawable(background));
         container.getColor().a = 0f;
 

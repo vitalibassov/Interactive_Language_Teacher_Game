@@ -3,7 +3,6 @@ package com.vb.ilt.ui.stages;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -26,14 +25,13 @@ public class AuthorSpeechStage extends MonologueStage {
         this.text = new Label("", skin);
         this.text.setWrap(true);
 
-        Table container = new Table();
         final Table buttonTable = new Table();
         this.exitButton = new ImageButton(skin, ButtonStyleNames.QUIT);
 
         this.exitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                mainTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION));
+                fadeOut();
                 new Timer().scheduleTask(new Timer.Task() {
                     @Override
                     public void run() {
@@ -54,15 +52,9 @@ public class AuthorSpeechStage extends MonologueStage {
         mainTable.add(scrollPane).center().colspan(2).width(640f).height(780f).padBottom(40f);
 
         mainTable.setBackground(new TextureRegionDrawable(region));
-        mainTable.center();
-        mainTable.setSize(720f, 1000f);
-
         mainTable.pack();
 
-        container.setFillParent(true);
-        container.add(mainTable);
-
-        this.addActor(container);
+        this.addActor(mainTable);
     }
 
     public void updateText(String text){

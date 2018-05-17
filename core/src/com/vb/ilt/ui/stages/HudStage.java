@@ -3,6 +3,7 @@ package com.vb.ilt.ui.stages;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -60,8 +61,6 @@ public class HudStage extends Stage{
         Table mainTable = new Table();
         mainTable.defaults().pad(20);
         Table buttonTable = new Table();
-        this.dictTable.setVisible(false);
-        this.dictTable.getColor().a = 0f;
 
         final Button pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
         final Button dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
@@ -69,22 +68,24 @@ public class HudStage extends Stage{
         dictButton.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-
                 if (dictTable.isVisible()){
                     dictTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION));
+                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION));
+
                     new Timer().scheduleTask(new Timer.Task() {
                         @Override
                         public void run() {
                             dictTable.setVisible(!dictTable.isVisible());
                             dictTable.hideKeyboard();
+
                         }
                     },  GameConfig.UI_TRANSITION_DURATION);
 
                 }else{
                     dictTable.addAction(Actions.alpha(1f, GameConfig.UI_TRANSITION_DURATION));
+                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH - dictTable.getWidth() - 20f, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION));
                     dictTable.setVisible(!dictTable.isVisible());
                 }
-
             }
         });
 
@@ -116,12 +117,19 @@ public class HudStage extends Stage{
         mainTable.add(scoreTable).top().left().expandY().expandX();
         mainTable.add(buttonTable).top().right().expandY().expandX();
         mainTable.row();
-        mainTable.add(this.dictTable).width(1000).height(900).top().right().expandX().expandY().colspan(2);
-
+        mainTable.add();
+        //mainTable.add(this.dictTable).width(1000).height(900);
         mainTable.setFillParent(true);
 
         mainTable.pack();
         this.addActor(mainTable);
+        this.dictTable.setSize(1000, 900);
+        this.dictTable.setPosition(1920f, 0f);
+        this.addActor(this.dictTable);
+
+        this.dictTable.setVisible(false);
+        this.dictTable.getColor().a = 0f;
+        System.out.println("DICT X: " + mainTable.localToStageCoordinates(new Vector2(dictTable.getX(), dictTable.getY())).x);
     }
 
     public void updateWords(){
