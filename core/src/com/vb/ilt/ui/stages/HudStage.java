@@ -3,6 +3,7 @@ package com.vb.ilt.ui.stages;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -69,8 +70,8 @@ public class HudStage extends Stage{
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 if (dictTable.isVisible()){
-                    dictTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION));
-                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION));
+                    dictTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION + 0.2f));
+                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION + 0.1f, Interpolation.swingIn));
 
                     new Timer().scheduleTask(new Timer.Task() {
                         @Override
@@ -79,11 +80,11 @@ public class HudStage extends Stage{
                             dictTable.hideKeyboard();
 
                         }
-                    },  GameConfig.UI_TRANSITION_DURATION);
+                    },  GameConfig.UI_TRANSITION_DURATION + 0.1f);
 
                 }else{
                     dictTable.addAction(Actions.alpha(1f, GameConfig.UI_TRANSITION_DURATION));
-                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH - dictTable.getWidth() - 20f, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION));
+                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH - dictTable.getWidth() - 20f, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION + 0.1f, Interpolation.swingOut));
                     dictTable.setVisible(!dictTable.isVisible());
                 }
             }
