@@ -39,6 +39,7 @@ public class MainMenuScreen extends ScreenAdapter{
 
     @Override
     public void show() {
+        Gdx.input.setCatchBackKey(false);
         viewport = new FitViewport(GameConfig.HUD_WIDTH, GameConfig.HUD_HEIGHT);
         stage = new Stage(viewport, game.getBatch());
         skin = assetManager.get(AssetDescriptors.UI_SKIN);

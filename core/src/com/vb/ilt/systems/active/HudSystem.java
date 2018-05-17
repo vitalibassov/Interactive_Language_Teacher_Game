@@ -5,7 +5,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.config.GameConfig;
@@ -24,6 +26,8 @@ import com.vb.ilt.util.Mappers;
 import java.util.List;
 
 public class HudSystem extends EntitySystem implements PauseCallback{
+
+    private static final Logger log = new Logger(HudSystem.class.getName(), Logger.DEBUG);
 
     private final Viewport hudViewport;
     private final Batch batch;
@@ -58,6 +62,11 @@ public class HudSystem extends EntitySystem implements PauseCallback{
     public void update(float deltaTime) {
         renderControls();
         processHud();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.BACK)){
+            Entity hud = getEngine().getEntitiesFor(HUD_FAMILY).first();
+            StageComponent stage = Mappers.STAGE.get(hud);
+            ((HudStage)stage.stage).pausePressed();
+        }
     }
 
     private void processHud() {

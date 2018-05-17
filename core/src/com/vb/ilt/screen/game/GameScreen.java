@@ -2,6 +2,7 @@ package com.vb.ilt.screen.game;
 
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -11,7 +12,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.InteractiveLangTeacherGame;
-import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.config.GameConfig;
@@ -73,6 +73,8 @@ public class GameScreen extends ScreenAdapter{
 
     @Override
     public void show() {
+
+        Gdx.input.setCatchBackKey(true);
         camera = new OrthographicCamera(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT);
         camera.setToOrtho(false);
         viewport = new FitViewport(GameConfig.WORLD_WIDTH, GameConfig.WORLD_HEIGHT, camera);
@@ -81,11 +83,6 @@ public class GameScreen extends ScreenAdapter{
         engine = new PooledEngine();
 
         SpriteBatch HUDBatch = new SpriteBatch();
-
-        assetManager.load(AssetDescriptors.HUD);
-        assetManager.load(AssetDescriptors.PLAYER);
-        assetManager.finishLoading();
-
         TiledMapManager tiledMapManager = new TiledMapManager(String.format(MAP_PATH_PATTERN, level));
 
         EntitySystem conversationSystem = new ConversationSystem(assetManager, hudViewport, HUDBatch);
@@ -139,6 +136,8 @@ public class GameScreen extends ScreenAdapter{
     public void render(float delta) {
         GdxUtils.clearScreen();
         engine.update(delta);
+
+
         if (GameManager.INSTANCE.isQuit()){
             engine.getSystem(MusicSystem.class).setEnabled(false);
             game.setScreen(new MainMenuScreen(game));

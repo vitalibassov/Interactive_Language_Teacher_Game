@@ -93,12 +93,7 @@ public class HudStage extends Stage{
         pauseButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                List<Class<? extends EntitySystem>> list = new ArrayList<>();
-                list.add(MovementSystem.class);
-                list.add(HudSystem.class);
-                list.add(PlayerControlSystem.class);
-                list.add(MonologueSystem.class);
-                pauseCallback.setSystemsDisabledAndShowPauseMenu(list);
+                pausePressed();
             }
         });
 
@@ -154,5 +149,14 @@ public class HudStage extends Stage{
 
     private void setScore(int amount){
         this.score.setText(""+amount);
+    }
+
+    public void pausePressed(){
+        List<Class<? extends EntitySystem>> list = new ArrayList<>();
+        list.add(MovementSystem.class);
+        list.add(HudSystem.class);
+        list.add(PlayerControlSystem.class);
+        list.add(MonologueSystem.class);
+        pauseCallback.setSystemsDisabledAndShowPauseMenu(list);
     }
 }
