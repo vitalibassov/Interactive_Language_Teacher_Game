@@ -65,6 +65,7 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
             }
             systemSwitch(false);
             this.monologueStage.updateText(conversationQueue.first().getCurrentDialog().getNpctext());
+            this.monologueStage.fadeIn();
             this.monologueStage.postponeButtonAppearance();
             Gdx.input.setInputProcessor(this.monologueStage);
             isReading = true;
@@ -87,6 +88,7 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
         engine.getSystem(HudSystem.class).setProcessing(state);
         engine.getSystem(PlayerControlSystem.class).setProcessing(state);
         engine.getSystem(MovementSystem.class).setProcessing(state);
+        System.out.println("SWITCHING SYSTEMS: " + state);
     }
 
     private boolean isReady(float delta){

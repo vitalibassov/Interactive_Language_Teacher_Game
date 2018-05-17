@@ -46,5 +46,7 @@ public final class GameConfig {
     public static final boolean DEBUG_MODE = false;
     public static final boolean AVAILABLE_CONVERSATION_DICTIONARY = false;
 
+    public static final float UI_TRANSITION_DURATION = 0.2f;
+
     private GameConfig(){}
 }

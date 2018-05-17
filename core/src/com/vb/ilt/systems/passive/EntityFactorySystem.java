@@ -80,9 +80,11 @@ public class EntityFactorySystem extends EntitySystem{
     private PooledEngine engine;
     private final AssetManager assetManager;
     private final Batch batch;
+    private final Batch HUDBatch;
 
-    public EntityFactorySystem(AssetManager assetManager, Batch batch){
+    public EntityFactorySystem(AssetManager assetManager, Batch batch, Batch HUDBatch){
         this.batch = batch;
+        this.HUDBatch = HUDBatch;
         this.assetManager = assetManager;
     }
 
@@ -345,7 +347,7 @@ public class EntityFactorySystem extends EntitySystem{
 
     public void createHud(Viewport hudViewport, DictionaryComponent dictionaryComponent){
         StageComponent stage = engine.createComponent(StageComponent.class);
-        stage.stage = new HudStage(assetManager, hudViewport, batch, dictionaryComponent.allWords, dictionaryComponent.myWords);
+        stage.stage = new HudStage(assetManager, hudViewport, HUDBatch, dictionaryComponent.allWords, dictionaryComponent.myWords);
         SoundComponent sound = engine.createComponent(SoundComponent.class);
         sound.sound = assetManager.get(AssetDescriptors.ACHIEVEMENT_SOUND);
         HudComponent hud = engine.createComponent(HudComponent.class);

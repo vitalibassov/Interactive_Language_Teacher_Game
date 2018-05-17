@@ -24,4 +24,12 @@ public class PauseSystem extends EntitySystem{
         pauseStage.draw();
         Gdx.input.setInputProcessor(pauseStage);
     }
+
+    public void smoothlyAppear(float duration){
+        ((PauseStage)pauseStage).smoothlyAppear(duration);
+    }
+
+    public void smoothlyDisappear(float duration){
+        ((PauseStage)pauseStage).smoothlyDisappear(duration);
+    }
 }

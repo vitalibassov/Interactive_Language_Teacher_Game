@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -30,6 +31,7 @@ public class ConversationStage extends Stage {
     private ScrollPane scrollPane;
     private Label npcText;
     private Table dialogTable;
+    private Table mainTable;
     private boolean availableDictionary;
 
     private TextureRegion region;
@@ -55,7 +57,7 @@ public class ConversationStage extends Stage {
     }
 
     private void init(){
-        Table mainTable = new Table();
+        mainTable = new Table();
         mainTable.defaults().pad(20f, 20f, 0f, 20f);
         this.npcText = new Label("", skin);
         this.npcText.setWrap(true);
@@ -102,6 +104,7 @@ public class ConversationStage extends Stage {
         mainTable.center();
         mainTable.setFillParent(true);
         mainTable.pack();
+        mainTable.getColor().a = 0f;
 
         container.setFillParent(true);
         container.defaults().pad(20);
@@ -153,5 +156,12 @@ public class ConversationStage extends Stage {
 
     public Map<String, String> getAvailableMyWords(){
         return dictTable.getAvailableMyWords();
+    }
+
+    public void fadeIn(){
+        this.mainTable.addAction(Actions.alpha(1f, GameConfig.UI_TRANSITION_DURATION));
+    }
+    public void fadeOut(){
+        this.mainTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION));
     }
 }

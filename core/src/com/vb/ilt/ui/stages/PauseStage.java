@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -35,6 +36,8 @@ public class PauseStage extends Stage {
     private TextureRegion pausePanel;
     private TextureRegion background;
 
+    private Table container;
+
 
     public PauseStage(Viewport viewport, Batch batch, AssetManager assetManager, PauseCallback pauseCallback) {
         super(viewport, batch);
@@ -45,13 +48,21 @@ public class PauseStage extends Stage {
         init();
     }
 
+    public void smoothlyAppear(float duration){
+        this.container.addAction(Actions.alpha(1f, duration));
+    }
+
+    public void smoothlyDisappear(float duration){
+        this.container.addAction(Actions.alpha(0f, duration));
+    }
+
     private void init(){
         Table mainTable = new Table();
         mainTable.defaults().pad(20f);
 
         //this.npcText.setFontScale(2);
 
-        Table container = new Table();
+        container = new Table();
         Table buttonTable = new Table();
         buttonTable.pad(20f);
 
@@ -86,11 +97,10 @@ public class PauseStage extends Stage {
         mainTable.center();
         mainTable.setSize(720f, 400f);
 
-        mainTable.pack();
-
         container.setFillParent(true);
         container.add(mainTable);
         container.background(new TextureRegionDrawable(background));
+        container.getColor().a = 0f;
 
         this.addActor(container);
     }

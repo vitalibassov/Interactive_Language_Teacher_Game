@@ -3,6 +3,7 @@ package com.vb.ilt.ui.stages;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -11,9 +12,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
+import com.vb.ilt.config.GameConfig;
 
 public class MainCharacterSpeechStage extends MonologueStage{
 
@@ -22,7 +25,6 @@ public class MainCharacterSpeechStage extends MonologueStage{
     }
 
     protected void init(){
-        Table mainTable = new Table();
         this.text = new Label("", skin);
         this.text.setWrap(true);
 
@@ -33,7 +35,13 @@ public class MainCharacterSpeechStage extends MonologueStage{
         this.exitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                exitCallback.exit();
+                mainTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION));
+                new Timer().scheduleTask(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        exitCallback.exit();
+                    }
+                }, GameConfig.UI_TRANSITION_DURATION);
             }
         });
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -79,18 +80,20 @@ public class GameScreen extends ScreenAdapter{
         renderer = new ShapeRenderer();
         engine = new PooledEngine();
 
+        SpriteBatch HUDBatch = new SpriteBatch();
+
         assetManager.load(AssetDescriptors.HUD);
         assetManager.load(AssetDescriptors.PLAYER);
         assetManager.finishLoading();
 
         TiledMapManager tiledMapManager = new TiledMapManager(String.format(MAP_PATH_PATTERN, level));
 
-        EntitySystem conversationSystem = new ConversationSystem(assetManager, hudViewport, batch);
+        EntitySystem conversationSystem = new ConversationSystem(assetManager, hudViewport, HUDBatch);
         conversationSystem.setProcessing(false);
 
         EntitySystem hudSystem = new HudSystem(hudViewport, batch);
 
-        engine.addSystem(new EntityFactorySystem(assetManager, batch));
+        engine.addSystem(new EntityFactorySystem(assetManager, batch, HUDBatch));
         engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
 
 
@@ -115,8 +118,8 @@ public class GameScreen extends ScreenAdapter{
 
 
         engine.addSystem(hudSystem);
-        engine.addSystem(new PauseSystem(assetManager, hudViewport, batch, (PauseCallback) hudSystem));
-        engine.addSystem(new FinishSystem(hudViewport, batch, assetManager));
+        engine.addSystem(new PauseSystem(assetManager, hudViewport, HUDBatch, (PauseCallback) hudSystem));
+        engine.addSystem(new FinishSystem(hudViewport, HUDBatch, assetManager));
         if (GameConfig.DEBUG_MODE){
             engine.addSystem(new DebugCameraSystem(camera));
             engine.addSystem(new DebugRenderSystem(viewport, renderer));
@@ -126,7 +129,7 @@ public class GameScreen extends ScreenAdapter{
         engine.addSystem(new DictionarySystem());
 
         engine.addSystem(conversationSystem);
-        engine.addSystem(new MonologueSystem(assetManager, hudViewport, batch));
+        engine.addSystem(new MonologueSystem(assetManager, hudViewport, HUDBatch));
 
         engine.addSystem(new EntityLogger());
 

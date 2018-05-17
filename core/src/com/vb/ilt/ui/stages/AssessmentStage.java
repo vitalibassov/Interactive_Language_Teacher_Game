@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -19,6 +20,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
+import com.vb.ilt.config.GameConfig;
 
 public class AssessmentStage extends Stage{
     private static final Logger log = new Logger(ConversationStage.class.getName(), Logger.DEBUG);
@@ -65,6 +67,7 @@ public class AssessmentStage extends Stage{
 
         mainTable.setBackground(new TextureRegionDrawable(assessmentPanel));
         mainTable.center();
+        mainTable.getColor().a = 0f;
 
         mainTable.pack();
 
@@ -81,6 +84,8 @@ public class AssessmentStage extends Stage{
 
         int stars;
         int emptyStars;
+
+        this.mainTable.addAction(Actions.alpha(1f,  GameConfig.UI_TRANSITION_DURATION - 0.1f));
 
         final Table starsTable = new Table();
 

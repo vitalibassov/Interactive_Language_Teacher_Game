@@ -4,13 +4,16 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.RegionNames;
+import com.vb.ilt.config.GameConfig;
 
 public abstract class MonologueStage extends Stage {
     final Skin skin;
@@ -19,6 +22,7 @@ public abstract class MonologueStage extends Stage {
     final AssetManager assetManager;
     Button exitButton;
     private final float APPEARANCE_DELAY = 3f;
+    final Table mainTable;
 
     protected TextureRegion region;
 
@@ -28,6 +32,8 @@ public abstract class MonologueStage extends Stage {
         this.skin = assetManager.get(AssetDescriptors.UI_SKIN);
         this.region = assetManager.get(AssetDescriptors.PANELS).findRegion(RegionNames.MONOLOGUE_SPEECH);
         this.exitCallback = exitCallback;
+        this.mainTable = new Table();
+        this.mainTable.getColor().a = 0f;
         init();
         postponeButtonAppearance(this.exitButton, this.APPEARANCE_DELAY);
     }
@@ -49,5 +55,9 @@ public abstract class MonologueStage extends Stage {
                 button.setVisible(true);
             }
         }, delay);
+    }
+
+    public void fadeIn(){
+        this.mainTable.addAction(Actions.alpha(1f, GameConfig.UI_TRANSITION_DURATION));
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -12,11 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.ButtonStyleNames;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
+import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.systems.active.HudSystem;
 import com.vb.ilt.systems.active.MonologueSystem;
 import com.vb.ilt.systems.active.MovementSystem;
@@ -36,7 +39,6 @@ public class HudStage extends Stage{
     private Label score;
     private PauseCallback pauseCallback;
     private Skin skin;
-
 
     public HudStage(AssetManager assetManager, Viewport viewport, Batch batch) {
         super(viewport, batch);
@@ -59,6 +61,7 @@ public class HudStage extends Stage{
         mainTable.defaults().pad(20);
         Table buttonTable = new Table();
         this.dictTable.setVisible(false);
+        this.dictTable.getColor().a = 0f;
 
         final Button pauseButton = new ImageButton(skin, ButtonStyleNames.PAUSE);
         final Button dictButton = new ImageButton(skin, ButtonStyleNames.DICT);
@@ -66,10 +69,22 @@ public class HudStage extends Stage{
         dictButton.addListener(new ChangeListener(){
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                dictTable.setVisible(!dictTable.isVisible());
-                if (!dictTable.isVisible()){
-                    dictTable.hideKeyboard();
+
+                if (dictTable.isVisible()){
+                    dictTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION));
+                    new Timer().scheduleTask(new Timer.Task() {
+                        @Override
+                        public void run() {
+                            dictTable.setVisible(!dictTable.isVisible());
+                            dictTable.hideKeyboard();
+                        }
+                    },  GameConfig.UI_TRANSITION_DURATION);
+
+                }else{
+                    dictTable.addAction(Actions.alpha(1f, GameConfig.UI_TRANSITION_DURATION));
+                    dictTable.setVisible(!dictTable.isVisible());
                 }
+
             }
         });
 

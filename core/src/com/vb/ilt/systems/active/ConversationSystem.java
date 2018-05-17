@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.Queue;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.common.GameManager;
@@ -116,6 +117,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
                 GameConfig.AVAILABLE_CONVERSATION_DICTIONARY);
         this.npcConv.setAvailableAllWords(dictionaryComponent.allWords);
         this.npcConv.setAvailableMyWords(dictionaryComponent.myWords);
+        this.npcConv.fadeIn();
         this.npcConv.updateWords();
 
         Dialog firstDialog = conversations.first().getCurrentDialog();
@@ -129,16 +131,22 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
 
     @Override
     public void exit() {
+        this.npcConv.fadeOut();
+        new Timer().scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                hudSystem.setProcessing(true);
+                movementSystem.setProcessing(true);
+                playerControlSystem.setProcessing(true);
+                dictionaryComponent.myWords.clear();
+                dictionaryComponent.myWords.putAll(npcConv.getAvailableMyWords());
+                hudStage.updateWords();
+                setProcessing(false);
+            }
+        }, GameConfig.UI_TRANSITION_DURATION);
         if (this.dropTempScore){
             GameManager.INSTANCE.dropTempScore();
         }
-        this.hudSystem.setProcessing(true);
-        this.movementSystem.setProcessing(true);
-        this.playerControlSystem.setProcessing(true);
-        this.dictionaryComponent.myWords.clear();
-        this.dictionaryComponent.myWords.putAll(this.npcConv.getAvailableMyWords());
-        this.hudStage.updateWords();
-        this.setProcessing(false);
     }
 
     @Override

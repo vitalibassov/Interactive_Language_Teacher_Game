@@ -6,7 +6,9 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.vb.ilt.config.GameConfig;
 import com.vb.ilt.entity.components.DimensionComponent;
 import com.vb.ilt.entity.components.PositionComponent;
 import com.vb.ilt.entity.components.SoundComponent;
@@ -82,15 +84,24 @@ public class HudSystem extends EntitySystem implements PauseCallback{
     }
 
     @Override
-    public void setSystemsDisabledAndShowPauseMenu(List<Class<? extends EntitySystem>> systems) {
-        getEngine().getSystem(PauseSystem.class).setProcessing(true);
+    public void setSystemsDisabledAndShowPauseMenu(final List<Class<? extends EntitySystem>> systems) {
+        PauseSystem pauseSystem = getEngine().getSystem(PauseSystem.class);
+        pauseSystem.setProcessing(true);
+        pauseSystem.smoothlyAppear(GameConfig.UI_TRANSITION_DURATION);
         toggleSystems(false, systems);
     }
 
     @Override
-    public void setSystemsEnabledAndClosePauseMenu(List<Class<? extends EntitySystem>> systems) {
-        getEngine().getSystem(PauseSystem.class).setProcessing(false);
-        toggleSystems(true, systems);
+    public void setSystemsEnabledAndClosePauseMenu(final List<Class<? extends EntitySystem>> systems) {
+        final PauseSystem pauseSystem = getEngine().getSystem(PauseSystem.class);
+        pauseSystem.smoothlyDisappear(GameConfig.UI_TRANSITION_DURATION);
+        new Timer().scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                pauseSystem.setProcessing(false);
+                toggleSystems(true, systems);
+            }
+        },  GameConfig.UI_TRANSITION_DURATION);
     }
 
     private void toggleSystems(boolean switcher, List<Class<? extends EntitySystem>> systems){
