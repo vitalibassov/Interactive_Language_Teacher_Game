@@ -77,7 +77,6 @@ public class LoadingScreen extends ScreenBaseAdapter {
         assetManager.load(AssetDescriptors.MAIN_MUSIC);
         assetManager.load(AssetDescriptors.HUD);
         assetManager.load(AssetDescriptors.PLAYER);
-
         assetManager.load(AssetDescriptors.DIRT_PARTICLES);
 
         GameManager.INSTANCE.setStatePlaying();
@@ -101,7 +100,6 @@ public class LoadingScreen extends ScreenBaseAdapter {
         loadingStage.setBarWidth(assetManager.getProgress());
         if (assetManager.update()) {
             waitTime -= delta;
-
             if (waitTime <= 0) {
                 changeScreen = true;
             }

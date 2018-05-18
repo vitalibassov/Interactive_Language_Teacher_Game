@@ -564,842 +564,996 @@ playerFront
   orig: 256, 256
   offset: 0, 0
   index: 40
-playerLeft
+playerFront
   rotate: false
   xy: 518, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 1
-playerLeft
+  index: 41
+playerFront
   rotate: false
   xy: 776, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 2
-playerLeft
+  index: 42
+playerFront
   rotate: false
   xy: 1034, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 3
-playerLeft
+  index: 43
+playerFront
   rotate: false
   xy: 1292, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 4
-playerLeft
+  index: 44
+playerFront
   rotate: false
   xy: 1550, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 5
-playerLeft
+  index: 45
+playerFront
   rotate: false
   xy: 1808, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 6
-playerLeft
+  index: 46
+playerFront
   rotate: false
   xy: 2066, 2582
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 7
-playerLeft
+  index: 47
+playerFront
   rotate: false
   xy: 2324, 2840
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 8
-playerLeft
+  index: 48
+playerFront
   rotate: false
   xy: 2582, 3098
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 9
-playerLeft
+  index: 49
+playerFront
   rotate: false
   xy: 2840, 3356
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 10
-playerLeft
+  index: 50
+playerFront
   rotate: false
   xy: 3098, 3614
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 11
-playerLeft
+  index: 51
+playerFront
   rotate: false
   xy: 2, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 12
-playerLeft
+  index: 52
+playerFront
   rotate: false
   xy: 260, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 13
-playerLeft
+  index: 53
+playerFront
   rotate: false
   xy: 518, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 14
-playerLeft
+  index: 54
+playerFront
   rotate: false
   xy: 776, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 15
-playerLeft
+  index: 55
+playerFront
   rotate: false
   xy: 1034, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 16
-playerLeft
+  index: 56
+playerFront
   rotate: false
   xy: 1292, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 17
-playerLeft
+  index: 57
+playerFront
   rotate: false
   xy: 1550, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 18
-playerLeft
+  index: 58
+playerFront
   rotate: false
   xy: 1808, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 19
-playerLeft
+  index: 59
+playerFront
   rotate: false
   xy: 2066, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 20
-playerLeft
+  index: 60
+playerFront
   rotate: false
   xy: 2324, 2582
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 21
-playerLeft
+  index: 61
+playerFront
   rotate: false
   xy: 2582, 2840
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 22
+  index: 62
 playerLeft
   rotate: false
   xy: 2840, 3098
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 23
+  index: 1
 playerLeft
   rotate: false
   xy: 3098, 3356
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 24
+  index: 2
 playerLeft
   rotate: false
   xy: 3356, 3614
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 25
+  index: 3
 playerLeft
   rotate: false
   xy: 2, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 26
+  index: 4
 playerLeft
   rotate: false
   xy: 260, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 27
+  index: 5
 playerLeft
   rotate: false
   xy: 518, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 28
+  index: 6
 playerLeft
   rotate: false
   xy: 776, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 29
+  index: 7
 playerLeft
   rotate: false
   xy: 1034, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 30
+  index: 8
 playerLeft
   rotate: false
   xy: 1292, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 31
+  index: 9
 playerLeft
   rotate: false
   xy: 1550, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 32
+  index: 10
 playerLeft
   rotate: false
   xy: 1808, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 33
+  index: 11
 playerLeft
   rotate: false
   xy: 2066, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 34
+  index: 12
 playerLeft
   rotate: false
   xy: 2324, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 35
+  index: 13
 playerLeft
   rotate: false
   xy: 2582, 2582
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 36
+  index: 14
 playerLeft
   rotate: false
   xy: 2840, 2840
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 37
+  index: 15
 playerLeft
   rotate: false
   xy: 3098, 3098
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 38
+  index: 16
 playerLeft
   rotate: false
   xy: 3356, 3356
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 39
+  index: 17
 playerLeft
   rotate: false
   xy: 3614, 3614
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 40
-playerRight
+  index: 18
+playerLeft
   rotate: false
   xy: 260, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 1
-playerRight
+  index: 19
+playerLeft
   rotate: false
   xy: 518, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 2
-playerRight
+  index: 20
+playerLeft
   rotate: false
   xy: 776, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 3
-playerRight
+  index: 21
+playerLeft
   rotate: false
   xy: 1034, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 4
-playerRight
+  index: 22
+playerLeft
   rotate: false
   xy: 1292, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 5
-playerRight
+  index: 23
+playerLeft
   rotate: false
   xy: 1550, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 6
-playerRight
+  index: 24
+playerLeft
   rotate: false
   xy: 1808, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 7
-playerRight
+  index: 25
+playerLeft
   rotate: false
   xy: 2066, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 8
-playerRight
+  index: 26
+playerLeft
   rotate: false
   xy: 2324, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 9
-playerRight
+  index: 27
+playerLeft
   rotate: false
   xy: 2582, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 10
-playerRight
+  index: 28
+playerLeft
   rotate: false
   xy: 2840, 2582
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 11
-playerRight
+  index: 29
+playerLeft
   rotate: false
   xy: 3098, 2840
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 12
-playerRight
+  index: 30
+playerLeft
   rotate: false
   xy: 3356, 3098
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 13
-playerRight
+  index: 31
+playerLeft
   rotate: false
   xy: 3614, 3356
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 14
-playerRight
+  index: 32
+playerLeft
   rotate: false
   xy: 518, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 15
-playerRight
+  index: 33
+playerLeft
   rotate: false
   xy: 776, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 16
-playerRight
+  index: 34
+playerLeft
   rotate: false
   xy: 1034, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 17
-playerRight
+  index: 35
+playerLeft
   rotate: false
   xy: 1292, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 18
-playerRight
+  index: 36
+playerLeft
   rotate: false
   xy: 1550, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 19
-playerRight
+  index: 37
+playerLeft
   rotate: false
   xy: 1808, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 20
-playerRight
+  index: 38
+playerLeft
   rotate: false
   xy: 2066, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 21
-playerRight
+  index: 39
+playerLeft
   rotate: false
   xy: 2324, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 22
+  index: 40
 playerRight
   rotate: false
   xy: 2582, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 23
+  index: 1
 playerRight
   rotate: false
   xy: 2840, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 24
+  index: 2
 playerRight
   rotate: false
   xy: 3098, 2582
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 25
+  index: 3
 playerRight
   rotate: false
   xy: 3356, 2840
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 26
+  index: 4
 playerRight
   rotate: false
   xy: 3614, 3098
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 27
+  index: 5
 playerRight
   rotate: false
   xy: 776, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 28
+  index: 6
 playerRight
   rotate: false
   xy: 1034, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 29
+  index: 7
 playerRight
   rotate: false
   xy: 1292, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 30
+  index: 8
 playerRight
   rotate: false
   xy: 1550, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 31
+  index: 9
 playerRight
   rotate: false
   xy: 1808, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 32
+  index: 10
 playerRight
   rotate: false
   xy: 2066, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 33
+  index: 11
 playerRight
   rotate: false
   xy: 2324, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 34
+  index: 12
 playerRight
   rotate: false
   xy: 2582, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 35
+  index: 13
 playerRight
   rotate: false
   xy: 2840, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 36
+  index: 14
 playerRight
   rotate: false
   xy: 3098, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 37
+  index: 15
 playerRight
   rotate: false
   xy: 3356, 2582
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 38
+  index: 16
 playerRight
   rotate: false
   xy: 3614, 2840
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 39
+  index: 17
 playerRight
   rotate: false
   xy: 1034, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 40
-playerUp
+  index: 18
+playerRight
   rotate: false
   xy: 1292, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 1
-playerUp
+  index: 19
+playerRight
   rotate: false
   xy: 1550, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 2
-playerUp
+  index: 20
+playerRight
   rotate: false
   xy: 1808, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 3
-playerUp
+  index: 21
+playerRight
   rotate: false
   xy: 2066, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 4
-playerUp
+  index: 22
+playerRight
   rotate: false
   xy: 2324, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 5
-playerUp
+  index: 23
+playerRight
   rotate: false
   xy: 2582, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 6
-playerUp
+  index: 24
+playerRight
   rotate: false
   xy: 2840, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 7
-playerUp
+  index: 25
+playerRight
   rotate: false
   xy: 3098, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 8
-playerUp
+  index: 26
+playerRight
   rotate: false
   xy: 3356, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 9
-playerUp
+  index: 27
+playerRight
   rotate: false
   xy: 3614, 2582
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 10
-playerUp
+  index: 28
+playerRight
   rotate: false
   xy: 1292, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 11
-playerUp
+  index: 29
+playerRight
   rotate: false
   xy: 1550, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 12
-playerUp
+  index: 30
+playerRight
   rotate: false
   xy: 1808, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 13
-playerUp
+  index: 31
+playerRight
   rotate: false
   xy: 2066, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 14
-playerUp
+  index: 32
+playerRight
   rotate: false
   xy: 2324, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 15
-playerUp
+  index: 33
+playerRight
   rotate: false
   xy: 2582, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 16
-playerUp
+  index: 34
+playerRight
   rotate: false
   xy: 2840, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 17
-playerUp
+  index: 35
+playerRight
   rotate: false
   xy: 3098, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 18
-playerUp
+  index: 36
+playerRight
   rotate: false
   xy: 3356, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 19
-playerUp
+  index: 37
+playerRight
   rotate: false
   xy: 3614, 2324
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 20
-playerUp
+  index: 38
+playerRight
   rotate: false
   xy: 1550, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 21
-playerUp
+  index: 39
+playerRight
   rotate: false
   xy: 1808, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 22
+  index: 40
 playerUp
   rotate: false
   xy: 2066, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 23
+  index: 1
 playerUp
   rotate: false
   xy: 2324, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 24
+  index: 2
 playerUp
   rotate: false
   xy: 2582, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 25
+  index: 3
 playerUp
   rotate: false
   xy: 2840, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 26
+  index: 4
 playerUp
   rotate: false
   xy: 3098, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 27
+  index: 5
 playerUp
   rotate: false
   xy: 3356, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 28
+  index: 6
 playerUp
   rotate: false
   xy: 3614, 2066
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 29
+  index: 7
 playerUp
   rotate: false
   xy: 1808, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 30
+  index: 8
 playerUp
   rotate: false
   xy: 2066, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 31
+  index: 9
 playerUp
   rotate: false
   xy: 2324, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 32
+  index: 10
 playerUp
   rotate: false
   xy: 2582, 776
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 33
+  index: 11
 playerUp
   rotate: false
   xy: 2840, 1034
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 34
+  index: 12
 playerUp
   rotate: false
   xy: 3098, 1292
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 35
+  index: 13
 playerUp
   rotate: false
   xy: 3356, 1550
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 36
+  index: 14
 playerUp
   rotate: false
   xy: 3614, 1808
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 37
+  index: 15
 playerUp
   rotate: false
   xy: 2066, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 38
+  index: 16
 playerUp
   rotate: false
   xy: 2324, 260
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
-  index: 39
+  index: 17
 playerUp
   rotate: false
   xy: 2582, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 18
+playerUp
+  rotate: false
+  xy: 2840, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 19
+playerUp
+  rotate: false
+  xy: 3098, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 20
+playerUp
+  rotate: false
+  xy: 3356, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 21
+playerUp
+  rotate: false
+  xy: 3614, 1550
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 22
+playerUp
+  rotate: false
+  xy: 2324, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 23
+playerUp
+  rotate: false
+  xy: 2582, 260
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 24
+playerUp
+  rotate: false
+  xy: 2840, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 25
+playerUp
+  rotate: false
+  xy: 3098, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 26
+playerUp
+  rotate: false
+  xy: 3356, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 27
+playerUp
+  rotate: false
+  xy: 3614, 1292
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 28
+playerUp
+  rotate: false
+  xy: 2582, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 29
+playerUp
+  rotate: false
+  xy: 2840, 260
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 30
+playerUp
+  rotate: false
+  xy: 3098, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 31
+playerUp
+  rotate: false
+  xy: 3356, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 32
+playerUp
+  rotate: false
+  xy: 3614, 1034
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 33
+playerUp
+  rotate: false
+  xy: 2840, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 34
+playerUp
+  rotate: false
+  xy: 3098, 260
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 35
+playerUp
+  rotate: false
+  xy: 3356, 518
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 36
+playerUp
+  rotate: false
+  xy: 3614, 776
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 37
+playerUp
+  rotate: false
+  xy: 3098, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 38
+playerUp
+  rotate: false
+  xy: 3356, 260
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: 39
+playerUp
+  rotate: false
+  xy: 3614, 518
   size: 256, 256
   orig: 256, 256
   offset: 0, 0

@@ -84,6 +84,7 @@ public class PlayerControlSystem extends EntitySystem {
         velocity.x = GameConfig.PLAYER_VELOCITY * 1f * x;
         velocity.y = GameConfig.PLAYER_VELOCITY * 0.5f * y;
         animationComp.setAnimationIndex(direction.getValue());
+        if (direction.isIdle() && !directionComp.direction.isIdle()) animationComp.animationTime = 0f;
         directionComp.direction = direction;
         controlsRegion.region = assetManager.get(AssetDescriptors.HUD).findRegion("controls-"+direction.name().toLowerCase());
     }

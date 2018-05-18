@@ -34,6 +34,7 @@ import java.util.Map;
 
 public class HudStage extends Stage{
 
+    private static final float ADDITIONAL_ACTION_DURATION = 0.3f;
     private int currentScore = 0;
 
     private final AssetManager assetManager;
@@ -70,8 +71,8 @@ public class HudStage extends Stage{
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 if (dictTable.isVisible()){
-                    dictTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION + 0.2f));
-                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION + 0.1f, Interpolation.swingIn));
+                    dictTable.addAction(Actions.alpha(0f, GameConfig.UI_TRANSITION_DURATION + ADDITIONAL_ACTION_DURATION));
+                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION + ADDITIONAL_ACTION_DURATION, Interpolation.swingIn));
 
                     new Timer().scheduleTask(new Timer.Task() {
                         @Override
@@ -80,11 +81,11 @@ public class HudStage extends Stage{
                             dictTable.hideKeyboard();
 
                         }
-                    },  GameConfig.UI_TRANSITION_DURATION + 0.1f);
+                    },  GameConfig.UI_TRANSITION_DURATION + ADDITIONAL_ACTION_DURATION);
 
                 }else{
                     dictTable.addAction(Actions.alpha(1f, GameConfig.UI_TRANSITION_DURATION));
-                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH - dictTable.getWidth() - 20f, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION + 0.1f, Interpolation.swingOut));
+                    dictTable.addAction(Actions.moveTo(GameConfig.HUD_WIDTH - dictTable.getWidth() - 20f, dictTable.getY(), GameConfig.UI_TRANSITION_DURATION + ADDITIONAL_ACTION_DURATION, Interpolation.swingOut));
                     dictTable.setVisible(!dictTable.isVisible());
                 }
             }
