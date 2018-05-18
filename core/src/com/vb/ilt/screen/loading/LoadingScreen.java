@@ -1,7 +1,6 @@
 package com.vb.ilt.screen.loading;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
@@ -10,16 +9,18 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.assets.AssetDescriptors;
 import com.vb.ilt.assets.AssetPaths;
 import com.vb.ilt.assets.RegionNames;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.GameBase;
+import com.vb.ilt.screen.ScreenBaseAdapter;
 import com.vb.ilt.screen.menu.MainMenuScreen;
+import com.vb.ilt.screen.transition.transitions.ScreenTransitions;
 import com.vb.ilt.util.GdxUtils;
 
-public class LoadingScreen extends ScreenAdapter {
+public class LoadingScreen extends ScreenBaseAdapter {
 
     private static final Logger log = new Logger(LoadingScreen.class.getName(), Logger.DEBUG);
 
@@ -29,12 +30,12 @@ public class LoadingScreen extends ScreenAdapter {
     private float waitTime = 0.75f;
     private boolean changeScreen = false;
 
-    private final InteractiveLangTeacherGame game;
+    private final GameBase game;
     private final AssetManager assetManager;
 
     private LoadingStage loadingStage;
 
-    public LoadingScreen(InteractiveLangTeacherGame game) {
+    public LoadingScreen(GameBase game) {
         this.game = game;
         assetManager = game.getAssetManager();
     }
@@ -91,7 +92,7 @@ public class LoadingScreen extends ScreenAdapter {
         draw();
 
         if (changeScreen) {
-            game.setScreen(new MainMenuScreen(game));
+            game.setScreen(new MainMenuScreen(game), ScreenTransitions.SLIDE);
             //game.setScreen(new GameScreen(game, "level_1"));
         }
     }

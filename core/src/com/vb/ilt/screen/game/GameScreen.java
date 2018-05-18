@@ -3,7 +3,6 @@ package com.vb.ilt.screen.game;
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -11,11 +10,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.vb.ilt.InteractiveLangTeacherGame;
 import com.vb.ilt.common.GameManager;
 import com.vb.ilt.common.TiledMapManager;
 import com.vb.ilt.config.GameConfig;
+import com.vb.ilt.GameBase;
+import com.vb.ilt.screen.ScreenBaseAdapter;
 import com.vb.ilt.screen.menu.MainMenuScreen;
+import com.vb.ilt.screen.transition.transitions.ScreenTransitions;
 import com.vb.ilt.systems.active.AnimationSystem;
 import com.vb.ilt.systems.active.BoundsSystem;
 import com.vb.ilt.systems.active.CameraFollowingPlayerSystem;
@@ -46,15 +47,16 @@ import com.vb.ilt.systems.passive.collision.WorldWrapUpSystem;
 import com.vb.ilt.ui.stages.PauseCallback;
 import com.vb.ilt.util.GdxUtils;
 
-public class GameScreen extends ScreenAdapter{
+public class GameScreen extends ScreenBaseAdapter{
 
     private static final String MAP_PATH_PATTERN = "maps/%s";
     private static final String CONVERSATION_PATH_PATTERN = "stories/%s.json";
     private static final String PROPERTIES_PATH_PATTERN = "props/%s.properties";
 
-    private final InteractiveLangTeacherGame game;
+    private final GameBase game;
     private final AssetManager assetManager;
     private final Batch batch;
+    private final Batch HUDBatch;
 
     private final String level;
 
@@ -64,10 +66,11 @@ public class GameScreen extends ScreenAdapter{
     private ShapeRenderer renderer;
     private PooledEngine engine;
 
-    public GameScreen(InteractiveLangTeacherGame game, String level) {
+    public GameScreen(GameBase game, String level) {
         this.game = game;
         this.assetManager = game.getAssetManager();
         this.batch = game.getBatch();
+        this.HUDBatch = new SpriteBatch();
         this.level = level;
     }
 
@@ -82,7 +85,6 @@ public class GameScreen extends ScreenAdapter{
         renderer = new ShapeRenderer();
         engine = new PooledEngine();
 
-        SpriteBatch HUDBatch = new SpriteBatch();
         TiledMapManager tiledMapManager = new TiledMapManager(String.format(MAP_PATH_PATTERN, level));
 
         EntitySystem conversationSystem = new ConversationSystem(assetManager, hudViewport, HUDBatch);
@@ -140,7 +142,7 @@ public class GameScreen extends ScreenAdapter{
 
         if (GameManager.INSTANCE.isQuit()){
             engine.getSystem(MusicSystem.class).setEnabled(false);
-            game.setScreen(new MainMenuScreen(game));
+            game.setScreen(new MainMenuScreen(game), ScreenTransitions.SLIDE);
         }else if (GameManager.INSTANCE.isFinished()){
             engine.getSystem(MovementSystem.class).setProcessing(false);
             engine.getSystem(PlayerControlSystem.class).setProcessing(false);
@@ -162,6 +164,7 @@ public class GameScreen extends ScreenAdapter{
     @Override
     public void dispose() {
         renderer.dispose();
+        HUDBatch.dispose();
         engine.removeAllEntities();
     }
 }
