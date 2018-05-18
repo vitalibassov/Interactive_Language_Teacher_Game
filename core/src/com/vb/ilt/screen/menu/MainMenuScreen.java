@@ -116,7 +116,7 @@ public class MainMenuScreen extends ScreenBaseAdapter{
         GameManager.INSTANCE.setStatePlaying();
         GameManager.INSTANCE.reset();
         GameManager.INSTANCE.setMaxScore("level_1");
-        game.setScreen(new GameScreen(game, level), ScreenTransitions.FADE);
+        game.setScreen(new GameScreen(game, level), ScreenTransitions.SLIDE_TO_GAME_SCREEN);
     }
 
     @Override

@@ -95,7 +95,6 @@ public class GameScreen extends ScreenBaseAdapter{
         engine.addSystem(new EntityFactorySystem(assetManager, batch, HUDBatch));
         engine.addSystem(new StartUpSystem(hudViewport, tiledMapManager, String.format(CONVERSATION_PATH_PATTERN, level)));
 
-
         engine.addSystem(new PlayerControlSystem(hudViewport, assetManager));
         engine.addSystem(new SoundSystem());
         engine.addSystem(new MusicSystem());
@@ -138,8 +137,6 @@ public class GameScreen extends ScreenBaseAdapter{
     public void render(float delta) {
         GdxUtils.clearScreen();
         engine.update(delta);
-
-
         if (GameManager.INSTANCE.isQuit()){
             engine.getSystem(MusicSystem.class).setEnabled(false);
             game.setScreen(new MainMenuScreen(game), ScreenTransitions.SLIDE);
