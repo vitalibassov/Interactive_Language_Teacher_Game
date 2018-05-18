@@ -37,7 +37,7 @@ public class AuthorSpeechStage extends MonologueStage {
                     public void run() {
                         exitCallback.exit();
                     }
-                }, GameConfig.UI_TRANSITION_DURATION);
+                }, GameConfig.UI_TRANSITION_DURATION + 0.1f);
             }
         });
 
