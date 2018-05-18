@@ -68,8 +68,8 @@ public abstract class GameBase implements ApplicationListener{
         int width = Gdx.graphics.getWidth();
         int height = Gdx.graphics.getHeight();
 
-        currentFrameBuffer = FrameBuffer.createFrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
-        nextFrameBuffer = FrameBuffer.createFrameBuffer(Pixmap.Format.RGBA8888, width, height, false);
+        currentFrameBuffer = FrameBuffer.createFrameBuffer(Pixmap.Format.RGB888, width, height, true);
+        nextFrameBuffer = FrameBuffer.createFrameBuffer(Pixmap.Format.RGB888, width, height, true);
 
         Gdx.input.setInputProcessor(null);
 
