@@ -80,8 +80,8 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
 
     @Override
     public void exit() {
+        if (isReading) this.conversationQueue.removeFirst();
         isReading = false;
-        this.conversationQueue.removeFirst();
         systemSwitch(true);
     }
 
