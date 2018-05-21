@@ -139,7 +139,7 @@ public class GameScreen extends ScreenBaseAdapter{
         engine.update(delta);
         if (GameManager.INSTANCE.isQuit()){
             engine.getSystem(MusicSystem.class).setEnabled(false);
-            game.setScreen(new MainMenuScreen(game), ScreenTransitions.SLIDE);
+            game.setScreen(new MainMenuScreen(game), ScreenTransitions.FADE);
         }else if (GameManager.INSTANCE.isFinished()){
             engine.getSystem(MovementSystem.class).setProcessing(false);
             engine.getSystem(PlayerControlSystem.class).setProcessing(false);

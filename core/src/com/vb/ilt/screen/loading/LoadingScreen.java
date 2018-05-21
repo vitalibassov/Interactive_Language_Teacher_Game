@@ -91,7 +91,7 @@ public class LoadingScreen extends ScreenBaseAdapter {
         draw();
 
         if (changeScreen) {
-            game.setScreen(new MainMenuScreen(game), ScreenTransitions.SLIDE);
+            game.setScreen(new MainMenuScreen(game), ScreenTransitions.FADE);
             //game.setScreen(new GameScreen(game, "level_1"));
         }
     }

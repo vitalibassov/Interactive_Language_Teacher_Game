@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+//This class contains One conversation with one NPC
 public class Conversation{
 
-    //This class contains One conversation with one NPC
     private CharacterType type;
     private Map<Integer, Dialog> dialogs;
     private int dialogIndex = 0;
