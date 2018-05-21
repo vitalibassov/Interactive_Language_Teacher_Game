@@ -132,6 +132,7 @@ public class ConversationSystem extends EntitySystem implements ConversationCall
     @Override
     public void exit() {
         this.npcConv.fadeOut();
+        Gdx.input.setInputProcessor(hudStage);
         new Timer().scheduleTask(new Timer.Task() {
             @Override
             public void run() {

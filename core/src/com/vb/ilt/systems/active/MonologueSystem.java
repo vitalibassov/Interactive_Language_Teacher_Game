@@ -55,21 +55,23 @@ public class MonologueSystem extends IteratingSystem implements ExitCallback{
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         this.conversationQueue = Mappers.STORY.get(entity).conversations;
-        if (conversationQueue.size != 0 && !isReading && isReady(deltaTime)){
-            if (conversationQueue.first().getType().isAuthor()){
-                monologueStage = authorSpeechStage;
-            }else if(conversationQueue.first().getType().isProtagonist()){
-                monologueStage = mainCharacterSpeechStage;
-            }else {
-                return;
+        if (conversationQueue.size != 0 && !isReading) {
+                if (conversationQueue.first().getType().isAuthor()) {
+                    monologueStage = authorSpeechStage;
+                } else if (conversationQueue.first().getType().isProtagonist()) {
+                    monologueStage = mainCharacterSpeechStage;
+                } else {
+                    return;
+                }
+                if (isReady(deltaTime)) {
+                    systemSwitch(false);
+                    this.monologueStage.updateText(conversationQueue.first().getCurrentDialog().getNpctext());
+                    this.monologueStage.fadeIn();
+                    this.monologueStage.postponeButtonAppearance();
+                    Gdx.input.setInputProcessor(this.monologueStage);
+                    isReading = true;
+                }
             }
-            systemSwitch(false);
-            this.monologueStage.updateText(conversationQueue.first().getCurrentDialog().getNpctext());
-            this.monologueStage.fadeIn();
-            this.monologueStage.postponeButtonAppearance();
-            Gdx.input.setInputProcessor(this.monologueStage);
-            isReading = true;
-        }
         if (isReading){
             actStage();
         }
